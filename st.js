@@ -46,7 +46,6 @@ document.getElementById('submitRegister').addEventListener('click', async ()=>{
   const name = (document.getElementById('regName').value||'').trim();
   const email = (document.getElementById('regEmail').value||'').trim().toLowerCase();
   const password = document.getElementById('regPassword').value||'';
-  const txid = (document.getElementById('txid').value||'').trim();
   const proofFile = document.getElementById('proofFile').files[0];
   const msgEl = document.getElementById('regMessage');
 
@@ -57,10 +56,10 @@ document.getElementById('submitRegister').addEventListener('click', async ()=>{
   if(users.find(u=>u.email===email)){ msgEl.style.color='red'; msgEl.textContent='Email already registered.'; return; }
 
   const imgData = await fileToDataUrl(proofFile);
-  if(!imgData && !txid){ msgEl.style.color='red'; msgEl.textContent='Please upload proof image or enter TXID'; return; }
+  if(!imgData){ msgEl.style.color='red'; msgEl.textContent='Please upload your payment proof image.'; return; }
 
   const payments = load(PAYMENTS_KEY);
-  const payment = { email, name, method: imgData?'image':'txid', txid:txid||null, imageData:imgData||null, status:'pending', time:new Date().toISOString() };
+  const payment = { email, name, method:'image', imageData:imgData, status:'pending', time:new Date().toISOString() };
   payments.push(payment);
   save(PAYMENTS_KEY, payments);
 
@@ -72,22 +71,21 @@ document.getElementById('submitRegister').addEventListener('click', async ()=>{
 
   document.getElementById('regPassword').value='';
   document.getElementById('proofFile').value='';
-  document.getElementById('txid').value='';
 });
 
-// Auto-approve users after 5 minutes (if not already active)
+// Auto-approve users after 5 minutes
 setInterval(()=>{
   const users = load(USERS_KEY);
   let updated = false;
   const now = Date.now();
   users.forEach(u=>{
-    if(!u.active && u.regTime && now - u.regTime >= 5*60*1000){ // 5 minutes
+    if(!u.active && u.regTime && now - u.regTime >= 5*60*1000){
       u.active = true;
       updated = true;
     }
   });
   if(updated) save(USERS_KEY, users);
-}, 10000); // check every 10 seconds
+}, 10000);
 
 document.getElementById('btnLogin').addEventListener('click', ()=>{
   const email = (document.getElementById('loginEmail').value||'').trim().toLowerCase();
