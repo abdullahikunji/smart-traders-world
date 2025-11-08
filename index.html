@@ -1,217 +1,141 @@
-/* Smart Traders World — Register + Payment + Auto Approval after 5 Minutes */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Traders World — Register & Payment</title>
+  <link rel="stylesheet" href="st.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="logo">ST</div><div class="brand-text">Smart Traders World</div></div>
+    <nav>
+      <button id="adminBtn" class="link-btn">Admin</button>
+    </nav>
+  </header>
 
-const CONFIG = {
-  googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe6Fd_jNCnZ22220UmBNYqUhZeKCo66RInk3l2kd59DY3SSAw/viewform?usp=header',
-  conversionRate: 1500,
-  usdAmount: 5,
-  nairaAmount() { return this.conversionRate * this.usdAmount; },
-  usdtWallet: 'TYiqwUuwwU6Me8ezkoLJZkuKNkdefHQYVa',
-  adminEmail: 'abdullahikunji@gmail.com',
-  adminPass: 'abdullahi090@1'
-};
+  <main class="container">
+    <section class="hero card">
+      <h1>Welcome to <span>Smart Traders World</span></h1>
+      <p class="lead">
+        Learn the basics: <strong>What is Crypto</strong>, <strong>What is Forex</strong>, <strong>How to Buy & Sell</strong>.<br>
+        To access beginner lessons you must complete the one-time registration payment of <strong>$7 (₦10,500)</strong>.
+      </p>
+    </section>
 
-const USERS_KEY = 'st_users';
-const PAYMENTS_KEY = 'st_payments';
+    <section class="grid">
+      <!-- Left: Register / Login -->
+      <div class="card">
+        <div class="tabs">
+          <button class="tab active" data-tab="register">Register & Pay</button>
+          <button class="tab" data-tab="login">Login</button>
+        </div>
 
-if(!localStorage.getItem(USERS_KEY)) localStorage.setItem(USERS_KEY, JSON.stringify([]));
-if(!localStorage.getItem(PAYMENTS_KEY)) localStorage.setItem(PAYMENTS_KEY, JSON.stringify([]));
+        <!-- Register -->
+        <div id="register" class="tabcontent active">
+          <h2>Register — Pay & Upload Proof</h2>
 
-function load(key){ try { return JSON.parse(localStorage.getItem(key)||'[]'); } catch(e){ return []; } }
-function save(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+          <div class="payment-info">
+            <div class="pay-box">
+              <h4>Naira (Opay)</h4>
+              <p><b>Account Name:</b> Abdullahi Muhammad</p>
+              <p><b>Account Number:</b> 8122294546</p>
+              <p><b>Amount:</b> ₦10,500</p>
+            </div>
 
-document.querySelectorAll('.tab').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-    document.querySelectorAll('.tabcontent').forEach(c=>c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.getAttribute('data-tab')).classList.add('active');
-  });
-});
+            <div class="pay-box">
+              <h4>USDT (TRON)</h4>
+              <p class="mono">TYiqwUuwwU6Me8ezkoLJZkuKNkdefHQYVa</p>
+              <p><b>Amount:</b> $7</p>
+            </div>
+          </div>
 
-function fileToDataUrl(file){
-  return new Promise((res, rej)=>{
-    if(!file) return res(null);
-    const reader = new FileReader();
-    reader.onload = e => res(e.target.result);
-    reader.onerror = e => rej(e);
-    reader.readAsDataURL(file);
-  });
-}
+          <label>Payment Proof (screenshot)</label>
+          <input id="proofFile" type="file" accept="image/*" />
 
-// ---------------- Human Verification --------------------
-const humanCheckLogin = document.getElementById('humanCheckLogin');
-const humanMsgLogin = document.getElementById('humanMsgLogin');
-let humanVerifiedLogin = false;
+          <hr/>
 
-humanCheckLogin.addEventListener('change', ()=>{
-  if(humanCheckLogin.checked){
-    humanMsgLogin.style.color = '#7cff8d';
-    humanMsgLogin.textContent = '⏳ Verifying... please wait 5 seconds';
-    humanVerifiedLogin = false;
-    document.getElementById('btnLogin').disabled = true;
-    setTimeout(()=>{
-      humanMsgLogin.textContent = '✅ Verified!';
-      humanVerifiedLogin = true;
-      document.getElementById('btnLogin').disabled = false;
-    },5000);
-  } else { humanMsgLogin.style.color='var(--muted)'; humanMsgLogin.textContent=''; humanVerifiedLogin=false; }
-});
+          <label>Full Name</label>
+          <input id="regName" type="text" placeholder="Your full name" />
 
-const humanCheckReg = document.getElementById('humanCheckReg');
-const humanMsgReg = document.getElementById('humanMsgReg');
-let humanVerifiedReg = false;
+          <label>Email</label>
+          <input id="regEmail" type="email" placeholder="you@example.com" />
 
-humanCheckReg.addEventListener('change', ()=>{
-  if(humanCheckReg.checked){
-    humanMsgReg.style.color = '#7cff8d';
-    humanMsgReg.textContent = '⏳ Verifying... please wait 5 seconds';
-    humanVerifiedReg = false;
-    document.getElementById('submitRegister').disabled = true;
-    setTimeout(()=>{
-      humanMsgReg.textContent = '✅ Verified!';
-      humanVerifiedReg = true;
-      document.getElementById('submitRegister').disabled = false;
-    },5000);
-  } else { humanMsgReg.style.color='var(--muted)'; humanMsgReg.textContent=''; humanVerifiedReg=false; }
-});
+          <label>Password</label>
+          <input id="regPassword" type="password" placeholder="Choose a password" />
 
-// ---------------- Register --------------------
-document.getElementById('submitRegister').addEventListener('click', async ()=>{
-  const name = (document.getElementById('regName').value||'').trim();
-  const email = (document.getElementById('regEmail').value||'').trim().toLowerCase();
-  const password = document.getElementById('regPassword').value||'';
-  const proofFile = document.getElementById('proofFile').files[0];
-  const msgEl = document.getElementById('regMessage');
+          <!-- Human Verification for Registration -->
+          <div style="margin-top:8px;">
+            <input type="checkbox" id="humanCheckReg">
+            <label for="humanCheckReg">Verify you are human</label>
+            <div id="humanMsgReg" style="font-size:13px; color:var(--muted); margin-top:4px;"></div>
+          </div>
 
-  if(!humanVerifiedReg){ msgEl.style.color='red'; msgEl.textContent='⚠️ Please verify you are human first.'; return; }
-  if(!name || !email || !password){ msgEl.style.color='red'; msgEl.textContent='Please fill name, email and password.'; return; }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ msgEl.style.color='red'; msgEl.textContent='Invalid email format.'; return; }
+          <div class="note">⚠️ You must pay $7 (or ₦10,500) and upload proof to register. Admin approves manually.</div>
 
-  const users = load(USERS_KEY);
-  if(users.find(u=>u.email===email)){ msgEl.style.color='red'; msgEl.textContent='Email already registered.'; return; }
+          <button class="primary" id="submitRegister">Submit Payment & Register</button>
+          <div id="regMessage" class="message"></div>
+        </div>
 
-  const imgData = await fileToDataUrl(proofFile);
-  if(!imgData){ msgEl.style.color='red'; msgEl.textContent='Please upload your payment proof image.'; return; }
+        <!-- Login -->
+        <div id="login" class="tabcontent">
+          <h2>Login</h2>
+          <input id="loginEmail" type="email" placeholder="Email address" />
+          <input id="loginPassword" type="password" placeholder="Password" />
 
-  const payments = load(PAYMENTS_KEY);
-  const payment = { email, name, method:'image', imageData:imgData, status:'pending', time:new Date().toISOString() };
-  payments.push(payment); save(PAYMENTS_KEY, payments);
+          <!-- Human Verification for Login -->
+          <div style="margin-top:8px;">
+            <input type="checkbox" id="humanCheckLogin">
+            <label for="humanCheckLogin">Verify you are human</label>
+            <div id="humanMsgLogin" style="font-size:13px; color:var(--muted); margin-top:4px;"></div>
+          </div>
 
-  users.push({ name, email, password, active:false, regTime: Date.now() }); save(USERS_KEY, users);
+          <button class="primary" id="btnLogin">Login</button>
+          <div id="loginMsg" class="message"></div>
+        </div>
+      </div>
 
-  msgEl.style.color = '#7cff8d';
-  msgEl.innerHTML = '✅ Payment proof submitted. Please wait a few minutes while admin verifies your account...';
+      <!-- Right: Info -->
+      <aside class="card">
+        <h3>How it works</h3>
+        <ol>
+          <li>Pay $7 / ₦10,500 and upload proof.</li>
+          <li>Account is created with status <em>Pending</em>.</li>
+          <li>Admin logs in and approves the payment.</li>
+          <li>When approved, user can login; on successful login they are redirected to the Google Form (lesson access).</li>
+        </ol>
 
-  document.getElementById('regPassword').value='';
-  document.getElementById('proofFile').value='';
-});
+        <div class="smallcard">
+          <h4>Conversion</h4>
+          <p>$1 = ₦1,500 — $7 = ₦10,500</p>
+        </div>
 
-// ---------------- Auto-approve after 5 minutes --------------------
-setInterval(()=>{
-  const users = load(USERS_KEY);
-  let updated = false;
-  const now = Date.now();
-  users.forEach(u=>{
-    if(!u.active && u.regTime && now - u.regTime >= 5*60*1000){ u.active = true; updated = true; }
-  });
-  if(updated) save(USERS_KEY, users);
-},10000);
+        <div class="smallcard">
+          <h4>Important</h4>
+          <p>Admin email & password are required to view and approve registrations.</p>
+        </div>
+      </aside>
+    </section>
 
-// ---------------- Login --------------------
-document.getElementById('btnLogin').addEventListener('click', ()=>{
-  const email = (document.getElementById('loginEmail').value||'').trim().toLowerCase();
-  const password = document.getElementById('loginPassword').value||'';
-  const msg = document.getElementById('loginMsg');
+    <!-- Admin panel area -->
+    <section id="adminPanel" class="card" style="display:none; margin-top:18px;">
+      <div class="admin-head">
+        <h2>Admin Dashboard</h2>
+        <div>
+          <button class="link-btn" id="adminLogout">Logout</button>
+        </div>
+      </div>
 
-  if(!humanVerifiedLogin){ msg.style.color='red'; msg.textContent='⚠️ Please verify you are human first.'; return; }
-  if(!email || !password){ msg.style.color='red'; msg.textContent='Fill email and password.'; return; }
+      <h3>Pending Registrations</h3>
+      <div id="pendingList" class="list"></div>
 
-  const users = load(USERS_KEY);
-  const user = users.find(u=>u.email===email);
-  if(!user){ msg.style.color='red'; msg.textContent='No account found. Register & upload proof first.'; return; }
-  if(user.password !== password){ msg.style.color='red'; msg.textContent='Wrong password.'; return; }
-  if(!user.active){ msg.style.color='orange'; msg.textContent='Account not approved yet. Please wait a few minutes...'; return; }
+      <h3 style="margin-top:12px">Approved Members</h3>
+      <div id="approvedList" class="list"></div>
+    </section>
+  </main>
 
-  msg.style.color='#7cff8d'; msg.textContent='✅ Login successful — redirecting...';
-  setTimeout(()=> window.location.href = CONFIG.googleFormUrl, 1500);
-});
+  <footer class="footer">Smart Traders World — Registration Side </footer>
 
-// ---------------- Admin --------------------
-let adminLogged = false;
-document.getElementById('adminBtn').addEventListener('click', ()=>{
-  if(adminLogged){ openAdminPanel(); return; }
-  const email = prompt('Admin email:'); if(email===null) return;
-  const pass = prompt('Admin password:'); if(pass===null) return;
-
-  if(email.trim()===CONFIG.adminEmail && pass===CONFIG.adminPass){ adminLogged=true; openAdminPanel(); }
-  else alert('Wrong admin credentials.');
-});
-
-document.getElementById('adminLogout').addEventListener('click', ()=>{
-  adminLogged=false;
-  document.getElementById('adminPanel').style.display='none';
-  alert('Admin logged out.');
-});
-
-function openAdminPanel(){ document.getElementById('adminPanel').style.display='block'; renderAdminLists(); document.getElementById('adminPanel').scrollIntoView({behavior:'smooth'}); }
-
-function renderAdminLists(){
-  const pendingEl = document.getElementById('pendingList');
-  const approvedEl = document.getElementById('approvedList');
-  pendingEl.innerHTML=''; approvedEl.innerHTML='';
-
-  const payments = load(PAYMENTS_KEY);
-  const users = load(USERS_KEY);
-
-  const pendingPayments = payments.filter(p=>p.status==='pending');
-  const approvedPayments = payments.filter(p=>p.status==='approved');
-
-  if(pendingPayments.length===0) pendingEl.innerHTML='<div class="muted">No pending payments.</div>';
-  pendingPayments.forEach(p=>{
-    const row = document.createElement('div'); row.className='user-row';
-    const left = document.createElement('div');
-    left.innerHTML = `<div><strong>${p.name}</strong></div><div class="small">${p.email}</div><div class="small">Time: ${new Date(p.time).toLocaleString()}</div>`;
-    const right = document.createElement('div');
-    const approveBtn = document.createElement('button'); approveBtn.className='btn-small btn-approve'; approveBtn.textContent='Approve';
-    approveBtn.onclick = ()=>approvePayment(p.email, p.time);
-    const rejectBtn = document.createElement('button'); rejectBtn.className='btn-small btn-reject'; rejectBtn.textContent='Reject';
-    rejectBtn.onclick = ()=>rejectPayment(p.email, p.time);
-    right.appendChild(approveBtn); right.appendChild(rejectBtn);
-    row.appendChild(left); row.appendChild(right);
-    pendingEl.appendChild(row);
-  });
-
-  if(approvedPayments.length===0) approvedEl.innerHTML='<div class="muted">No approved members yet.</div>';
-  approvedPayments.forEach(p=>{
-    const row = document.createElement('div'); row.className='user-row';
-    row.innerHTML = `<div><strong>${p.name}</strong><div class="small">${p.email}</div></div><div><span style="color:#7cff8d;font-weight:700">APPROVED</span></div>`;
-    approvedEl.appendChild(row);
-  });
-}
-
-function approvePayment(email, time){
-  const payments = load(PAYMENTS_KEY);
-  const idx = payments.findIndex(x=>x.email===email && x.time===time && x.status==='pending');
-  if(idx===-1){ alert('Payment not found'); return; }
-  payments[idx].status='approved'; save(PAYMENTS_KEY, payments);
-
-  const users = load(USERS_KEY);
-  const ui = users.findIndex(u=>u.email===email);
-  if(ui!==-1){ users[ui].active=true; save(USERS_KEY, users); }
-
-  alert('Payment approved and user activated.');
-  renderAdminLists();
-}
-
-function rejectPayment(email, time){
-  let payments = load(PAYMENTS_KEY);
-  payments = payments.filter(x=> !(x.email===email && x.time===time));
-  save(PAYMENTS_KEY, payments);
-
-  let users = load(USERS_KEY);
-  users = users.filter(u=>u.email!==email);
-  save(USERS_KEY, users);
-
-  alert('Registration rejected and removed.');
-  renderAdminLists();
-}
+  <script src="st.js"></script>
+</body>
+</html>
