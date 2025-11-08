@@ -18,7 +18,7 @@
     <section class="hero card">
       <h1>Welcome to <span>Smart Traders World</span></h1>
       <p class="lead">
-        Learn the basics: <strong>What is Crypto</strong>, <strong>What is Forex</strong>, <strong>How to Buy & Sell</strong>.
+        Learn the basics: <strong>What is Crypto</strong>, <strong>What is Forex</strong>, <strong>How to Buy & Sell</strong>.<br>
         To access beginner lessons you must complete the one-time registration payment of <strong>$7 (₦10,500)</strong>.
       </p>
     </section>
@@ -64,6 +64,13 @@
           <label>Password</label>
           <input id="regPassword" type="password" placeholder="Choose a password" />
 
+          <!-- Human Verification for Registration -->
+          <div style="margin-top:8px;">
+            <input type="checkbox" id="humanCheckReg">
+            <label for="humanCheckReg">Verify you are human</label>
+            <div id="humanMsgReg" style="font-size:13px; color:var(--muted); margin-top:4px;"></div>
+          </div>
+
           <div class="note">⚠️ You must pay $7 (or ₦10,500) and upload proof to register. Admin approves manually.</div>
 
           <button class="primary" id="submitRegister">Submit Payment & Register</button>
@@ -75,6 +82,14 @@
           <h2>Login</h2>
           <input id="loginEmail" type="email" placeholder="Email address" />
           <input id="loginPassword" type="password" placeholder="Password" />
+
+          <!-- Human Verification for Login -->
+          <div style="margin-top:8px;">
+            <input type="checkbox" id="humanCheckLogin">
+            <label for="humanCheckLogin">Verify you are human</label>
+            <div id="humanMsgLogin" style="font-size:13px; color:var(--muted); margin-top:4px;"></div>
+          </div>
+
           <button class="primary" id="btnLogin">Login</button>
           <div id="loginMsg" class="message"></div>
         </div>
@@ -102,7 +117,7 @@
       </aside>
     </section>
 
-    <!-- Admin panel area (hidden until login) -->
+    <!-- Admin panel area -->
     <section id="adminPanel" class="card" style="display:none; margin-top:18px;">
       <div class="admin-head">
         <h2>Admin Dashboard</h2>
@@ -119,7 +134,7 @@
     </section>
   </main>
 
-  <footer class="footer">Smart Traders World — Manual approval demo</footer>
+  <footer class="footer">Smart Traders World — Registration Side </footer>
 
   <script src="st.js"></script>
 </body>
