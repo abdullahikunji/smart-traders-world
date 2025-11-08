@@ -13,12 +13,8 @@ const CONFIG = {
 const USERS_KEY = 'st_users';
 const PAYMENTS_KEY = 'st_payments';
 
-if(!localStorage.getItem(USERS_KEY)){
-  localStorage.setItem(USERS_KEY, JSON.stringify([]));
-}
-if(!localStorage.getItem(PAYMENTS_KEY)){
-  localStorage.setItem(PAYMENTS_KEY, JSON.stringify([]));
-}
+if(!localStorage.getItem(USERS_KEY)) localStorage.setItem(USERS_KEY, JSON.stringify([]));
+if(!localStorage.getItem(PAYMENTS_KEY)) localStorage.setItem(PAYMENTS_KEY, JSON.stringify([]));
 
 function load(key){ try { return JSON.parse(localStorage.getItem(key)||'[]'); } catch(e){ return []; } }
 function save(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
@@ -42,6 +38,44 @@ function fileToDataUrl(file){
   });
 }
 
+// ---------------- Human Verification --------------------
+const humanCheckLogin = document.getElementById('humanCheckLogin');
+const humanMsgLogin = document.getElementById('humanMsgLogin');
+let humanVerifiedLogin = false;
+
+humanCheckLogin.addEventListener('change', ()=>{
+  if(humanCheckLogin.checked){
+    humanMsgLogin.style.color = '#7cff8d';
+    humanMsgLogin.textContent = '⏳ Verifying... please wait 5 seconds';
+    humanVerifiedLogin = false;
+    document.getElementById('btnLogin').disabled = true;
+    setTimeout(()=>{
+      humanMsgLogin.textContent = '✅ Verified!';
+      humanVerifiedLogin = true;
+      document.getElementById('btnLogin').disabled = false;
+    },5000);
+  } else { humanMsgLogin.style.color='var(--muted)'; humanMsgLogin.textContent=''; humanVerifiedLogin=false; }
+});
+
+const humanCheckReg = document.getElementById('humanCheckReg');
+const humanMsgReg = document.getElementById('humanMsgReg');
+let humanVerifiedReg = false;
+
+humanCheckReg.addEventListener('change', ()=>{
+  if(humanCheckReg.checked){
+    humanMsgReg.style.color = '#7cff8d';
+    humanMsgReg.textContent = '⏳ Verifying... please wait 5 seconds';
+    humanVerifiedReg = false;
+    document.getElementById('submitRegister').disabled = true;
+    setTimeout(()=>{
+      humanMsgReg.textContent = '✅ Verified!';
+      humanVerifiedReg = true;
+      document.getElementById('submitRegister').disabled = false;
+    },5000);
+  } else { humanMsgReg.style.color='var(--muted)'; humanMsgReg.textContent=''; humanVerifiedReg=false; }
+});
+
+// ---------------- Register --------------------
 document.getElementById('submitRegister').addEventListener('click', async ()=>{
   const name = (document.getElementById('regName').value||'').trim();
   const email = (document.getElementById('regEmail').value||'').trim().toLowerCase();
@@ -49,6 +83,7 @@ document.getElementById('submitRegister').addEventListener('click', async ()=>{
   const proofFile = document.getElementById('proofFile').files[0];
   const msgEl = document.getElementById('regMessage');
 
+  if(!humanVerifiedReg){ msgEl.style.color='red'; msgEl.textContent='⚠️ Please verify you are human first.'; return; }
   if(!name || !email || !password){ msgEl.style.color='red'; msgEl.textContent='Please fill name, email and password.'; return; }
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ msgEl.style.color='red'; msgEl.textContent='Invalid email format.'; return; }
 
@@ -60,11 +95,9 @@ document.getElementById('submitRegister').addEventListener('click', async ()=>{
 
   const payments = load(PAYMENTS_KEY);
   const payment = { email, name, method:'image', imageData:imgData, status:'pending', time:new Date().toISOString() };
-  payments.push(payment);
-  save(PAYMENTS_KEY, payments);
+  payments.push(payment); save(PAYMENTS_KEY, payments);
 
-  users.push({ name, email, password, active:false, regTime: Date.now() });
-  save(USERS_KEY, users);
+  users.push({ name, email, password, active:false, regTime: Date.now() }); save(USERS_KEY, users);
 
   msgEl.style.color = '#7cff8d';
   msgEl.innerHTML = '✅ Payment proof submitted. Please wait a few minutes while admin verifies your account...';
@@ -73,64 +106,54 @@ document.getElementById('submitRegister').addEventListener('click', async ()=>{
   document.getElementById('proofFile').value='';
 });
 
-// Auto-approve users after 5 minutes
+// ---------------- Auto-approve after 5 minutes --------------------
 setInterval(()=>{
   const users = load(USERS_KEY);
   let updated = false;
   const now = Date.now();
   users.forEach(u=>{
-    if(!u.active && u.regTime && now - u.regTime >= 5*60*1000){
-      u.active = true;
-      updated = true;
-    }
+    if(!u.active && u.regTime && now - u.regTime >= 5*60*1000){ u.active = true; updated = true; }
   });
   if(updated) save(USERS_KEY, users);
-}, 10000);
+},10000);
 
+// ---------------- Login --------------------
 document.getElementById('btnLogin').addEventListener('click', ()=>{
   const email = (document.getElementById('loginEmail').value||'').trim().toLowerCase();
   const password = document.getElementById('loginPassword').value||'';
   const msg = document.getElementById('loginMsg');
 
+  if(!humanVerifiedLogin){ msg.style.color='red'; msg.textContent='⚠️ Please verify you are human first.'; return; }
   if(!email || !password){ msg.style.color='red'; msg.textContent='Fill email and password.'; return; }
+
   const users = load(USERS_KEY);
   const user = users.find(u=>u.email===email);
   if(!user){ msg.style.color='red'; msg.textContent='No account found. Register & upload proof first.'; return; }
   if(user.password !== password){ msg.style.color='red'; msg.textContent='Wrong password.'; return; }
-
-  if(!user.active){
-    msg.style.color='orange'; msg.textContent='Account not approved yet. Please wait a few minutes...';
-    return;
-  }
+  if(!user.active){ msg.style.color='orange'; msg.textContent='Account not approved yet. Please wait a few minutes...'; return; }
 
   msg.style.color='#7cff8d'; msg.textContent='✅ Login successful — redirecting...';
   setTimeout(()=> window.location.href = CONFIG.googleFormUrl, 1500);
 });
 
+// ---------------- Admin --------------------
 let adminLogged = false;
 document.getElementById('adminBtn').addEventListener('click', ()=>{
   if(adminLogged){ openAdminPanel(); return; }
-  const email = prompt('Admin email:');
-  if(email === null) return;
-  const pass = prompt('Admin password:');
-  if(pass === null) return;
+  const email = prompt('Admin email:'); if(email===null) return;
+  const pass = prompt('Admin password:'); if(pass===null) return;
 
-  if(email.trim()===CONFIG.adminEmail && pass===CONFIG.adminPass){
-    adminLogged = true; openAdminPanel();
-  } else alert('Wrong admin credentials.');
+  if(email.trim()===CONFIG.adminEmail && pass===CONFIG.adminPass){ adminLogged=true; openAdminPanel(); }
+  else alert('Wrong admin credentials.');
 });
 
 document.getElementById('adminLogout').addEventListener('click', ()=>{
-  adminLogged = false;
+  adminLogged=false;
   document.getElementById('adminPanel').style.display='none';
   alert('Admin logged out.');
 });
 
-function openAdminPanel(){
-  document.getElementById('adminPanel').style.display='block';
-  renderAdminLists();
-  document.getElementById('adminPanel').scrollIntoView({behavior:'smooth'});
-}
+function openAdminPanel(){ document.getElementById('adminPanel').style.display='block'; renderAdminLists(); document.getElementById('adminPanel').scrollIntoView({behavior:'smooth'}); }
 
 function renderAdminLists(){
   const pendingEl = document.getElementById('pendingList');
@@ -169,12 +192,12 @@ function renderAdminLists(){
 function approvePayment(email, time){
   const payments = load(PAYMENTS_KEY);
   const idx = payments.findIndex(x=>x.email===email && x.time===time && x.status==='pending');
-  if(idx === -1){ alert('Payment not found'); return; }
+  if(idx===-1){ alert('Payment not found'); return; }
   payments[idx].status='approved'; save(PAYMENTS_KEY, payments);
 
   const users = load(USERS_KEY);
   const ui = users.findIndex(u=>u.email===email);
-  if(ui !== -1){ users[ui].active=true; save(USERS_KEY, users); }
+  if(ui!==-1){ users[ui].active=true; save(USERS_KEY, users); }
 
   alert('Payment approved and user activated.');
   renderAdminLists();
