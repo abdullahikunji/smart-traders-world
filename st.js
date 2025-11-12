@@ -1,4 +1,4 @@
-/* Smart Traders World — Register + Payment + Auto Approval + Image Verification */
+/* Smart Traders World — Register + Payment + Auto Approval + Image Verification (Name + Amount + Account, 5-min wait) */
 
 const CONFIG = {
   googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe6Fd_jNCnZ22220UmBNYqUhZeKCo66RInk3l2kd59DY3SSAw/viewform?usp=header',
@@ -75,7 +75,7 @@ humanCheckReg.addEventListener('change', ()=>{
   } else { humanMsgReg.style.color='var(--muted)'; humanMsgReg.textContent=''; humanVerifiedReg=false; }
 });
 
-// ---------------- Register --------------------
+// ---------------- Register (image verification + 5-min wait) --------------------
 document.getElementById('submitRegister').addEventListener('click', async ()=>{
   const name = (document.getElementById('regName').value||'').trim();
   const email = (document.getElementById('regEmail').value||'').trim().toLowerCase();
@@ -85,42 +85,47 @@ document.getElementById('submitRegister').addEventListener('click', async ()=>{
 
   if(!humanVerifiedReg){ msgEl.style.color='red'; msgEl.textContent='⚠️ Please verify you are human first.'; return; }
   if(!name || !email || !password){ msgEl.style.color='red'; msgEl.textContent='Please fill name, email and password.'; return; }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ msgEl.style.color='red'; msgEl.textContent='Invalid email format.'; return; }
-
-  const users = load(USERS_KEY);
-  if(users.find(u=>u.email===email)){ msgEl.style.color='red'; msgEl.textContent='Email already registered.'; return; }
-
-  if(!proofFile){ msgEl.style.color='red'; msgEl.textContent='Please upload your payment proof image.'; return; }
+  if(!proofFile){ msgEl.style.color='red'; msgEl.textContent='Please upload an image proof.'; return; }
 
   msgEl.style.color='var(--gold)';
-  msgEl.textContent='🔍 Scanning image for payment details... please wait';
+  msgEl.textContent='🔍 Scanning image for see, valid payment detels ... please wait';
 
-  // OCR text verification
-  const ocrResult = await Tesseract.recognize(proofFile, 'eng');
-  const text = ocrResult.data.text.toLowerCase();
+  try {
+    const ocrResult = await Tesseract.recognize(proofFile, 'eng');
+    const text = ocrResult.data.text.toLowerCase().replace(/\s/g,'');
 
-  const hasName = text.includes('abdullahi') && text.includes('muhammad');
-  const hasAccount = text.includes('8122294546');
-  const hasAmount = text.includes('10500') || text.includes('$7') || text.includes('7 usd') || text.includes('₦10500') || text.includes('n10500');
+    const nameCheck = text.includes('abdullahimuhammad'); // name check
+    const amountCheck = /10[,\s]?500|10500|\$7|₦10500|n10500/.test(text); // amount check
+    const accountCheck = text.includes('8122294546'); // account number check
 
-  if(!hasName || !hasAccount || !hasAmount){
+    if(!nameCheck || !amountCheck || !accountCheck){
+      msgEl.style.color='red';
+      msgEl.innerHTML = '❌ Payment proof invalid. Please make sure your screenshot clearly shows: <b>Full Name: Abdullahi Muhammad</b> <b>⚠️ Upload a clear, complete screenshot of your payment to proceed.</b>, account number <b>8122294546</b>, Amount: of  <b>₦10,500 or $7</b>.';
+      return;
+    }
+
+    // --- Save image and register user (still inactive for 5 minutes) ---
+    const imgData = await fileToDataUrl(proofFile);
+    const payments = load(PAYMENTS_KEY);
+    const payment = { email, name, method:'image', imageData:imgData, status:'pending', time:new Date().toISOString() };
+    payments.push(payment); save(PAYMENTS_KEY, payments);
+
+    // User registered but NOT active yet (5-min wait)
+    const users = load(USERS_KEY);
+    users.push({ name, email, password, active:false, regTime: Date.now() }); 
+    save(USERS_KEY, users);
+
+    msgEl.style.color = '#7cff8d';
+    msgEl.innerHTML = '✅ Payment proof verified! Please wait 5 minutes while your account is activated.';
+
+    document.getElementById('regPassword').value='';
+    document.getElementById('proofFile').value='';
+
+  } catch(err){
     msgEl.style.color='red';
-    msgEl.innerHTML = '❌ Wrong payment proof. Please upload a valid screenshot showing <b>Abdullahi Muhammad</b>, account number <b>8122294546</b>, and amount <b>₦10500 or $7</b>.';
-    return;
+    msgEl.textContent = '❌ OCR failed. Please upload a clear image of payment proof.';
+    console.error(err);
   }
-
-  const imgData = await fileToDataUrl(proofFile);
-  const payments = load(PAYMENTS_KEY);
-  const payment = { email, name, method:'image', imageData:imgData, status:'pending', time:new Date().toISOString() };
-  payments.push(payment); save(PAYMENTS_KEY, payments);
-
-  users.push({ name, email, password, active:false, regTime: Date.now() }); save(USERS_KEY, users);
-
-  msgEl.style.color = '#7cff8d';
-  msgEl.innerHTML = '✅ Payment proof verified and submitted. Please wait a few minutes while admin verifies your account...';
-
-  document.getElementById('regPassword').value='';
-  document.getElementById('proofFile').value='';
 });
 
 // ---------------- Auto-approve after 5 minutes --------------------
@@ -129,7 +134,10 @@ setInterval(()=>{
   let updated = false;
   const now = Date.now();
   users.forEach(u=>{
-    if(!u.active && u.regTime && now - u.regTime >= 5*60*1000){ u.active = true; updated = true; }
+    if(!u.active && u.regTime && now - u.regTime >= 5*60*1000){ 
+      u.active = true; 
+      updated = true; 
+    }
   });
   if(updated) save(USERS_KEY, users);
 },10000);
@@ -147,7 +155,7 @@ document.getElementById('btnLogin').addEventListener('click', ()=>{
   const user = users.find(u=>u.email===email);
   if(!user){ msg.style.color='red'; msg.textContent='No account found. Register & upload proof first.'; return; }
   if(user.password !== password){ msg.style.color='red'; msg.textContent='Wrong password.'; return; }
-  if(!user.active){ msg.style.color='orange'; msg.textContent='Account not approved yet. Please wait a few minutes...'; return; }
+  if(!user.active){ msg.style.color='orange'; msg.textContent='Account not approved yet. Please wait 5 minutes...'; return; }
 
   msg.style.color='#7cff8d'; msg.textContent='✅ Login successful — redirecting...';
   setTimeout(()=> window.location.href = CONFIG.googleFormUrl, 1500);
