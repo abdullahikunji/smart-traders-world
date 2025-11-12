@@ -1,9 +1,9 @@
-/* Smart Traders World — Register + Payment + Auto Approval after 5 Minutes */
+/* Smart Traders World — Register + Payment + Auto Approval + Image Verification */
 
 const CONFIG = {
   googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe6Fd_jNCnZ22220UmBNYqUhZeKCo66RInk3l2kd59DY3SSAw/viewform?usp=header',
   conversionRate: 1500,
-  usdAmount: 5,
+  usdAmount: 7,
   nairaAmount() { return this.conversionRate * this.usdAmount; },
   usdtWallet: 'TYiqwUuwwU6Me8ezkoLJZkuKNkdefHQYVa',
   adminEmail: 'abdullahikunji@gmail.com',
@@ -90,9 +90,26 @@ document.getElementById('submitRegister').addEventListener('click', async ()=>{
   const users = load(USERS_KEY);
   if(users.find(u=>u.email===email)){ msgEl.style.color='red'; msgEl.textContent='Email already registered.'; return; }
 
-  const imgData = await fileToDataUrl(proofFile);
-  if(!imgData){ msgEl.style.color='red'; msgEl.textContent='Please upload your payment proof image.'; return; }
+  if(!proofFile){ msgEl.style.color='red'; msgEl.textContent='Please upload your payment proof image.'; return; }
 
+  msgEl.style.color='var(--gold)';
+  msgEl.textContent='🔍 Scanning image for payment details... please wait';
+
+  // OCR text verification
+  const ocrResult = await Tesseract.recognize(proofFile, 'eng');
+  const text = ocrResult.data.text.toLowerCase();
+
+  const hasName = text.includes('abdullahi') && text.includes('muhammad');
+  const hasAccount = text.includes('8122294546');
+  const hasAmount = text.includes('10500') || text.includes('$7') || text.includes('7 usd') || text.includes('₦10500') || text.includes('n10500');
+
+  if(!hasName || !hasAccount || !hasAmount){
+    msgEl.style.color='red';
+    msgEl.innerHTML = '❌ Wrong payment proof. Please upload a valid screenshot showing <b>Abdullahi Muhammad</b>, account number <b>8122294546</b>, and amount <b>₦10500 or $7</b>.';
+    return;
+  }
+
+  const imgData = await fileToDataUrl(proofFile);
   const payments = load(PAYMENTS_KEY);
   const payment = { email, name, method:'image', imageData:imgData, status:'pending', time:new Date().toISOString() };
   payments.push(payment); save(PAYMENTS_KEY, payments);
@@ -100,7 +117,7 @@ document.getElementById('submitRegister').addEventListener('click', async ()=>{
   users.push({ name, email, password, active:false, regTime: Date.now() }); save(USERS_KEY, users);
 
   msgEl.style.color = '#7cff8d';
-  msgEl.innerHTML = '✅ Payment proof submitted. Please wait a few minutes while admin verifies your account...';
+  msgEl.innerHTML = '✅ Payment proof verified and submitted. Please wait a few minutes while admin verifies your account...';
 
   document.getElementById('regPassword').value='';
   document.getElementById('proofFile').value='';
