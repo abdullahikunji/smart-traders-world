@@ -95,7 +95,7 @@ document.getElementById('submitRegister').addEventListener('click', async ()=>{
     const text = ocrResult.data.text.toLowerCase().replace(/\s/g,'');
 
     const nameCheck = text.includes('abdullahimuhammad'); // name check
-    const amountCheck = /10[,\s]?500|10500|\$7|₦10500|n10500/.test(text); // amount check
+    const amountCheck = /12[,\s]?500|12500|\$8|₦12500|n12500/.test(text); // amount check
     const accountCheck = text.includes('8122294546'); // account number check
 
     if(!nameCheck || !amountCheck || !accountCheck){
@@ -240,3 +240,4 @@ function rejectPayment(email, time){
   alert('Registration rejected and removed.');
   renderAdminLists();
 }
+
