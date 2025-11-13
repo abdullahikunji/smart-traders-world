@@ -100,7 +100,7 @@ document.getElementById('submitRegister').addEventListener('click', async ()=>{
 
     if(!nameCheck || !amountCheck || !accountCheck){
       msgEl.style.color='red';
-      msgEl.innerHTML = '❌ Payment proof invalid. Please make sure your screenshot clearly shows: <b>Full Name: Abdullahi Muhammad</b> <b>⚠️ Upload a clear, complete screenshot of your payment to proceed.</b>, account number <b>8122294546</b>, Amount: of  <b>₦10,500 or $7</b>.';
+      msgEl.innerHTML = '❌ Payment proof invalid. Please make sure your screenshot clearly shows: <b>Full Name: Abdullahi Muhammad</b> <b>⚠️ Upload a clear, complete screenshot of your payment to proceed.</b>, account number <b>8122294546</b>, Amount: of  <b>₦12,500 or $8</b>.';
       return;
     }
 
@@ -240,4 +240,5 @@ function rejectPayment(email, time){
   alert('Registration rejected and removed.');
   renderAdminLists();
 }
+
 
