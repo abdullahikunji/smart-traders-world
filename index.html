@@ -20,19 +20,16 @@
       <h1>Welcome to <span>Smart Traders World</span></h1>
       <p class="lead">
         Learn the basics: <strong>What is Crypto</strong>, <strong>What is Forex</strong>, <strong>How to Buy & Sell</strong>.<br>
-        To access beginner lessons you must complete the one-time registration payment of <strong>$8 (₦12,500)</strong>.
-      </p>
+        To access beginner lessons you must complete the one-time registration payment of <strong>$8 (₦12,500)</strong>. </p>
     </section>
 
     <section class="grid">
-      <!-- Left: Register / Login -->
       <div class="card">
         <div class="tabs">
           <button class="tab active" data-tab="register">Register & Pay</button>
           <button class="tab" data-tab="login">Login</button>
         </div>
 
-        <!-- Register -->
         <div id="register" class="tabcontent active">
           <h2>Register — Pay & Upload Proof</h2>
 
@@ -41,14 +38,12 @@
               <h4>Naira (Opay)</h4>
               <p><b>Account Name:</b> Abdullahi Muhammad</p>
               <p><b>Account Number:</b> 8122294546</p>
-              <p><b>Amount:</b> ₦12,500</p>
-            </div>
+              <p><b>Amount:</b> ₦12,500</p> </div>
 
             <div class="pay-box">
               <h4>USDT (TRON)</h4>
               <p class="mono">TYiqwUuwwU6Me8ezkoLJZkuKNkdefHQYVa</p>
-              <p><b>Amount:</b> $8</p>
-            </div>
+              <p><b>Amount:</b> $8</p> </div>
           </div>
 
           <label>Payment Proof (screenshot)</label>
@@ -65,26 +60,21 @@
           <label>Password</label>
           <input id="regPassword" type="password" placeholder="Choose a password" />
 
-          <!-- Human Verification for Registration -->
           <div style="margin-top:8px;">
             <input type="checkbox" id="humanCheckReg">
             <label for="humanCheckReg">Verify you are human</label>
             <div id="humanMsgReg" style="font-size:13px; color:var(--muted); margin-top:4px;"></div>
           </div>
 
-          <div class="note">⚠️ You must pay $8 (or ₦12,500) and upload proof to register. Admin approves manually.</div>
-
-          <button class="primary" id="submitRegister">Submit Payment & Register</button>
+          <div class="note">⚠️ You must pay $8 (or ₦12,500) and upload proof to register. Admin approves manually.</div> <button class="primary" id="submitRegister">Submit Payment & Register</button>
           <div id="regMessage" class="message"></div>
         </div>
 
-        <!-- Login -->
         <div id="login" class="tabcontent">
           <h2>Login</h2>
           <input id="loginEmail" type="email" placeholder="Email address" />
           <input id="loginPassword" type="password" placeholder="Password" />
 
-          <!-- Human Verification for Login -->
           <div style="margin-top:8px;">
             <input type="checkbox" id="humanCheckLogin">
             <label for="humanCheckLogin">Verify you are human</label>
@@ -96,20 +86,17 @@
         </div>
       </div>
 
-      <!-- Right: Info -->
       <aside class="card">
         <h3>How it works</h3>
         <ol>
-          <li>Pay $8 / ₦12,500 and upload proof.</li>
-          <li>Account is created with status <em>Pending</em>.</li>
+          <li>Pay $8 / ₦12,500 and upload proof.</li> <li>Account is created with status <em>Pending</em>.</li>
           <li>Admin logs in and approves the payment.</li>
           <li>When approved, user can login; on successful login they are redirected to the Google Form (lesson access).</li>
         </ol>
 
         <div class="smallcard">
           <h4>Conversion</h4>
-          <p>$1 = ₦1,500 — $8 = ₦12,500</p>
-        </div>
+          <p>$1 = ₦1,500 — $8 = ₦12,500</p> </div>
 
         <div class="smallcard">
           <h4>Important</h4>
@@ -118,7 +105,6 @@
       </aside>
     </section>
 
-    <!-- Admin panel area -->
     <section id="adminPanel" class="card" style="display:none; margin-top:18px;">
       <div class="admin-head">
         <h2>Admin Dashboard</h2>
@@ -137,8 +123,16 @@
 
   <footer class="footer">Smart Traders World — Registration Side </footer>
 
+  <div id="whatsapp-help-container">
+    <a 
+        href="https://wa.me/message/P5FTI7WFD7GFB1" 
+        target="_blank" 
+        id="whatsapp-help-link"
+        aria-label="Contact support via WhatsApp"
+    >
+        Help
+    </a>
+  </div>
   <script src="st.js"></script>
 </body>
 </html>
-
-
