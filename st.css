@@ -39,3 +39,29 @@ aside.card{height:fit-content}
 .btn-reject{background:#ff6b6b;color:#fff}
 .admin-head{display:flex;justify-content:space-between;align-items:center}
 .footer{text-align:center;color:var(--muted);padding:20px;margin-top:18px}
+
+
+/* --- WHATSAPP HELP BUTTON STYLES (NEW FEATURE) --- */
+#whatsapp-help-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; 
+}
+
+#whatsapp-help-link {
+    background-color: #25D366; /* WhatsApp green */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px; 
+    text-decoration: none; 
+    font-family: Inter, Arial, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Darker shadow for visibility */
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+#whatsapp-help-link:hover {
+    background-color: #128C7E; /* Darker green on hover */
+}
