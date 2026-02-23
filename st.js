@@ -3,7 +3,7 @@
 const CONFIG = {
   googleFormUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSe6Fd_jNCnZ22220UmBNYqUhZeKCo66RInk3l2kd59DY3SSAw/viewform?usp=header',
   conversionRate: 1500,
-  usdAmount: 9,
+  usdAmount: 10,
   nairaAmount() { return this.conversionRate * this.usdAmount; },
   usdtWallet: 'TYiqwUuwwU6Me8ezkoLJZkuKNkdefHQYVa',
   adminEmail: 'abdullahikunji@gmail.com',
@@ -19,6 +19,7 @@ if(!localStorage.getItem(PAYMENTS_KEY)) localStorage.setItem(PAYMENTS_KEY, JSON.
 function load(key){ try { return JSON.parse(localStorage.getItem(key)||'[]'); } catch(e){ return []; } }
 function save(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
 
+// ---------------- Tabs --------------------
 document.querySelectorAll('.tab').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
@@ -38,189 +39,224 @@ function fileToDataUrl(file){
   });
 }
 
-/* ---------------- Human Verification ---------------- */
-
+// ---------------- Human Verification --------------------
+const humanCheckLogin = document.getElementById('humanCheckLogin');
+const humanMsgLogin = document.getElementById('humanMsgLogin');
 let humanVerifiedLogin = false;
-let humanVerifiedReg = false;
 
-document.getElementById('humanCheckLogin').addEventListener('change', function(){
-  const msg = document.getElementById('humanMsgLogin');
-  const btn = document.getElementById('btnLogin');
-  if(this.checked){
-    msg.style.color = '#7cff8d';
-    msg.textContent = '⏳ Verifying... please wait 5 seconds';
-    btn.disabled = true;
+humanCheckLogin.addEventListener('change', ()=>{
+  if(humanCheckLogin.checked){
+    humanMsgLogin.style.color = '#7cff8d';
+    humanMsgLogin.textContent = '⏳ Verifying... please wait 5 seconds';
+    humanVerifiedLogin = false;
+    document.getElementById('btnLogin').disabled = true;
     setTimeout(()=>{
-      msg.textContent = '✅ Verified!';
+      humanMsgLogin.textContent = '✅ Verified!';
       humanVerifiedLogin = true;
-      btn.disabled = false;
+      document.getElementById('btnLogin').disabled = false;
     },5000);
   } else {
-    msg.textContent='';
+    humanMsgLogin.style.color='var(--muted)';
+    humanMsgLogin.textContent='';
     humanVerifiedLogin=false;
   }
 });
 
-document.getElementById('humanCheckReg').addEventListener('change', function(){
-  const msg = document.getElementById('humanMsgReg');
-  const btn = document.getElementById('submitRegister');
-  if(this.checked){
-    msg.style.color = '#7cff8d';
-    msg.textContent = '⏳ Verifying... please wait 5 seconds';
-    btn.disabled = true;
+const humanCheckReg = document.getElementById('humanCheckReg');
+const humanMsgReg = document.getElementById('humanMsgReg');
+let humanVerifiedReg = false;
+
+humanCheckReg.addEventListener('change', ()=>{
+  if(humanCheckReg.checked){
+    humanMsgReg.style.color = '#7cff8d';
+    humanMsgReg.textContent = '⏳ Verifying... please wait 5 seconds';
+    humanVerifiedReg = false;
+    document.getElementById('submitRegister').disabled = true;
     setTimeout(()=>{
-      msg.textContent = '✅ Verified!';
+      humanMsgReg.textContent = '✅ Verified!';
       humanVerifiedReg = true;
-      btn.disabled = false;
+      document.getElementById('submitRegister').disabled = false;
     },5000);
   } else {
-    msg.textContent='';
+    humanMsgReg.style.color='var(--muted)';
+    humanMsgReg.textContent='';
     humanVerifiedReg=false;
   }
 });
 
-/* ---------------- Register ---------------- */
-
+// ---------------- Register (image verification + 5-min wait) --------------------
 document.getElementById('submitRegister').addEventListener('click', async ()=>{
-
-  const name = document.getElementById('regName').value.trim();
-  const email = document.getElementById('regEmail').value.trim().toLowerCase();
-  const password = document.getElementById('regPassword').value;
+  const name = (document.getElementById('regName').value||'').trim();
+  const email = (document.getElementById('regEmail').value||'').trim().toLowerCase();
+  const password = document.getElementById('regPassword').value||'';
   const proofFile = document.getElementById('proofFile').files[0];
   const msgEl = document.getElementById('regMessage');
 
-  if(!humanVerifiedReg){
-    msgEl.style.color='red';
-    msgEl.textContent='⚠️ Please verify you are human first.';
-    return;
-  }
+  if(!humanVerifiedReg){ msgEl.style.color='red'; msgEl.textContent='⚠️ Please verify you are human first.'; return; }
+  if(!name || !email || !password){ msgEl.style.color='red'; msgEl.textContent='Please fill name, email and password.'; return; }
+  if(!proofFile){ msgEl.style.color='red'; msgEl.textContent='Please upload an image proof.'; return; }
 
-  if(!name || !email || !password){
-    msgEl.style.color='red';
-    msgEl.textContent='Please fill name, email and password.';
-    return;
-  }
+  msgEl.style.color='var(--gold)';
+  msgEl.textContent='🔍 Scanning image for valid payment details... please wait';
 
-  if(!proofFile){
-    msgEl.style.color='red';
-    msgEl.textContent='Please upload payment screenshot.';
-    return;
-  }
+  try {
+    const ocrResult = await Tesseract.recognize(proofFile, 'eng');
+    const text = ocrResult.data.text.toLowerCase().replace(/\s/g,'');
 
-  msgEl.style.color='gold';
-  msgEl.textContent='🔍 Verifying payment screenshot... please wait';
+    // ---- Check Name, Account, Amount ----
+    const nameCheck = text.includes('abdullahimuhammad');
+    const accountCheck = text.includes('8122294546');
+    const amountCheck = /15000|15,000|₦15000|n15000|\$10/.test(text); // updated $10
+    const opayCheck = text.includes('opay');
+    const textLengthCheck = text.length > 200;
 
-  try{
-
-    const result = await Tesseract.recognize(proofFile,'eng');
-    const cleanText = result.data.text.toLowerCase().replace(/\s/g,'');
-
-    const nameCheck = cleanText.includes('abdullahimuhammad');
-    const accountCheck = cleanText.includes('8122294546');
-    const amountCheck = /13500|13,500|₦13500|n13500|\$9/.test(cleanText);
-
-    if(!nameCheck || !accountCheck || !amountCheck){
+    if(!nameCheck || !accountCheck || !amountCheck || !opayCheck || !textLengthCheck){
       msgEl.style.color='red';
-      msgEl.innerHTML =
-        '❌ Invalid payment proof.<br><br>' +
-        '<b>Must show:</b><br>' +
-        'Name: Abdullahi Muhammad<br>' +
-        'Account: 8122294546<br>' +
-        'Amount: ₦13,500 or $9';
+      msgEl.innerHTML = '❌ Payment proof invalid. Make sure screenshot clearly shows:<br>' +
+        '✔ Name: Abdullahi Muhammad<br>' +
+        '✔ Account: 8122294546<br>' +
+        '✔ Amount: ₦15,000 or $10<br>' +
+        '✔ Payment App: Opay<br>' +
+        '✔ Screenshot clearly visible';
       return;
     }
 
+    // --- Save image and register user (inactive for 5 minutes) ---
     const imgData = await fileToDataUrl(proofFile);
-
     const payments = load(PAYMENTS_KEY);
-    payments.push({
-      email,
-      name,
-      imageData: imgData,
-      status:'pending',
-      time: new Date().toISOString()
-    });
-    save(PAYMENTS_KEY,payments);
+    const payment = { email, name, method:'image', imageData:imgData, status:'pending', time:new Date().toISOString() };
+    payments.push(payment); save(PAYMENTS_KEY, payments);
 
     const users = load(USERS_KEY);
-    users.push({
-      name,
-      email,
-      password,
-      active:false,
-      regTime: Date.now()
-    });
-    save(USERS_KEY,users);
+    users.push({ name, email, password, active:false, regTime: Date.now() }); 
+    save(USERS_KEY, users);
 
-    msgEl.style.color='#7cff8d';
-    msgEl.textContent='✅ Payment verified! Please wait 5 minutes for activation.';
+    msgEl.style.color = '#7cff8d';
+    msgEl.innerHTML = '✅ Payment proof verified! Please wait 5 minutes while your account is activated.';
 
     document.getElementById('regPassword').value='';
     document.getElementById('proofFile').value='';
 
-  }catch(err){
+  } catch(err){
     msgEl.style.color='red';
-    msgEl.textContent='OCR failed. Upload a clear screenshot.';
+    msgEl.textContent = '❌ OCR failed. Please upload a clear image of payment proof.';
     console.error(err);
   }
-
 });
 
-/* ---------------- Auto Approve After 5 Minutes ---------------- */
-
+// ---------------- Auto-approve after 5 minutes --------------------
 setInterval(()=>{
   const users = load(USERS_KEY);
-  let updated=false;
+  let updated = false;
   const now = Date.now();
-
   users.forEach(u=>{
-    if(!u.active && now - u.regTime >= 5*60*1000){
-      u.active=true;
-      updated=true;
+    if(!u.active && u.regTime && now - u.regTime >= 5*60*1000){ 
+      u.active = true; 
+      updated = true; 
     }
   });
-
-  if(updated) save(USERS_KEY,users);
+  if(updated) save(USERS_KEY, users);
 },10000);
 
-/* ---------------- Login ---------------- */
-
-document.getElementById('btnLogin').addEventListener('click',()=>{
-
-  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
-  const password = document.getElementById('loginPassword').value;
+// ---------------- Login --------------------
+document.getElementById('btnLogin').addEventListener('click', ()=>{
+  const email = (document.getElementById('loginEmail').value||'').trim().toLowerCase();
+  const password = document.getElementById('loginPassword').value||'';
   const msg = document.getElementById('loginMsg');
 
-  if(!humanVerifiedLogin){
-    msg.style.color='red';
-    msg.textContent='⚠️ Verify you are human.';
-    return;
-  }
+  if(!humanVerifiedLogin){ msg.style.color='red'; msg.textContent='⚠️ Please verify you are human first.'; return; }
+  if(!email || !password){ msg.style.color='red'; msg.textContent='Fill email and password.'; return; }
 
   const users = load(USERS_KEY);
   const user = users.find(u=>u.email===email);
+  if(!user){ msg.style.color='red'; msg.textContent='No account found. Register & upload proof first.'; return; }
+  if(user.password !== password){ msg.style.color='red'; msg.textContent='Wrong password.'; return; }
+  if(!user.active){ msg.style.color='orange'; msg.textContent='Account not approved yet. Please wait 5 minutes...'; return; }
 
-  if(!user){
-    msg.style.color='red';
-    msg.textContent='Account not found.';
-    return;
-  }
-
-  if(user.password!==password){
-    msg.style.color='red';
-    msg.textContent='Wrong password.';
-    return;
-  }
-
-  if(!user.active){
-    msg.style.color='orange';
-    msg.textContent='Please wait 5 minutes for activation.';
-    return;
-  }
-
-  msg.style.color='#7cff8d';
-  msg.textContent='Login successful... redirecting';
-
-  setTimeout(()=> window.location.href=CONFIG.googleFormUrl,1500);
-
+  msg.style.color='#7cff8d'; msg.textContent='✅ Login successful — redirecting...';
+  setTimeout(()=> window.location.href = CONFIG.googleFormUrl, 1500);
 });
+
+// ---------------- Admin --------------------
+let adminLogged = false;
+document.getElementById('adminBtn').addEventListener('click', ()=>{
+  if(adminLogged){ openAdminPanel(); return; }
+  const email = prompt('Admin email:'); if(email===null) return;
+  const pass = prompt('Admin password:'); if(pass===null) return;
+
+  if(email.trim()===CONFIG.adminEmail && pass===CONFIG.adminPass){ adminLogged=true; openAdminPanel(); }
+  else alert('Wrong admin credentials.');
+});
+
+document.getElementById('adminLogout').addEventListener('click', ()=>{
+  adminLogged=false;
+  document.getElementById('adminPanel').style.display='none';
+  alert('Admin logged out.');
+});
+
+function openAdminPanel(){ 
+  document.getElementById('adminPanel').style.display='block'; 
+  renderAdminLists(); 
+  document.getElementById('adminPanel').scrollIntoView({behavior:'smooth'}); 
+}
+
+function renderAdminLists(){
+  const pendingEl = document.getElementById('pendingList');
+  const approvedEl = document.getElementById('approvedList');
+  pendingEl.innerHTML=''; approvedEl.innerHTML='';
+
+  const payments = load(PAYMENTS_KEY);
+  const users = load(USERS_KEY);
+
+  const pendingPayments = payments.filter(p=>p.status==='pending');
+  const approvedPayments = payments.filter(p=>p.status==='approved');
+
+  if(pendingPayments.length===0) pendingEl.innerHTML='<div class="muted">No pending payments.</div>';
+  pendingPayments.forEach(p=>{
+    const row = document.createElement('div'); row.className='user-row';
+    const left = document.createElement('div');
+    left.innerHTML = `<div><strong>${p.name}</strong></div><div class="small">${p.email}</div><div class="small">Time: ${new Date(p.time).toLocaleString()}</div>`;
+    const right = document.createElement('div');
+    const approveBtn = document.createElement('button'); approveBtn.className='btn-small btn-approve'; approveBtn.textContent='Approve';
+    approveBtn.onclick = ()=>approvePayment(p.email, p.time);
+    const rejectBtn = document.createElement('button'); rejectBtn.className='btn-small btn-reject'; rejectBtn.textContent='Reject';
+    rejectBtn.onclick = ()=>rejectPayment(p.email, p.time);
+    right.appendChild(approveBtn); right.appendChild(rejectBtn);
+    row.appendChild(left); row.appendChild(right);
+    pendingEl.appendChild(row);
+  });
+
+  if(approvedPayments.length===0) approvedEl.innerHTML='<div class="muted">No approved members yet.</div>';
+  approvedPayments.forEach(p=>{
+    const row = document.createElement('div'); row.className='user-row';
+    row.innerHTML = `<div><strong>${p.name}</strong><div class="small">${p.email}</div></div><div><span style="color:#7cff8d;font-weight:700">APPROVED</span></div>`;
+    approvedEl.appendChild(row);
+  });
+}
+
+function approvePayment(email, time){
+  const payments = load(PAYMENTS_KEY);
+  const idx = payments.findIndex(x=>x.email===email && x.time===time && x.status==='pending');
+  if(idx===-1){ alert('Payment not found'); return; }
+  payments[idx].status='approved'; save(PAYMENTS_KEY, payments);
+
+  const users = load(USERS_KEY);
+  const ui = users.findIndex(u=>u.email===email);
+  if(ui!==-1){ users[ui].active=true; save(USERS_KEY, users); }
+
+  alert('Payment approved and user activated.');
+  renderAdminLists();
+}
+
+function rejectPayment(email, time){
+  let payments = load(PAYMENTS_KEY);
+  payments = payments.filter(x=> !(x.email===email && x.time===time));
+  save(PAYMENTS_KEY, payments);
+
+  let users = load(USERS_KEY);
+  users = users.filter(u=>u.email!==email);
+  save(USERS_KEY, users);
+
+  alert('Registration rejected and removed.');
+  renderAdminLists();
+}
