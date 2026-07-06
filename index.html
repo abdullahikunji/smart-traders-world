@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>World Investment Global - Business Development & Investment Company</title>
 
     <!-- Font Awesome for Icons -->
@@ -22,6 +22,8 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            width: 100%;
+            min-height: 100vh;
         }
         a { text-decoration: none; color: inherit; }
         img { max-width: 100%; display: block; border-radius: 12px; }
@@ -58,14 +60,14 @@
         }
 
         /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #0a0a1a; }
         ::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 4px; }
 
         /* ===== HEADER ===== */
         header {
             background: rgba(10, 10, 26, 0.95);
-            padding: 8px 16px;
+            padding: 8px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -76,55 +78,84 @@
             border-bottom: 1px solid rgba(201, 168, 76, 0.15);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            min-height: 56px;
+            min-height: 52px;
         }
-        .logo { display: flex; align-items: center; gap: 8px; }
-        .logo img { height: 28px; width: auto; border-radius: 0; display: block; }
+        .logo { display: flex; align-items: center; gap: 6px; }
+        .logo img { height: 24px; width: auto; border-radius: 0; display: block; }
         .logo .logo-text { display: flex; flex-direction: column; }
         .logo .logo-text h1 {
             color: #c9a84c;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
+            letter-spacing: 0.3px;
+            line-height: 1.1;
         }
         .logo .logo-text p {
             color: #888;
-            font-size: 7px;
+            font-size: 6px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
         .nav-menu {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: rgba(10,10,26,0.98);
+            padding: 14px;
+            position: absolute;
+            top: 52px;
+            left: 0;
+            width: 100%;
+            border-bottom: 1px solid rgba(201,168,76,0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .nav-menu.open {
             display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
         }
         .nav-menu a {
             color: #ccc;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 500;
             transition: 0.3s;
-            cursor: pointer;
-            padding: 4px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            width: 100%;
+            text-align: center;
         }
         .nav-menu a:hover { color: #c9a84c; }
-        .register-btn-wrapper { display: flex; align-items: center; gap: 8px; }
+        .nav-menu .login-btn {
+            width: 100%;
+            text-align: center;
+            padding: 8px;
+            margin-top: 4px;
+            font-size: 13px;
+            background: transparent;
+            color: #c9a84c !important;
+            border: 2px solid #c9a84c;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            min-height: 40px;
+        }
+        .nav-menu .login-btn:hover { background: #c9a84c; color: #0a0a1a !important; }
+
+        .register-btn-wrapper { display: flex; align-items: center; }
         .register-btn {
             background: #c9a84c;
             color: #0a0a1a !important;
-            padding: 6px 16px;
+            padding: 6px 14px;
             border-radius: 30px;
             font-weight: 700 !important;
             transition: 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 11px;
             display: inline-block;
             box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
             animation: registerPulse 2s ease-in-out infinite;
-            min-height: 36px;
-            min-width: 80px;
+            min-height: 34px;
+            min-width: 60px;
         }
         .register-btn:hover {
             background: #d4b85e;
@@ -135,34 +166,34 @@
             0%,100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); }
             50% { box-shadow: 0 0 40px rgba(201,168,76,0.6); }
         }
-        .login-btn {
+        .login-btn-header {
             background: transparent;
             color: #c9a84c !important;
-            padding: 4px 14px;
+            padding: 4px 12px;
             border-radius: 30px;
             font-weight: 600 !important;
             border: 2px solid #c9a84c;
             transition: 0.3s;
             cursor: pointer;
-            font-size: 11px;
-            display: inline-block;
-            min-height: 34px;
-        }
-        .login-btn:hover { background: #c9a84c; color: #0a0a1a !important; }
-        .hamburger {
+            font-size: 10px;
             display: none;
+            min-height: 32px;
+        }
+        .login-btn-header:hover { background: #c9a84c; color: #0a0a1a !important; }
+        .hamburger {
+            display: flex;
             flex-direction: column;
             gap: 4px;
             cursor: pointer;
             padding: 4px;
         }
-        .hamburger span { width: 25px; height: 2px; background: #c9a84c; transition: 0.3s; border-radius: 2px; }
+        .hamburger span { width: 24px; height: 2px; background: #c9a84c; transition: 0.3s; border-radius: 2px; }
 
         /* ===== BUTTONS ===== */
         .btn-gold {
             background: #c9a84c;
             color: #0a0a1a;
-            padding: 12px 28px;
+            padding: 12px 20px;
             border: none;
             border-radius: 30px;
             font-size: 15px;
@@ -171,8 +202,9 @@
             transition: 0.3s;
             display: inline-block;
             min-height: 48px;
-            min-width: 120px;
+            min-width: 100px;
             text-align: center;
+            width: 100%;
         }
         .btn-gold:hover {
             background: #d4b85e;
@@ -182,7 +214,7 @@
         .btn-outline {
             background: transparent;
             color: #c9a84c;
-            padding: 12px 28px;
+            padding: 12px 20px;
             border: 2px solid #c9a84c;
             border-radius: 30px;
             font-size: 15px;
@@ -191,8 +223,9 @@
             transition: 0.3s;
             display: inline-block;
             min-height: 48px;
-            min-width: 120px;
+            min-width: 100px;
             text-align: center;
+            width: 100%;
         }
         .btn-outline:hover {
             background: #c9a84c;
@@ -202,18 +235,18 @@
 
         /* ===== HERO ===== */
         .hero {
-            padding: 90px 16px 50px;
+            padding: 70px 14px 40px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            min-height: 85vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: scroll;
             animation: heroZoom 20s ease-in-out infinite alternate;
         }
         @keyframes heroZoom { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
@@ -226,290 +259,285 @@
             height: 100%;
             background: rgba(10,10,26,0.75);
             z-index: 0;
-            animation: overlayPulse 4s ease-in-out infinite alternate;
         }
-        @keyframes overlayPulse { 0% { background: rgba(10,10,26,0.75); } 100% { background: rgba(10,10,26,0.55); } }
         .hero-content {
             position: relative;
             z-index: 1;
             max-width: 900px;
             margin: 0 auto;
             animation: fadeUp 1.2s ease;
+            width: 100%;
         }
         @keyframes fadeUp { 0% { opacity: 0; transform: translateY(40px); } 100% { opacity: 1; transform: translateY(0); } }
         .hero-badge {
             display: inline-block;
             background: rgba(201,168,76,0.15);
             color: #c9a84c;
-            padding: 4px 14px;
+            padding: 4px 12px;
             border-radius: 30px;
-            font-size: 10px;
-            letter-spacing: 2px;
+            font-size: 9px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             border: 1px solid rgba(201,168,76,0.2);
         }
         .hero h1 {
-            font-size: 30px;
+            font-size: 24px;
             font-weight: 800;
             color: #fff;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             line-height: 1.15;
         }
         .hero h1 span { color: #c9a84c; }
-        .hero .subtitle { font-size: 15px; color: #ddd; margin-bottom: 6px; font-weight: 300; }
+        .hero .subtitle { font-size: 14px; color: #ddd; margin-bottom: 4px; font-weight: 300; }
         .hero .description {
-            font-size: 14px;
+            font-size: 13px;
             color: #ccc;
             max-width: 700px;
-            margin: 12px auto 20px;
-            line-height: 1.7;
+            margin: 10px auto 16px;
+            line-height: 1.6;
             padding: 0 5px;
         }
         .hero-quote {
             font-style: italic;
             color: #c9a84c;
-            font-size: 15px;
-            margin-top: 20px;
-            padding: 12px;
+            font-size: 13px;
+            margin-top: 16px;
+            padding: 10px;
             border-top: 1px solid rgba(201,168,76,0.2);
             border-bottom: 1px solid rgba(201,168,76,0.2);
             display: inline-block;
         }
-        .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .hero-buttons { display: flex; flex-direction: column; gap: 10px; align-items: center; width: 100%; max-width: 400px; margin: 0 auto; }
 
         /* ===== SECTIONS ===== */
-        section { padding: 50px 16px; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-size: 26px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 10px; }
+        section { padding: 30px 12px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 22px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 8px; }
         .section-title span { color: #c9a84c; }
         .section-subtitle {
             text-align: center;
             color: #999;
-            font-size: 15px;
+            font-size: 13px;
             max-width: 700px;
-            margin: 0 auto 30px;
-            line-height: 1.7;
+            margin: 0 auto 20px;
+            line-height: 1.6;
         }
 
         /* ===== IMAGE SHOWCASE ===== */
         .image-showcase {
             background: rgba(17,17,40,0.8);
-            border-radius: 16px;
-            padding: 30px 16px;
-            margin-top: 10px;
+            border-radius: 12px;
+            padding: 20px 12px;
+            margin-top: 8px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
         .image-grid .img-card {
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
             border: 1px solid rgba(201,168,76,0.1);
             transition: 0.4s;
             background: rgba(26,26,62,0.6);
         }
-        .image-grid .img-card:hover {
-            transform: scale(1.03);
-            border-color: #c9a84c;
-            box-shadow: 0 8px 30px rgba(201,168,76,0.15);
-        }
-        .image-grid .img-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+        .image-grid .img-card:hover { transform: scale(1.02); border-color: #c9a84c; }
+        .image-grid .img-card img { width: 100%; height: 100px; object-fit: cover; display: block; }
         .image-grid .img-card .caption {
-            padding: 10px;
+            padding: 6px;
             text-align: center;
             color: #aaa;
-            font-size: 12px;
+            font-size: 10px;
             background: rgba(26,26,62,0.6);
         }
 
         /* ===== WHY INVEST ===== */
         .why-invest {
             background: rgba(17,17,40,0.8);
-            border-radius: 16px;
-            padding: 30px 16px;
-            margin-top: 10px;
+            border-radius: 12px;
+            padding: 20px 12px;
+            margin-top: 8px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
         .why-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 15px;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 12px;
         }
         .why-card {
             background: rgba(26,26,62,0.6);
-            padding: 20px 16px;
-            border-radius: 12px;
+            padding: 14px 10px;
+            border-radius: 10px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.08);
             transition: 0.3s;
         }
-        .why-card:hover { border-color: #c9a84c; transform: translateY(-5px); box-shadow: 0 8px 30px rgba(201,168,76,0.1); }
-        .why-card .icon { font-size: 30px; margin-bottom: 8px; }
-        .why-card h3 { color: #c9a84c; font-size: 14px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .why-card p { color: #aaa; font-size: 12px; line-height: 1.6; }
+        .why-card:hover { border-color: #c9a84c; transform: translateY(-3px); }
+        .why-card .icon { font-size: 24px; margin-bottom: 4px; }
+        .why-card h3 { color: #c9a84c; font-size: 12px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .why-card p { color: #aaa; font-size: 11px; line-height: 1.5; }
 
         /* ===== BUSINESS CYCLE ===== */
         .business-cycle {
             background: rgba(17,17,40,0.8);
-            border-radius: 16px;
-            padding: 30px 16px;
-            margin-top: 10px;
+            border-radius: 12px;
+            padding: 20px 12px;
+            margin-top: 8px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
         .cycle-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
+            grid-template-columns: 1fr;
+            gap: 16px;
             align-items: center;
         }
-        .cycle-info h3 { color: #c9a84c; font-size: 22px; margin-bottom: 10px; }
-        .cycle-info p { color: #aaa; font-size: 14px; line-height: 1.7; }
-        .cycle-info .days { font-size: 36px; font-weight: 800; color: #c9a84c; }
-        .values-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .cycle-info h3 { color: #c9a84c; font-size: 20px; margin-bottom: 6px; }
+        .cycle-info p { color: #aaa; font-size: 13px; line-height: 1.6; }
+        .cycle-info .days { font-size: 32px; font-weight: 800; color: #c9a84c; }
+        .values-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .value-tag {
             background: rgba(26,26,62,0.6);
-            padding: 10px 14px;
+            padding: 8px 10px;
             border-radius: 8px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.08);
             transition: 0.3s;
         }
         .value-tag:hover { border-color: #c9a84c; }
-        .value-tag h4 { color: #c9a84c; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .value-tag h4 { color: #c9a84c; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* ===== ROADMAP ===== */
-        .roadmap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .roadmap-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
         .roadmap-card {
             background: rgba(17,17,40,0.8);
-            padding: 20px 16px;
-            border-radius: 12px;
+            padding: 16px 12px;
+            border-radius: 10px;
             border: 1px solid rgba(201,168,76,0.08);
             text-align: center;
             transition: 0.3s;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
-        .roadmap-card:hover { border-color: #c9a84c; transform: translateY(-5px); box-shadow: 0 8px 30px rgba(201,168,76,0.1); }
-        .roadmap-card .phase { color: #c9a84c; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
-        .roadmap-card h4 { color: #fff; font-size: 18px; margin: 6px 0; }
-        .roadmap-card ul { list-style: none; padding: 0; margin-top: 10px; }
-        .roadmap-card ul li { color: #aaa; font-size: 12px; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .roadmap-card:hover { border-color: #c9a84c; transform: translateY(-3px); }
+        .roadmap-card .phase { color: #c9a84c; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .roadmap-card h4 { color: #fff; font-size: 16px; margin: 4px 0; }
+        .roadmap-card ul { list-style: none; padding: 0; margin-top: 6px; }
+        .roadmap-card ul li { color: #aaa; font-size: 11px; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .roadmap-card ul li:last-child { border-bottom: none; }
 
         /* ===== PHILOSOPHY ===== */
         .philosophy-box {
             background: rgba(17,17,40,0.8);
-            padding: 30px 16px;
-            border-radius: 16px;
+            padding: 24px 14px;
+            border-radius: 12px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.1);
-            margin-top: 10px;
+            margin-top: 8px;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
         .philosophy-box blockquote {
-            font-size: 18px;
+            font-size: 16px;
             color: #fff;
             font-weight: 300;
-            line-height: 1.7;
+            line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
         }
         .philosophy-box blockquote span { color: #c9a84c; font-weight: 500; }
 
         /* ===== INVESTMENT LEVELS ===== */
-        .packages-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .packages-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .package-card {
             background: rgba(17,17,40,0.8);
-            padding: 20px 12px;
-            border-radius: 12px;
+            padding: 14px 10px;
+            border-radius: 10px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.08);
             transition: 0.3s;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
-        .package-card:hover { border-color: #c9a84c; transform: translateY(-5px); box-shadow: 0 8px 30px rgba(201,168,76,0.1); }
+        .package-card:hover { border-color: #c9a84c; transform: translateY(-3px); }
         .package-card.featured { border-color: #c9a84c; background: rgba(26,26,62,0.8); }
-        .package-card .name { color: #c9a84c; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-        .package-card .amount { font-size: 20px; font-weight: 800; color: #fff; margin: 6px 0; }
-        .package-card .desc { color: #888; font-size: 11px; line-height: 1.5; }
+        .package-card .name { color: #c9a84c; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+        .package-card .amount { font-size: 17px; font-weight: 800; color: #fff; margin: 4px 0; }
+        .package-card .desc { color: #888; font-size: 10px; line-height: 1.4; }
 
         /* ===== CONTACT ===== */
         .contact-box {
             background: rgba(17,17,40,0.8);
-            border-radius: 16px;
-            padding: 30px 16px;
+            border-radius: 12px;
+            padding: 24px 14px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
-        .contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 800px; margin: 0 auto; }
-        .contact-item .icon { font-size: 24px; margin-bottom: 4px; }
-        .contact-item .label { color: #c9a84c; font-weight: 600; font-size: 12px; }
-        .contact-item .value { color: #ccc; font-size: 13px; word-break: break-all; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 800px; margin: 0 auto; }
+        .contact-item .icon { font-size: 20px; margin-bottom: 2px; }
+        .contact-item .label { color: #c9a84c; font-weight: 600; font-size: 10px; }
+        .contact-item .value { color: #ccc; font-size: 11px; word-break: break-all; }
 
         /* ===== FOOTER ===== */
         footer {
             background: #060612;
-            padding: 30px 16px 16px;
+            padding: 24px 12px 12px;
             border-top: 1px solid rgba(201,168,76,0.1);
-            margin-top: 20px;
+            margin-top: 16px;
         }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 25px; max-width: 1200px; margin: 0 auto; }
-        .footer-col h4 { color: #c9a84c; font-size: 14px; margin-bottom: 10px; }
-        .footer-col p, .footer-col a { color: #888; font-size: 12px; line-height: 2; display: block; transition: 0.3s; }
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .footer-col h4 { color: #c9a84c; font-size: 13px; margin-bottom: 6px; }
+        .footer-col p, .footer-col a { color: #888; font-size: 11px; line-height: 1.8; display: block; transition: 0.3s; }
         .footer-col a:hover { color: #c9a84c; }
-        .footer-col .brand { color: #c9a84c; font-size: 16px; font-weight: 700; }
-        .footer-col .brand-tag { color: #666; font-size: 9px; letter-spacing: 0.5px; text-transform: uppercase; }
-        .footer-bottom { text-align: center; padding-top: 16px; margin-top: 16px; border-top: 1px solid rgba(255,255,255,0.05); color: #666; font-size: 11px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-col .brand { color: #c9a84c; font-size: 15px; font-weight: 700; }
+        .footer-col .brand-tag { color: #666; font-size: 8px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .footer-bottom { text-align: center; padding-top: 12px; margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.05); color: #666; font-size: 10px; max-width: 1200px; margin-left: auto; margin-right: auto; }
 
         /* ===== ABOUT US ===== */
         .about-us-content {
             background: rgba(17,17,40,0.8);
-            border-radius: 16px;
-            padding: 30px 20px;
+            border-radius: 12px;
+            padding: 20px 12px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            margin-top: 10px;
+            margin-top: 8px;
         }
         .about-us-content h3 {
             color: #c9a84c;
-            font-size: 20px;
-            margin-top: 20px;
-            margin-bottom: 8px;
+            font-size: 18px;
+            margin-top: 16px;
+            margin-bottom: 6px;
         }
         .about-us-content h3:first-of-type { margin-top: 0; }
         .about-us-content p {
             color: #ccc;
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 12px;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
         .about-us-content ul {
             list-style: none;
             padding: 0;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px 15px;
-            margin-bottom: 12px;
+            grid-template-columns: 1fr;
+            gap: 4px 10px;
+            margin-bottom: 10px;
         }
         .about-us-content ul li {
             color: #ccc;
-            font-size: 14px;
-            padding: 5px 0;
+            font-size: 13px;
+            padding: 4px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .about-us-content ul li::before {
@@ -524,53 +552,53 @@
            ============================================================ */
         .investment-share-section {
             background: rgba(17,17,40,0.8);
-            border-radius: 16px;
-            padding: 30px 20px;
+            border-radius: 12px;
+            padding: 20px 12px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            margin-top: 10px;
+            margin-top: 8px;
         }
         .share-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 15px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 12px;
         }
         .share-item {
             background: rgba(26,26,62,0.6);
-            padding: 20px;
-            border-radius: 12px;
+            padding: 14px;
+            border-radius: 10px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.06);
             transition: 0.3s;
         }
         .share-item:hover { border-color: #c9a84c; transform: translateY(-3px); }
-        .share-item .percentage { font-size: 32px; font-weight: 800; color: #c9a84c; }
-        .share-item .label { color: #aaa; font-size: 13px; margin-top: 4px; }
-        .share-item .icon { font-size: 26px; margin-bottom: 8px; }
+        .share-item .percentage { font-size: 26px; font-weight: 800; color: #c9a84c; }
+        .share-item .label { color: #aaa; font-size: 11px; margin-top: 2px; }
+        .share-item .icon { font-size: 20px; margin-bottom: 4px; }
 
         .investment-care {
-            margin-top: 20px;
-            padding: 20px;
+            margin-top: 16px;
+            padding: 14px;
             background: rgba(26,26,62,0.6);
-            border-radius: 12px;
+            border-radius: 10px;
             border-left: 4px solid #c9a84c;
         }
-        .investment-care h4 { color: #c9a84c; font-size: 17px; margin-bottom: 8px; }
-        .investment-care p { color: #aaa; font-size: 14px; line-height: 1.7; }
+        .investment-care h4 { color: #c9a84c; font-size: 15px; margin-bottom: 6px; }
+        .investment-care p { color: #aaa; font-size: 13px; line-height: 1.6; }
 
         .investment-image-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 15px;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 12px;
         }
         .investment-image-grid img {
-            border-radius: 10px;
+            border-radius: 8px;
             border: 1px solid rgba(201,168,76,0.1);
             width: 100%;
-            height: 160px;
+            height: 90px;
             object-fit: cover;
             transition: 0.3s;
         }
@@ -581,17 +609,17 @@
            ============================================================ */
         .protection-box {
             background: rgba(201,168,76,0.05);
-            padding: 20px 16px;
-            border-radius: 12px;
+            padding: 16px 12px;
+            border-radius: 10px;
             border-left: 4px solid #c9a84c;
-            margin-top: 10px;
+            margin-top: 8px;
         }
-        .protection-box p { color: #ccc; font-size: 14px; line-height: 1.7; max-width: 800px; margin: 0 auto; text-align: center; }
+        .protection-box p { color: #ccc; font-size: 13px; line-height: 1.6; max-width: 800px; margin: 0 auto; text-align: center; }
 
         /* ============================================================
-           AUTH MODALS
+           MODALS
            ============================================================ */
-        .auth-overlay {
+        .auth-overlay, .kyc-overlay, .deposit-overlay, .deposit-confirm-overlay, .withdraw-overlay, .admin-login-overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -604,14 +632,17 @@
             align-items: center;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            padding: 16px;
+            padding: 12px;
         }
-        .auth-overlay.active { display: flex; }
-        .auth-modal {
+        .auth-overlay.active, .kyc-overlay.active, .deposit-overlay.active, 
+        .deposit-confirm-overlay.active, .withdraw-overlay.active, .admin-login-overlay.active {
+            display: flex;
+        }
+        .auth-modal, .kyc-modal, .deposit-modal, .deposit-confirm-modal, .withdraw-modal, .admin-login-modal {
             background: rgba(17,17,40,0.95);
-            border-radius: 20px;
-            padding: 28px 20px;
-            max-width: 420px;
+            border-radius: 16px;
+            padding: 20px 14px;
+            max-width: 100%;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -620,29 +651,52 @@
             animation: slideUp 0.4s ease;
         }
         @keyframes slideUp { 0% { transform: translateY(40px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-        .auth-modal .close-btn {
+        .auth-modal .close-btn, .kyc-modal .close-btn, .deposit-modal .close-btn, .withdraw-modal .close-btn, .admin-login-modal .close-btn {
             position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 22px;
+            top: 8px;
+            right: 12px;
+            font-size: 20px;
             color: #888;
             cursor: pointer;
             transition: 0.3s;
             background: none;
             border: none;
         }
-        .auth-modal .close-btn:hover { color: #c9a84c; }
-        .auth-modal h2 { color: #c9a84c; font-size: 22px; text-align: center; margin-bottom: 6px; }
-        .auth-modal .sub { text-align: center; color: #888; font-size: 12px; margin-bottom: 16px; }
-        .auth-modal .form-group { margin-bottom: 12px; }
-        .auth-modal label { display: block; color: #ccc; font-size: 12px; font-weight: 500; margin-bottom: 3px; }
-        .auth-modal input[type="text"],
-        .auth-modal input[type="password"],
-        .auth-modal input[type="email"],
-        .auth-modal input[type="number"],
-        .auth-modal select {
+        .auth-modal .close-btn:hover, .kyc-modal .close-btn:hover, .deposit-modal .close-btn:hover,
+        .withdraw-modal .close-btn:hover, .admin-login-modal .close-btn:hover { color: #c9a84c; }
+        .auth-modal h2, .kyc-modal h2, .deposit-modal h2, .deposit-confirm-modal h2, .withdraw-modal h2, .admin-login-modal h2 {
+            color: #c9a84c;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+        .auth-modal .sub, .kyc-modal .sub, .deposit-modal .sub, .withdraw-modal .sub, .admin-login-modal .sub {
+            text-align: center;
+            color: #888;
+            font-size: 11px;
+            margin-bottom: 14px;
+        }
+        .auth-modal .form-group, .kyc-modal .form-group, .deposit-modal .form-group, .withdraw-modal .form-group, .admin-login-modal .form-group {
+            margin-bottom: 10px;
+        }
+        .auth-modal label, .kyc-modal label, .deposit-modal label, .withdraw-modal label, .admin-login-modal label {
+            display: block;
+            color: #ccc;
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        .auth-modal input[type="text"], .auth-modal input[type="password"], .auth-modal input[type="email"],
+        .auth-modal input[type="number"], .auth-modal select,
+        .kyc-modal input[type="text"], .kyc-modal input[type="number"], .kyc-modal input[type="tel"],
+        .kyc-modal select,
+        .deposit-modal input[type="text"], .deposit-modal input[type="number"], .deposit-modal input[type="tel"],
+        .deposit-modal select,
+        .withdraw-modal input[type="text"], .withdraw-modal input[type="number"], .withdraw-modal input[type="tel"],
+        .withdraw-modal select,
+        .admin-login-modal input {
             width: 100%;
-            padding: 10px 14px;
+            padding: 10px 12px;
             background: rgba(26,26,62,0.8);
             border: 1px solid rgba(201,168,76,0.2);
             border-radius: 10px;
@@ -652,15 +706,19 @@
             outline: none;
             -webkit-appearance: none;
         }
-        .auth-modal input:focus, .auth-modal select:focus {
+        .auth-modal input:focus, .kyc-modal input:focus, .deposit-modal input:focus, 
+        .withdraw-modal input:focus, .admin-login-modal input:focus {
             border-color: #c9a84c;
             box-shadow: 0 0 20px rgba(201,168,76,0.1);
         }
-        .auth-modal select option { background: #1a1a3e; color: #fff; }
+        .auth-modal select option, .kyc-modal select option, .deposit-modal select option, .withdraw-modal select option {
+            background: #1a1a3e;
+            color: #fff;
+        }
         .password-wrapper { position: relative; }
         .password-wrapper .toggle-pwd {
             position: absolute;
-            right: 12px;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
             color: #888;
@@ -671,17 +729,65 @@
             font-size: 16px;
         }
         .password-wrapper .toggle-pwd:hover { color: #c9a84c; }
-        .auth-modal .checkbox-group { display: flex; align-items: flex-start; gap: 8px; margin: 10px 0; }
-        .auth-modal .checkbox-group input[type="checkbox"] { margin-top: 3px; accent-color: #c9a84c; width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
-        .auth-modal .checkbox-group label { color: #aaa; font-size: 12px; line-height: 1.5; cursor: pointer; }
-        .auth-modal .checkbox-group label a { color: #c9a84c; text-decoration: underline; }
-        .auth-modal .btn-gold { width: 100%; padding: 12px; font-size: 15px; margin-top: 6px; }
-        .auth-modal .auth-switch { text-align: center; margin-top: 12px; color: #888; font-size: 12px; }
-        .auth-modal .auth-switch a { color: #c9a84c; font-weight: 600; cursor: pointer; }
-        .auth-modal .auth-switch a:hover { text-decoration: underline; }
-        .auth-modal .error-msg { color: #ff6b6b; font-size: 12px; margin-top: 4px; display: none; }
-        .auth-modal .error-msg.show { display: block; }
-        .auth-modal .file-upload {
+        .auth-modal .checkbox-group, .kyc-modal .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            margin: 8px 0;
+        }
+        .auth-modal .checkbox-group input[type="checkbox"], .kyc-modal .checkbox-group input[type="checkbox"] {
+            margin-top: 3px;
+            accent-color: #c9a84c;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .auth-modal .checkbox-group label, .kyc-modal .checkbox-group label {
+            color: #aaa;
+            font-size: 11px;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+        .auth-modal .checkbox-group label a, .kyc-modal .checkbox-group label a {
+            color: #c9a84c;
+            text-decoration: underline;
+        }
+        .auth-modal .btn-gold, .kyc-modal .btn-gold, .deposit-modal .btn-gold, 
+        .deposit-confirm-modal .btn-gold, .withdraw-modal .btn-gold, .admin-login-modal .btn-gold {
+            width: 100%;
+            padding: 12px;
+            font-size: 15px;
+            margin-top: 6px;
+        }
+        .auth-modal .btn-outline, .deposit-modal .btn-outline, 
+        .deposit-confirm-modal .btn-outline, .withdraw-modal .btn-outline {
+            width: 100%;
+            margin-top: 6px;
+            padding: 10px;
+            font-size: 13px;
+        }
+        .auth-modal .auth-switch {
+            text-align: center;
+            margin-top: 10px;
+            color: #888;
+            font-size: 11px;
+        }
+        .auth-modal .auth-switch a, .auth-modal .auth-switch a {
+            color: #c9a84c;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .auth-modal .auth-switch a:hover, .auth-modal .auth-switch a:hover { text-decoration: underline; }
+        .auth-modal .error-msg, .kyc-modal .error-msg, .deposit-modal .error-msg {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+            line-height: 1.5;
+        }
+        .auth-modal .error-msg.show, .kyc-modal .error-msg.show, .deposit-modal .error-msg.show { display: block; }
+        .auth-modal .file-upload, .kyc-modal .file-upload, .deposit-modal .file-upload {
             background: rgba(26,26,62,0.8);
             padding: 10px;
             border-radius: 10px;
@@ -690,147 +796,46 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .auth-modal .file-upload:hover { border-color: #c9a84c; }
-        .auth-modal .file-upload input[type="file"] { display: none; }
-        .auth-modal .file-upload .label { color: #888; font-size: 12px; }
-        .auth-modal .file-upload .label i { color: #c9a84c; font-size: 22px; display: block; margin-bottom: 4px; }
-
-        /* ============================================================
-           KYC MODAL
-           ============================================================ */
-        .kyc-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 16px;
-        }
-        .kyc-overlay.active { display: flex; }
-        .kyc-modal {
-            background: rgba(17,17,40,0.95);
-            border-radius: 20px;
-            padding: 28px 20px;
-            max-width: 520px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid rgba(201,168,76,0.2);
-            position: relative;
-            animation: slideUp 0.4s ease;
-        }
-        .kyc-modal .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 22px;
+        .auth-modal .file-upload:hover, .kyc-modal .file-upload:hover, .deposit-modal .file-upload:hover { border-color: #c9a84c; }
+        .auth-modal .file-upload input[type="file"], .kyc-modal .file-upload input[type="file"], 
+        .deposit-modal .file-upload input[type="file"] { display: none; }
+        .auth-modal .file-upload .label, .kyc-modal .file-upload .label, .deposit-modal .file-upload .label {
             color: #888;
-            cursor: pointer;
-            transition: 0.3s;
-            background: none;
-            border: none;
+            font-size: 11px;
         }
-        .kyc-modal .close-btn:hover { color: #c9a84c; }
-        .kyc-modal h2 { color: #c9a84c; font-size: 20px; text-align: center; margin-bottom: 4px; }
-        .kyc-modal .sub { text-align: center; color: #888; font-size: 12px; margin-bottom: 16px; }
-        .kyc-modal .form-group { margin-bottom: 12px; }
-        .kyc-modal label { display: block; color: #ccc; font-size: 12px; font-weight: 500; margin-bottom: 3px; }
-        .kyc-modal input[type="text"],
-        .kyc-modal input[type="number"],
-        .kyc-modal input[type="tel"],
-        .kyc-modal select {
-            width: 100%;
-            padding: 10px 14px;
-            background: rgba(26,26,62,0.8);
-            border: 1px solid rgba(201,168,76,0.2);
-            border-radius: 10px;
-            color: #fff;
-            font-size: 16px;
-            transition: 0.3s;
-            outline: none;
-            -webkit-appearance: none;
+        .auth-modal .file-upload .label i, .kyc-modal .file-upload .label i, .deposit-modal .file-upload .label i {
+            color: #c9a84c;
+            font-size: 24px;
+            display: block;
+            margin-bottom: 4px;
         }
-        .kyc-modal input:focus, .kyc-modal select:focus {
-            border-color: #c9a84c;
-            box-shadow: 0 0 20px rgba(201,168,76,0.1);
-        }
-        .kyc-modal select option { background: #1a1a3e; color: #fff; }
-        .kyc-modal .file-upload {
-            background: rgba(26,26,62,0.8);
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px dashed rgba(201,168,76,0.3);
+        .auth-modal .success-msg, .kyc-modal .success-msg {
+            color: #00cc66;
+            font-size: 12px;
             text-align: center;
-            cursor: pointer;
-            transition: 0.3s;
+            padding: 8px;
+            display: none;
         }
-        .kyc-modal .file-upload:hover { border-color: #c9a84c; }
-        .kyc-modal .file-upload input[type="file"] { display: none; }
-        .kyc-modal .file-upload .label { color: #888; font-size: 12px; }
-        .kyc-modal .file-upload .label i { color: #c9a84c; font-size: 28px; display: block; margin-bottom: 6px; }
-        .kyc-modal .btn-gold { width: 100%; padding: 12px; font-size: 15px; margin-top: 6px; }
-        .kyc-modal .error-msg { color: #ff6b6b; font-size: 12px; margin-top: 4px; display: none; line-height: 1.5; }
-        .kyc-modal .error-msg.show { display: block; }
-        .kyc-modal .success-msg { color: #00cc66; font-size: 12px; text-align: center; padding: 8px; display: none; }
-        .kyc-modal .success-msg.show { display: block; }
-        .kyc-modal small { color: #666; font-size: 10px; display: block; margin-top: 2px; }
+        .auth-modal .success-msg.show, .kyc-modal .success-msg.show { display: block; }
+        .auth-modal small, .kyc-modal small, .deposit-modal small {
+            color: #666;
+            font-size: 9px;
+            display: block;
+            margin-top: 2px;
+        }
 
         /* ============================================================
-           DEPOSIT MODAL
+           DEPOSIT SPECIFIC
            ============================================================ */
-        .deposit-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 99999;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 16px;
+        .deposit-amounts {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+            margin-bottom: 8px;
         }
-        .deposit-overlay.active { display: flex; }
-        .deposit-modal {
-            background: rgba(17,17,40,0.95);
-            border-radius: 20px;
-            padding: 24px 16px;
-            max-width: 520px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid rgba(201,168,76,0.2);
-            position: relative;
-            animation: slideUp 0.4s ease;
-        }
-        .deposit-modal .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 22px;
-            color: #888;
-            cursor: pointer;
-            transition: 0.3s;
-            background: none;
-            border: none;
-        }
-        .deposit-modal .close-btn:hover { color: #c9a84c; }
-        .deposit-modal h2 { color: #c9a84c; font-size: 20px; text-align: center; margin-bottom: 4px; }
-        .deposit-modal .sub { text-align: center; color: #888; font-size: 12px; margin-bottom: 16px; }
-        .deposit-amounts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
         .deposit-amount {
             background: rgba(26,26,62,0.8);
-            padding: 10px;
+            padding: 8px;
             border-radius: 10px;
             text-align: center;
             border: 2px solid rgba(201,168,76,0.15);
@@ -838,8 +843,8 @@
             transition: 0.3s;
             color: #fff;
             font-weight: 600;
-            font-size: 13px;
-            min-height: 44px;
+            font-size: 12px;
+            min-height: 40px;
         }
         .deposit-amount:hover { border-color: #c9a84c; transform: scale(1.05); }
         .deposit-amount.selected { border-color: #c9a84c; background: rgba(201,168,76,0.15); }
@@ -847,115 +852,29 @@
             background: rgba(201,168,76,0.15);
             color: #c9a84c;
             border: 1px solid #c9a84c;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 11px;
+            font-size: 10px;
             transition: 0.3s;
-            min-height: 32px;
+            min-height: 30px;
         }
         .deposit-modal .copy-btn:hover { background: #c9a84c; color: #0a0a1a; }
-        .deposit-modal .file-upload {
-            background: rgba(26,26,62,0.8);
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px dashed rgba(201,168,76,0.3);
-            text-align: center;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .deposit-modal .file-upload:hover { border-color: #c9a84c; }
-        .deposit-modal .file-upload input[type="file"] { display: none; }
-        .deposit-modal .file-upload .label { color: #888; font-size: 12px; }
-        .deposit-modal .file-upload .label i { color: #c9a84c; font-size: 28px; display: block; margin-bottom: 6px; }
+        .deposit-confirm-modal .icon { font-size: 36px; margin-bottom: 8px; }
+        .deposit-confirm-modal p { color: #aaa; font-size: 13px; margin-bottom: 6px; }
 
         /* ============================================================
-           DEPOSIT CONFIRMATION MODAL
+           WITHDRAWAL SPECIFIC
            ============================================================ */
-        .deposit-confirm-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 99999;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 16px;
+        .withdraw-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
         }
-        .deposit-confirm-overlay.active { display: flex; }
-        .deposit-confirm-modal {
-            background: rgba(17,17,40,0.95);
-            border-radius: 20px;
-            padding: 28px 20px;
-            max-width: 400px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid rgba(201,168,76,0.2);
-            position: relative;
-            animation: slideUp 0.4s ease;
-            text-align: center;
-        }
-        .deposit-confirm-modal h2 { color: #c9a84c; font-size: 20px; margin-bottom: 8px; }
-        .deposit-confirm-modal .icon { font-size: 44px; margin-bottom: 12px; }
-        .deposit-confirm-modal p { color: #aaa; font-size: 14px; margin-bottom: 8px; }
-        .deposit-confirm-modal .btn-gold { width: 100%; padding: 12px; font-size: 15px; margin-top: 10px; }
-        .deposit-confirm-modal .btn-outline { width: 100%; margin-top: 8px; padding: 10px; font-size: 14px; }
-
-        /* ============================================================
-           WITHDRAWAL MODAL
-           ============================================================ */
-        .withdraw-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 99998;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 16px;
-        }
-        .withdraw-overlay.active { display: flex; }
-        .withdraw-modal {
-            background: rgba(17,17,40,0.95);
-            border-radius: 20px;
-            padding: 24px 16px;
-            max-width: 480px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid rgba(201,168,76,0.2);
-            position: relative;
-            animation: slideUp 0.4s ease;
-        }
-        .withdraw-modal .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 14px;
-            font-size: 22px;
-            color: #888;
-            cursor: pointer;
-            transition: 0.3s;
-            background: none;
-            border: none;
-        }
-        .withdraw-modal .close-btn:hover { color: #c9a84c; }
-        .withdraw-modal h2 { color: #c9a84c; font-size: 20px; text-align: center; margin-bottom: 4px; }
-        .withdraw-modal .sub { text-align: center; color: #888; font-size: 12px; margin-bottom: 16px; }
-        .withdraw-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
         .withdraw-option {
             background: rgba(26,26,62,0.8);
-            padding: 14px;
+            padding: 12px;
             border-radius: 10px;
             text-align: center;
             border: 2px solid rgba(201,168,76,0.15);
@@ -964,34 +883,19 @@
         }
         .withdraw-option:hover { border-color: #c9a84c; transform: scale(1.03); }
         .withdraw-option.selected { border-color: #c9a84c; background: rgba(201,168,76,0.15); }
-        .withdraw-option .amount { font-size: 20px; font-weight: 800; color: #c9a84c; }
-        .withdraw-option .label { color: #888; font-size: 11px; margin-top: 3px; }
-        .withdraw-form .form-group { margin-bottom: 10px; }
-        .withdraw-form label { display: block; color: #ccc; font-size: 12px; font-weight: 500; margin-bottom: 3px; }
-        .withdraw-form input {
-            width: 100%;
-            padding: 10px 14px;
-            background: rgba(26,26,62,0.8);
-            border: 1px solid rgba(201,168,76,0.2);
-            border-radius: 10px;
-            color: #fff;
-            font-size: 16px;
-            outline: none;
-            transition: 0.3s;
-            -webkit-appearance: none;
-        }
-        .withdraw-form input:focus { border-color: #c9a84c; box-shadow: 0 0 20px rgba(201,168,76,0.1); }
-        .withdraw-actions { display: flex; gap: 10px; margin-top: 12px; }
-        .withdraw-actions .btn-gold, .withdraw-actions .btn-outline { flex: 1; text-align: center; padding: 10px; font-size: 13px; min-height: 44px; }
-        .withdraw-blocked, .withdraw-no-balance { display: none; text-align: center; padding: 16px 0; }
-        .withdraw-blocked .icon, .withdraw-no-balance .icon { font-size: 40px; margin-bottom: 10px; }
-        .withdraw-blocked h3, .withdraw-no-balance h3 { color: #c9a84c; font-size: 18px; margin-bottom: 6px; }
-        .withdraw-blocked p, .withdraw-no-balance p { color: #888; font-size: 13px; margin-bottom: 10px; }
-        .withdraw-blocked .days-remaining { background: rgba(26,26,62,0.6); padding: 10px; border-radius: 10px; margin-bottom: 10px; }
-        .withdraw-blocked .days-remaining span { color: #c9a84c; font-size: 20px; font-weight: 700; }
+        .withdraw-option .amount { font-size: 18px; font-weight: 800; color: #c9a84c; }
+        .withdraw-option .label { color: #888; font-size: 10px; margin-top: 2px; }
+        .withdraw-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .withdraw-actions .btn-gold, .withdraw-actions .btn-outline { width: 100%; }
+        .withdraw-blocked, .withdraw-no-balance { display: none; text-align: center; padding: 12px 0; }
+        .withdraw-blocked .icon, .withdraw-no-balance .icon { font-size: 32px; margin-bottom: 8px; }
+        .withdraw-blocked h3, .withdraw-no-balance h3 { color: #c9a84c; font-size: 16px; margin-bottom: 4px; }
+        .withdraw-blocked p, .withdraw-no-balance p { color: #888; font-size: 12px; margin-bottom: 8px; }
+        .withdraw-blocked .days-remaining { background: rgba(26,26,62,0.6); padding: 8px; border-radius: 8px; margin-bottom: 8px; }
+        .withdraw-blocked .days-remaining span { color: #c9a84c; font-size: 18px; font-weight: 700; }
 
         /* ============================================================
-           USER DASHBOARD
+           DASHBOARD
            ============================================================ */
         .dashboard-overlay {
             display: none;
@@ -1003,110 +907,109 @@
             background: #0a0a1a;
             z-index: 9998;
             overflow-y: auto;
-            padding: 70px 12px 20px;
+            padding: 60px 10px 16px;
         }
         .dashboard-overlay.active { display: block; }
-        .dashboard-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr; gap: 16px; }
+        .dashboard-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 12px; }
         .dash-sidebar {
             background: rgba(17,17,40,0.8);
             border-radius: 12px;
-            padding: 12px;
+            padding: 10px;
             border: 1px solid rgba(201,168,76,0.08);
-            height: fit-content;
-            position: sticky;
-            top: 76px;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 4px;
         }
         .dash-sidebar .dash-logo {
-            color: #c9a84c;
-            font-size: 13px;
-            font-weight: 700;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(201,168,76,0.1);
-            margin-bottom: 10px;
-            text-align: center;
+            display: none;
         }
-        .dash-sidebar .dash-logo span { font-size: 9px; color: #666; display: block; font-weight: 400; letter-spacing: 0.5px; }
         .dash-sidebar .menu-item {
             color: #aaa;
-            padding: 8px 10px;
+            padding: 6px 4px;
             border-radius: 8px;
-            font-size: 12px;
+            font-size: 9px;
             transition: 0.3s;
             cursor: pointer;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 2px;
+            gap: 2px;
+            text-align: center;
         }
         .dash-sidebar .menu-item:hover { background: rgba(201,168,76,0.08); color: #c9a84c; }
         .dash-sidebar .menu-item.active { background: rgba(201,168,76,0.12); color: #c9a84c; }
-        .dash-sidebar .menu-item i { width: 16px; font-size: 14px; }
-        .dash-sidebar .menu-item.logout-item { color: #ff6b6b; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 6px; padding-top: 10px; }
+        .dash-sidebar .menu-item i { font-size: 16px; }
+        .dash-sidebar .menu-item.logout-item { color: #ff6b6b; }
         .dash-sidebar .menu-item.logout-item:hover { background: rgba(255,107,107,0.1); }
 
         .dash-main {
             background: rgba(17,17,40,0.8);
             border-radius: 12px;
-            padding: 16px;
+            padding: 12px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
-        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
-        .dash-header h2 { color: #c9a84c; font-size: 18px; }
-        .dash-header .user-info { color: #aaa; font-size: 12px; }
+        .dash-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 12px; gap: 4px; }
+        .dash-header h2 { color: #c9a84c; font-size: 16px; }
+        .dash-header .user-info { color: #aaa; font-size: 11px; }
         .dash-header .user-info span { color: #c9a84c; font-weight: 600; }
 
-        .dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+        .dash-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
         .dash-stat {
             background: rgba(26,26,62,0.6);
-            padding: 12px;
+            padding: 10px;
             border-radius: 10px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.06);
             transition: 0.3s;
         }
         .dash-stat:hover { border-color: #c9a84c; transform: translateY(-2px); }
-        .dash-stat .number { font-size: 20px; font-weight: 800; color: #c9a84c; }
-        .dash-stat .label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; }
+        .dash-stat .number { font-size: 17px; font-weight: 800; color: #c9a84c; }
+        .dash-stat .label { font-size: 9px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
         .investment-overview {
             background: rgba(26,26,62,0.6);
             border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 16px;
+            padding: 10px;
+            margin-bottom: 12px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.06);
         }
-        .investment-overview img { max-width: 100%; border-radius: 10px; max-height: 140px; object-fit: cover; width: 100%; }
-        .investment-overview .title { color: #c9a84c; font-size: 15px; font-weight: 600; margin: 10px 0 4px; }
-        .investment-overview .desc { color: #888; font-size: 12px; }
+        .investment-overview img { max-width: 100%; border-radius: 8px; max-height: 100px; object-fit: cover; width: 100%; }
+        .investment-overview .title { color: #c9a84c; font-size: 13px; font-weight: 600; margin: 6px 0 2px; }
+        .investment-overview .desc { color: #888; font-size: 11px; }
+
+        .dash-actions { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+        .dash-actions .btn-gold, .dash-actions .btn-outline { width: 100%; padding: 10px; font-size: 13px; min-height: 44px; }
 
         .dash-section {
             background: rgba(26,26,62,0.6);
             border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 12px;
+            padding: 10px;
+            margin-bottom: 10px;
             border: 1px solid rgba(201,168,76,0.06);
         }
-        .dash-section h3 { color: #c9a84c; font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
-        .dash-section .empty-state { color: #666; text-align: center; padding: 12px 0; font-size: 12px; }
-        .dash-section .empty-state .icon { font-size: 30px; margin-bottom: 6px; opacity: 0.3; }
+        .dash-section h3 { color: #c9a84c; font-size: 13px; margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
+        .dash-section .empty-state { color: #666; text-align: center; padding: 10px 0; font-size: 11px; }
+        .dash-section .empty-state .icon { font-size: 24px; margin-bottom: 4px; opacity: 0.3; }
 
-        .dash-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
-        .dash-actions .btn-gold, .dash-actions .btn-outline { flex: 1; min-width: 80px; text-align: center; padding: 10px 14px; font-size: 13px; min-height: 44px; }
+        .performance-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 4px; }
+        .perf-item { background: rgba(10,10,26,0.6); padding: 8px; border-radius: 8px; text-align: center; }
+        .perf-item .num { font-size: 15px; font-weight: 700; color: #c9a84c; }
+        .perf-item .lbl { font-size: 9px; color: #888; margin-top: 2px; }
 
-        .performance-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 6px; }
-        .perf-item { background: rgba(10,10,26,0.6); padding: 10px; border-radius: 8px; text-align: center; }
-        .perf-item .num { font-size: 18px; font-weight: 700; color: #c9a84c; }
-        .perf-item .lbl { font-size: 10px; color: #888; margin-top: 2px; }
-
-        .cycle-progress { margin: 10px 0; }
-        .cycle-progress .bar-bg { background: rgba(10,10,26,0.6); border-radius: 10px; height: 8px; overflow: hidden; margin-top: 4px; }
+        .cycle-progress { margin: 8px 0; }
+        .cycle-progress .bar-bg { background: rgba(10,10,26,0.6); border-radius: 10px; height: 6px; overflow: hidden; margin-top: 4px; }
         .cycle-progress .bar-fill { background: #c9a84c; height: 100%; border-radius: 10px; transition: width 0.5s ease; }
-        .cycle-progress .info { display: flex; justify-content: space-between; font-size: 11px; color: #888; }
+        .cycle-progress .info { display: flex; justify-content: space-between; font-size: 10px; color: #888; }
 
         /* ============================================================
            ADMIN PANEL
@@ -1119,166 +1022,120 @@
             width: 100%;
             height: 100%;
             background: #0a0a1a;
-            z-index: 99997;
+            z-index: 9997;
             overflow-y: auto;
-            padding: 70px 12px 20px;
+            padding: 60px 10px 16px;
         }
         .admin-overlay.active { display: block; }
         .admin-container { max-width: 1200px; margin: 0 auto; }
         .admin-header {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            gap: 8px;
+            margin-bottom: 12px;
+            gap: 6px;
         }
-        .admin-header h2 { color: #c9a84c; font-size: 20px; }
+        .admin-header h2 { color: #c9a84c; font-size: 18px; }
         .admin-header .admin-badge {
             background: rgba(201,168,76,0.15);
             color: #c9a84c;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 30px;
-            font-size: 11px;
+            font-size: 10px;
             border: 1px solid rgba(201,168,76,0.2);
         }
-        .admin-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 16px; }
+        .admin-header .logout-btn {
+            background: transparent;
+            border: 1px solid #ff6b6b;
+            color: #ff6b6b;
+            padding: 4px 12px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 10px;
+            min-height: 32px;
+        }
+        .admin-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
         .admin-stat {
             background: rgba(17,17,40,0.8);
-            padding: 12px;
-            border-radius: 10px;
+            padding: 8px;
+            border-radius: 8px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.08);
         }
-        .admin-stat .num { font-size: 20px; font-weight: 800; color: #c9a84c; }
-        .admin-stat .lbl { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; }
-        .admin-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+        .admin-stat .num { font-size: 16px; font-weight: 800; color: #c9a84c; }
+        .admin-stat .lbl { font-size: 8px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+        .admin-tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; }
         .admin-tab {
             background: rgba(17,17,40,0.8);
-            padding: 6px 14px;
+            padding: 4px 10px;
             border-radius: 30px;
             border: 1px solid rgba(201,168,76,0.1);
             cursor: pointer;
             transition: 0.3s;
-            font-size: 12px;
+            font-size: 10px;
             color: #aaa;
         }
         .admin-tab:hover { border-color: #c9a84c; color: #c9a84c; }
         .admin-tab.active { background: rgba(201,168,76,0.15); border-color: #c9a84c; color: #c9a84c; }
         .admin-table-wrap {
             background: rgba(17,17,40,0.8);
-            border-radius: 12px;
-            padding: 12px;
+            border-radius: 10px;
+            padding: 8px;
             border: 1px solid rgba(201,168,76,0.08);
             overflow-x: auto;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
-        .admin-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 500px; }
+        .admin-table { width: 100%; border-collapse: collapse; font-size: 10px; min-width: 400px; }
         .admin-table th {
             color: #c9a84c;
             text-align: left;
-            padding: 8px 6px;
+            padding: 6px 4px;
             border-bottom: 1px solid rgba(201,168,76,0.1);
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 10px;
+            font-size: 8px;
             letter-spacing: 0.5px;
         }
-        .admin-table td { padding: 8px 6px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; vertical-align: middle; }
+        .admin-table td { padding: 6px 4px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; vertical-align: middle; font-size: 10px; }
         .admin-table .status-pending { color: #ffaa00; font-weight: 600; }
         .admin-table .status-approved { color: #00cc66; font-weight: 600; }
         .admin-table .status-rejected { color: #ff4444; font-weight: 600; }
-        .admin-table .btn-approve {
-            background: #00cc66; color: #0a0a1a; border: none; padding: 3px 10px; border-radius: 20px; cursor: pointer; font-size: 10px; font-weight: 600; transition: 0.3s; min-height: 28px;
-        }
-        .admin-table .btn-approve:hover { background: #00e673; transform: scale(1.05); }
-        .admin-table .btn-reject {
-            background: #ff4444; color: #fff; border: none; padding: 3px 10px; border-radius: 20px; cursor: pointer; font-size: 10px; font-weight: 600; transition: 0.3s; min-height: 28px;
-        }
-        .admin-table .btn-reject:hover { background: #ff6666; transform: scale(1.05); }
-        .admin-table .btn-delete {
-            background: transparent; color: #ff4444; border: 1px solid #ff4444; padding: 3px 10px; border-radius: 20px; cursor: pointer; font-size: 10px; font-weight: 600; transition: 0.3s; min-height: 28px;
-        }
-        .admin-table .btn-delete:hover { background: #ff4444; color: #0a0a1a; }
-        .admin-table .btn-view {
-            background: rgba(201,168,76,0.15); color: #c9a84c; border: 1px solid #c9a84c; padding: 3px 10px; border-radius: 20px; cursor: pointer; font-size: 10px; font-weight: 600; transition: 0.3s; min-height: 28px;
-        }
-        .admin-table .btn-view:hover { background: #c9a84c; color: #0a0a1a; }
-        .admin-table .btn-show-pwd {
-            background: rgba(255,170,0,0.15); color: #ffaa00; border: 1px solid #ffaa00; padding: 3px 10px; border-radius: 20px; cursor: pointer; font-size: 10px; font-weight: 600; transition: 0.3s; min-height: 28px;
-        }
-        .admin-table .btn-show-pwd:hover { background: #ffaa00; color: #0a0a1a; }
-        .admin-table .badge-pending { background: rgba(255,170,0,0.15); color: #ffaa00; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; }
-        .admin-table .badge-approved { background: rgba(0,204,102,0.15); color: #00cc66; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; }
-        .admin-table .badge-rejected { background: rgba(255,68,68,0.15); color: #ff4444; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; }
-
-        /* ============================================================
-           ADMIN LOGIN
-           ============================================================ */
-        .admin-login-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 99999;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 16px;
-        }
-        .admin-login-overlay.active { display: flex; }
-        .admin-login-modal {
-            background: rgba(17,17,40,0.95);
+        .admin-table .btn-approve, .admin-table .btn-reject, .admin-table .btn-delete,
+        .admin-table .btn-view, .admin-table .btn-show-pwd {
+            padding: 2px 6px;
             border-radius: 20px;
-            padding: 30px 20px;
-            max-width: 400px;
-            width: 100%;
-            border: 1px solid rgba(201,168,76,0.2);
-            animation: slideUp 0.4s ease;
-            position: relative;
-        }
-        .admin-login-modal .close-btn {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            font-size: 24px;
-            color: #888;
             cursor: pointer;
+            font-size: 8px;
+            font-weight: 600;
             transition: 0.3s;
-            background: none;
+            min-height: 22px;
             border: none;
         }
-        .admin-login-modal .close-btn:hover { color: #c9a84c; }
-        .admin-login-modal h2 { color: #c9a84c; font-size: 22px; text-align: center; margin-bottom: 4px; }
-        .admin-login-modal .sub { text-align: center; color: #888; font-size: 13px; margin-bottom: 20px; }
-        .admin-login-modal .form-group { margin-bottom: 14px; }
-        .admin-login-modal label { display: block; color: #ccc; font-size: 13px; font-weight: 500; margin-bottom: 4px; }
-        .admin-login-modal input {
-            width: 100%;
-            padding: 10px 14px;
-            background: rgba(26,26,62,0.8);
-            border: 1px solid rgba(201,168,76,0.2);
-            border-radius: 10px;
-            color: #fff;
-            font-size: 16px;
-            outline: none;
-            transition: 0.3s;
-            -webkit-appearance: none;
-        }
-        .admin-login-modal input:focus { border-color: #c9a84c; box-shadow: 0 0 20px rgba(201,168,76,0.1); }
-        .admin-login-modal .btn-gold { width: 100%; padding: 12px; font-size: 15px; margin-top: 4px; }
-        .admin-login-modal .error-msg { color: #ff6b6b; font-size: 12px; margin-top: 6px; display: none; text-align: center; }
-        .admin-login-modal .error-msg.show { display: block; }
+        .admin-table .btn-approve { background: #00cc66; color: #0a0a1a; }
+        .admin-table .btn-approve:hover { background: #00e673; transform: scale(1.05); }
+        .admin-table .btn-reject { background: #ff4444; color: #fff; }
+        .admin-table .btn-reject:hover { background: #ff6666; transform: scale(1.05); }
+        .admin-table .btn-delete { background: transparent; color: #ff4444; border: 1px solid #ff4444; }
+        .admin-table .btn-delete:hover { background: #ff4444; color: #0a0a1a; }
+        .admin-table .btn-view { background: rgba(201,168,76,0.15); color: #c9a84c; border: 1px solid #c9a84c; }
+        .admin-table .btn-view:hover { background: #c9a84c; color: #0a0a1a; }
+        .admin-table .btn-show-pwd { background: rgba(255,170,0,0.15); color: #ffaa00; border: 1px solid #ffaa00; }
+        .admin-table .btn-show-pwd:hover { background: #ffaa00; color: #0a0a1a; }
+        .admin-table .badge-pending { background: rgba(255,170,0,0.15); color: #ffaa00; padding: 2px 6px; border-radius: 20px; font-size: 8px; font-weight: 600; }
+        .admin-table .badge-approved { background: rgba(0,204,102,0.15); color: #00cc66; padding: 2px 6px; border-radius: 20px; font-size: 8px; font-weight: 600; }
+        .admin-table .badge-rejected { background: rgba(255,68,68,0.15); color: #ff4444; padding: 2px 6px; border-radius: 20px; font-size: 8px; font-weight: 600; }
 
         /* ===== COUNTRY SEARCH ===== */
         .country-search { position: relative; }
         .country-search input {
             width: 100%;
-            padding: 10px 14px;
+            padding: 10px 12px;
             background: rgba(26,26,62,0.8);
             border: 1px solid rgba(201,168,76,0.2);
             border-radius: 10px;
@@ -1295,7 +1152,7 @@
             top: 100%;
             left: 0;
             width: 100%;
-            max-height: 200px;
+            max-height: 150px;
             overflow-y: auto;
             background: #1a1a3e;
             border: 1px solid rgba(201,168,76,0.2);
@@ -1304,22 +1161,21 @@
             margin-top: 4px;
         }
         .country-search .dropdown.show { display: block; }
-        .country-search .dropdown .item { padding: 8px 12px; color: #ccc; cursor: pointer; transition: 0.3s; font-size: 13px; }
+        .country-search .dropdown .item { padding: 6px 10px; color: #ccc; cursor: pointer; transition: 0.3s; font-size: 12px; }
         .country-search .dropdown .item:hover { background: rgba(201,168,76,0.1); color: #c9a84c; }
 
         /* ===== TOAST ===== */
         .toast-notification {
             position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
             background: rgba(0,204,102,0.95);
             color: #fff;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-size: 13px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 12px;
             font-weight: 500;
-            max-width: 90%;
             z-index: 99999;
             box-shadow: 0 8px 30px rgba(0,0,0,0.4);
             animation: slideUp 0.5s ease;
@@ -1331,515 +1187,157 @@
         .toast-notification.error { background: rgba(255,68,68,0.95); }
 
         /* ============================================================
-           MOBILE RESPONSIVE - PHONE VIEW
+           DESKTOP OVERRIDES
            ============================================================ */
-
-        /* Tablet and smaller */
-        @media (max-width: 768px) {
-            /* HEADER */
-            header {
-                padding: 6px 12px;
-                min-height: 50px;
-            }
-            .logo img {
-                height: 24px;
-            }
-            .logo .logo-text h1 {
-                font-size: 11px;
-            }
-            .logo .logo-text p {
-                display: none;
-            }
+        @media (min-width: 769px) {
+            header { padding: 10px 20px; min-height: 60px; }
+            .logo img { height: 32px; }
+            .logo .logo-text h1 { font-size: 14px; }
+            .logo .logo-text p { font-size: 8px; display: block; }
             
-            /* NAV MENU */
+            .hamburger { display: none; }
             .nav-menu {
-                display: none;
-                flex-direction: column;
-                gap: 8px;
-                background: rgba(10,10,26,0.98);
-                padding: 16px;
-                position: absolute;
-                top: 50px;
-                left: 0;
-                width: 100%;
-                border-bottom: 1px solid rgba(201,168,76,0.1);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-            }
-            .nav-menu.open {
-                display: flex;
+                display: flex !important;
+                flex-direction: row;
+                position: static;
+                background: transparent;
+                padding: 0;
+                width: auto;
+                border-bottom: none;
+                backdrop-filter: none;
+                gap: 16px;
             }
             .nav-menu a {
-                font-size: 14px;
-                padding: 8px 0;
-                border-bottom: 1px solid rgba(255,255,255,0.05);
-                width: 100%;
-                text-align: center;
+                font-size: 12px;
+                padding: 0;
+                border-bottom: none;
+                width: auto;
+                text-align: left;
             }
             .nav-menu .login-btn {
-                width: 100%;
-                text-align: center;
-                padding: 8px;
-                margin-top: 4px;
-                font-size: 13px;
+                display: none;
             }
-            
-            /* HAMBURGER */
-            .hamburger {
-                display: flex;
+            .login-btn-header {
+                display: inline-block;
             }
-            
-            /* REGISTER BTN WRAPPER */
             .register-btn-wrapper {
                 display: flex;
-                flex-direction: column;
-                width: 100%;
-                gap: 6px;
+                flex-direction: row;
+                width: auto;
+                gap: 8px;
             }
             .register-btn {
-                width: 100%;
-                text-align: center;
-                padding: 8px;
+                padding: 8px 20px;
                 font-size: 13px;
                 min-height: 40px;
             }
             
-            /* HERO */
-            .hero {
-                padding: 80px 12px 40px;
-                min-height: 70vh;
-                background-attachment: scroll;
-            }
-            .hero h1 {
-                font-size: 24px;
-            }
-            .hero .subtitle {
-                font-size: 13px;
-            }
-            .hero .description {
-                font-size: 13px;
-                padding: 0 5px;
-            }
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            .btn-gold, .btn-outline {
-                width: 100%;
-                text-align: center;
-                padding: 10px 16px;
-                font-size: 14px;
-                min-height: 44px;
-            }
-            .hero-quote {
-                font-size: 13px;
-                padding: 10px;
-            }
-            .hero-badge {
-                font-size: 9px;
-                padding: 3px 10px;
-            }
+            .hero { padding: 140px 20px 80px; min-height: 100vh; }
+            .hero h1 { font-size: 36px; }
+            .hero .subtitle { font-size: 16px; }
+            .hero .description { font-size: 15px; }
+            .hero-buttons { flex-direction: row; max-width: 900px; }
+            .btn-gold, .btn-outline { width: auto; padding: 14px 35px; }
             
-            /* SECTIONS */
-            section {
-                padding: 30px 12px;
-            }
-            .section-title {
-                font-size: 22px;
-            }
-            .section-subtitle {
-                font-size: 13px;
-                padding: 0 10px;
-                margin-bottom: 20px;
-            }
+            section { padding: 60px 20px; }
+            .section-title { font-size: 30px; }
+            .section-subtitle { font-size: 16px; }
             
-            /* GRIDS - Stack */
-            .image-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            .image-grid .img-card img {
-                height: 120px;
-            }
+            .image-grid { grid-template-columns: repeat(3, 1fr); }
+            .image-grid .img-card img { height: 180px; }
             
-            .why-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
+            .why-grid { grid-template-columns: repeat(3, 1fr); }
+            .cycle-grid { grid-template-columns: 1fr 1fr; }
+            .roadmap-grid { grid-template-columns: repeat(3, 1fr); }
+            .packages-grid { grid-template-columns: repeat(5, 1fr); }
+            .share-grid { grid-template-columns: 1fr 1fr 1fr; }
+            .investment-image-grid { grid-template-columns: 1fr 1fr; }
+            .investment-image-grid img { height: 160px; }
+            .contact-grid { grid-template-columns: repeat(4, 1fr); }
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; text-align: left; }
+            .about-us-content ul { grid-template-columns: 1fr 1fr; }
             
-            .cycle-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
+            .auth-modal, .kyc-modal, .deposit-modal, .deposit-confirm-modal, .withdraw-modal, .admin-login-modal {
+                max-width: 420px;
+                padding: 35px 25px;
             }
+            .deposit-modal { max-width: 520px; }
+            .deposit-amounts { grid-template-columns: 1fr 1fr 1fr; }
+            .withdraw-options { grid-template-columns: 1fr 1fr; }
+            .withdraw-actions { flex-direction: row; }
+            .withdraw-actions .btn-gold, .withdraw-actions .btn-outline { width: auto; flex: 1; }
             
-            .values-list {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .roadmap-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            
-            .packages-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            
-            .share-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            
-            .investment-image-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            .investment-image-grid img {
-                height: 100px;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-                text-align: center;
-            }
-            
-            .about-us-content ul {
-                grid-template-columns: 1fr;
-            }
-            
-            .performance-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            /* DASHBOARD */
-            .dashboard-container {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
+            .dashboard-container { grid-template-columns: 200px 1fr; }
             .dash-sidebar {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-                gap: 4px;
-                padding: 8px;
-                position: static;
+                display: block;
+                position: sticky;
+                top: 80px;
+                padding: 15px;
             }
             .dash-sidebar .dash-logo {
-                grid-column: 1 / -1;
-                font-size: 11px;
-                padding-bottom: 8px;
+                display: block;
+                color: #c9a84c;
+                font-size: 13px;
+                font-weight: 700;
+                padding-bottom: 10px;
+                border-bottom: 1px solid rgba(201,168,76,0.1);
+                margin-bottom: 10px;
+                text-align: center;
             }
+            .dash-sidebar .dash-logo span { font-size: 9px; color: #666; display: block; font-weight: 400; letter-spacing: 0.5px; }
             .dash-sidebar .menu-item {
-                padding: 6px 4px;
-                font-size: 10px;
-                justify-content: center;
-                text-align: center;
-                flex-direction: column;
-                gap: 2px;
-            }
-            .dash-sidebar .menu-item i {
-                width: auto;
-                font-size: 16px;
-            }
-            .dash-sidebar .menu-item.logout-item {
-                border-top: none;
-                margin-top: 0;
-                padding-top: 6px;
-            }
-            
-            .dash-main {
-                padding: 12px;
-            }
-            .dash-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 4px;
-            }
-            .dash-header h2 {
-                font-size: 16px;
-            }
-            .dash-stats {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .dash-stat {
-                padding: 10px;
-            }
-            .dash-stat .number {
-                font-size: 16px;
-            }
-            .dash-stat .label {
-                font-size: 9px;
-            }
-            
-            .dash-actions {
-                flex-direction: column;
-            }
-            .dash-actions .btn-gold, .dash-actions .btn-outline {
-                width: 100%;
-                padding: 10px;
-                font-size: 13px;
-                min-height: 44px;
-            }
-            
-            .investment-overview img {
-                max-height: 100px;
-            }
-            
-            .dash-section {
-                padding: 10px;
-            }
-            .dash-section h3 {
-                font-size: 13px;
-            }
-            
-            /* MODALS */
-            .auth-modal, .kyc-modal, .deposit-modal, .deposit-confirm-modal {
-                padding: 20px 14px;
-                max-width: 100%;
-                margin: 0;
-                border-radius: 16px;
-            }
-            .auth-modal h2, .kyc-modal h2, .deposit-modal h2, .deposit-confirm-modal h2 {
-                font-size: 18px;
-            }
-            
-            .deposit-amounts {
-                grid-template-columns: 1fr 1fr;
-                gap: 6px;
-            }
-            .deposit-amount {
-                padding: 8px;
+                flex-direction: row;
                 font-size: 12px;
-                min-height: 40px;
+                padding: 8px 12px;
+                justify-content: flex-start;
+                gap: 10px;
             }
+            .dash-sidebar .menu-item i { font-size: 14px; }
+            .dash-sidebar .menu-item.logout-item { border-top: 1px solid rgba(255,255,255,0.05); margin-top: 6px; padding-top: 10px; }
             
-            /* ADMIN */
-            .admin-stats {
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 8px;
-            }
-            .admin-stat {
-                padding: 8px;
-            }
-            .admin-stat .num {
-                font-size: 16px;
-            }
+            .dash-stats { grid-template-columns: repeat(4, 1fr); }
+            .dash-actions { flex-direction: row; }
+            .dash-actions .btn-gold, .dash-actions .btn-outline { width: auto; flex: 1; }
             
-            .admin-tabs {
-                flex-wrap: wrap;
-                gap: 4px;
-            }
-            .admin-tab {
-                font-size: 10px;
-                padding: 4px 10px;
-            }
+            .admin-header { flex-direction: row; justify-content: space-between; }
+            .admin-stats { grid-template-columns: repeat(5, 1fr); }
             
-            .admin-table th, .admin-table td {
-                font-size: 10px;
-                padding: 4px 4px;
-            }
-            .admin-table .btn-approve, .admin-table .btn-reject, .admin-table .btn-delete,
-            .admin-table .btn-view, .admin-table .btn-show-pwd {
-                font-size: 8px;
-                padding: 2px 6px;
-                min-height: 22px;
-            }
-            
-            /* TOAST */
             .toast-notification {
-                bottom: 10px;
-                left: 10px;
-                right: 10px;
-                max-width: none;
-                font-size: 12px;
-                padding: 10px 14px;
-                text-align: center;
-                transform: none;
-            }
-            
-            /* Confirmation Modal */
-            .deposit-confirm-modal .icon {
-                font-size: 36px;
-            }
-            .deposit-confirm-modal h2 {
-                font-size: 18px;
-            }
-            .deposit-confirm-modal p {
-                font-size: 13px;
-            }
-            
-            .withdraw-options {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .withdraw-option .amount {
-                font-size: 18px;
-            }
-            .withdraw-actions {
-                flex-direction: column;
-            }
-            .withdraw-actions .btn-gold, .withdraw-actions .btn-outline {
-                width: 100%;
-            }
-            
-            .admin-login-modal {
-                padding: 24px 16px;
-                max-width: 100%;
-            }
-            .admin-login-modal h2 {
-                font-size: 20px;
+                bottom: 30px;
+                right: 30px;
+                left: auto;
+                max-width: 400px;
             }
         }
 
-        /* ===== SMALL PHONES (max 480px) ===== */
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 20px;
-            }
-            .hero .description {
-                font-size: 12px;
-            }
-            .hero-quote {
-                font-size: 12px;
-            }
-            
-            .section-title {
-                font-size: 18px;
-            }
-            .section-subtitle {
-                font-size: 12px;
-            }
-            
-            .image-grid {
-                grid-template-columns: 1fr;
-            }
-            .image-grid .img-card img {
-                height: 160px;
-            }
-            
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .roadmap-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .packages-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .share-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .investment-image-grid {
-                grid-template-columns: 1fr;
-            }
-            .investment-image-grid img {
-                height: 140px;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .dash-stats {
-                grid-template-columns: 1fr;
-            }
-            .dash-sidebar {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
-            
-            .deposit-amounts {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .admin-stats {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .auth-modal, .kyc-modal, .deposit-modal {
-                padding: 16px 12px;
-            }
-            .auth-modal input, .kyc-modal input, .deposit-modal input {
-                font-size: 16px;
-                padding: 8px 12px;
-            }
-            
-            .withdraw-options {
-                grid-template-columns: 1fr;
-            }
-            
-            .deposit-confirm-modal {
-                padding: 20px 14px;
-            }
-            .deposit-confirm-modal .icon {
-                font-size: 32px;
-            }
-            .deposit-confirm-modal h2 {
-                font-size: 16px;
-            }
-            
-            .admin-table-wrap {
-                padding: 8px;
-            }
-            .admin-table th, .admin-table td {
-                font-size: 9px;
-                padding: 3px 3px;
-            }
-            
-            .about-us-content {
-                padding: 20px 12px;
-            }
-            .about-us-content h3 {
-                font-size: 17px;
-            }
-            .about-us-content p {
-                font-size: 13px;
-            }
-            .about-us-content ul li {
-                font-size: 13px;
-            }
+            .hero h1 { font-size: 20px; }
+            .hero .description { font-size: 12px; }
+            .image-grid .img-card img { height: 80px; }
+            .deposit-amounts { grid-template-columns: 1fr 1fr; }
+            .packages-grid { grid-template-columns: 1fr 1fr; }
+            .dash-stats { grid-template-columns: 1fr 1fr; }
+            .dash-sidebar { grid-template-columns: 1fr 1fr 1fr; }
+            .admin-stats { grid-template-columns: 1fr 1fr; }
         }
 
         /* ===== TOUCH FRIENDLY ===== */
-        @media (max-width: 768px) {
-            button, .btn-gold, .btn-outline, .register-btn, .login-btn,
-            .deposit-amount, .withdraw-option, .admin-tab,
-            .copy-btn, .file-upload {
-                min-height: 44px;
-                min-width: 44px;
-            }
-            
-            input, select, textarea {
-                font-size: 16px !important;
-                padding: 10px 12px !important;
-            }
-            
-            .why-card, .package-card, .roadmap-card, .share-item {
-                padding: 14px 12px;
-            }
-            
-            .dash-stat, .admin-stat {
-                padding: 8px;
-            }
+        button, .btn-gold, .btn-outline, .register-btn, .login-btn,
+        .deposit-amount, .withdraw-option, .admin-tab,
+        .copy-btn, .file-upload, .menu-item {
+            min-height: 44px;
+            min-width: 44px;
         }
-
-        /* ===== SCROLL CONTAINER FOR TABLES ===== */
+        input, select, textarea {
+            font-size: 16px !important;
+            padding: 10px 12px !important;
+        }
+        .why-card, .package-card, .roadmap-card, .share-item {
+            padding: 12px 10px;
+        }
+        .dash-stat, .admin-stat {
+            padding: 8px;
+        }
         .table-scroll {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -1877,6 +1375,7 @@
             <button class="login-btn" onclick="openAuth('login')">Login</button>
         </nav>
         <div class="register-btn-wrapper">
+            <button class="login-btn-header" onclick="openAuth('login')">Login</button>
             <button class="register-btn" onclick="openAuth('register')">Register</button>
         </div>
         <div class="hamburger" onclick="toggleMenu()">
@@ -1915,11 +1414,11 @@
             <div class="image-grid">
                 <div class="img-card">
                     <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Office Building" />
-                    <div class="caption">🏢 Our Physical Office &amp; Operations</div>
+                    <div class="caption">🏢 Office &amp; Operations</div>
                 </div>
                 <div class="img-card">
                     <img src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Warehouse" />
-                    <div class="caption">📦 Warehouse &amp; Product Storage</div>
+                    <div class="caption">📦 Warehouse &amp; Storage</div>
                 </div>
                 <div class="img-card">
                     <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team Working" />
@@ -1927,15 +1426,15 @@
                 </div>
                 <div class="img-card">
                     <img src="https://images.pexels.com/photos/5825148/pexels-photo-5825148.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Products" />
-                    <div class="caption">📦 Physical Products &amp; Goods</div>
+                    <div class="caption">📦 Physical Products</div>
                 </div>
                 <div class="img-card">
                     <img src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Business Meeting" />
-                    <div class="caption">🤝 Business Meetings &amp; Partnerships</div>
+                    <div class="caption">🤝 Business Meetings</div>
                 </div>
                 <div class="img-card">
                     <img src="https://images.pexels.com/photos/3182788/pexels-photo-3182788.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Global Network" />
-                    <div class="caption">🌍 Global Network &amp; Partnerships</div>
+                    <div class="caption">🌍 Global Network</div>
                 </div>
             </div>
         </div>
@@ -1952,32 +1451,32 @@
                 <div class="why-card">
                     <div class="icon">👔</div>
                     <h3>Responsible Management</h3>
-                    <p>Discipline and accountability in every step of the process.</p>
+                    <p>Discipline and accountability in every step.</p>
                 </div>
                 <div class="why-card">
                     <div class="icon">🔍</div>
                     <h3>Transparent Operations</h3>
-                    <p>Clear communication and real updates delivered every cycle.</p>
+                    <p>Clear communication every cycle.</p>
                 </div>
                 <div class="why-card">
                     <div class="icon">📈</div>
                     <h3>Business Development</h3>
-                    <p>We focus on long-term growth, not short-term promises.</p>
+                    <p>Focus on long-term growth.</p>
                 </div>
                 <div class="why-card">
                     <div class="icon">🤝</div>
                     <h3>Investor Development</h3>
-                    <p>We grow together — your success is our success.</p>
+                    <p>Your success is our success.</p>
                 </div>
                 <div class="why-card">
                     <div class="icon">🛡️</div>
                     <h3>Risk Management</h3>
-                    <p>We manage risks through planning, supervision, and evaluation.</p>
+                    <p>Planning, supervision, evaluation.</p>
                 </div>
                 <div class="why-card">
                     <div class="icon">💡</div>
                     <h3>Long-Term Vision</h3>
-                    <p>We build sustainable wealth through patience and discipline.</p>
+                    <p>Patience and discipline.</p>
                 </div>
             </div>
         </div>
@@ -1988,9 +1487,9 @@
     ============================================================ -->
     <section id="why-exists">
         <div class="why-invest" style="margin-top:0;">
-            <div style="text-align:center; max-width:800px; margin:0 auto; padding:12px 0;">
-                <h3 style="color:#c9a84c; font-size:20px; margin-bottom:12px;">Why World Investment Global Exists</h3>
-                <p style="color:#aaa; font-size:14px; line-height:1.7;">
+            <div style="text-align:center; max-width:800px; margin:0 auto; padding:10px 0;">
+                <h3 style="color:#c9a84c; font-size:18px; margin-bottom:8px;">Why World Investment Global Exists</h3>
+                <p style="color:#aaa; font-size:13px; line-height:1.6;">
                     Many people have capital. Many people have ideas. Many people want growth.
                     <br><br>
                     However, not everyone has the time, knowledge, resources, or operational structure required to manage business activities successfully.
@@ -2007,7 +1506,7 @@
     <section id="values">
         <h2 class="section-title">Our <span>Core Values</span></h2>
         <p class="section-subtitle">The principles that guide everything we do.</p>
-        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; max-width:900px; margin:0 auto;">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; max-width:900px; margin:0 auto;">
             <div class="value-tag"><h4>Integrity</h4></div>
             <div class="value-tag"><h4>Discipline</h4></div>
             <div class="value-tag"><h4>Transparency</h4></div>
@@ -2028,14 +1527,14 @@
             <div class="cycle-grid">
                 <div class="cycle-info">
                     <h3>20 Days</h3>
-                    <p>The cycle allows for careful planning, purchasing, operations, sales, supervision, and proper reporting for sustainable operations. A longer cycle ensures quality execution and real business outcomes.</p>
-                    <div style="margin-top:12px;">
+                    <p>The cycle allows for careful planning, purchasing, operations, sales, supervision, and proper reporting for sustainable operations.</p>
+                    <div style="margin-top:10px;">
                         <span class="days">20</span>
-                        <span style="color:#888; font-size:14px; margin-left:6px;">Day Operating Cycle</span>
+                        <span style="color:#888; font-size:13px; margin-left:4px;">Day Operating Cycle</span>
                     </div>
                 </div>
                 <div>
-                    <h3 style="color:#c9a84c; text-align:center; margin-bottom:12px; font-size:18px;">Our Core Values</h3>
+                    <h3 style="color:#c9a84c; text-align:center; margin-bottom:8px; font-size:16px;">Our Core Values</h3>
                     <div class="values-list">
                         <div class="value-tag"><h4>Integrity</h4></div>
                         <div class="value-tag"><h4>Discipline</h4></div>
@@ -2096,8 +1595,8 @@
 
         <div class="investment-share-section">
 
-            <h3 style="color:#c9a84c; font-size:20px; text-align:center; margin-bottom:4px;">Profit Sharing Model</h3>
-            <p style="text-align:center; color:#999; font-size:14px; margin-bottom:12px;">Profits are distributed based on real business performance.</p>
+            <h3 style="color:#c9a84c; font-size:18px; text-align:center; margin-bottom:2px;">Profit Sharing Model</h3>
+            <p style="text-align:center; color:#999; font-size:12px; margin-bottom:10px;">Profits are distributed based on real business performance.</p>
 
             <div class="share-grid">
                 <div class="share-item">
@@ -2128,7 +1627,7 @@
                 </p>
             </div>
 
-            <h4 style="color:#c9a84c; font-size:17px; margin-top:20px; text-align:center;">We Invest in Real Businesses</h4>
+            <h4 style="color:#c9a84c; font-size:15px; margin-top:16px; text-align:center;">We Invest in Real Businesses</h4>
             <div class="investment-image-grid">
                 <img src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Warehouse" />
                 <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team Working" />
@@ -2176,7 +1675,7 @@
             <div class="package-card">
                 <div class="name">Starter</div>
                 <div class="amount">₦55,000</div>
-                <div class="desc">Entry level participation</div>
+                <div class="desc">Entry level</div>
             </div>
             <div class="package-card">
                 <div class="name">Growth</div>
@@ -2196,7 +1695,7 @@
             <div class="package-card">
                 <div class="name">Elite</div>
                 <div class="amount">₦1,100,000</div>
-                <div class="desc">Premium level participation</div>
+                <div class="desc">Premium level</div>
             </div>
         </div>
     </section>
@@ -2267,10 +1766,10 @@
         <h2 class="section-title">Contact <span>Us</span></h2>
         <p class="section-subtitle">We are always ready to connect with serious investors and partners.</p>
         <div class="contact-box">
-            <button class="btn-gold" onclick="toggleContact()" style="margin-bottom:12px; font-size:13px; padding:8px 20px; min-height:44px;">
+            <button class="btn-gold" onclick="toggleContact()" style="margin-bottom:10px; font-size:13px; padding:8px 16px; min-height:44px;">
                 <i class="fas fa-phone"></i> Show Contact Details
             </button>
-            <div class="contact-info" id="contactInfo">
+            <div class="contact-info" id="contactInfo" style="display:none; margin-top:16px;">
                 <div class="contact-grid">
                     <div class="contact-item">
                         <div class="icon">📞</div>
@@ -2305,7 +1804,7 @@
             <div class="footer-col">
                 <div class="brand">WORLD INVESTMENT GLOBAL</div>
                 <div class="brand-tag">Business Development &amp; Investment Company</div>
-                <p style="margin-top:6px; color:#666; font-size:11px;">Building Opportunities Through Vision, Discipline &amp; Growth</p>
+                <p style="margin-top:4px; color:#666; font-size:10px;">Building Opportunities Through Vision, Discipline &amp; Growth</p>
             </div>
             <div class="footer-col">
                 <h4>Company</h4>
@@ -2452,7 +1951,7 @@
                 <div class="form-group">
                     <label>Phone Number <span style="color:#ff6b6b;">*</span></label>
                     <input type="tel" id="kycPhone" placeholder="Enter your active phone number" required />
-                    <small>Enter your active phone number (e.g., 08012345678)</small>
+                    <small>Enter your active phone number</small>
                 </div>
 
                 <div class="form-group">
@@ -2482,7 +1981,7 @@
                     <div id="kycPhotoPreview"></div>
                 </div>
 
-                <div id="kycStatusMessage" style="display:none; text-align:center; padding:10px; margin:8px 0; border-radius:10px; font-size:13px;"></div>
+                <div id="kycStatusMessage" style="display:none; text-align:center; padding:8px; margin:6px 0; border-radius:8px; font-size:12px;"></div>
 
                 <button type="submit" class="btn-gold" id="kycSubmitBtn">
                     <i class="fas fa-check"></i> Verify KYC
@@ -2510,32 +2009,32 @@
                 </div>
             </div>
 
-            <div id="selectedAmountDisplay" style="display:none; text-align:center; padding:10px; background:rgba(201,168,76,0.05); border-radius:10px; margin:8px 0; border:1px solid rgba(201,168,76,0.1);">
-                <p style="color:#888; font-size:12px;">You selected:</p>
-                <p style="color:#c9a84c; font-size:20px; font-weight:700;" id="selectedAmountText">₦0</p>
+            <div id="selectedAmountDisplay" style="display:none; text-align:center; padding:8px; background:rgba(201,168,76,0.05); border-radius:8px; margin:6px 0; border:1px solid rgba(201,168,76,0.1);">
+                <p style="color:#888; font-size:11px;">You selected:</p>
+                <p style="color:#c9a84c; font-size:18px; font-weight:700;" id="selectedAmountText">₦0</p>
             </div>
 
             <div id="stepBankDetails" style="display:none;">
-                <div style="background:rgba(26,26,62,0.6); border-radius:10px; padding:12px; margin:8px 0; border:1px solid rgba(201,168,76,0.1);">
-                    <div style="text-align:center; margin-bottom:8px;">
-                        <span style="color:#c9a84c; font-size:13px; font-weight:600;">💳 Transfer to this account</span>
+                <div style="background:rgba(26,26,62,0.6); border-radius:10px; padding:10px; margin:6px 0; border:1px solid rgba(201,168,76,0.1);">
+                    <div style="text-align:center; margin-bottom:6px;">
+                        <span style="color:#c9a84c; font-size:12px; font-weight:600;">💳 Transfer to this account</span>
                     </div>
                     <div style="text-align:center;">
-                        <div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:0.5px;">Account Name</div>
-                        <div style="color:#c9a84c; font-size:16px; font-weight:700;">Al-amin Usman</div>
-                        <div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; margin-top:6px;">Account Number</div>
-                        <div style="color:#fff; font-size:24px; font-weight:700;">6611156108</div>
+                        <div style="color:#888; font-size:9px; text-transform:uppercase; letter-spacing:0.5px;">Account Name</div>
+                        <div style="color:#c9a84c; font-size:15px; font-weight:700;">Al-amin Usman</div>
+                        <div style="color:#888; font-size:9px; text-transform:uppercase; letter-spacing:0.5px; margin-top:4px;">Account Number</div>
+                        <div style="color:#fff; font-size:22px; font-weight:700;">6611156108</div>
                         <button class="copy-btn" onclick="copyAccountNumber()">
                             <i class="fas fa-copy"></i> Copy Number
                         </button>
-                        <div style="color:#888; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; margin-top:6px;">Bank</div>
-                        <div style="color:#fff; font-size:15px; font-weight:600;">Moniepoint MFB</div>
-                        <div style="color:#888; font-size:10px; margin-top:6px;">Amount to Pay: <span style="color:#c9a84c; font-weight:700;" id="bankAmountDisplay">₦0</span></div>
+                        <div style="color:#888; font-size:9px; text-transform:uppercase; letter-spacing:0.5px; margin-top:4px;">Bank</div>
+                        <div style="color:#fff; font-size:14px; font-weight:600;">Moniepoint MFB</div>
+                        <div style="color:#888; font-size:9px; margin-top:4px;">Amount to Pay: <span style="color:#c9a84c; font-weight:700;" id="bankAmountDisplay">₦0</span></div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label style="color:#ccc; font-size:12px; font-weight:500; display:block; margin-bottom:3px;">Upload Payment Screenshot</label>
+                    <label style="color:#ccc; font-size:11px; font-weight:500; display:block; margin-bottom:2px;">Upload Payment Screenshot</label>
                     <div class="file-upload" onclick="document.getElementById('depositPhoto').click()">
                         <input type="file" id="depositPhoto" accept="image/*" onchange="previewDepositPhoto(this)" />
                         <div class="label">
@@ -2544,17 +2043,17 @@
                             <br><small style="color:#666;">PNG, JPG, JPEG (Max 5MB)</small>
                         </div>
                     </div>
-                    <div id="depositPhotoPreview" style="margin-top:6px;"></div>
+                    <div id="depositPhotoPreview" style="margin-top:4px;"></div>
                 </div>
 
-                <div id="ocrStatusDeposit" style="display:none; text-align:center; padding:8px; margin:6px 0; border-radius:10px; font-size:12px;"></div>
+                <div id="ocrStatusDeposit" style="display:none; text-align:center; padding:6px; margin:4px 0; border-radius:8px; font-size:11px;"></div>
 
-                <button class="btn-gold" id="verifyDepositBtn" style="display:none; width:100%; padding:10px; font-size:14px; margin-top:6px;" onclick="verifyDepositOCR()">
+                <button class="btn-gold" id="verifyDepositBtn" style="display:none; width:100%; padding:10px; font-size:14px; margin-top:4px;" onclick="verifyDepositOCR()">
                     <i class="fas fa-check-circle"></i> Verify & Continue
                 </button>
             </div>
 
-            <button class="btn-outline" onclick="closeDeposit()" style="width:100%; margin-top:8px; padding:10px; font-size:13px;">Cancel</button>
+            <button class="btn-outline" onclick="closeDeposit()" style="width:100%; margin-top:6px; padding:10px; font-size:13px;">Cancel</button>
         </div>
     </div>
 
@@ -2565,10 +2064,10 @@
         <div class="deposit-confirm-modal">
             <div class="icon">✅</div>
             <h2>Form Submitted Successfully!</h2>
-            <p style="color:#00cc66; font-size:15px; font-weight:600; margin-bottom:8px;">Your Google Form has been submitted.</p>
-            <p style="color:#aaa; font-size:14px; margin-bottom:12px;">Please click the button below to update your balance and start investing.</p>
-            <div style="background:rgba(201,168,76,0.05); border:1px solid rgba(201,168,76,0.1); border-radius:8px; padding:10px; margin-bottom:12px;">
-                <p style="color:#888; font-size:12px;">
+            <p style="color:#00cc66; font-size:14px; font-weight:600; margin-bottom:6px;">Your Google Form has been submitted.</p>
+            <p style="color:#aaa; font-size:13px; margin-bottom:10px;">Click the button below to update your balance and start investing.</p>
+            <div style="background:rgba(201,168,76,0.05); border:1px solid rgba(201,168,76,0.1); border-radius:8px; padding:8px; margin-bottom:10px;">
+                <p style="color:#888; font-size:11px;">
                     <i class="fas fa-info-circle" style="color:#c9a84c;"></i>
                     Your balance will be updated instantly after you confirm.
                 </p>
@@ -2576,7 +2075,7 @@
             <button class="btn-gold" onclick="updateBalanceAfterDeposit()" style="width:100%; padding:12px; font-size:15px;">
                 <i class="fas fa-check-circle"></i> I've Submitted - Update My Balance
             </button>
-            <button class="btn-outline" onclick="closeDepositConfirm()" style="width:100%; margin-top:8px; padding:10px; font-size:13px;">Cancel</button>
+            <button class="btn-outline" onclick="closeDepositConfirm()" style="width:100%; margin-top:6px; padding:10px; font-size:13px;">Cancel</button>
         </div>
     </div>
 
@@ -2615,11 +2114,11 @@
                 <div class="withdraw-options" id="withdrawOptions">
                     <div class="withdraw-option" onclick="selectWithdrawOption(this, 'profit')">
                         <div class="amount" id="profitAmount">₦0</div>
-                        <div class="label">Withdraw Only Profit<br><span style="font-size:9px;color:#666;">Capital stays invested</span></div>
+                        <div class="label">Withdraw Only Profit<br><span style="font-size:8px;color:#666;">Capital stays invested</span></div>
                     </div>
                     <div class="withdraw-option" onclick="selectWithdrawOption(this, 'all')">
                         <div class="amount" id="allAmount">₦0</div>
-                        <div class="label">Withdraw Capital + Profit<br><span style="font-size:9px;color:#666;">Withdraw everything</span></div>
+                        <div class="label">Withdraw Capital + Profit<br><span style="font-size:8px;color:#666;">Withdraw everything</span></div>
                     </div>
                 </div>
                 <div class="withdraw-form" id="withdrawForm" style="display:none;">
@@ -2635,7 +2134,7 @@
                         <label>Account Number</label>
                         <input type="text" id="withdrawAccountNumber" placeholder="Enter account number" />
                     </div>
-                    <div style="text-align:center; color:#888; font-size:11px; margin:6px 0;">
+                    <div style="text-align:center; color:#888; font-size:10px; margin:4px 0;">
                         <i class="fas fa-info-circle"></i> Withdrawal requests are reviewed by admin before approval
                     </div>
                     <div class="withdraw-actions">
@@ -2649,7 +2148,7 @@
             <div class="withdraw-blocked" id="withdrawBlocked">
                 <div class="icon">🔒</div>
                 <h3>Active Investment Detected</h3>
-                <p>You have an active investment. You cannot withdraw until your 20-day cycle is complete.</p>
+                <p>You cannot withdraw until your 20-day cycle is complete.</p>
                 <div class="days-remaining">
                     <span style="color:#888;">Days remaining:</span>
                     <span id="withdrawDaysRemaining">0</span>
@@ -2676,13 +2175,13 @@
                     <span>Investor Dashboard</span>
                 </div>
                 <div class="menu-item active" onclick="showSection('overview')">
-                    <i class="fas fa-th-large"></i> Dashboard
+                    <i class="fas fa-th-large"></i> Home
                 </div>
                 <div class="menu-item" onclick="showSection('investments')">
-                    <i class="fas fa-chart-line"></i> My Investments
+                    <i class="fas fa-chart-line"></i> Invest
                 </div>
                 <div class="menu-item" onclick="showSection('earnings')">
-                    <i class="fas fa-coins"></i> My Earnings
+                    <i class="fas fa-coins"></i> Earnings
                 </div>
                 <div class="menu-item" onclick="showSection('kyc')">
                     <i class="fas fa-id-card"></i> KYC
@@ -2696,39 +2195,39 @@
             </div>
             <div class="dash-main">
                 <div class="dash-header">
-                    <h2>📊 Investor Dashboard</h2>
+                    <h2>📊 Dashboard</h2>
                     <div class="user-info">Welcome, <span id="dashUsername">User</span></div>
                 </div>
 
-                <div id="kycAlert" style="margin-bottom:12px; display:none;"></div>
+                <div id="kycAlert" style="margin-bottom:10px; display:none;"></div>
 
                 <div class="dash-stats">
                     <div class="dash-stat">
                         <div class="number" id="dashBalance">₦0.00</div>
-                        <div class="label">Available Balance</div>
+                        <div class="label">Balance</div>
                     </div>
                     <div class="dash-stat">
                         <div class="number" id="dashInvested">₦0.00</div>
-                        <div class="label">Total Invested</div>
+                        <div class="label">Invested</div>
                     </div>
                     <div class="dash-stat">
                         <div class="number" id="dashProfit">₦0.00</div>
-                        <div class="label">Total Profit</div>
+                        <div class="label">Profit</div>
                     </div>
                     <div class="dash-stat">
                         <div class="number" id="dashActive">0</div>
-                        <div class="label">Active Investments</div>
+                        <div class="label">Active</div>
                     </div>
                 </div>
 
-                <div id="pendingBalanceNotice" style="display:none; background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:8px; padding:8px 12px; margin-bottom:12px; color:#ffaa00; text-align:center; font-size:12px;">
-                    <i class="fas fa-clock"></i> <strong>Pending Balance:</strong> You have <span id="pendingBalanceAmount">₦0.00</span> awaiting admin approval.
+                <div id="pendingBalanceNotice" style="display:none; background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:8px; padding:6px 10px; margin-bottom:10px; color:#ffaa00; text-align:center; font-size:11px;">
+                    <i class="fas fa-clock"></i> <strong>Pending:</strong> <span id="pendingBalanceAmount">₦0.00</span> awaiting approval.
                 </div>
 
                 <div class="investment-overview">
                     <img src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Physical Business Operations" />
                     <div class="title">🏭 Physical Business Operations</div>
-                    <div class="desc">We invest in real, physical businesses — warehouses, products, logistics, and tangible assets that create real value.</div>
+                    <div class="desc">We invest in real, physical businesses — warehouses, products, logistics, and tangible assets.</div>
                 </div>
 
                 <div class="dash-actions">
@@ -2757,12 +2256,12 @@
                                 <div class="lbl">Company Share (40%)</div>
                             </div>
                         </div>
-                        <div style="text-align:center; color:#888; font-size:11px; margin-top:6px;">
+                        <div style="text-align:center; color:#888; font-size:10px; margin-top:4px;">
                             <span id="perfRate">Profit Rate: 0%</span>
                         </div>
                     </div>
                     <div class="dash-section">
-                        <h3><i class="fas fa-clock"></i> 20-Day Cycle Progress</h3>
+                        <h3><i class="fas fa-clock"></i> 20-Day Cycle</h3>
                         <div class="cycle-progress">
                             <div class="info">
                                 <span id="cycleDayText">Day 0 of 20</span>
@@ -2772,7 +2271,7 @@
                                 <div class="bar-fill" id="cycleBar" style="width:0%;"></div>
                             </div>
                         </div>
-                        <div style="text-align:center; color:#888; font-size:11px; margin-top:6px;">
+                        <div style="text-align:center; color:#888; font-size:10px; margin-top:4px;">
                             <span id="cycleDateText">Started: — | Complete: —</span>
                         </div>
                     </div>
@@ -2781,7 +2280,7 @@
                         <div class="empty-state" id="investmentStatus">
                             <div class="icon">📭</div>
                             <p>No active investments yet.</p>
-                            <p style="font-size:11px; color:#555;">Start your investment journey today!</p>
+                            <p style="font-size:10px; color:#555;">Start your investment journey today!</p>
                         </div>
                     </div>
                     <div class="dash-section">
@@ -2789,7 +2288,7 @@
                         <div class="empty-state" id="transactionHistory">
                             <div class="icon">📋</div>
                             <p>No transactions yet.</p>
-                            <p style="font-size:11px; color:#555;">Your transaction history will appear here.</p>
+                            <p style="font-size:10px; color:#555;">Your history will appear here.</p>
                         </div>
                     </div>
                 </div>
@@ -2800,7 +2299,7 @@
                         <div class="empty-state">
                             <div class="icon">📊</div>
                             <p>You have no active investments.</p>
-                            <p style="font-size:11px; color:#555;">Explore our investment packages and start growing your wealth.</p>
+                            <p style="font-size:10px; color:#555;">Explore our packages and start growing.</p>
                         </div>
                     </div>
                 </div>
@@ -2811,7 +2310,7 @@
                         <div class="empty-state">
                             <div class="icon">💰</div>
                             <p>No earnings yet.</p>
-                            <p style="font-size:11px; color:#555;">Earnings will appear here after your investments mature.</p>
+                            <p style="font-size:10px; color:#555;">Earnings will appear here after investments mature.</p>
                         </div>
                     </div>
                 </div>
@@ -2820,10 +2319,10 @@
                     <div class="dash-section">
                         <h3><i class="fas fa-id-card"></i> KYC Verification</h3>
                         <div id="kycStatusDisplay">
-                            <div style="text-align:center; padding:16px 0;">
-                                <div style="font-size:44px; margin-bottom:8px;">🆔</div>
-                                <p style="color:#aaa; margin-bottom:8px;">Complete your KYC to unlock full investment features.</p>
-                                <button class="btn-gold" onclick="openKyc()" style="padding:8px 20px; font-size:13px;">Complete KYC</button>
+                            <div style="text-align:center; padding:12px 0;">
+                                <div style="font-size:36px; margin-bottom:6px;">🆔</div>
+                                <p style="color:#aaa; margin-bottom:6px;">Complete your KYC to unlock full features.</p>
+                                <button class="btn-gold" onclick="openKyc()" style="padding:6px 16px; font-size:12px;">Complete KYC</button>
                             </div>
                         </div>
                     </div>
@@ -2832,23 +2331,23 @@
                 <div id="section-support" style="display:none;">
                     <div class="dash-section">
                         <h3><i class="fas fa-headset"></i> Support</h3>
-                        <div style="text-align:center; padding:12px 0;">
-                            <p style="color:#aaa; margin-bottom:10px;">Need help? Contact our support team.</p>
-                            <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+                        <div style="text-align:center; padding:10px 0;">
+                            <p style="color:#aaa; margin-bottom:8px;">Need help? Contact us.</p>
+                            <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
                                 <div>
-                                    <div style="font-size:20px;">📞</div>
-                                    <div style="color:#888; font-size:11px;">Call</div>
-                                    <div style="color:#c9a84c; font-weight:600; font-size:12px;">07073717229</div>
+                                    <div style="font-size:18px;">📞</div>
+                                    <div style="color:#888; font-size:10px;">Call</div>
+                                    <div style="color:#c9a84c; font-weight:600; font-size:11px;">07073717229</div>
                                 </div>
                                 <div>
-                                    <div style="font-size:20px;">💬</div>
-                                    <div style="color:#888; font-size:11px;">WhatsApp</div>
-                                    <div style="color:#c9a84c; font-weight:600; font-size:12px;">08122294546</div>
+                                    <div style="font-size:18px;">💬</div>
+                                    <div style="color:#888; font-size:10px;">WhatsApp</div>
+                                    <div style="color:#c9a84c; font-weight:600; font-size:11px;">08122294546</div>
                                 </div>
                                 <div>
-                                    <div style="font-size:20px;">✉️</div>
-                                    <div style="color:#888; font-size:11px;">Email</div>
-                                    <div style="color:#c9a84c; font-weight:600; font-size:12px;">worldinvestmentglobalhub@gmail.com</div>
+                                    <div style="font-size:18px;">✉️</div>
+                                    <div style="color:#888; font-size:10px;">Email</div>
+                                    <div style="color:#c9a84c; font-weight:600; font-size:11px;">worldinvestmentglobalhub@gmail.com</div>
                                 </div>
                             </div>
                         </div>
@@ -2867,17 +2366,17 @@
                 <h2>🛡️ Admin Dashboard</h2>
                 <div>
                     <span class="admin-badge">🔐 Admin Access</span>
-                    <button class="logout-btn" onclick="closeAdmin()" style="margin-left:6px; background:transparent; border:1px solid #ff6b6b; color:#ff6b6b; padding:4px 12px; border-radius:30px; cursor:pointer; font-weight:600; font-size:11px; min-height:32px;">Close</button>
+                    <button class="logout-btn" onclick="closeAdmin()">Close</button>
                 </div>
             </div>
             <div class="admin-stats" id="adminStats">
                 <div class="admin-stat">
                     <div class="num" id="adminTotalUsers">0</div>
-                    <div class="lbl">Total Users</div>
+                    <div class="lbl">Users</div>
                 </div>
                 <div class="admin-stat">
                     <div class="num" id="adminTotalDeposits">₦0</div>
-                    <div class="lbl">Total Deposits</div>
+                    <div class="lbl">Deposits</div>
                 </div>
                 <div class="admin-stat">
                     <div class="num" id="adminPendingDeposits">0</div>
@@ -2907,7 +2406,7 @@
                             <tr><th>User</th><th>Amount</th><th>Date</th><th>Status</th><th>Action</th></tr>
                         </thead>
                         <tbody id="adminDepositsList">
-                            <tr><td colspan="5" style="text-align:center; color:#666; padding:16px 0;">No pending deposits</td></tr>
+                            <tr><td colspan="5" style="text-align:center; color:#666; padding:12px 0;">No pending deposits</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -2920,7 +2419,7 @@
                             <tr><th>User</th><th>Amount</th><th>Bank</th><th>Status</th><th>Action</th></tr>
                         </thead>
                         <tbody id="adminWithdrawalsList">
-                            <tr><td colspan="5" style="text-align:center; color:#666; padding:16px 0;">No pending withdrawals</td></tr>
+                            <tr><td colspan="5" style="text-align:center; color:#666; padding:12px 0;">No pending withdrawals</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -2933,20 +2432,20 @@
                             <tr><th>User</th><th>Full Name</th><th>Country</th><th>NIN</th><th>Phone</th><th>Status</th><th>Action</th></tr>
                         </thead>
                         <tbody id="adminKycList">
-                            <tr><td colspan="7" style="text-align:center; color:#666; padding:16px 0;">No KYC submissions</td></tr>
+                            <tr><td colspan="7" style="text-align:center; color:#666; padding:12px 0;">No KYC submissions</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
             <div id="adminTabAllData" class="admin-table-wrap" style="display:none;">
-                <div style="display:flex; gap:6px; margin-bottom:10px; flex-wrap:wrap;">
-                    <button class="btn-gold" onclick="filterAllData('all')" style="padding:4px 12px; font-size:11px; min-height:32px;">All</button>
-                    <button class="btn-outline" onclick="filterAllData('kyc')" style="padding:4px 12px; font-size:11px; min-height:32px;">🆔 KYC</button>
-                    <button class="btn-outline" onclick="filterAllData('deposit')" style="padding:4px 12px; font-size:11px; min-height:32px;">💰 Deposits</button>
-                    <button class="btn-outline" onclick="filterAllData('withdrawal')" style="padding:4px 12px; font-size:11px; min-height:32px;">💸 Withdrawals</button>
-                    <button class="btn-outline" onclick="filterAllData('transaction')" style="padding:4px 12px; font-size:11px; min-height:32px;">📋 Transactions</button>
-                    <button class="btn-outline" onclick="filterAllData('profit')" style="padding:4px 12px; font-size:11px; min-height:32px;">📈 Profit</button>
+                <div style="display:flex; gap:4px; margin-bottom:8px; flex-wrap:wrap;">
+                    <button class="btn-gold" onclick="filterAllData('all')" style="padding:4px 10px; font-size:10px; min-height:30px;">All</button>
+                    <button class="btn-outline" onclick="filterAllData('kyc')" style="padding:4px 10px; font-size:10px; min-height:30px;">🆔 KYC</button>
+                    <button class="btn-outline" onclick="filterAllData('deposit')" style="padding:4px 10px; font-size:10px; min-height:30px;">💰 Deposits</button>
+                    <button class="btn-outline" onclick="filterAllData('withdrawal')" style="padding:4px 10px; font-size:10px; min-height:30px;">💸 Withdrawals</button>
+                    <button class="btn-outline" onclick="filterAllData('transaction')" style="padding:4px 10px; font-size:10px; min-height:30px;">📋 Transactions</button>
+                    <button class="btn-outline" onclick="filterAllData('profit')" style="padding:4px 10px; font-size:10px; min-height:30px;">📈 Profit</button>
                 </div>
                 <div class="table-scroll">
                     <table class="admin-table" id="allDataTable">
@@ -2954,7 +2453,7 @@
                             <tr><th>User</th><th>Type</th><th>Amount</th><th>Details</th><th>Status</th><th>Date</th></tr>
                         </thead>
                         <tbody id="adminAllDataList">
-                            <tr><td colspan="6" style="text-align:center; color:#666; padding:16px 0;">No data available</td></tr>
+                            <tr><td colspan="6" style="text-align:center; color:#666; padding:12px 0;">No data available</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -2967,7 +2466,7 @@
                             <tr><th>Username</th><th>Name</th><th>Email</th><th>Balance</th><th>Invested</th><th>KYC</th><th>Actions</th></tr>
                         </thead>
                         <tbody id="adminUsersList">
-                            <tr><td colspan="7" style="text-align:center; color:#666; padding:16px 0;">No users registered</td></tr>
+                            <tr><td colspan="7" style="text-align:center; color:#666; padding:12px 0;">No users registered</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -3079,18 +2578,16 @@
             }
             const info = document.getElementById('contactInfo');
             if (info) {
-                info.classList.add('show');
+                info.style.display = 'block';
             }
         }
 
         function toggleContact() {
             const info = document.getElementById('contactInfo');
-            info.classList.toggle('show');
-            const btn = document.querySelector('.contact-box .btn-gold');
-            if (info.classList.contains('show')) {
-                btn.innerHTML = '<i class="fas fa-phone"></i> Hide Contact Details';
+            if (info.style.display === 'block') {
+                info.style.display = 'none';
             } else {
-                btn.innerHTML = '<i class="fas fa-phone"></i> Show Contact Details';
+                info.style.display = 'block';
             }
         }
 
@@ -3379,18 +2876,18 @@
             const statusEl = document.getElementById('investmentStatus');
             if (user.activeInvestments > 0) {
                 statusEl.innerHTML = `
-                            <div style="text-align:center; padding:6px 0;">
-                                <div style="font-size:30px; margin-bottom:6px;">📈</div>
-                                <p style="color:#c9a84c; font-weight:600;">You have ${user.activeInvestments} active investment(s)</p>
-                                <p style="color:#888; font-size:11px;">Invested: ₦${(user.invested || 0).toFixed(2)}</p>
-                                <p style="color:#888; font-size:11px;">Current Profit: ₦${(user.profit || 0).toFixed(2)}</p>
+                            <div style="text-align:center; padding:4px 0;">
+                                <div style="font-size:26px; margin-bottom:4px;">📈</div>
+                                <p style="color:#c9a84c; font-weight:600;">${user.activeInvestments} active investment(s)</p>
+                                <p style="color:#888; font-size:10px;">Invested: ₦${(user.invested || 0).toFixed(2)}</p>
+                                <p style="color:#888; font-size:10px;">Profit: ₦${(user.profit || 0).toFixed(2)}</p>
                             </div>
                         `;
             } else {
                 statusEl.innerHTML = `
                             <div class="icon">📭</div>
                             <p>No active investments yet.</p>
-                            <p style="font-size:11px; color:#555;">Start your investment journey today!</p>
+                            <p style="font-size:10px; color:#555;">Start your investment journey today!</p>
                         `;
             }
 
@@ -3402,10 +2899,10 @@
                     const statusColor = tx.status === 'approved' ? '#00cc66' : tx.status === 'pending' ? '#ffaa00' :
                         '#ff4444';
                     html += `
-                                <div style="display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:12px;">
+                                <div style="display:flex; justify-content:space-between; padding:3px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:10px;">
                                     <span>${tx.type} - ${tx.description || ''}</span>
                                     <span style="color:${statusColor}; font-weight:600;">${tx.amount}</span>
-                                    <span style="color:#666; font-size:10px;">${tx.status || 'pending'}</span>
+                                    <span style="color:#666; font-size:8px;">${tx.status || 'pending'}</span>
                                 </div>
                             `;
                 });
@@ -3414,7 +2911,7 @@
                 txEl.innerHTML = `
                             <div class="icon">📋</div>
                             <p>No transactions yet.</p>
-                            <p style="font-size:11px; color:#555;">Your transaction history will appear here.</p>
+                            <p style="font-size:10px; color:#555;">Your transaction history will appear here.</p>
                         `;
             }
 
@@ -3555,8 +3052,8 @@
             reader.onload = function(e) {
                 const preview = document.getElementById('depositPhotoPreview');
                 preview.innerHTML = `
-                    <img src="${e.target.result}" style="max-width:100%; max-height:120px; border-radius:8px; border:2px solid #c9a84c; padding:3px;" />
-                    <p style="color:#00cc66; font-size:10px; margin-top:3px;">✅ Screenshot uploaded</p>
+                    <img src="${e.target.result}" style="max-width:100%; max-height:100px; border-radius:8px; border:2px solid #c9a84c; padding:2px;" />
+                    <p style="color:#00cc66; font-size:9px; margin-top:2px;">✅ Screenshot uploaded</p>
                 `;
                 document.getElementById('verifyDepositBtn').style.display = 'block';
                 document.getElementById('ocrStatusDeposit').style.display = 'none';
@@ -3632,7 +3129,7 @@
                 });
                 URL.revokeObjectURL(img.src);
                 
-                statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Reading amount from screenshot...';
+                statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Reading amount...';
                 
                 let bestText = '';
                 const configs = [
@@ -4267,7 +3764,7 @@
             const depositsBody = document.getElementById('adminDepositsList');
             if (depositsList.length === 0) {
                 depositsBody.innerHTML =
-                    `<tr><td colspan="5" style="text-align:center; color:#666; padding:12px 0;">No pending deposits</td></tr>`;
+                    `<tr><td colspan="5" style="text-align:center; color:#666; padding:10px 0;">No pending deposits</td></tr>`;
             } else {
                 depositsBody.innerHTML = depositsList.map(d => `
                             <tr>
@@ -4286,7 +3783,7 @@
             const withdrawalsBody = document.getElementById('adminWithdrawalsList');
             if (withdrawalsList.length === 0) {
                 withdrawalsBody.innerHTML =
-                    `<tr><td colspan="5" style="text-align:center; color:#666; padding:12px 0;">No pending withdrawals</td></tr>`;
+                    `<tr><td colspan="5" style="text-align:center; color:#666; padding:10px 0;">No pending withdrawals</td></tr>`;
             } else {
                 withdrawalsBody.innerHTML = withdrawalsList.map(w => `
                             <tr>
@@ -4305,7 +3802,7 @@
             const kycBody = document.getElementById('adminKycList');
             if (kycList.length === 0) {
                 kycBody.innerHTML =
-                    `<tr><td colspan="7" style="text-align:center; color:#666; padding:12px 0;">No KYC submissions</td></tr>`;
+                    `<tr><td colspan="7" style="text-align:center; color:#666; padding:10px 0;">No KYC submissions</td></tr>`;
             } else {
                 kycBody.innerHTML = kycList.map(k => {
                     const statusBadge = k.status === 'approved' ?
@@ -4346,7 +3843,7 @@
             const usersBody = document.getElementById('adminUsersList');
             if (users.length === 0) {
                 usersBody.innerHTML =
-                    `<tr><td colspan="7" style="text-align:center; color:#666; padding:12px 0;">No users registered</td></tr>`;
+                    `<tr><td colspan="7" style="text-align:center; color:#666; padding:10px 0;">No users registered</td></tr>`;
             } else {
                 usersBody.innerHTML = users.map(u => {
                     const kycStatus = u.kyc ? (u.kyc.status === 'approved' ? '<span style="color:#00cc66;">✅ Verified</span>' : u.kyc.status === 'pending' ? '<span style="color:#ffaa00;">⏳ Pending</span>' : '<span style="color:#ff4444;">❌ Failed</span>') : '<span style="color:#666;">Not Submitted</span>';
@@ -4378,7 +3875,7 @@
             allDataCache = data;
             const body = document.getElementById('adminAllDataList');
             if (data.length === 0) {
-                body.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#666; padding:12px 0;">No data available</td></tr>`;
+                body.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#666; padding:10px 0;">No data available</td></tr>`;
                 return;
             }
 
@@ -4395,9 +3892,9 @@
                                 <td>@${item.username}</td>
                                 <td><strong>${item.type}</strong></td>
                                 <td>${item.amount}</td>
-                                <td style="font-size:11px; color:#888;">${item.details}</td>
+                                <td style="font-size:9px; color:#888;">${item.details}</td>
                                 <td>${statusBadge}</td>
-                                <td style="font-size:11px; color:#666;">${new Date(item.date).toLocaleDateString()} ${new Date(item.date).toLocaleTimeString()}</td>
+                                <td style="font-size:9px; color:#666;">${new Date(item.date).toLocaleDateString()}</td>
                             </tr>
                         `;
             }).join('');
@@ -4732,7 +4229,7 @@
         }
 
         // ============================================================
-        // KYC WITH OCR - ONLY CHECK NAME
+        // KYC WITH OCR - NAME MATCHING (IMPROVED)
         // ============================================================
         let isKycProcessing = false;
 
@@ -4781,8 +4278,8 @@
                         reader.onload = function(e) {
                             const preview = document.getElementById('kycPhotoPreview');
                             preview.innerHTML = `
-                                <img src="${e.target.result}" style="max-width:100%; max-height:120px; border-radius:8px; border:2px solid #c9a84c; padding:3px; margin-top:6px;" />
-                                <p style="color:#00cc66; font-size:10px; margin-top:3px;">✅ NIN slip uploaded</p>
+                                <img src="${e.target.result}" style="max-width:100%; max-height:100px; border-radius:8px; border:2px solid #c9a84c; padding:2px; margin-top:4px;" />
+                                <p style="color:#00cc66; font-size:9px; margin-top:2px;">✅ NIN slip uploaded</p>
                             `;
                         };
                         reader.readAsDataURL(file);
@@ -4792,7 +4289,7 @@
         });
 
         // ============================================================
-        // KYC SUBMISSION - ONLY CHECK NAME
+        // KYC SUBMISSION - NAME MATCHING (IMPROVED)
         // ============================================================
         async function handleKycWithOCR(e) {
             e.preventDefault();
@@ -4806,6 +4303,7 @@
             errorEl.classList.remove('show');
             errorEl.textContent = '';
 
+            // Get user's typed info
             const fullName = document.getElementById('kycFullName').value.trim().toUpperCase();
             const nin = document.getElementById('kycNin').value.trim().replace(/\s/g, '');
             const phone = document.getElementById('kycPhone').value.trim();
@@ -4813,6 +4311,7 @@
             const state = document.getElementById('kycState').value.trim();
             const photo = document.getElementById('kycPhoto').files[0];
 
+            // === VALIDATION ===
             if (!fullName || fullName.length < 2) {
                 errorEl.textContent = 'Please enter your full name.';
                 errorEl.classList.add('show');
@@ -4879,6 +4378,7 @@
                 return;
             }
 
+            // === START OCR ===
             isKycProcessing = true;
             document.getElementById('kycSubmitBtn').disabled = true;
             document.getElementById('kycSubmitBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
@@ -4891,6 +4391,7 @@
             statusMsg.style.background = 'rgba(201,168,76,0.05)';
 
             try {
+                // Process image for better OCR
                 const img = new Image();
                 img.src = URL.createObjectURL(photo);
                 await new Promise((resolve) => { img.onload = resolve; });
@@ -4933,6 +4434,7 @@
 
                 statusMsg.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking your name...';
 
+                // Try multiple OCR attempts
                 let bestText = '';
                 const configs = [
                     { tessedit_pageseg_mode: 6, tessedit_ocr_engine_mode: 1 },
@@ -4958,10 +4460,12 @@
                 const extractedText = bestText;
                 console.log('OCR Result:', extractedText);
 
-                const parsedData = parseNameOnly(extractedText);
-                console.log('Extracted Name:', parsedData);
+                // === EXTRACT NAME FROM NIN SLIP ===
+                const extractedName = extractNameFromNIN(extractedText);
+                console.log('Extracted Name from NIN:', extractedName);
 
-                if (!parsedData) {
+                // === CHECK IF NAME WAS FOUND ===
+                if (!extractedName) {
                     statusMsg.innerHTML = '❌ Could not read your name. Please upload a clearer photo.';
                     statusMsg.style.color = '#ff4444';
                     statusMsg.style.border = '1px solid rgba(255,68,68,0.3)';
@@ -4975,15 +4479,19 @@
                     return;
                 }
 
-                const extractedName = parsedData.trim().toUpperCase();
-                const nameMatches = compareNamesSimple(fullName, extractedName);
+                // === COMPARE NAMES ===
+                const userFullName = fullName;
+                const extractedFullName = extractedName.trim().toUpperCase();
+                const nameMatches = compareNames(userFullName, extractedFullName);
 
                 if (nameMatches) {
+                    // ✅ SUCCESS - Names match!
                     statusMsg.innerHTML = '✅ Name verified successfully!';
                     statusMsg.style.color = '#00cc66';
                     statusMsg.style.border = '1px solid rgba(0,204,102,0.3)';
                     statusMsg.style.background = 'rgba(0,204,102,0.05)';
 
+                    // Save KYC data
                     user.kyc = {
                         fullName: fullName,
                         nin: nin,
@@ -4995,7 +4503,8 @@
                         submittedAt: new Date().toISOString(),
                         verifiedAt: new Date().toISOString(),
                         verifiedBy: 'Auto-OCR',
-                        ninVerified: true
+                        ninVerified: true,
+                        extractedName: extractedName
                     };
 
                     user.name = fullName;
@@ -5027,6 +4536,7 @@
                     }, 1500);
 
                 } else {
+                    // ❌ FAILED - Names don't match
                     statusMsg.innerHTML = '❌ Name mismatch. Please check and try again.';
                     statusMsg.style.color = '#ff4444';
                     statusMsg.style.border = '1px solid rgba(255,68,68,0.3)';
@@ -5034,8 +4544,8 @@
 
                     errorEl.innerHTML = `
                         ❌ Verification Failed!<br><br>
-                        ❌ The name on your slip (${extractedName}) does not match what you entered (${fullName}).<br><br>
-                        📌 Please check your information and upload the correct NIN slip.
+                        ❌ The name on your NIN slip (${extractedName}) does not match what you entered (${fullName}).<br><br>
+                        📌 Please check your name and upload the correct NIN slip.
                     `;
                     errorEl.classList.add('show');
                     isKycProcessing = false;
@@ -5058,13 +4568,17 @@
             }
         }
 
-        function parseNameOnly(text) {
+        // ============================================================
+        // EXTRACT NAME FROM NIN SLIP TEXT
+        // ============================================================
+        function extractNameFromNIN(text) {
             const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
             
             let surname = null;
             let givenNames = null;
             let fullName = null;
 
+            // Find SURNAME
             for (let i = 0; i < lines.length; i++) {
                 const line = lines[i];
                 const upperLine = line.toUpperCase();
@@ -5075,6 +4589,7 @@
                             nextLine.length > 1 && nextLine.length < 30 && 
                             !nextLine.match(/^\d/)) {
                             surname = nextLine;
+                            console.log('Found SURNAME:', surname);
                             break;
                         }
                     }
@@ -5082,6 +4597,7 @@
                 }
             }
 
+            // Find GIVEN NAMES
             for (let i = 0; i < lines.length; i++) {
                 const line = lines[i];
                 const upperLine = line.toUpperCase();
@@ -5092,6 +4608,7 @@
                             nextLine.length > 1 && nextLine.length < 30 && 
                             !nextLine.match(/^\d/)) {
                             givenNames = nextLine;
+                            console.log('Found GIVEN NAMES:', givenNames);
                             break;
                         }
                     }
@@ -5099,6 +4616,7 @@
                 }
             }
 
+            // If not found, try all caps words
             if (!surname && !givenNames) {
                 const allCapsWords = [];
                 for (const line of lines) {
@@ -5118,6 +4636,7 @@
                 }
             }
 
+            // Build full name
             if (givenNames && surname) {
                 fullName = givenNames + ' ' + surname;
             } else if (givenNames) {
@@ -5130,28 +4649,48 @@
                 fullName = fullName.replace(/\s+/g, ' ').trim().toUpperCase();
             }
 
+            console.log('Final extracted name:', fullName);
             return fullName;
         }
 
-        function compareNamesSimple(userName, extractedName) {
-            if (!extractedName) return false;
+        // ============================================================
+        // COMPARE NAMES (Improved matching)
+        // ============================================================
+        function compareNames(name1, name2) {
+            if (!name1 || !name2) return false;
             
-            const userParts = userName.split(' ');
-            const extractedParts = extractedName.split(' ');
+            // Clean both names
+            const clean1 = name1.replace(/\s+/g, ' ').trim().toUpperCase();
+            const clean2 = name2.replace(/\s+/g, ' ').trim().toUpperCase();
             
+            // Direct match
+            if (clean1 === clean2) return true;
+            
+            // Split into parts
+            const parts1 = clean1.split(' ');
+            const parts2 = clean2.split(' ');
+            
+            // Check if all parts of name1 are in name2
             let matchCount = 0;
-            for (const userPart of userParts) {
-                for (const extractedPart of extractedParts) {
-                    if (userPart.length > 2 && extractedPart.includes(userPart)) {
-                        matchCount++;
-                        break;
+            for (const part of parts1) {
+                if (part.length > 1) {
+                    for (const part2 of parts2) {
+                        if (part2.length > 1 && part2.includes(part)) {
+                            matchCount++;
+                            break;
+                        }
                     }
                 }
             }
             
-            return matchCount >= userParts.length * 0.5;
+            // If more than 60% of parts match, consider it a match
+            const matchPercentage = matchCount / parts1.length;
+            return matchPercentage >= 0.6;
         }
 
+        // ============================================================
+        // KYC STATUS DISPLAY
+        // ============================================================
         function updateKycStatus(user) {
             const kyc = user.kyc || null;
             const alertEl = document.getElementById('kycAlert');
@@ -5160,20 +4699,20 @@
             if (!kyc) {
                 alertEl.style.display = 'block';
                 alertEl.innerHTML = `
-                    <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:10px; padding:10px 14px; color:#ffaa00; text-align:center; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+                    <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:8px; padding:8px 10px; color:#ffaa00; text-align:center; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
                         <div>
-                            <span style="font-size:18px;">⚠️</span>
-                            <strong> KYC Required:</strong> Upload your NIN slip for verification
+                            <span style="font-size:16px;">⚠️</span>
+                            <strong> KYC Required:</strong> Upload your NIN slip
                         </div>
-                        <button class="btn-gold" onclick="openKyc()" style="padding:6px 16px; font-size:12px; min-height:36px;">Verify Now</button>
+                        <button class="btn-gold" onclick="openKyc()" style="padding:4px 12px; font-size:11px; min-height:32px; width:auto;">Verify Now</button>
                     </div>
                 `;
                 statusDisplay.innerHTML = `
-                    <div style="text-align:center; padding:20px 12px; background:rgba(26,26,62,0.4); border-radius:10px;">
-                        <div style="font-size:44px; margin-bottom:10px;">🆔</div>
-                        <h4 style="color:#c9a84c; font-size:16px; margin-bottom:6px;">NIN Verification Required</h4>
-                        <p style="color:#aaa; margin-bottom:12px;">Upload your NIN slip to get verified</p>
-                        <button class="btn-gold" onclick="openKyc()" style="padding:8px 20px; font-size:13px;">Verify Now</button>
+                    <div style="text-align:center; padding:16px 10px; background:rgba(26,26,62,0.4); border-radius:10px;">
+                        <div style="font-size:36px; margin-bottom:6px;">🆔</div>
+                        <h4 style="color:#c9a84c; font-size:15px; margin-bottom:4px;">NIN Verification Required</h4>
+                        <p style="color:#aaa; margin-bottom:8px; font-size:12px;">Upload your NIN slip to get verified</p>
+                        <button class="btn-gold" onclick="openKyc()" style="padding:6px 16px; font-size:12px;">Verify Now</button>
                     </div>
                 `;
                 return;
@@ -5182,44 +4721,44 @@
             if (kyc.status === 'pending') {
                 alertEl.style.display = 'block';
                 alertEl.innerHTML = `
-                    <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:10px; padding:10px 14px; color:#ffaa00; text-align:center;">
+                    <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:8px; padding:8px 10px; color:#ffaa00; text-align:center;">
                         ⏳ <strong>KYC Processing:</strong> Your verification is in progress...
                     </div>
                 `;
                 statusDisplay.innerHTML = `
-                    <div style="text-align:center; padding:16px; background:rgba(255,170,0,0.05); border-radius:10px; border:1px solid rgba(255,170,0,0.2);">
-                        <div style="font-size:32px; margin-bottom:6px;">⏳</div>
+                    <div style="text-align:center; padding:12px; background:rgba(255,170,0,0.05); border-radius:8px; border:1px solid rgba(255,170,0,0.2);">
+                        <div style="font-size:28px; margin-bottom:4px;">⏳</div>
                         <p><strong style="color:#ffaa00;">KYC Status: Pending</strong></p>
-                        <p style="font-size:12px; color:#888;">Please wait while we verify your NIN...</p>
+                        <p style="font-size:11px; color:#888;">Please wait while we verify your NIN...</p>
                     </div>
                 `;
             } else if (kyc.status === 'approved') {
                 alertEl.style.display = 'none';
                 statusDisplay.innerHTML = `
-                    <div style="text-align:center; padding:16px; background:rgba(0,204,102,0.05); border-radius:10px; border:1px solid rgba(0,204,102,0.2);">
-                        <div style="font-size:32px; margin-bottom:6px;">✅</div>
+                    <div style="text-align:center; padding:12px; background:rgba(0,204,102,0.05); border-radius:8px; border:1px solid rgba(0,204,102,0.2);">
+                        <div style="font-size:28px; margin-bottom:4px;">✅</div>
                         <p><strong style="color:#00cc66;">KYC Status: Verified</strong></p>
-                        <p style="font-size:12px; color:#888;">Your account is fully verified</p>
-                        ${kyc.verifiedAt ? `<p style="font-size:10px; color:#666;">Verified: ${new Date(kyc.verifiedAt).toLocaleDateString()}</p>` : ''}
+                        <p style="font-size:11px; color:#888;">Your account is fully verified</p>
+                        ${kyc.verifiedAt ? `<p style="font-size:9px; color:#666;">Verified: ${new Date(kyc.verifiedAt).toLocaleDateString()}</p>` : ''}
                     </div>
                 `;
             } else if (kyc.status === 'rejected') {
                 alertEl.style.display = 'block';
                 alertEl.innerHTML = `
-                    <div style="background:rgba(255,68,68,0.1); border:1px solid rgba(255,68,68,0.3); border-radius:10px; padding:10px 14px; color:#ff4444; text-align:center; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+                    <div style="background:rgba(255,68,68,0.1); border:1px solid rgba(255,68,68,0.3); border-radius:8px; padding:8px 10px; color:#ff4444; text-align:center; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
                         <div>
-                            <span style="font-size:18px;">❌</span>
+                            <span style="font-size:16px;">❌</span>
                             <strong> KYC Failed:</strong> Please re-upload your NIN slip
                         </div>
-                        <button class="btn-gold" onclick="openKyc()" style="padding:6px 16px; font-size:12px; min-height:36px;">Retry</button>
+                        <button class="btn-gold" onclick="openKyc()" style="padding:4px 12px; font-size:11px; min-height:32px; width:auto;">Retry</button>
                     </div>
                 `;
                 statusDisplay.innerHTML = `
-                    <div style="text-align:center; padding:16px; background:rgba(255,68,68,0.05); border-radius:10px; border:1px solid rgba(255,68,68,0.2);">
-                        <div style="font-size:32px; margin-bottom:6px;">❌</div>
+                    <div style="text-align:center; padding:12px; background:rgba(255,68,68,0.05); border-radius:8px; border:1px solid rgba(255,68,68,0.2);">
+                        <div style="font-size:28px; margin-bottom:4px;">❌</div>
                         <p><strong style="color:#ff4444;">KYC Status: Failed</strong></p>
-                        <p style="font-size:12px; color:#888;">Please re-upload your NIN slip</p>
-                        <button class="btn-gold" onclick="openKyc()" style="margin-top:8px; padding:6px 16px; font-size:12px; min-height:36px;">Retry</button>
+                        <p style="font-size:11px; color:#888;">Please re-upload your NIN slip</p>
+                        <button class="btn-gold" onclick="openKyc()" style="margin-top:6px; padding:4px 12px; font-size:11px;">Retry</button>
                     </div>
                 `;
             }
