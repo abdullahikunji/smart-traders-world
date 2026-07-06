@@ -5,24 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>World Investment Global - Business Development & Investment Company</title>
 
-    <!-- Font Awesome -->
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-- ============================================================
-    SUPABASE CONNECTION - CORRECTED (Only ONE declaration)
-    ============================================================ -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-        // ===== YOUR SUPABASE KEYS =====
-        const SUPABASE_URL = 'https://rorvgxrjfktbwxlhendg.supabase.co';
-        const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_8h8It5mzTa3bAmXGsJC65Q_O4UvOx51';
-        // ===================================
-
-        // This creates the supabase client ONCE — no duplicate!
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-
-        console.log('✅ Supabase connected with Publishable Key!');
-    </script>
+    <!-- Tesseract.js for OCR -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 
     <style>
         /* ===== RESET & BASE ===== */
@@ -659,19 +646,6 @@
         }
 
         /* ============================================================
-           CAPITAL PROTECTION - SIMPLIFIED
-           ============================================================ */
-        .protection-box {
-            background: rgba(201,168,76,0.05);
-            padding: 25px 20px;
-            border-radius: 16px;
-            border-left: 4px solid #c9a84c;
-            margin-top: 15px;
-        }
-        .protection-box p { color: #ccc; font-size: 15px; line-height: 1.8; max-width: 800px; margin: 0 auto; text-align: center; }
-        @media (max-width: 480px) { .protection-box p { font-size: 13px; } .protection-box { padding: 20px 15px; } }
-
-        /* ============================================================
            AUTH MODALS
            ============================================================ */
         .auth-overlay {
@@ -797,7 +771,7 @@
             background: rgba(17,17,40,0.95);
             border-radius: 24px;
             padding: 35px 25px;
-            max-width: 500px;
+            max-width: 520px;
             width: 92%;
             max-height: 90vh;
             overflow-y: auto;
@@ -854,10 +828,11 @@
         .kyc-modal .file-upload .label { color: #888; font-size: 13px; }
         .kyc-modal .file-upload .label i { color: #c9a84c; font-size: 30px; display: block; margin-bottom: 8px; }
         .kyc-modal .btn-gold { width: 100%; padding: 12px; font-size: 15px; margin-top: 8px; }
-        .kyc-modal .error-msg { color: #ff6b6b; font-size: 12px; margin-top: 4px; display: none; }
+        .kyc-modal .error-msg { color: #ff6b6b; font-size: 13px; margin-top: 4px; display: none; line-height: 1.6; }
         .kyc-modal .error-msg.show { display: block; }
         .kyc-modal .success-msg { color: #00cc66; font-size: 13px; text-align: center; padding: 10px; display: none; }
         .kyc-modal .success-msg.show { display: block; }
+        .kyc-modal small { color: #666; font-size: 11px; display: block; margin-top: 3px; }
 
         /* ============================================================
            DEPOSIT MODAL
@@ -880,7 +855,7 @@
             background: rgba(17,17,40,0.95);
             border-radius: 24px;
             padding: 30px 20px;
-            max-width: 480px;
+            max-width: 520px;
             width: 94%;
             max-height: 90vh;
             overflow-y: auto;
@@ -902,7 +877,7 @@
         .deposit-modal .close-btn:hover { color: #c9a84c; }
         .deposit-modal h2 { color: #c9a84c; font-size: 22px; text-align: center; margin-bottom: 4px; }
         .deposit-modal .sub { text-align: center; color: #888; font-size: 13px; margin-bottom: 20px; }
-        .deposit-amounts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .deposit-amounts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px; }
         .deposit-amount {
             background: rgba(26,26,62,0.8);
             padding: 12px;
@@ -917,20 +892,7 @@
         }
         .deposit-amount:hover { border-color: #c9a84c; transform: scale(1.05); }
         .deposit-amount.selected { border-color: #c9a84c; background: rgba(201,168,76,0.15); }
-        .deposit-details {
-            display: none;
-            background: rgba(26,26,62,0.8);
-            border-radius: 16px;
-            padding: 20px;
-            border: 1px solid rgba(201,168,76,0.1);
-            margin-top: 12px;
-        }
-        .deposit-details.show { display: block; }
-        .deposit-details .bank-info { text-align: center; padding: 8px 0; }
-        .deposit-details .bank-info .label { color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
-        .deposit-details .bank-info .value { color: #fff; font-size: 20px; font-weight: 700; margin: 4px 0 8px; }
-        .deposit-details .bank-info .value.gold { color: #c9a84c; }
-        .deposit-details .bank-info .copy-btn {
+        .deposit-modal .copy-btn {
             background: rgba(201,168,76,0.15);
             color: #c9a84c;
             border: 1px solid #c9a84c;
@@ -940,13 +902,57 @@
             font-size: 11px;
             transition: 0.3s;
         }
-        .deposit-details .bank-info .copy-btn:hover { background: #c9a84c; color: #0a0a1a; }
-        .deposit-timer { text-align: center; margin: 15px 0; padding: 12px; background: rgba(255,107,107,0.1); border-radius: 12px; border: 1px solid rgba(255,107,107,0.2); }
-        .deposit-timer .time { font-size: 30px; font-weight: 800; color: #ff6b6b; }
-        .deposit-timer .label { color: #888; font-size: 12px; }
-        .deposit-actions { display: flex; gap: 10px; margin-top: 15px; }
-        .deposit-actions .btn-gold, .deposit-actions .btn-outline { flex: 1; text-align: center; padding: 10px; font-size: 13px; }
-        @media (max-width: 480px) { .deposit-amounts { grid-template-columns: 1fr 1fr; } .deposit-modal { padding: 20px 15px; } .deposit-timer .time { font-size: 24px; } }
+        .deposit-modal .copy-btn:hover { background: #c9a84c; color: #0a0a1a; }
+        .deposit-modal .file-upload {
+            background: rgba(26,26,62,0.8);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px dashed rgba(201,168,76,0.3);
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .deposit-modal .file-upload:hover { border-color: #c9a84c; }
+        .deposit-modal .file-upload input[type="file"] { display: none; }
+        .deposit-modal .file-upload .label { color: #888; font-size: 13px; }
+        .deposit-modal .file-upload .label i { color: #c9a84c; font-size: 30px; display: block; margin-bottom: 8px; }
+        @media (max-width: 480px) { .deposit-amounts { grid-template-columns: 1fr 1fr; } .deposit-modal { padding: 20px 15px; } }
+
+        /* ============================================================
+           DEPOSIT CONFIRMATION MODAL
+           ============================================================ */
+        .deposit-confirm-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+        .deposit-confirm-overlay.active { display: flex; }
+        .deposit-confirm-modal {
+            background: rgba(17,17,40,0.95);
+            border-radius: 24px;
+            padding: 30px 20px;
+            max-width: 400px;
+            width: 94%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(201,168,76,0.2);
+            position: relative;
+            animation: slideUp 0.4s ease;
+            text-align: center;
+        }
+        .deposit-confirm-modal h2 { color: #c9a84c; font-size: 22px; margin-bottom: 10px; }
+        .deposit-confirm-modal .icon { font-size: 50px; margin-bottom: 15px; }
+        .deposit-confirm-modal p { color: #aaa; font-size: 15px; margin-bottom: 10px; }
+        .deposit-confirm-modal .btn-gold { width: 100%; padding: 14px; font-size: 16px; margin-top: 10px; }
+        .deposit-confirm-modal .btn-outline { width: 100%; margin-top: 10px; padding: 12px; font-size: 14px; }
 
         /* ============================================================
            WITHDRAWAL MODAL
@@ -1326,6 +1332,19 @@
         .admin-login-modal .error-msg.show { display: block; }
         @media (max-width: 480px) { .admin-login-modal { padding: 30px 20px; } .admin-login-modal h2 { font-size: 22px; } }
 
+        /* ============================================================
+           PROTECTION BOX
+           ============================================================ */
+        .protection-box {
+            background: rgba(201,168,76,0.05);
+            padding: 25px 20px;
+            border-radius: 16px;
+            border-left: 4px solid #c9a84c;
+            margin-top: 15px;
+        }
+        .protection-box p { color: #ccc; font-size: 15px; line-height: 1.8; max-width: 800px; margin: 0 auto; text-align: center; }
+        @media (max-width: 480px) { .protection-box p { font-size: 13px; } .protection-box { padding: 20px 15px; } }
+
         /* ===== COUNTRY SEARCH ===== */
         .country-search { position: relative; }
         .country-search input {
@@ -1357,9 +1376,28 @@
         .country-search .dropdown.show { display: block; }
         .country-search .dropdown .item { padding: 10px 14px; color: #ccc; cursor: pointer; transition: 0.3s; }
         .country-search .dropdown .item:hover { background: rgba(201,168,76,0.1); color: #c9a84c; }
+
+        /* Toast Notification */
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0,204,102,0.95);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            max-width: 400px;
+            z-index: 99999;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            animation: slideUp 0.5s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .toast-notification.error { background: rgba(255,68,68,0.95); }
     </style>
 </head>
-
 <body>
 
     <!-- ============================================================
@@ -1662,8 +1700,8 @@
         <h2 class="section-title">Capital <span>Protection</span></h2>
         <p class="section-subtitle">Our commitment to responsible management in simple words.</p>
 
-        <div class="protection-box">
-            <p>
+        <div class="protection-box" style="background:rgba(201,168,76,0.05); padding:30px 40px; border-radius:16px; border-left:4px solid #c9a84c; margin-top:15px;">
+            <p style="color:#ccc; font-size:16px; line-height:1.8; max-width:800px; margin:0 auto; text-align:center;">
                 <strong>Your money is our priority.</strong> We carefully plan every business activity, supervise all operations, and make responsible decisions to protect your investment.
                 <br><br>
                 While all business activities come with some risk, we work hard to reduce those risks through
@@ -1945,57 +1983,161 @@
         <div class="kyc-modal">
             <button class="close-btn" onclick="closeKyc()">&times;</button>
             <h2>🔐 KYC Verification</h2>
-            <p class="sub">Complete your verification to start investing</p>
+            <p class="sub">Enter your details and upload your NIN slip for verification</p>
 
             <div class="success-msg" id="kycSuccess">
-                ✅ KYC submitted successfully! Admin will review your verification.
+                ✅ KYC Verified Successfully!
             </div>
+            
+            <div class="error-msg" id="kycError"></div>
 
-            <form id="kycForm" onsubmit="handleKyc(event)">
+            <form id="kycForm" onsubmit="handleKycWithOCR(event)">
+                <!-- FULL NAME -->
                 <div class="form-group">
-                    <label>Full Name (as on ID)</label>
-                    <input type="text" id="kycFullName" placeholder="Enter your full legal name" required />
+                    <label>Full Name <span style="color:#ff6b6b;">*</span></label>
+                    <input type="text" id="kycFullName" placeholder="Enter your full name as on NIN" required />
+                    <small>Enter your full name as on your NIN slip</small>
                 </div>
 
+                <!-- NIN -->
                 <div class="form-group">
-                    <label>Country</label>
+                    <label>NIN (11 Digits) <span style="color:#ff6b6b;">*</span></label>
+                    <input type="text" id="kycNin" placeholder="Enter your 11-digit NIN" maxlength="11" required />
+                    <small>Enter your 11-digit NIN number (e.g., 11997643662)</small>
+                </div>
+
+                <!-- PHONE NUMBER -->
+                <div class="form-group">
+                    <label>Phone Number <span style="color:#ff6b6b;">*</span></label>
+                    <input type="tel" id="kycPhone" placeholder="Enter your active phone number" required />
+                    <small>Enter your active phone number (e.g., 08012345678)</small>
+                </div>
+
+                <!-- COUNTRY -->
+                <div class="form-group">
+                    <label>Country <span style="color:#ff6b6b;">*</span></label>
                     <div class="country-search">
                         <input type="text" id="kycCountrySearch" placeholder="Search for your country..." oninput="filterCountries()" />
                         <div class="dropdown" id="countryDropdown"></div>
                     </div>
-                    <input type="hidden" id="kycCountry" />
+                    <input type="hidden" id="kycCountry" required />
                 </div>
 
+                <!-- STATE -->
                 <div class="form-group">
-                    <label>State/Province</label>
+                    <label>State/Province <span style="color:#ff6b6b;">*</span></label>
                     <input type="text" id="kycState" placeholder="Enter your state or province" required />
                 </div>
 
+                <!-- Upload NIN Slip -->
                 <div class="form-group">
-                    <label>NIN (National Identification Number)</label>
-                    <input type="number" id="kycNin" placeholder="Enter your NIN" required />
-                </div>
-
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" id="kycPhone" placeholder="Enter your active phone number" required />
-                </div>
-
-                <div class="form-group">
-                    <label>Upload Photo (Passport or ID Photo)</label>
+                    <label>Upload NIN Slip <span style="color:#ff6b6b;">*</span></label>
                     <div class="file-upload" onclick="document.getElementById('kycPhoto').click()">
                         <input type="file" id="kycPhoto" accept="image/*" required />
                         <div class="label">
-                            <i class="fas fa-camera"></i>
-                            Click to upload photo
+                            <i class="fas fa-id-card"></i>
+                            Click to upload NIN slip photo
                             <br><small style="color:#666;">PNG, JPG, JPEG (Max 5MB)</small>
                         </div>
                     </div>
+                    <div id="kycPhotoPreview"></div>
                 </div>
 
-                <div class="error-msg" id="kycError"></div>
-                <button type="submit" class="btn-gold">Submit KYC</button>
+                <!-- Status message -->
+                <div id="kycStatusMessage" style="display:none; text-align:center; padding:12px; margin:10px 0; border-radius:10px; font-size:14px;"></div>
+
+                <button type="submit" class="btn-gold" id="kycSubmitBtn">
+                    <i class="fas fa-check"></i> Verify KYC
+                </button>
             </form>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    DEPOSIT MODAL
+    ============================================================ -->
+    <div class="deposit-overlay" id="depositModal">
+        <div class="deposit-modal">
+            <button class="close-btn" onclick="closeDeposit()">&times;</button>
+            <h2>💰 Make a Deposit</h2>
+            <p class="sub" id="depositStepText">Select the amount you want to invest</p>
+
+            <!-- STEP 1: Select Amount -->
+            <div id="stepSelectAmount">
+                <div class="deposit-amounts">
+                    <div class="deposit-amount" onclick="selectDepositAmount(this, 55000)">₦55,000</div>
+                    <div class="deposit-amount" onclick="selectDepositAmount(this, 110000)">₦110,000</div>
+                    <div class="deposit-amount" onclick="selectDepositAmount(this, 220000)">₦220,000</div>
+                    <div class="deposit-amount" onclick="selectDepositAmount(this, 550000)">₦550,000</div>
+                    <div class="deposit-amount" onclick="selectDepositAmount(this, 1100000)">₦1,100,000</div>
+                </div>
+            </div>
+
+            <!-- Selected amount display -->
+            <div id="selectedAmountDisplay" style="display:none; text-align:center; padding:12px; background:rgba(201,168,76,0.05); border-radius:12px; margin:10px 0; border:1px solid rgba(201,168,76,0.1);">
+                <p style="color:#888; font-size:13px;">You selected:</p>
+                <p style="color:#c9a84c; font-size:22px; font-weight:700;" id="selectedAmountText">₦0</p>
+            </div>
+
+            <!-- STEP 2: Bank Details + Upload -->
+            <div id="stepBankDetails" style="display:none;">
+                <div style="background:rgba(26,26,62,0.6); border-radius:12px; padding:15px; margin:10px 0; border:1px solid rgba(201,168,76,0.1);">
+                    <div style="text-align:center; margin-bottom:10px;">
+                        <span style="color:#c9a84c; font-size:14px; font-weight:600;">💳 Transfer to this account</span>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="color:#888; font-size:11px; text-transform:uppercase; letter-spacing:1px;">Account Name</div>
+                        <div style="color:#c9a84c; font-size:18px; font-weight:700;">Al-amin Usman</div>
+                        <div style="color:#888; font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-top:8px;">Account Number</div>
+                        <div style="color:#fff; font-size:26px; font-weight:700;">6611156108</div>
+                        <button class="copy-btn" onclick="copyAccountNumber()" style="background:rgba(201,168,76,0.15); color:#c9a84c; border:1px solid #c9a84c; padding:5px 14px; border-radius:20px; cursor:pointer; font-size:11px; transition:0.3s; margin-top:4px;">
+                            <i class="fas fa-copy"></i> Copy Number
+                        </button>
+                        <div style="color:#888; font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-top:8px;">Bank</div>
+                        <div style="color:#fff; font-size:16px; font-weight:600;">Moniepoint MFB</div>
+                        <div style="color:#888; font-size:11px; margin-top:8px;">Amount to Pay: <span style="color:#c9a84c; font-weight:700;" id="bankAmountDisplay">₦0</span></div>
+                    </div>
+                </div>
+
+                <!-- Upload Screenshot -->
+                <div class="form-group">
+                    <label style="color:#ccc; font-size:13px; font-weight:500; display:block; margin-bottom:4px;">Upload Payment Screenshot</label>
+                    <div class="file-upload" onclick="document.getElementById('depositPhoto').click()" style="background:rgba(26,26,62,0.8); padding:15px; border-radius:10px; border:1px dashed rgba(201,168,76,0.3); text-align:center; cursor:pointer; transition:0.3s;">
+                        <input type="file" id="depositPhoto" accept="image/*" onchange="previewDepositPhoto(this)" />
+                        <div class="label" style="color:#888; font-size:13px;">
+                            <i class="fas fa-image" style="color:#c9a84c; font-size:30px; display:block; margin-bottom:8px;"></i>
+                            Click to upload payment screenshot
+                            <br><small style="color:#666;">PNG, JPG, JPEG (Max 5MB)</small>
+                        </div>
+                    </div>
+                    <div id="depositPhotoPreview" style="margin-top:8px;"></div>
+                </div>
+
+                <!-- OCR Status -->
+                <div id="ocrStatusDeposit" style="display:none; text-align:center; padding:10px; margin:8px 0; border-radius:10px; font-size:13px;"></div>
+
+                <button class="btn-gold" id="verifyDepositBtn" style="display:none; width:100%; padding:12px; font-size:15px; margin-top:8px;" onclick="verifyDepositOCR()">
+                    <i class="fas fa-check-circle"></i> Verify & Continue
+                </button>
+            </div>
+
+            <button class="btn-outline" onclick="closeDeposit()" style="width:100%; margin-top:10px; padding:12px; font-size:14px;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    DEPOSIT CONFIRMATION MODAL
+    ============================================================ -->
+    <div class="deposit-confirm-overlay" id="depositConfirmModal">
+        <div class="deposit-confirm-modal">
+            <div class="icon">📝</div>
+            <h2>Almost Done!</h2>
+            <p>You have submitted the Google Form.</p>
+            <p style="font-size:13px; color:#888;">Click below to update your balance and start investing!</p>
+            <button class="btn-gold" onclick="updateBalanceAfterDeposit()">
+                <i class="fas fa-check"></i> I've Submitted the Form
+            </button>
+            <button class="btn-outline" onclick="closeDepositConfirm()">Cancel</button>
         </div>
     </div>
 
@@ -2019,56 +2161,6 @@
                 <div class="error-msg" id="adminLoginError">Invalid username or password. Try again.</div>
                 <button type="submit" class="btn-gold">Login</button>
             </form>
-        </div>
-    </div>
-
-    <!-- ============================================================
-    DEPOSIT MODAL
-    ============================================================ -->
-    <div class="deposit-overlay" id="depositModal">
-        <div class="deposit-modal">
-            <button class="close-btn" onclick="closeDeposit()">&times;</button>
-            <h2>💰 Make a Deposit</h2>
-            <p class="sub">Select the amount you want to invest</p>
-            <div class="deposit-amounts" id="depositAmounts">
-                <div class="deposit-amount" onclick="selectAmount(this, 55000)">₦55,000</div>
-                <div class="deposit-amount" onclick="selectAmount(this, 110000)">₦110,000</div>
-                <div class="deposit-amount" onclick="selectAmount(this, 220000)">₦220,000</div>
-                <div class="deposit-amount" onclick="selectAmount(this, 550000)">₦550,000</div>
-                <div class="deposit-amount" onclick="selectAmount(this, 1100000)">₦1,100,000</div>
-            </div>
-            <div class="deposit-details" id="depositDetails">
-                <div style="text-align:center; margin-bottom:12px;">
-                    <span style="color:#c9a84c; font-size:13px; font-weight:600;">💳 Transfer to this account</span>
-                </div>
-                <div class="bank-info">
-                    <div class="label">Account Name</div>
-                    <div class="value gold">Al-amin Usman</div>
-                    <div class="label">Account Number</div>
-                    <div class="value" style="font-size:26px;">6611156108</div>
-                    <button class="copy-btn" onclick="copyAccount()">
-                        <i class="fas fa-copy"></i> Copy Number
-                    </button>
-                    <div class="label" style="margin-top:12px;">Bank</div>
-                    <div class="value">Moniepoint MFB</div>
-                    <div class="label" style="margin-top:12px;">Amount</div>
-                    <div class="value gold" id="depositAmountDisplay">₦0</div>
-                </div>
-                <div class="deposit-timer">
-                    <div class="label">⏳ Complete payment within</div>
-                    <div class="time" id="depositTimer">30:00</div>
-                    <div style="color:#888; font-size:11px; margin-top:4px;">Payment expires after 30 minutes</div>
-                </div>
-                <div style="text-align:center; color:#888; font-size:12px; margin:8px 0;">
-                    <i class="fas fa-info-circle"></i> After payment, click "I've Paid" to notify admin
-                </div>
-                <div class="deposit-actions">
-                    <button class="btn-gold" onclick="confirmPayment()">
-                        <i class="fas fa-check"></i> I've Paid
-                    </button>
-                    <button class="btn-outline" onclick="closeDeposit()">Cancel</button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -2395,14 +2487,14 @@
                 </table>
             </div>
 
-            <!-- KYC Verification -->
+            <!-- KYC Verification - HIDDEN INFO -->
             <div id="adminTabKyc" class="admin-table-wrap" style="display:none;">
                 <table class="admin-table">
                     <thead>
-                        <tr><th>User</th><th>Full Name</th><th>Country</th><th>State</th><th>NIN</th><th>Phone</th><th>Status</th><th>Action</th></tr>
+                        <tr><th>User</th><th>Full Name</th><th>Country</th><th>NIN</th><th>Phone</th><th>Status</th><th>Action</th></tr>
                     </thead>
                     <tbody id="adminKycList">
-                        <tr><td colspan="8" style="text-align:center; color:#666; padding:20px 0;">No KYC submissions</td></tr>
+                        <tr><td colspan="7" style="text-align:center; color:#666; padding:20px 0;">No KYC submissions</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -2520,6 +2612,7 @@
             }, 1000);
             checkSession();
             setInterval(updateAllCycles, 60000);
+            checkPendingDeposit();
         });
 
         // ============================================================
@@ -2605,90 +2698,6 @@
                 }
             });
         });
-
-        // ============================================================
-        // KYC
-        // ============================================================
-        function openKyc() {
-            document.getElementById('kycModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            document.getElementById('kycError').classList.remove('show');
-            document.getElementById('kycSuccess').classList.remove('show');
-        }
-
-        function closeKyc() {
-            document.getElementById('kycModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function handleKyc(e) {
-            e.preventDefault();
-            const fullName = document.getElementById('kycFullName').value.trim();
-            const country = document.getElementById('kycCountry').value.trim();
-            const state = document.getElementById('kycState').value.trim();
-            const nin = document.getElementById('kycNin').value.trim();
-            const phone = document.getElementById('kycPhone').value.trim();
-            const photo = document.getElementById('kycPhoto').files[0];
-            const errorEl = document.getElementById('kycError');
-
-            if (!fullName || !country || !state || !nin || !phone || !photo) {
-                errorEl.textContent = 'Please fill in all fields and upload a photo.';
-                errorEl.classList.add('show');
-                return;
-            }
-
-            if (nin.length < 10) {
-                errorEl.textContent = 'Please enter a valid NIN (at least 10 digits).';
-                errorEl.classList.add('show');
-                return;
-            }
-
-            const currentUser = localStorage.getItem('wig_current_user');
-            if (!currentUser) {
-                errorEl.textContent = 'Please login first.';
-                errorEl.classList.add('show');
-                return;
-            }
-
-            const userData = localStorage.getItem('wig_user_' + currentUser);
-            if (!userData) return;
-
-            const user = JSON.parse(userData);
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                user.kyc = {
-                    fullName: fullName,
-                    country: country,
-                    state: state,
-                    nin: nin,
-                    phone: phone,
-                    photo: e.target.result,
-                    status: 'pending',
-                    submittedAt: new Date().toISOString()
-                };
-                localStorage.setItem('wig_user_' + currentUser, JSON.stringify(user));
-
-                document.getElementById('kycSuccess').classList.add('show');
-                errorEl.classList.remove('show');
-
-                if (!user.transactions) user.transactions = [];
-                user.transactions.push({
-                    type: 'KYC',
-                    amount: '—',
-                    status: 'pending',
-                    description: 'KYC Verification Submitted',
-                    date: new Date().toISOString()
-                });
-                localStorage.setItem('wig_user_' + currentUser, JSON.stringify(user));
-
-                setTimeout(() => {
-                    closeKyc();
-                    updateDashboardStats(user);
-                    updateAdminPanel();
-                }, 1500);
-            };
-            reader.readAsDataURL(photo);
-        }
 
         // ============================================================
         // ADMIN LOGIN
@@ -2852,69 +2861,6 @@
             showSection('overview');
         }
 
-        function updateKycStatus(user) {
-            const kyc = user.kyc || null;
-            const alertEl = document.getElementById('kycAlert');
-            const statusDisplay = document.getElementById('kycStatusDisplay');
-
-            if (!kyc) {
-                alertEl.style.display = 'block';
-                alertEl.innerHTML = `
-                            <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:10px; padding:12px 15px; color:#ffaa00; text-align:center;">
-                                ⚠️ <strong>KYC Required:</strong> Please complete your KYC verification to unlock full investment features.
-                                <button class="btn-gold" onclick="openKyc()" style="padding:6px 18px; font-size:12px; margin-left:10px;">Complete KYC</button>
-                            </div>
-                        `;
-                statusDisplay.innerHTML = `
-                            <div style="text-align:center; padding:20px 0;">
-                                <div style="font-size:50px; margin-bottom:10px;">🆔</div>
-                                <p style="color:#aaa; margin-bottom:10px;">Complete your KYC to unlock full investment features.</p>
-                                <button class="btn-gold" onclick="openKyc()">Complete KYC</button>
-                            </div>
-                        `;
-                return;
-            }
-
-            if (kyc.status === 'pending') {
-                alertEl.style.display = 'block';
-                alertEl.innerHTML = `
-                            <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:10px; padding:12px 15px; color:#ffaa00; text-align:center;">
-                                ⏳ <strong>KYC Pending:</strong> Your verification is being reviewed by admin. You will be notified once approved.
-                            </div>
-                        `;
-                statusDisplay.innerHTML = `
-                            <div class="kyc-status pending">
-                                <div style="font-size:40px; margin-bottom:8px;">⏳</div>
-                                <p><strong>KYC Status: Pending</strong></p>
-                                <p style="font-size:13px; color:#888;">Your verification is being reviewed by admin.</p>
-                            </div>
-                        `;
-            } else if (kyc.status === 'approved') {
-                alertEl.style.display = 'none';
-                statusDisplay.innerHTML = `
-                            <div class="kyc-status approved">
-                                <div style="font-size:40px; margin-bottom:8px;">✅</div>
-                                <p><strong>KYC Status: Verified</strong></p>
-                                <p style="font-size:13px; color:#888;">Your account is fully verified. You can now invest.</p>
-                            </div>
-                        `;
-            } else if (kyc.status === 'rejected') {
-                alertEl.style.display = 'block';
-                alertEl.innerHTML = `
-                            <div style="background:rgba(255,68,68,0.1); border:1px solid rgba(255,68,68,0.3); border-radius:10px; padding:12px 15px; color:#ff4444; text-align:center;">
-                                ❌ <strong>KYC Rejected:</strong> Your verification was not approved. Please contact support for assistance.
-                            </div>
-                        `;
-                statusDisplay.innerHTML = `
-                            <div class="kyc-status rejected">
-                                <div style="font-size:40px; margin-bottom:8px;">❌</div>
-                                <p><strong>KYC Status: Rejected</strong></p>
-                                <p style="font-size:13px; color:#888;">Please contact support for assistance.</p>
-                            </div>
-                        `;
-            }
-        }
-
         function updateDepositWithdrawButtons(user) {
             const depositBtn = document.getElementById('depositBtn');
             const withdrawBtn = document.getElementById('withdrawBtn');
@@ -2925,14 +2871,14 @@
                 depositBtn.style.cursor = 'not-allowed';
                 depositBtn.title = 'KYC required to deposit';
                 depositBtn.onclick = function() {
-                    alert('⚠️ KYC verification required before you can deposit. Please complete your KYC first.');
+                    showToast('⚠️ KYC verification required before you can deposit. Please complete your KYC first.', 'error');
                 };
 
                 withdrawBtn.style.opacity = '0.5';
                 withdrawBtn.style.cursor = 'not-allowed';
                 withdrawBtn.title = 'KYC required to withdraw';
                 withdrawBtn.onclick = function() {
-                    alert('⚠️ KYC verification required before you can withdraw. Please complete your KYC first.');
+                    showToast('⚠️ KYC verification required before you can withdraw. Please complete your KYC first.', 'error');
                 };
             } else {
                 depositBtn.style.opacity = '1';
@@ -3063,16 +3009,34 @@
         }
 
         // ============================================================
-        // DEPOSIT FEATURE
+        // DEPOSIT FUNCTIONS
         // ============================================================
-        let selectedAmount = 0;
-        let timerInterval = null;
-        let timerSeconds = 1800;
+        let selectedDepositAmount = 0;
+        let depositPhotoFile = null;
+        let isVerifyingDeposit = false;
+        const CORRECT_ACCOUNT_NUMBER = '6611156108';
+
+        function selectDepositAmount(el, amount) {
+            document.querySelectorAll('.deposit-amount').forEach(a => a.classList.remove('selected'));
+            el.classList.add('selected');
+            
+            selectedDepositAmount = amount;
+            
+            const display = document.getElementById('selectedAmountDisplay');
+            display.style.display = 'block';
+            document.getElementById('selectedAmountText').textContent = '₦' + amount.toLocaleString();
+            
+            document.getElementById('stepBankDetails').style.display = 'block';
+            document.getElementById('bankAmountDisplay').textContent = '₦' + amount.toLocaleString();
+            document.getElementById('depositStepText').textContent = '📤 Make Payment & Upload Screenshot';
+            
+            document.getElementById('stepBankDetails').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
 
         function openDeposit() {
             const currentUser = localStorage.getItem('wig_current_user');
             if (!currentUser) {
-                alert('Please login first.');
+                showToast('Please login first.', 'error');
                 return;
             }
 
@@ -3081,60 +3045,40 @@
             const user = JSON.parse(userData);
 
             if (!user.kyc || user.kyc.status !== 'approved') {
-                alert('⚠️ KYC verification required before you can deposit. Please complete your KYC first.');
+                showToast('⚠️ KYC verification required before you can deposit. Please complete your KYC first.', 'error');
                 return;
             }
 
+            selectedDepositAmount = 0;
+            depositPhotoFile = null;
+            isVerifyingDeposit = false;
+            document.querySelectorAll('.deposit-amount').forEach(el => el.classList.remove('selected'));
+            document.getElementById('selectedAmountDisplay').style.display = 'none';
+            document.getElementById('stepBankDetails').style.display = 'none';
+            document.getElementById('depositPhotoPreview').innerHTML = '';
+            document.getElementById('ocrStatusDeposit').style.display = 'none';
+            document.getElementById('verifyDepositBtn').style.display = 'none';
+            document.getElementById('depositStepText').textContent = 'Select the amount you want to invest';
+            document.getElementById('depositPhoto').value = '';
+            
             document.getElementById('depositModal').classList.add('active');
             document.body.style.overflow = 'hidden';
-            selectedAmount = 0;
-            document.querySelectorAll('.deposit-amount').forEach(el => el.classList.remove('selected'));
-            document.getElementById('depositDetails').classList.remove('show');
-            document.getElementById('depositAmountDisplay').textContent = '₦0';
-            clearInterval(timerInterval);
-            timerSeconds = 1800;
-            updateTimerDisplay();
         }
 
         function closeDeposit() {
             document.getElementById('depositModal').classList.remove('active');
             document.body.style.overflow = 'auto';
-            clearInterval(timerInterval);
         }
 
-        function selectAmount(el, amount) {
-            document.querySelectorAll('.deposit-amount').forEach(a => a.classList.remove('selected'));
-            el.classList.add('selected');
-            selectedAmount = amount;
-            document.getElementById('depositAmountDisplay').textContent = '₦' + amount.toLocaleString();
-            document.getElementById('depositDetails').classList.add('show');
-
-            clearInterval(timerInterval);
-            timerSeconds = 1800;
-            updateTimerDisplay();
-            timerInterval = setInterval(function() {
-                timerSeconds--;
-                updateTimerDisplay();
-                if (timerSeconds <= 0) {
-                    clearInterval(timerInterval);
-                    alert('⏰ Payment time expired! Please restart the deposit process.');
-                    closeDeposit();
-                }
-            }, 1000);
+        function closeDepositConfirm() {
+            document.getElementById('depositConfirmModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
-        function updateTimerDisplay() {
-            const mins = Math.floor(timerSeconds / 60);
-            const secs = timerSeconds % 60;
-            document.getElementById('depositTimer').textContent =
-                String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
-            document.getElementById('depositTimer').style.color = timerSeconds < 60 ? '#ff6b6b' : '#c9a84c';
-        }
-
-        function copyAccount() {
+        function copyAccountNumber() {
             const accountNumber = '6611156108';
             navigator.clipboard.writeText(accountNumber).then(() => {
-                alert('✅ Account number copied: ' + accountNumber);
+                showToast('✅ Account number copied: ' + accountNumber, 'success');
             }).catch(() => {
                 const input = document.createElement('input');
                 input.value = accountNumber;
@@ -3142,58 +3086,373 @@
                 input.select();
                 document.execCommand('copy');
                 document.body.removeChild(input);
-                alert('✅ Account number copied: ' + accountNumber);
+                showToast('✅ Account number copied: ' + accountNumber, 'success');
             });
         }
 
-        function confirmPayment() {
-            if (selectedAmount === 0) {
-                alert('Please select an amount first.');
+        function previewDepositPhoto(input) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            if (file.size > 5 * 1024 * 1024) {
+                showToast('❌ File too large. Max 5MB.', 'error');
+                input.value = '';
                 return;
             }
+            
+            const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+            if (!validTypes.includes(file.type)) {
+                showToast('❌ Please upload JPEG or PNG.', 'error');
+                input.value = '';
+                return;
+            }
+            
+            depositPhotoFile = file;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById('depositPhotoPreview');
+                preview.innerHTML = `
+                    <img src="${e.target.result}" style="max-width:100%; max-height:150px; border-radius:8px; border:2px solid #c9a84c; padding:3px;" />
+                    <p style="color:#00cc66; font-size:11px; margin-top:4px;">✅ Screenshot uploaded</p>
+                `;
+                document.getElementById('verifyDepositBtn').style.display = 'block';
+                document.getElementById('ocrStatusDeposit').style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
 
+        // ============================================================
+        // VERIFY DEPOSIT WITH OCR (AMOUNT + ACCOUNT NUMBER)
+        // ============================================================
+        async function verifyDepositOCR() {
+            if (isVerifyingDeposit) return;
+            
+            if (!depositPhotoFile) {
+                showToast('Please upload a payment screenshot first.', 'error');
+                return;
+            }
+            
+            if (selectedDepositAmount === 0) {
+                showToast('Please select an amount first.', 'error');
+                return;
+            }
+            
+            isVerifyingDeposit = true;
+            document.getElementById('verifyDepositBtn').disabled = true;
+            document.getElementById('verifyDepositBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+            
+            const statusEl = document.getElementById('ocrStatusDeposit');
+            statusEl.style.display = 'block';
+            statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Reading screenshot...';
+            statusEl.style.color = '#c9a84c';
+            statusEl.style.border = '1px solid rgba(201,168,76,0.2)';
+            statusEl.style.background = 'rgba(201,168,76,0.05)';
+            
+            try {
+                const img = new Image();
+                img.src = URL.createObjectURL(depositPhotoFile);
+                await new Promise((resolve) => { img.onload = resolve; });
+                
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                let width = img.width;
+                let height = img.height;
+                const maxWidth = 1500;
+                if (width > maxWidth) {
+                    const ratio = maxWidth / width;
+                    width = maxWidth;
+                    height = height * ratio;
+                }
+                
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                const imageData = ctx.getImageData(0, 0, width, height);
+                const data = imageData.data;
+                
+                for (let i = 0; i < data.length; i += 4) {
+                    const gray = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                    const contrast = 1.5;
+                    const adjusted = 128 + (gray - 128) * contrast;
+                    const value = Math.min(255, Math.max(0, adjusted));
+                    data[i] = value;
+                    data[i + 1] = value;
+                    data[i + 2] = value;
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+                
+                const processedBlob = await new Promise((resolve) => {
+                    canvas.toBlob(resolve, 'image/jpeg', 0.95);
+                });
+                URL.revokeObjectURL(img.src);
+                
+                statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Reading amount from screenshot...';
+                
+                let bestText = '';
+                const configs = [
+                    { tessedit_pageseg_mode: 6, tessedit_ocr_engine_mode: 1 },
+                    { tessedit_pageseg_mode: 3, tessedit_ocr_engine_mode: 1 },
+                    { tessedit_pageseg_mode: 6, tessedit_ocr_engine_mode: 0 },
+                ];
+                
+                for (const config of configs) {
+                    try {
+                        const result = await Tesseract.recognize(processedBlob, 'eng', config);
+                        const text = result.data.text;
+                        if (text && text.length > bestText.length) {
+                            bestText = text;
+                        }
+                    } catch (e) {}
+                }
+                
+                if (!bestText) {
+                    const result = await Tesseract.recognize(depositPhotoFile, 'eng');
+                    bestText = result.data.text;
+                }
+                
+                console.log('OCR Result:', bestText);
+                
+                const extractedAmount = extractAmountFromText(bestText);
+                const extractedAccount = extractAccountNumber(bestText);
+                
+                console.log('Extracted Amount:', extractedAmount);
+                console.log('Extracted Account:', extractedAccount);
+                
+                let errorMessages = [];
+                
+                if (!extractedAmount) {
+                    errorMessages.push('Could not read the amount');
+                } else {
+                    const selectedAmount = selectedDepositAmount;
+                    const extractedAmountClean = Math.round(extractedAmount);
+                    const difference = Math.abs(selectedAmount - extractedAmountClean);
+                    const amountMatches = difference <= 100;
+                    
+                    if (!amountMatches) {
+                        errorMessages.push(`Amount mismatch: you paid ${extractedAmountClean.toLocaleString()} but selected ${selectedAmount.toLocaleString()}`);
+                    }
+                }
+                
+                if (!extractedAccount) {
+                    errorMessages.push('Could not read the account number');
+                } else if (extractedAccount !== CORRECT_ACCOUNT_NUMBER) {
+                    errorMessages.push(`Account number mismatch: you sent to ${extractedAccount} but should be ${CORRECT_ACCOUNT_NUMBER}`);
+                }
+                
+                if (errorMessages.length === 0) {
+                    statusEl.innerHTML = `✅ Verified! Amount and Account Number correct. Redirecting...`;
+                    statusEl.style.color = '#00cc66';
+                    statusEl.style.border = '1px solid rgba(0,204,102,0.3)';
+                    statusEl.style.background = 'rgba(0,204,102,0.05)';
+                    
+                    showToast('✅ Payment verified! Redirecting to Google Form...', 'success');
+                    
+                    setTimeout(() => {
+                        const currentUser = localStorage.getItem('wig_current_user');
+                        if (currentUser) {
+                            localStorage.setItem('wig_pending_deposit', JSON.stringify({
+                                amount: selectedDepositAmount,
+                                username: currentUser,
+                                timestamp: new Date().toISOString()
+                            }));
+                        }
+                        
+                        closeDeposit();
+                        redirectToGoogleForm();
+                    }, 1000);
+                    
+                } else {
+                    const errorMsg = errorMessages.join('<br>');
+                    statusEl.innerHTML = `❌ Verification Failed!<br><br>${errorMsg}<br><br>📌 Please check and try again.`;
+                    statusEl.style.color = '#ff4444';
+                    statusEl.style.border = '1px solid rgba(255,68,68,0.3)';
+                    statusEl.style.background = 'rgba(255,68,68,0.05)';
+                    
+                    isVerifyingDeposit = false;
+                    document.getElementById('verifyDepositBtn').disabled = false;
+                    document.getElementById('verifyDepositBtn').innerHTML = '<i class="fas fa-check-circle"></i> Verify & Continue';
+                    showToast('❌ Verification failed. Please check your screenshot.', 'error');
+                }
+                
+            } catch (error) {
+                console.error('OCR Error:', error);
+                statusEl.innerHTML = '❌ Error reading screenshot. Please try again.';
+                statusEl.style.color = '#ff4444';
+                statusEl.style.border = '1px solid rgba(255,68,68,0.3)';
+                statusEl.style.background = 'rgba(255,68,68,0.05)';
+                isVerifyingDeposit = false;
+                document.getElementById('verifyDepositBtn').disabled = false;
+                document.getElementById('verifyDepositBtn').innerHTML = '<i class="fas fa-check-circle"></i> Verify & Continue';
+                showToast('❌ Error reading screenshot. Please try again.', 'error');
+            }
+        }
+
+        // ============================================================
+        // EXTRACT AMOUNT FROM OCR TEXT
+        // ============================================================
+        function extractAmountFromText(text) {
+            const numbers = text.match(/\d{1,3}(?:,\d{3})*(?:\.\d{2})?/g);
+            
+            if (!numbers || numbers.length === 0) return null;
+            
+            const cleanNumbers = numbers.map(n => parseFloat(n.replace(/,/g, ''))).filter(n => !isNaN(n) && n > 0);
+            
+            if (cleanNumbers.length === 0) return null;
+            
+            const largest = Math.max(...cleanNumbers);
+            
+            if (largest >= 1000 && largest <= 10000000) {
+                return largest;
+            }
+            
+            if (cleanNumbers.length >= 2) {
+                const sorted = cleanNumbers.sort((a, b) => b - a);
+                if (sorted[1] >= 1000 && sorted[1] <= 10000000) {
+                    return sorted[1];
+                }
+            }
+            
+            return largest;
+        }
+
+        // ============================================================
+        // EXTRACT ACCOUNT NUMBER FROM OCR TEXT
+        // ============================================================
+        function extractAccountNumber(text) {
+            const accountMatch = text.match(/\b(\d{10})\b/);
+            if (accountMatch) {
+                return accountMatch[1];
+            }
+            
+            const spacedMatch = text.match(/\b(\d{4}\s\d{4}\s\d{2})\b/);
+            if (spacedMatch) {
+                return spacedMatch[1].replace(/\s/g, '');
+            }
+            
+            return null;
+        }
+
+        // ============================================================
+        // REDIRECT TO GOOGLE FORM
+        // ============================================================
+        function redirectToGoogleForm() {
             const currentUser = localStorage.getItem('wig_current_user');
             if (!currentUser) {
-                alert('Please login first.');
+                showToast('Please login first.', 'error');
                 return;
             }
 
             const userData = localStorage.getItem('wig_user_' + currentUser);
             if (!userData) return;
-
             const user = JSON.parse(userData);
-            if (!user.deposits) user.deposits = [];
-            if (!user.transactions) user.transactions = [];
 
-            user.deposits.push({
-                amount: selectedAmount,
-                date: new Date().toISOString(),
-                status: 'pending',
-                type: 'deposit'
-            });
+            const fullName = encodeURIComponent(user.name || user.username || '');
+            const phone = encodeURIComponent(user.kyc?.phone || '');
+            const email = encodeURIComponent(user.email || '');
+            const username = encodeURIComponent(user.username || '');
+            const nin = encodeURIComponent(user.kyc?.nin || '');
+            const country = encodeURIComponent(user.kyc?.country || '');
+            const state = encodeURIComponent(user.kyc?.state || '');
+            const amount = encodeURIComponent(selectedDepositAmount.toString());
+            
+            const today = new Date().toISOString().split('T')[0];
+            
+            const formId = '1FAIpQLSdgf5kQIpVJqSvYF10Tce3juLWfVIlkZaFG8gV6xtKtdrHthQ';
+            
+            const redirectUrl = `https://docs.google.com/forms/d/e/${formId}/viewform?usp=pp_url&entry.1123145689=${fullName}&entry.408563863=${phone}&entry.1853681374=${email}&entry.1544111570=${username}&entry.59290172=${amount}&entry.1386502129=Bank+Transfer&entry.337978393=${today}&entry.371899488=${nin}&entry.488198851=${country}&entry.500407308=${state}`;
+            
+            console.log('Redirecting to:', redirectUrl);
+            
+            window.location.href = redirectUrl;
+        }
 
-            user.pendingBalance = (user.pendingBalance || 0) + selectedAmount;
+        // ============================================================
+        // UPDATE BALANCE AFTER DEPOSIT
+        // ============================================================
+        function updateBalanceAfterDeposit() {
+            const pending = localStorage.getItem('wig_pending_deposit');
+            if (!pending) {
+                showToast('No pending deposit found.', 'error');
+                return;
+            }
+            
+            try {
+                const data = JSON.parse(pending);
+                const currentUser = localStorage.getItem('wig_current_user');
+                
+                if (!currentUser || data.username !== currentUser) {
+                    showToast('User mismatch. Please login again.', 'error');
+                    return;
+                }
+                
+                const userData = localStorage.getItem('wig_user_' + currentUser);
+                if (!userData) {
+                    showToast('User not found.', 'error');
+                    return;
+                }
+                
+                const user = JSON.parse(userData);
+                
+                user.balance = (user.balance || 0) + data.amount;
+                user.invested = (user.invested || 0) + data.amount;
+                user.activeInvestments = (user.activeInvestments || 0) + 1;
+                
+                if (!user.cycleStart) {
+                    user.cycleStart = new Date().toISOString();
+                    user.cycleDays = 0;
+                    user.cycleComplete = false;
+                }
+                
+                if (!user.transactions) user.transactions = [];
+                user.transactions.push({
+                    type: 'Deposit',
+                    amount: '₦' + data.amount.toLocaleString(),
+                    status: 'approved',
+                    description: 'Deposit of ₦' + data.amount.toLocaleString(),
+                    date: new Date().toISOString()
+                });
+                
+                localStorage.setItem('wig_user_' + currentUser, JSON.stringify(user));
+                localStorage.removeItem('wig_pending_deposit');
+                
+                closeDepositConfirm();
+                
+                showToast('✅ Balance updated! ₦' + data.amount.toLocaleString() + ' added. You can now start investing!', 'success');
+                updateDashboardStats(user);
+                updateAdminPanel();
+                
+                selectedDepositAmount = 0;
+                depositPhotoFile = null;
+                isVerifyingDeposit = false;
+                document.getElementById('verifyDepositBtn').disabled = false;
+                document.getElementById('verifyDepositBtn').innerHTML = '<i class="fas fa-check-circle"></i> Verify & Continue';
+                
+            } catch (e) {
+                console.error('Error updating balance:', e);
+                showToast('Error updating balance. Please try again.', 'error');
+            }
+        }
 
-            user.transactions.push({
-                type: 'Deposit',
-                amount: '₦' + selectedAmount.toLocaleString(),
-                status: 'pending',
-                description: 'Deposit request - awaiting admin approval',
-                date: new Date().toISOString()
-            });
-
-            localStorage.setItem('wig_user_' + currentUser, JSON.stringify(user));
-
-            alert('✅ Payment submitted!\n\n' +
-                'Your deposit of ₦' + selectedAmount.toLocaleString() + ' has been submitted for verification.\n' +
-                '⏳ Status: PENDING\n\n' +
-                'Admin will verify your payment within 24 hours.\n' +
-                'Your balance will be updated once approved.\n\n' +
-                '📌 Please keep your transaction receipt for reference.');
-
-            closeDeposit();
-            updateDashboardStats(user);
-            updateAdminPanel();
+        // ============================================================
+        // CHECK FOR PENDING DEPOSIT ON PAGE LOAD
+        // ============================================================
+        function checkPendingDeposit() {
+            const pending = localStorage.getItem('wig_pending_deposit');
+            if (!pending) return;
+            
+            try {
+                const data = JSON.parse(pending);
+                const currentUser = localStorage.getItem('wig_current_user');
+                
+                if (currentUser && data.username === currentUser) {
+                    document.getElementById('depositConfirmModal').classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            } catch (e) {}
         }
 
         // ============================================================
@@ -3204,7 +3463,7 @@
         function openWithdraw() {
             const currentUser = localStorage.getItem('wig_current_user');
             if (!currentUser) {
-                alert('Please login first.');
+                showToast('Please login first.', 'error');
                 return;
             }
 
@@ -3213,7 +3472,7 @@
             const user = JSON.parse(userData);
 
             if (!user.kyc || user.kyc.status !== 'approved') {
-                alert('⚠️ KYC verification required before you can withdraw. Please complete your KYC first.');
+                showToast('⚠️ KYC verification required before you can withdraw.', 'error');
                 return;
             }
 
@@ -3249,7 +3508,6 @@
             document.getElementById('withdrawStatus').textContent = 'Select withdrawal option';
 
             const totalBalance = user.balance || 0;
-            const invested = user.invested || 0;
             const profit = user.profit || 0;
 
             document.getElementById('profitAmount').textContent = '₦' + profit.toFixed(2);
@@ -3287,12 +3545,12 @@
         function requestWithdrawal() {
             const currentUser = localStorage.getItem('wig_current_user');
             if (!currentUser) {
-                alert('Please login first.');
+                showToast('Please login first.', 'error');
                 return;
             }
 
             if (!selectedWithdrawOption) {
-                alert('Please select a withdrawal option.');
+                showToast('Please select a withdrawal option.', 'error');
                 return;
             }
 
@@ -3301,7 +3559,7 @@
             const accountNumber = document.getElementById('withdrawAccountNumber').value.trim();
 
             if (!bank || !accountName || !accountNumber) {
-                alert('Please fill in all bank details.');
+                showToast('Please fill in all bank details.', 'error');
                 return;
             }
 
@@ -3324,7 +3582,7 @@
             }
 
             if (withdrawAmount <= 0) {
-                alert('You have no funds to withdraw.');
+                showToast('You have no funds to withdraw.', 'error');
                 return;
             }
 
@@ -3348,12 +3606,7 @@
 
             localStorage.setItem('wig_user_' + currentUser, JSON.stringify(user));
 
-            alert('✅ Withdrawal request submitted!\n\n' +
-                'Amount: ₦' + withdrawAmount.toFixed(2) + '\n' +
-                'Bank: ' + bank + '\n' +
-                'Account: ' + accountName + ' - ' + accountNumber + '\n\n' +
-                '⏳ Status: PENDING\n' +
-                'Admin will review and approve your withdrawal.');
+            showToast('✅ Withdrawal request submitted! Admin will review it.', 'success');
 
             closeWithdraw();
             updateDashboardStats(user);
@@ -3440,7 +3693,7 @@
         }
 
         // ============================================================
-        // ADMIN PANEL - Total Deposits only counts APPROVED
+        // ADMIN PANEL
         // ============================================================
         function openAdmin() {
             localStorage.setItem('wig_admin_logged_in', 'true');
@@ -3523,23 +3776,27 @@
                 }
 
                 if (user.kyc) {
+                    const ninDisplay = user.kyc.status === 'approved' ? '✅ Verified' : '🔒 Hidden';
+                    const phoneDisplay = user.kyc.status === 'approved' ? '✅ Verified' : '🔒 Hidden';
+                    
                     kycList.push({
                         username: user.username,
-                        fullName: user.kyc.fullName,
-                        country: user.kyc.country,
-                        state: user.kyc.state,
-                        nin: user.kyc.nin,
-                        phone: user.kyc.phone,
+                        fullName: user.kyc.fullName || user.name || user.username,
+                        country: user.kyc.country || '—',
+                        nin: ninDisplay,
+                        phone: phoneDisplay,
                         photo: user.kyc.photo,
                         status: user.kyc.status,
-                        submittedAt: user.kyc.submittedAt || new Date().toISOString()
+                        submittedAt: user.kyc.submittedAt || new Date().toISOString(),
+                        verifiedAt: user.kyc.verifiedAt || null,
+                        verifiedBy: user.kyc.verifiedBy || null
                     });
 
                     allDataList.push({
                         username: user.username,
                         type: 'KYC',
                         amount: '—',
-                        details: user.kyc.fullName + ' - ' + user.kyc.country,
+                        details: user.kyc.fullName + ' - ' + (user.kyc.country || ''),
                         status: user.kyc.status,
                         date: user.kyc.submittedAt || new Date().toISOString()
                     });
@@ -3606,30 +3863,33 @@
             const kycBody = document.getElementById('adminKycList');
             if (kycList.length === 0) {
                 kycBody.innerHTML =
-                    `<tr><td colspan="8" style="text-align:center; color:#666; padding:20px 0;">No KYC submissions</td></tr>`;
+                    `<tr><td colspan="7" style="text-align:center; color:#666; padding:20px 0;">No KYC submissions</td></tr>`;
             } else {
                 kycBody.innerHTML = kycList.map(k => {
                     const statusBadge = k.status === 'approved' ?
-                        '<span class="badge-approved">Approved</span>' :
+                        '<span class="badge-approved">✅ Verified</span>' :
                         k.status === 'pending' ?
-                        '<span class="badge-pending">Pending</span>' :
-                        '<span class="badge-rejected">Rejected</span>';
-                    const actions = k.status === 'pending' ?
-                        `
-                                <button class="btn-approve" onclick="approveKyc('${k.username}')">Approve</button>
-                                <button class="btn-reject" onclick="rejectKyc('${k.username}')">Reject</button>
-                                <button class="btn-view" onclick="viewKycPhoto('${k.username}')">View Photo</button>
-                            ` :
-                        `
-                                <button class="btn-view" onclick="viewKycPhoto('${k.username}')">View Photo</button>
-                                <span style="color:#666; font-size:11px;"> (${k.status})</span>
-                            `;
+                        '<span class="badge-pending">⏳ Pending</span>' :
+                        '<span class="badge-rejected">❌ Failed</span>';
+                    
+                    let actions = '';
+                    if (k.status === 'pending') {
+                        actions = `
+                            <button class="btn-approve" onclick="approveKyc('${k.username}')">Approve</button>
+                            <button class="btn-reject" onclick="rejectKyc('${k.username}')">Reject</button>
+                            <button class="btn-view" onclick="viewKycPhoto('${k.username}')">View Photo</button>
+                        `;
+                    } else {
+                        actions = `
+                            <button class="btn-view" onclick="viewKycPhoto('${k.username}')">View Photo</button>
+                        `;
+                    }
+                    
                     return `
                                 <tr>
                                     <td>@${k.username}</td>
-                                    <td>${k.fullName}</td>
-                                    <td>${k.country}</td>
-                                    <td>${k.state}</td>
+                                    <td>${k.fullName || '—'}</td>
+                                    <td>${k.country || '—'}</td>
                                     <td>${k.nin}</td>
                                     <td>${k.phone}</td>
                                     <td>${statusBadge}</td>
@@ -3646,21 +3906,24 @@
                 usersBody.innerHTML =
                     `<tr><td colspan="7" style="text-align:center; color:#666; padding:20px 0;">No users registered</td></tr>`;
             } else {
-                usersBody.innerHTML = users.map(u => `
-                            <tr>
-                                <td>@${u.username}</td>
-                                <td>${u.name || '—'}</td>
-                                <td>${u.email || '—'}</td>
-                                <td>₦${(u.balance || 0).toFixed(2)}</td>
-                                <td>₦${(u.invested || 0).toFixed(2)}</td>
-                                <td>${u.kyc ? (u.kyc.status === 'approved' ? '<span style="color:#00cc66;">✅ Verified</span>' : u.kyc.status === 'pending' ? '<span style="color:#ffaa00;">⏳ Pending</span>' : '<span style="color:#ff4444;">❌ Rejected</span>') : '<span style="color:#666;">Not Submitted</span>'}</td>
-                                <td>
-                                    <button class="btn-show-pwd" onclick="showUserPassword('${u.username}')">Show Pwd</button>
-                                    <button class="btn-view" onclick="viewUserDashboard('${u.username}')">View Dash</button>
-                                    <button class="btn-delete" onclick="deleteUser('${u.username}')">Delete</button>
-                                </td>
-                            </tr>
-                        `).join('');
+                usersBody.innerHTML = users.map(u => {
+                    const kycStatus = u.kyc ? (u.kyc.status === 'approved' ? '<span style="color:#00cc66;">✅ Verified</span>' : u.kyc.status === 'pending' ? '<span style="color:#ffaa00;">⏳ Pending</span>' : '<span style="color:#ff4444;">❌ Failed</span>') : '<span style="color:#666;">Not Submitted</span>';
+                    return `
+                                <tr>
+                                    <td>@${u.username}</td>
+                                    <td>${u.name || '—'}</td>
+                                    <td>${u.email || '—'}</td>
+                                    <td>₦${(u.balance || 0).toFixed(2)}</td>
+                                    <td>₦${(u.invested || 0).toFixed(2)}</td>
+                                    <td>${kycStatus}</td>
+                                    <td>
+                                        <button class="btn-show-pwd" onclick="showUserPassword('${u.username}')">Show Pwd</button>
+                                        <button class="btn-view" onclick="viewUserDashboard('${u.username}')">View Dash</button>
+                                        <button class="btn-delete" onclick="deleteUser('${u.username}')">Delete</button>
+                                    </td>
+                                </tr>
+                            `;
+                }).join('');
             }
         }
 
@@ -3750,7 +4013,7 @@
                         updateDashboardStats(user);
                     }
 
-                    alert('✅ Deposit of ₦' + amount.toLocaleString() + ' approved for ' + username);
+                    showToast('✅ Deposit of ₦' + amount.toLocaleString() + ' approved for ' + username, 'success');
                     updateAdminPanel();
                     return;
                 }
@@ -3782,7 +4045,7 @@
                     }
 
                     localStorage.setItem('wig_user_' + username, JSON.stringify(user));
-                    alert('❌ Deposit of ₦' + amount.toLocaleString() + ' rejected for ' + username);
+                    showToast('❌ Deposit of ₦' + amount.toLocaleString() + ' rejected for ' + username, 'error');
                     updateAdminPanel();
                     return;
                 }
@@ -3828,7 +4091,7 @@
                         updateDashboardStats(user);
                     }
 
-                    alert('✅ Withdrawal of ₦' + amount.toFixed(2) + ' approved for ' + username);
+                    showToast('✅ Withdrawal of ₦' + amount.toFixed(2) + ' approved for ' + username, 'success');
                     updateAdminPanel();
                     return;
                 }
@@ -3858,7 +4121,7 @@
                     }
 
                     localStorage.setItem('wig_user_' + username, JSON.stringify(user));
-                    alert('❌ Withdrawal of ₦' + amount.toFixed(2) + ' rejected for ' + username);
+                    showToast('❌ Withdrawal of ₦' + amount.toFixed(2) + ' rejected for ' + username, 'error');
                     updateAdminPanel();
                     return;
                 }
@@ -3875,18 +4138,20 @@
             const user = JSON.parse(userData);
             if (user.kyc) {
                 user.kyc.status = 'approved';
+                user.kyc.verifiedAt = new Date().toISOString();
+                user.kyc.verifiedBy = 'Admin';
                 localStorage.setItem('wig_user_' + username, JSON.stringify(user));
 
                 user.transactions.push({
                     type: 'KYC',
                     amount: '—',
                     status: 'approved',
-                    description: 'KYC Verification Approved',
+                    description: '✅ KYC Verification Approved by Admin',
                     date: new Date().toISOString()
                 });
                 localStorage.setItem('wig_user_' + username, JSON.stringify(user));
 
-                alert('✅ KYC approved for ' + username);
+                showToast('✅ KYC approved for ' + username, 'success');
                 updateAdminPanel();
 
                 const currentUser = localStorage.getItem('wig_current_user');
@@ -3909,12 +4174,12 @@
                     type: 'KYC',
                     amount: '—',
                     status: 'rejected',
-                    description: 'KYC Verification Rejected',
+                    description: '❌ KYC Verification Rejected by Admin',
                     date: new Date().toISOString()
                 });
                 localStorage.setItem('wig_user_' + username, JSON.stringify(user));
 
-                alert('❌ KYC rejected for ' + username);
+                showToast('❌ KYC rejected for ' + username, 'error');
                 updateAdminPanel();
 
                 const currentUser = localStorage.getItem('wig_current_user');
@@ -3933,14 +4198,16 @@
                 const win = window.open('', '_blank');
                 win.document.write(`
                             <html><head><title>KYC Photo - ${username}</title>
-                            <style>body{background:#0a0a1a;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;}</style>
+                            <style>body{background:#0a0a1a;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;flex-direction:column;}</style>
                             </head><body>
-                            <img src="${user.kyc.photo}" style="max-width:90%;max-height:90vh;border-radius:12px;border:2px solid #c9a84c;" />
+                            <h3 style="color:#c9a84c;">KYC Photo - @${username}</h3>
+                            <img src="${user.kyc.photo}" style="max-width:90%;max-height:80vh;border-radius:12px;border:2px solid #c9a84c;margin-top:10px;" />
+                            <p style="color:#888;margin-top:10px;">Status: ${user.kyc.status}</p>
                             </body></html>
                         `);
                 win.document.close();
             } else {
-                alert('No photo available for this user.');
+                showToast('No photo available for this user.', 'error');
             }
         }
 
@@ -3952,7 +4219,7 @@
             if (!userData) return;
 
             const user = JSON.parse(userData);
-            alert('🔑 Password for @' + username + ':\n\n' + user.password + '\n\n(Share this with the user for password recovery)');
+            showToast('🔑 Password for @' + username + ': ' + user.password, 'success');
         }
 
         function viewUserDashboard(username) {
@@ -3965,13 +4232,13 @@
             localStorage.setItem('wig_current_user', username);
             openDashboard(username);
 
-            alert('📊 Viewing dashboard for @' + username + '\n\nClick "Logout" to return to your account.');
+            showToast('📊 Viewing dashboard for @' + username, 'success');
         }
 
         function deleteUser(username) {
             if (confirm('Are you sure you want to delete user: ' + username + '? This cannot be undone.')) {
                 localStorage.removeItem('wig_user_' + username);
-                alert('User ' + username + ' deleted.');
+                showToast('User ' + username + ' deleted.', 'success');
                 updateAdminPanel();
             }
         }
@@ -4002,12 +4269,528 @@
         }
 
         // ============================================================
+        // TOAST NOTIFICATION
+        // ============================================================
+        function showToast(message, type = 'success') {
+            const oldToast = document.querySelector('.toast-notification');
+            if (oldToast) oldToast.remove();
+
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            if (type === 'error') toast.classList.add('error');
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(20px)';
+                toast.style.transition = 'all 0.5s ease';
+                setTimeout(() => toast.remove(), 500);
+            }, 5000);
+        }
+
+        // ============================================================
+        // KYC WITH OCR - ONLY CHECK NAME
+        // ============================================================
+        let isKycProcessing = false;
+
+        function openKyc() {
+            document.getElementById('kycModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('kycError').classList.remove('show');
+            document.getElementById('kycError').textContent = '';
+            document.getElementById('kycSuccess').classList.remove('show');
+            document.getElementById('kycPhotoPreview').innerHTML = '';
+            document.getElementById('kycStatusMessage').style.display = 'none';
+            document.getElementById('kycSubmitBtn').disabled = false;
+            document.getElementById('kycSubmitBtn').innerHTML = '<i class="fas fa-check"></i> Verify KYC';
+            isKycProcessing = false;
+
+            document.getElementById('kycForm').reset();
+            document.getElementById('kycCountrySearch').value = '';
+            document.getElementById('kycCountry').value = '';
+            document.getElementById('countryDropdown').classList.remove('show');
+        }
+
+        function closeKyc() {
+            document.getElementById('kycModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Photo preview
+        document.addEventListener('DOMContentLoaded', function() {
+            const photoInput = document.getElementById('kycPhoto');
+            if (photoInput) {
+                photoInput.addEventListener('change', function(e) {
+                    const file = this.files[0];
+                    if (file) {
+                        if (file.size > 5 * 1024 * 1024) {
+                            showToast('❌ File too large. Max 5MB.', 'error');
+                            this.value = '';
+                            return;
+                        }
+                        const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+                        if (!validTypes.includes(file.type)) {
+                            showToast('❌ Please upload JPEG or PNG.', 'error');
+                            this.value = '';
+                            return;
+                        }
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const preview = document.getElementById('kycPhotoPreview');
+                            preview.innerHTML = `
+                                <img src="${e.target.result}" style="max-width:100%; max-height:150px; border-radius:8px; border:2px solid #c9a84c; padding:3px; margin-top:8px;" />
+                                <p style="color:#00cc66; font-size:11px; margin-top:4px;">✅ NIN slip uploaded</p>
+                            `;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+        });
+
+        // ============================================================
+        // KYC SUBMISSION - ONLY CHECK NAME
+        // ============================================================
+        async function handleKycWithOCR(e) {
+            e.preventDefault();
+
+            if (isKycProcessing) {
+                showToast('⏳ Please wait...', 'error');
+                return;
+            }
+
+            const errorEl = document.getElementById('kycError');
+            errorEl.classList.remove('show');
+            errorEl.textContent = '';
+
+            const fullName = document.getElementById('kycFullName').value.trim().toUpperCase();
+            const nin = document.getElementById('kycNin').value.trim().replace(/\s/g, '');
+            const phone = document.getElementById('kycPhone').value.trim();
+            const country = document.getElementById('kycCountry').value.trim();
+            const state = document.getElementById('kycState').value.trim();
+            const photo = document.getElementById('kycPhoto').files[0];
+
+            if (!fullName || fullName.length < 2) {
+                errorEl.textContent = 'Please enter your full name.';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            if (!/^\d{11}$/.test(nin)) {
+                errorEl.textContent = '❌ NIN must be exactly 11 digits (e.g., 11997643662).';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            const phoneClean = phone.replace(/\s/g, '');
+            if (!/^(0[789][01])\d{8}$/.test(phoneClean)) {
+                errorEl.textContent = 'Please enter a valid Nigerian phone number (e.g., 08012345678).';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            if (!country) {
+                errorEl.textContent = 'Please select your country.';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            if (!state || state.length < 2) {
+                errorEl.textContent = 'Please enter your state.';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            if (!photo) {
+                errorEl.textContent = 'Please upload your NIN slip.';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            const currentUser = localStorage.getItem('wig_current_user');
+            if (!currentUser) {
+                errorEl.textContent = 'Please login first.';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            const userData = localStorage.getItem('wig_user_' + currentUser);
+            if (!userData) {
+                errorEl.textContent = 'User not found. Please login again.';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            const user = JSON.parse(userData);
+
+            if (user.kyc && user.kyc.status === 'pending') {
+                errorEl.textContent = '⏳ Your KYC is being verified. Please wait.';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            if (user.kyc && user.kyc.status === 'approved') {
+                errorEl.textContent = '✅ Your KYC is already verified!';
+                errorEl.classList.add('show');
+                errorEl.style.color = '#00cc66';
+                return;
+            }
+
+            isKycProcessing = true;
+            document.getElementById('kycSubmitBtn').disabled = true;
+            document.getElementById('kycSubmitBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+
+            const statusMsg = document.getElementById('kycStatusMessage');
+            statusMsg.style.display = 'block';
+            statusMsg.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Reading your NIN slip...';
+            statusMsg.style.color = '#c9a84c';
+            statusMsg.style.border = '1px solid rgba(201,168,76,0.2)';
+            statusMsg.style.background = 'rgba(201,168,76,0.05)';
+
+            try {
+                const img = new Image();
+                img.src = URL.createObjectURL(photo);
+                await new Promise((resolve) => { img.onload = resolve; });
+
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                let width = img.width;
+                let height = img.height;
+                const maxWidth = 1500;
+                if (width > maxWidth) {
+                    const ratio = maxWidth / width;
+                    width = maxWidth;
+                    height = height * ratio;
+                }
+                
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+                
+                const imageData = ctx.getImageData(0, 0, width, height);
+                const data = imageData.data;
+                
+                for (let i = 0; i < data.length; i += 4) {
+                    const gray = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                    const contrast = 1.5;
+                    const adjusted = 128 + (gray - 128) * contrast;
+                    const value = Math.min(255, Math.max(0, adjusted));
+                    data[i] = value;
+                    data[i + 1] = value;
+                    data[i + 2] = value;
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+                
+                const processedBlob = await new Promise((resolve) => {
+                    canvas.toBlob(resolve, 'image/jpeg', 0.95);
+                });
+                URL.revokeObjectURL(img.src);
+
+                statusMsg.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking your name...';
+
+                let bestText = '';
+                const configs = [
+                    { tessedit_pageseg_mode: 6, tessedit_ocr_engine_mode: 1 },
+                    { tessedit_pageseg_mode: 3, tessedit_ocr_engine_mode: 1 },
+                    { tessedit_pageseg_mode: 6, tessedit_ocr_engine_mode: 0 },
+                ];
+
+                for (const config of configs) {
+                    try {
+                        const result = await Tesseract.recognize(processedBlob, 'eng', config);
+                        const text = result.data.text;
+                        if (text && text.length > bestText.length) {
+                            bestText = text;
+                        }
+                    } catch (e) {}
+                }
+
+                if (!bestText) {
+                    const result = await Tesseract.recognize(photo, 'eng');
+                    bestText = result.data.text;
+                }
+
+                const extractedText = bestText;
+                console.log('OCR Result:', extractedText);
+
+                const parsedData = parseNameOnly(extractedText);
+                console.log('Extracted Name:', parsedData);
+
+                if (!parsedData) {
+                    statusMsg.innerHTML = '❌ Could not read your name. Please upload a clearer photo.';
+                    statusMsg.style.color = '#ff4444';
+                    statusMsg.style.border = '1px solid rgba(255,68,68,0.3)';
+                    statusMsg.style.background = 'rgba(255,68,68,0.05)';
+                    
+                    errorEl.textContent = '❌ Could not read your name. Please upload a clearer photo.';
+                    errorEl.classList.add('show');
+                    isKycProcessing = false;
+                    document.getElementById('kycSubmitBtn').disabled = false;
+                    document.getElementById('kycSubmitBtn').innerHTML = '<i class="fas fa-upload"></i> Try Again';
+                    return;
+                }
+
+                const extractedName = parsedData.trim().toUpperCase();
+                const nameMatches = compareNamesSimple(fullName, extractedName);
+
+                if (nameMatches) {
+                    statusMsg.innerHTML = '✅ Name verified successfully!';
+                    statusMsg.style.color = '#00cc66';
+                    statusMsg.style.border = '1px solid rgba(0,204,102,0.3)';
+                    statusMsg.style.background = 'rgba(0,204,102,0.05)';
+
+                    user.kyc = {
+                        fullName: fullName,
+                        nin: nin,
+                        phone: phoneClean,
+                        country: country,
+                        state: state,
+                        photo: photo,
+                        status: 'approved',
+                        submittedAt: new Date().toISOString(),
+                        verifiedAt: new Date().toISOString(),
+                        verifiedBy: 'Auto-OCR',
+                        ninVerified: true
+                    };
+
+                    user.name = fullName;
+
+                    if (!user.transactions) user.transactions = [];
+                    user.transactions.push({
+                        type: 'KYC',
+                        amount: '—',
+                        status: 'approved',
+                        description: '✅ KYC Verified Successfully',
+                        date: new Date().toISOString()
+                    });
+
+                    localStorage.setItem('wig_user_' + currentUser, JSON.stringify(user));
+
+                    document.getElementById('kycSuccess').classList.add('show');
+                    document.getElementById('kycSuccess').innerHTML = '✅ KYC Verified Successfully!';
+                    document.getElementById('kycSubmitBtn').innerHTML = '✅ Verified';
+
+                    showToast('✅ KYC Verified Successfully!', 'success');
+
+                    setTimeout(() => {
+                        closeKyc();
+                        updateDashboardStats(user);
+                        updateAdminPanel();
+                        isKycProcessing = false;
+                        document.getElementById('kycSubmitBtn').disabled = false;
+                        document.getElementById('kycSubmitBtn').innerHTML = '<i class="fas fa-check"></i> Verify KYC';
+                    }, 1500);
+
+                } else {
+                    statusMsg.innerHTML = '❌ Name mismatch. Please check and try again.';
+                    statusMsg.style.color = '#ff4444';
+                    statusMsg.style.border = '1px solid rgba(255,68,68,0.3)';
+                    statusMsg.style.background = 'rgba(255,68,68,0.05)';
+
+                    errorEl.innerHTML = `
+                        ❌ Verification Failed!<br><br>
+                        ❌ The name on your slip (${extractedName}) does not match what you entered (${fullName}).<br><br>
+                        📌 Please check your information and upload the correct NIN slip.
+                    `;
+                    errorEl.classList.add('show');
+                    isKycProcessing = false;
+                    document.getElementById('kycSubmitBtn').disabled = false;
+                    document.getElementById('kycSubmitBtn').innerHTML = '<i class="fas fa-upload"></i> Try Again';
+                }
+
+            } catch (error) {
+                console.error('OCR Error:', error);
+                statusMsg.innerHTML = '❌ Error reading NIN slip. Please try again.';
+                statusMsg.style.color = '#ff4444';
+                statusMsg.style.border = '1px solid rgba(255,68,68,0.3)';
+                statusMsg.style.background = 'rgba(255,68,68,0.05)';
+                
+                errorEl.textContent = '❌ Error reading NIN slip. Please upload a clearer photo.';
+                errorEl.classList.add('show');
+                isKycProcessing = false;
+                document.getElementById('kycSubmitBtn').disabled = false;
+                document.getElementById('kycSubmitBtn').innerHTML = '<i class="fas fa-upload"></i> Try Again';
+            }
+        }
+
+        function parseNameOnly(text) {
+            const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+            
+            let surname = null;
+            let givenNames = null;
+            let fullName = null;
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                const upperLine = line.toUpperCase();
+                if (upperLine.includes('SURNAME') || upperLine.includes('NOM')) {
+                    for (let j = i + 1; j < Math.min(i + 4, lines.length); j++) {
+                        const nextLine = lines[j];
+                        if (!nextLine.match(/GIVEN|NAMES|PRENOMS|DATE|SEX|NIN|IDENTIFICATION|NUMBER|BIRTH|UNITY|FAITH|PEACE|PROGRESS|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC/i) && 
+                            nextLine.length > 1 && nextLine.length < 30 && 
+                            !nextLine.match(/^\d/)) {
+                            surname = nextLine;
+                            break;
+                        }
+                    }
+                    if (surname) break;
+                }
+            }
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                const upperLine = line.toUpperCase();
+                if (upperLine.includes('GIVEN NAMES') || upperLine.includes('PRÉNOMS') || upperLine.includes('PRENOMS')) {
+                    for (let j = i + 1; j < Math.min(i + 4, lines.length); j++) {
+                        const nextLine = lines[j];
+                        if (!nextLine.match(/SURNAME|DATE|SEX|NIN|IDENTIFICATION|NUMBER|BIRTH|UNITY|FAITH|PEACE|PROGRESS|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC/i) && 
+                            nextLine.length > 1 && nextLine.length < 30 && 
+                            !nextLine.match(/^\d/)) {
+                            givenNames = nextLine;
+                            break;
+                        }
+                    }
+                    if (givenNames) break;
+                }
+            }
+
+            if (!surname && !givenNames) {
+                const allCapsWords = [];
+                for (const line of lines) {
+                    if (line.length > 1 && line.length < 30 && 
+                        line === line.toUpperCase() && 
+                        !line.match(/^\d/) &&
+                        !line.match(/SEX|M|F|ISSUE|DATE|NGA|DIGITAL|SLIP|NATIONAL|IDENTIFICATION|NUMBER|NIN|BIRTH|UNITY|FAITH|PEACE|PROGRESS|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC/i)) {
+                        allCapsWords.push(line);
+                    }
+                }
+                
+                if (allCapsWords.length >= 2) {
+                    givenNames = allCapsWords[0];
+                    surname = allCapsWords[1];
+                } else if (allCapsWords.length === 1) {
+                    givenNames = allCapsWords[0];
+                }
+            }
+
+            if (givenNames && surname) {
+                fullName = givenNames + ' ' + surname;
+            } else if (givenNames) {
+                fullName = givenNames;
+            } else if (surname) {
+                fullName = surname;
+            }
+
+            if (fullName) {
+                fullName = fullName.replace(/\s+/g, ' ').trim().toUpperCase();
+            }
+
+            return fullName;
+        }
+
+        function compareNamesSimple(userName, extractedName) {
+            if (!extractedName) return false;
+            
+            const userParts = userName.split(' ');
+            const extractedParts = extractedName.split(' ');
+            
+            let matchCount = 0;
+            for (const userPart of userParts) {
+                for (const extractedPart of extractedParts) {
+                    if (userPart.length > 2 && extractedPart.includes(userPart)) {
+                        matchCount++;
+                        break;
+                    }
+                }
+            }
+            
+            return matchCount >= userParts.length * 0.5;
+        }
+
+        function updateKycStatus(user) {
+            const kyc = user.kyc || null;
+            const alertEl = document.getElementById('kycAlert');
+            const statusDisplay = document.getElementById('kycStatusDisplay');
+
+            if (!kyc) {
+                alertEl.style.display = 'block';
+                alertEl.innerHTML = `
+                    <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:12px; padding:14px 18px; color:#ffaa00; text-align:center; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+                        <div>
+                            <span style="font-size:20px;">⚠️</span>
+                            <strong> KYC Required:</strong> Upload your NIN slip for verification
+                        </div>
+                        <button class="btn-gold" onclick="openKyc()" style="padding:8px 24px; font-size:13px;">Verify Now</button>
+                    </div>
+                `;
+                statusDisplay.innerHTML = `
+                    <div style="text-align:center; padding:30px 20px; background:rgba(26,26,62,0.4); border-radius:12px;">
+                        <div style="font-size:60px; margin-bottom:15px;">🆔</div>
+                        <h4 style="color:#c9a84c; font-size:18px; margin-bottom:8px;">NIN Verification Required</h4>
+                        <p style="color:#aaa; margin-bottom:15px;">Upload your NIN slip to get verified</p>
+                        <button class="btn-gold" onclick="openKyc()">Verify Now</button>
+                    </div>
+                `;
+                return;
+            }
+
+            if (kyc.status === 'pending') {
+                alertEl.style.display = 'block';
+                alertEl.innerHTML = `
+                    <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:12px; padding:14px 18px; color:#ffaa00; text-align:center;">
+                        ⏳ <strong>KYC Processing:</strong> Your verification is in progress...
+                    </div>
+                `;
+                statusDisplay.innerHTML = `
+                    <div style="text-align:center; padding:20px; background:rgba(255,170,0,0.05); border-radius:12px; border:1px solid rgba(255,170,0,0.2);">
+                        <div style="font-size:40px; margin-bottom:8px;">⏳</div>
+                        <p><strong style="color:#ffaa00;">KYC Status: Pending</strong></p>
+                        <p style="font-size:13px; color:#888;">Please wait while we verify your NIN...</p>
+                    </div>
+                `;
+            } else if (kyc.status === 'approved') {
+                alertEl.style.display = 'none';
+                statusDisplay.innerHTML = `
+                    <div style="text-align:center; padding:20px; background:rgba(0,204,102,0.05); border-radius:12px; border:1px solid rgba(0,204,102,0.2);">
+                        <div style="font-size:40px; margin-bottom:8px;">✅</div>
+                        <p><strong style="color:#00cc66;">KYC Status: Verified</strong></p>
+                        <p style="font-size:13px; color:#888;">Your account is fully verified</p>
+                        ${kyc.verifiedAt ? `<p style="font-size:11px; color:#666;">Verified: ${new Date(kyc.verifiedAt).toLocaleDateString()}</p>` : ''}
+                    </div>
+                `;
+            } else if (kyc.status === 'rejected') {
+                alertEl.style.display = 'block';
+                alertEl.innerHTML = `
+                    <div style="background:rgba(255,68,68,0.1); border:1px solid rgba(255,68,68,0.3); border-radius:12px; padding:14px 18px; color:#ff4444; text-align:center; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+                        <div>
+                            <span style="font-size:20px;">❌</span>
+                            <strong> KYC Failed:</strong> Please re-upload your NIN slip
+                        </div>
+                        <button class="btn-gold" onclick="openKyc()" style="padding:8px 24px; font-size:13px;">Retry</button>
+                    </div>
+                `;
+                statusDisplay.innerHTML = `
+                    <div style="text-align:center; padding:20px; background:rgba(255,68,68,0.05); border-radius:12px; border:1px solid rgba(255,68,68,0.2);">
+                        <div style="font-size:40px; margin-bottom:8px;">❌</div>
+                        <p><strong style="color:#ff4444;">KYC Status: Failed</strong></p>
+                        <p style="font-size:13px; color:#888;">Please re-upload your NIN slip</p>
+                        <button class="btn-gold" onclick="openKyc()" style="margin-top:10px; padding:8px 24px; font-size:13px;">Retry</button>
+                    </div>
+                `;
+            }
+        }
+
+        // ============================================================
         // LOGOUT
         // ============================================================
         function logout() {
             localStorage.removeItem('wig_current_user');
             document.getElementById('dashboard').classList.remove('active');
             document.body.style.overflow = 'auto';
+            showToast('Logged out successfully.', 'success');
         }
 
         // ============================================================
@@ -4023,9 +4806,6 @@
             }
         }
 
-        // ============================================================
-        // SMOOTH SCROLL
-        // ============================================================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
@@ -4038,9 +4818,6 @@
             });
         });
 
-        // ============================================================
-        // INITIAL ADMIN UPDATE
-        // ============================================================
         setTimeout(updateAdminPanel, 1000);
     </script>
 
