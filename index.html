@@ -21,7 +21,7 @@
             font-family: -apple-system, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #0a0a1a;
             color: #e0e0e0;
-            line-height: 1.6;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             -webkit-text-size-adjust: 100%;
@@ -69,7 +69,7 @@
         /* ===== HEADER ===== */
         header {
             background: rgba(10, 10, 26, 0.95);
-            padding: 6px 12px;
+            padding: 8px 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -80,32 +80,32 @@
             border-bottom: 1px solid rgba(201, 168, 76, 0.15);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            min-height: 48px;
+            min-height: 52px;
         }
-        .logo { display: flex; align-items: center; gap: 6px; }
-        .logo img { height: 22px; width: auto; }
+        .logo { display: flex; align-items: center; gap: 8px; }
+        .logo img { height: 26px; width: auto; }
         .logo .logo-text { display: flex; flex-direction: column; }
         .logo .logo-text h1 {
             color: #c9a84c;
-            font-size: 10px;
+            font-size: 12px;
             font-weight: 700;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
             line-height: 1.1;
         }
         .logo .logo-text p {
             color: #888;
-            font-size: 5px;
+            font-size: 7px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
         .nav-menu {
             display: none;
             flex-direction: column;
-            gap: 4px;
+            gap: 6px;
             background: rgba(10,10,26,0.98);
-            padding: 12px;
+            padding: 14px;
             position: absolute;
-            top: 48px;
+            top: 52px;
             left: 0;
             width: 100%;
             border-bottom: 1px solid rgba(201,168,76,0.1);
@@ -115,9 +115,9 @@
         .nav-menu.open { display: flex; }
         .nav-menu a {
             color: #ccc;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
-            padding: 6px 0;
+            padding: 8px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
             width: 100%;
             text-align: center;
@@ -126,32 +126,32 @@
         .nav-menu .login-btn {
             width: 100%;
             text-align: center;
-            padding: 6px;
+            padding: 8px;
             margin-top: 4px;
-            font-size: 12px;
+            font-size: 13px;
             background: transparent;
             color: #c9a84c !important;
             border: 2px solid #c9a84c;
             border-radius: 30px;
             font-weight: 600;
             cursor: pointer;
-            min-height: 36px;
+            min-height: 40px;
         }
-        .register-btn-wrapper { display: flex; align-items: center; gap: 4px; }
+        .register-btn-wrapper { display: flex; align-items: center; gap: 6px; }
         .register-btn {
             background: #c9a84c;
             color: #0a0a1a !important;
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 30px;
             font-weight: 700 !important;
             transition: 0.3s;
             border: none;
             cursor: pointer;
-            font-size: 10px;
+            font-size: 11px;
             box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
             animation: registerPulse 2s ease-in-out infinite;
-            min-height: 30px;
-            min-width: 50px;
+            min-height: 34px;
+            min-width: 60px;
         }
         .register-btn:hover {
             background: #d4b85e;
@@ -165,39 +165,39 @@
         .login-btn-header {
             background: transparent;
             color: #c9a84c !important;
-            padding: 4px 10px;
+            padding: 4px 12px;
             border-radius: 30px;
             font-weight: 600 !important;
             border: 2px solid #c9a84c;
             transition: 0.3s;
             cursor: pointer;
-            font-size: 9px;
+            font-size: 10px;
             display: none;
-            min-height: 28px;
+            min-height: 32px;
         }
         .hamburger {
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 4px;
             cursor: pointer;
             padding: 4px;
         }
-        .hamburger span { width: 20px; height: 2px; background: #c9a84c; transition: 0.3s; border-radius: 2px; }
+        .hamburger span { width: 22px; height: 2px; background: #c9a84c; transition: 0.3s; border-radius: 2px; }
 
         /* ===== BUTTONS ===== */
         .btn-gold {
             background: #c9a84c;
             color: #0a0a1a;
-            padding: 10px 16px;
+            padding: 12px 20px;
             border: none;
             border-radius: 30px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
             display: inline-block;
-            min-height: 44px;
-            min-width: 80px;
+            min-height: 48px;
+            min-width: 100px;
             text-align: center;
             width: 100%;
         }
@@ -214,16 +214,16 @@
         .btn-outline {
             background: transparent;
             color: #c9a84c;
-            padding: 10px 16px;
+            padding: 12px 20px;
             border: 2px solid #c9a84c;
             border-radius: 30px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
             display: inline-block;
-            min-height: 44px;
-            min-width: 80px;
+            min-height: 48px;
+            min-width: 100px;
             text-align: center;
             width: 100%;
         }
@@ -238,20 +238,20 @@
             transform: none !important;
         }
         .btn-sm {
-            padding: 6px 14px;
-            font-size: 11px;
-            min-height: 32px;
-            min-width: 60px;
+            padding: 8px 16px;
+            font-size: 13px;
+            min-height: 38px;
+            min-width: 80px;
             width: auto;
         }
 
         /* ===== HERO ===== */
         .hero {
-            padding: 60px 12px 30px;
+            padding: 70px 14px 40px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            min-height: 60vh;
+            min-height: 65vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -283,62 +283,62 @@
             display: inline-block;
             background: rgba(201,168,76,0.15);
             color: #c9a84c;
-            padding: 3px 10px;
+            padding: 4px 12px;
             border-radius: 30px;
-            font-size: 8px;
-            letter-spacing: 1px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             border: 1px solid rgba(201,168,76,0.2);
         }
         .hero h1 {
-            font-size: 20px;
+            font-size: 26px;
             font-weight: 800;
             color: #fff;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             line-height: 1.15;
         }
         .hero h1 span { color: #c9a84c; }
-        .hero .subtitle { font-size: 12px; color: #ddd; margin-bottom: 4px; font-weight: 300; }
+        .hero .subtitle { font-size: 14px; color: #ddd; margin-bottom: 4px; font-weight: 300; }
         .hero .description {
-            font-size: 11px;
+            font-size: 13px;
             color: #ccc;
             max-width: 700px;
-            margin: 8px auto 12px;
+            margin: 10px auto 14px;
             line-height: 1.6;
             padding: 0 5px;
         }
         .hero-quote {
             font-style: italic;
             color: #c9a84c;
-            font-size: 11px;
-            margin-top: 12px;
-            padding: 8px;
+            font-size: 13px;
+            margin-top: 14px;
+            padding: 10px;
             border-top: 1px solid rgba(201,168,76,0.2);
             border-bottom: 1px solid rgba(201,168,76,0.2);
             display: inline-block;
         }
-        .hero-buttons { display: flex; flex-direction: column; gap: 8px; align-items: center; width: 100%; max-width: 300px; margin: 0 auto; }
+        .hero-buttons { display: flex; flex-direction: column; gap: 10px; align-items: center; width: 100%; max-width: 350px; margin: 0 auto; }
 
         /* ===== SECTIONS ===== */
-        section { padding: 24px 10px; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-size: 18px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 6px; }
+        section { padding: 30px 12px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 22px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 8px; }
         .section-title span { color: #c9a84c; }
         .section-subtitle {
             text-align: center;
             color: #999;
-            font-size: 11px;
+            font-size: 13px;
             max-width: 700px;
-            margin: 0 auto 14px;
+            margin: 0 auto 16px;
             line-height: 1.5;
         }
 
         /* ===== IMAGE SHOWCASE ===== */
         .image-showcase {
             background: rgba(17,17,40,0.8);
-            border-radius: 10px;
-            padding: 14px 10px;
-            margin-top: 6px;
+            border-radius: 12px;
+            padding: 16px 12px;
+            margin-top: 8px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
@@ -346,29 +346,29 @@
         .image-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
         }
         .image-grid .img-card {
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
             border: 1px solid rgba(201,168,76,0.1);
             background: rgba(26,26,62,0.6);
         }
-        .image-grid .img-card img { width: 100%; height: 80px; object-fit: cover; }
+        .image-grid .img-card img { width: 100%; height: 100px; object-fit: cover; }
         .image-grid .img-card .caption {
-            padding: 4px;
+            padding: 6px;
             text-align: center;
             color: #aaa;
-            font-size: 8px;
+            font-size: 9px;
             background: rgba(26,26,62,0.6);
         }
 
         /* ===== WHY INVEST ===== */
         .why-invest {
             background: rgba(17,17,40,0.8);
-            border-radius: 10px;
-            padding: 14px 10px;
-            margin-top: 6px;
+            border-radius: 12px;
+            padding: 16px 12px;
+            margin-top: 8px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
@@ -376,73 +376,73 @@
         .why-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 8px;
+            gap: 10px;
+            margin-top: 10px;
         }
         .why-card {
             background: rgba(26,26,62,0.6);
-            padding: 10px 8px;
-            border-radius: 8px;
+            padding: 12px 10px;
+            border-radius: 10px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.08);
         }
-        .why-card .icon { font-size: 18px; margin-bottom: 2px; }
-        .why-card h3 { color: #c9a84c; font-size: 10px; margin-bottom: 1px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .why-card p { color: #aaa; font-size: 9px; line-height: 1.4; }
+        .why-card .icon { font-size: 22px; margin-bottom: 4px; }
+        .why-card h3 { color: #c9a84c; font-size: 12px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .why-card p { color: #aaa; font-size: 11px; line-height: 1.4; }
 
         /* ===== BUSINESS CYCLE ===== */
         .business-cycle {
             background: rgba(17,17,40,0.8);
-            border-radius: 10px;
-            padding: 14px 10px;
-            margin-top: 6px;
+            border-radius: 12px;
+            padding: 16px 12px;
+            margin-top: 8px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
-        .cycle-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-        .cycle-info h3 { color: #c9a84c; font-size: 16px; margin-bottom: 4px; }
-        .cycle-info p { color: #aaa; font-size: 11px; line-height: 1.5; }
-        .cycle-info .days { font-size: 26px; font-weight: 800; color: #c9a84c; }
-        .values-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .cycle-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+        .cycle-info h3 { color: #c9a84c; font-size: 18px; margin-bottom: 4px; }
+        .cycle-info p { color: #aaa; font-size: 12px; line-height: 1.5; }
+        .cycle-info .days { font-size: 28px; font-weight: 800; color: #c9a84c; }
+        .values-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .value-tag {
             background: rgba(26,26,62,0.6);
-            padding: 6px 8px;
-            border-radius: 6px;
+            padding: 8px 10px;
+            border-radius: 8px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.08);
         }
-        .value-tag h4 { color: #c9a84c; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .value-tag h4 { color: #c9a84c; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* ===== ROADMAP ===== */
-        .roadmap-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+        .roadmap-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
         .roadmap-card {
             background: rgba(17,17,40,0.8);
-            padding: 12px 10px;
-            border-radius: 8px;
+            padding: 14px 12px;
+            border-radius: 10px;
             border: 1px solid rgba(201,168,76,0.08);
             text-align: center;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
-        .roadmap-card .phase { color: #c9a84c; font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-        .roadmap-card h4 { color: #fff; font-size: 13px; margin: 3px 0; }
-        .roadmap-card ul { list-style: none; padding: 0; margin-top: 4px; }
-        .roadmap-card ul li { color: #aaa; font-size: 10px; padding: 2px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .roadmap-card .phase { color: #c9a84c; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .roadmap-card h4 { color: #fff; font-size: 15px; margin: 4px 0; }
+        .roadmap-card ul { list-style: none; padding: 0; margin-top: 6px; }
+        .roadmap-card ul li { color: #aaa; font-size: 11px; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
         /* ===== PHILOSOPHY ===== */
         .philosophy-box {
             background: rgba(17,17,40,0.8);
-            padding: 18px 12px;
-            border-radius: 10px;
+            padding: 20px 14px;
+            border-radius: 12px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.1);
-            margin-top: 6px;
+            margin-top: 8px;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
         .philosophy-box blockquote {
-            font-size: 13px;
+            font-size: 15px;
             color: #fff;
             font-weight: 300;
             line-height: 1.5;
@@ -452,86 +452,86 @@
         .philosophy-box blockquote span { color: #c9a84c; font-weight: 500; }
 
         /* ===== INVESTMENT LEVELS ===== */
-        .packages-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .packages-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .package-card {
             background: rgba(17,17,40,0.8);
-            padding: 10px 8px;
-            border-radius: 8px;
+            padding: 12px 10px;
+            border-radius: 10px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
         .package-card.featured { border-color: #c9a84c; background: rgba(26,26,62,0.8); }
-        .package-card .name { color: #c9a84c; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-        .package-card .amount { font-size: 14px; font-weight: 800; color: #fff; margin: 2px 0; }
-        .package-card .desc { color: #888; font-size: 8px; line-height: 1.3; }
+        .package-card .name { color: #c9a84c; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .package-card .amount { font-size: 16px; font-weight: 800; color: #fff; margin: 3px 0; }
+        .package-card .desc { color: #888; font-size: 9px; line-height: 1.3; }
 
         /* ===== CONTACT ===== */
         .contact-box {
             background: rgba(17,17,40,0.8);
-            border-radius: 10px;
-            padding: 18px 12px;
+            border-radius: 12px;
+            padding: 20px 12px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 800px; margin: 0 auto; }
-        .contact-item .icon { font-size: 16px; }
-        .contact-item .label { color: #c9a84c; font-weight: 600; font-size: 8px; }
-        .contact-item .value { color: #ccc; font-size: 9px; word-break: break-all; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 800px; margin: 0 auto; }
+        .contact-item .icon { font-size: 18px; }
+        .contact-item .label { color: #c9a84c; font-weight: 600; font-size: 10px; }
+        .contact-item .value { color: #ccc; font-size: 11px; word-break: break-all; }
 
         /* ===== FOOTER ===== */
         footer {
             background: #060612;
-            padding: 18px 10px 10px;
+            padding: 20px 12px 12px;
             border-top: 1px solid rgba(201,168,76,0.1);
-            margin-top: 12px;
+            margin-top: 14px;
         }
-        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 1200px; margin: 0 auto; text-align: center; }
-        .footer-col h4 { color: #c9a84c; font-size: 11px; margin-bottom: 4px; }
-        .footer-col p, .footer-col a { color: #888; font-size: 10px; line-height: 1.6; display: block; }
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .footer-col h4 { color: #c9a84c; font-size: 13px; margin-bottom: 4px; }
+        .footer-col p, .footer-col a { color: #888; font-size: 11px; line-height: 1.6; display: block; }
         .footer-col a:hover { color: #c9a84c; }
-        .footer-col .brand { color: #c9a84c; font-size: 13px; font-weight: 700; }
-        .footer-col .brand-tag { color: #666; font-size: 7px; letter-spacing: 0.5px; text-transform: uppercase; }
-        .footer-bottom { text-align: center; padding-top: 8px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); color: #666; font-size: 8px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .footer-col .brand { color: #c9a84c; font-size: 15px; font-weight: 700; }
+        .footer-col .brand-tag { color: #666; font-size: 8px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .footer-bottom { text-align: center; padding-top: 10px; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); color: #666; font-size: 9px; max-width: 1200px; margin-left: auto; margin-right: auto; }
 
         /* ===== ABOUT US ===== */
         .about-us-content {
             background: rgba(17,17,40,0.8);
-            border-radius: 10px;
-            padding: 14px 10px;
+            border-radius: 12px;
+            padding: 16px 12px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            margin-top: 6px;
+            margin-top: 8px;
         }
         .about-us-content h3 {
             color: #c9a84c;
-            font-size: 15px;
-            margin-top: 12px;
+            font-size: 17px;
+            margin-top: 14px;
             margin-bottom: 4px;
         }
         .about-us-content h3:first-of-type { margin-top: 0; }
         .about-us-content p {
             color: #ccc;
-            font-size: 11px;
+            font-size: 13px;
             line-height: 1.5;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .about-us-content ul {
             list-style: none;
             padding: 0;
             display: grid;
             grid-template-columns: 1fr;
-            gap: 3px 8px;
-            margin-bottom: 8px;
+            gap: 4px 8px;
+            margin-bottom: 10px;
         }
         .about-us-content ul li {
             color: #ccc;
-            font-size: 11px;
-            padding: 3px 0;
+            font-size: 13px;
+            padding: 4px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .about-us-content ul li::before {
@@ -546,51 +546,51 @@
            ============================================================ */
         .investment-share-section {
             background: rgba(17,17,40,0.8);
-            border-radius: 10px;
-            padding: 14px 10px;
+            border-radius: 12px;
+            padding: 16px 12px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            margin-top: 6px;
+            margin-top: 8px;
         }
         .share-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 6px;
-            margin-top: 8px;
+            gap: 8px;
+            margin-top: 10px;
         }
         .share-item {
             background: rgba(26,26,62,0.6);
-            padding: 10px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 10px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.06);
         }
-        .share-item .percentage { font-size: 20px; font-weight: 800; color: #c9a84c; }
-        .share-item .label { color: #aaa; font-size: 9px; margin-top: 2px; }
-        .share-item .icon { font-size: 16px; margin-bottom: 2px; }
+        .share-item .percentage { font-size: 22px; font-weight: 800; color: #c9a84c; }
+        .share-item .label { color: #aaa; font-size: 10px; margin-top: 2px; }
+        .share-item .icon { font-size: 18px; margin-bottom: 2px; }
 
         .investment-care {
-            margin-top: 12px;
-            padding: 10px;
+            margin-top: 14px;
+            padding: 12px;
             background: rgba(26,26,62,0.6);
-            border-radius: 8px;
-            border-left: 3px solid #c9a84c;
+            border-radius: 10px;
+            border-left: 4px solid #c9a84c;
         }
-        .investment-care h4 { color: #c9a84c; font-size: 13px; margin-bottom: 4px; }
-        .investment-care p { color: #aaa; font-size: 11px; line-height: 1.5; }
+        .investment-care h4 { color: #c9a84c; font-size: 15px; margin-bottom: 4px; }
+        .investment-care p { color: #aaa; font-size: 12px; line-height: 1.5; }
 
         .investment-image-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            margin-top: 8px;
+            gap: 8px;
+            margin-top: 10px;
         }
         .investment-image-grid img {
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid rgba(201,168,76,0.1);
             width: 100%;
-            height: 70px;
+            height: 80px;
             object-fit: cover;
         }
 
@@ -599,12 +599,12 @@
            ============================================================ */
         .protection-box {
             background: rgba(201,168,76,0.05);
-            padding: 12px 10px;
-            border-radius: 8px;
-            border-left: 3px solid #c9a84c;
-            margin-top: 6px;
+            padding: 14px 12px;
+            border-radius: 10px;
+            border-left: 4px solid #c9a84c;
+            margin-top: 8px;
         }
-        .protection-box p { color: #ccc; font-size: 11px; line-height: 1.5; max-width: 800px; margin: 0 auto; text-align: center; }
+        .protection-box p { color: #ccc; font-size: 13px; line-height: 1.5; max-width: 800px; margin: 0 auto; text-align: center; }
 
         /* ============================================================
            MODALS
@@ -622,7 +622,7 @@
             align-items: center;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            padding: 10px;
+            padding: 12px;
         }
         .auth-overlay.active, .kyc-overlay.active, .deposit-overlay.active, 
         .deposit-confirm-overlay.active, .withdraw-overlay.active, .admin-login-overlay.active {
@@ -630,8 +630,8 @@
         }
         .auth-modal, .kyc-modal, .deposit-modal, .deposit-confirm-modal, .withdraw-modal, .admin-login-modal {
             background: rgba(17,17,40,0.95);
-            border-radius: 14px;
-            padding: 16px 12px;
+            border-radius: 16px;
+            padding: 20px 16px;
             max-width: 100%;
             width: 100%;
             max-height: 90vh;
@@ -643,9 +643,9 @@
         @keyframes slideUp { 0% { transform: translateY(30px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
         .auth-modal .close-btn, .kyc-modal .close-btn, .deposit-modal .close-btn, .withdraw-modal .close-btn, .admin-login-modal .close-btn {
             position: absolute;
-            top: 6px;
-            right: 10px;
-            font-size: 18px;
+            top: 8px;
+            right: 12px;
+            font-size: 20px;
             color: #888;
             cursor: pointer;
             transition: 0.3s;
@@ -656,23 +656,23 @@
         .withdraw-modal .close-btn:hover, .admin-login-modal .close-btn:hover { color: #c9a84c; }
         .auth-modal h2, .kyc-modal h2, .deposit-modal h2, .deposit-confirm-modal h2, .withdraw-modal h2, .admin-login-modal h2 {
             color: #c9a84c;
-            font-size: 16px;
+            font-size: 18px;
             text-align: center;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
         .auth-modal .sub, .kyc-modal .sub, .deposit-modal .sub, .withdraw-modal .sub, .admin-login-modal .sub {
             text-align: center;
             color: #888;
-            font-size: 10px;
-            margin-bottom: 10px;
+            font-size: 11px;
+            margin-bottom: 12px;
         }
         .auth-modal .form-group, .kyc-modal .form-group, .deposit-modal .form-group, .withdraw-modal .form-group, .admin-login-modal .form-group {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .auth-modal label, .kyc-modal label, .deposit-modal label, .withdraw-modal label, .admin-login-modal label {
             display: block;
             color: #ccc;
-            font-size: 10px;
+            font-size: 12px;
             font-weight: 500;
             margin-bottom: 2px;
         }
@@ -686,10 +686,10 @@
         .withdraw-modal select,
         .admin-login-modal input {
             width: 100%;
-            padding: 8px 10px;
+            padding: 10px 12px;
             background: rgba(26,26,62,0.8);
             border: 1px solid rgba(201,168,76,0.2);
-            border-radius: 8px;
+            border-radius: 10px;
             color: #fff;
             font-size: 16px;
             transition: 0.3s;
@@ -708,7 +708,7 @@
         .password-wrapper { position: relative; }
         .password-wrapper .toggle-pwd {
             position: absolute;
-            right: 8px;
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
             color: #888;
@@ -716,26 +716,26 @@
             transition: 0.3s;
             background: none;
             border: none;
-            font-size: 14px;
+            font-size: 16px;
         }
         .password-wrapper .toggle-pwd:hover { color: #c9a84c; }
         .auth-modal .checkbox-group, .kyc-modal .checkbox-group {
             display: flex;
             align-items: flex-start;
-            gap: 4px;
-            margin: 6px 0;
+            gap: 6px;
+            margin: 8px 0;
         }
         .auth-modal .checkbox-group input[type="checkbox"], .kyc-modal .checkbox-group input[type="checkbox"] {
-            margin-top: 2px;
+            margin-top: 3px;
             accent-color: #c9a84c;
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             cursor: pointer;
             flex-shrink: 0;
         }
         .auth-modal .checkbox-group label, .kyc-modal .checkbox-group label {
             color: #aaa;
-            font-size: 10px;
+            font-size: 11px;
             line-height: 1.3;
             cursor: pointer;
         }
@@ -746,22 +746,22 @@
         .auth-modal .btn-gold, .kyc-modal .btn-gold, .deposit-modal .btn-gold, 
         .deposit-confirm-modal .btn-gold, .withdraw-modal .btn-gold, .admin-login-modal .btn-gold {
             width: 100%;
-            padding: 10px;
-            font-size: 14px;
+            padding: 12px;
+            font-size: 15px;
             margin-top: 4px;
         }
         .auth-modal .btn-outline, .deposit-modal .btn-outline, 
         .deposit-confirm-modal .btn-outline, .withdraw-modal .btn-outline {
             width: 100%;
             margin-top: 4px;
-            padding: 8px;
-            font-size: 12px;
+            padding: 10px;
+            font-size: 13px;
         }
         .auth-modal .auth-switch {
             text-align: center;
-            margin-top: 8px;
+            margin-top: 10px;
             color: #888;
-            font-size: 10px;
+            font-size: 11px;
         }
         .auth-modal .auth-switch a, .auth-modal .auth-switch a {
             color: #c9a84c;
@@ -771,16 +771,16 @@
         .auth-modal .auth-switch a:hover, .auth-modal .auth-switch a:hover { text-decoration: underline; }
         .auth-modal .error-msg, .kyc-modal .error-msg, .deposit-modal .error-msg, .withdraw-modal .error-msg {
             color: #ff6b6b;
-            font-size: 11px;
-            margin-top: 3px;
+            font-size: 12px;
+            margin-top: 4px;
             display: none;
             line-height: 1.4;
         }
         .auth-modal .error-msg.show, .kyc-modal .error-msg.show, .deposit-modal .error-msg.show, .withdraw-modal .error-msg.show { display: block; }
         .auth-modal .file-upload, .kyc-modal .file-upload, .deposit-modal .file-upload {
             background: rgba(26,26,62,0.8);
-            padding: 8px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 10px;
             border: 1px dashed rgba(201,168,76,0.3);
             text-align: center;
             cursor: pointer;
@@ -791,27 +791,27 @@
         .deposit-modal .file-upload input[type="file"] { display: none; }
         .auth-modal .file-upload .label, .kyc-modal .file-upload .label, .deposit-modal .file-upload .label {
             color: #888;
-            font-size: 10px;
+            font-size: 11px;
         }
         .auth-modal .file-upload .label i, .kyc-modal .file-upload .label i, .deposit-modal .file-upload .label i {
             color: #c9a84c;
-            font-size: 20px;
+            font-size: 24px;
             display: block;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
         .auth-modal .success-msg, .kyc-modal .success-msg {
             color: #00cc66;
-            font-size: 11px;
+            font-size: 12px;
             text-align: center;
-            padding: 6px;
+            padding: 8px;
             display: none;
         }
         .auth-modal .success-msg.show, .kyc-modal .success-msg.show { display: block; }
         .auth-modal small, .kyc-modal small, .deposit-modal small {
             color: #666;
-            font-size: 8px;
+            font-size: 9px;
             display: block;
-            margin-top: 1px;
+            margin-top: 2px;
         }
 
         /* ============================================================
@@ -820,21 +820,21 @@
         .deposit-amounts {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 4px;
-            margin-bottom: 6px;
+            gap: 6px;
+            margin-bottom: 8px;
         }
         .deposit-amount {
             background: rgba(26,26,62,0.8);
-            padding: 6px;
-            border-radius: 8px;
+            padding: 8px;
+            border-radius: 10px;
             text-align: center;
             border: 2px solid rgba(201,168,76,0.15);
             cursor: pointer;
             transition: 0.3s;
             color: #fff;
             font-weight: 600;
-            font-size: 11px;
-            min-height: 36px;
+            font-size: 13px;
+            min-height: 40px;
         }
         .deposit-amount:hover { border-color: #c9a84c; transform: scale(1.03); }
         .deposit-amount.selected { border-color: #c9a84c; background: rgba(201,168,76,0.15); }
@@ -842,16 +842,16 @@
             background: rgba(201,168,76,0.15);
             color: #c9a84c;
             border: 1px solid #c9a84c;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 9px;
+            font-size: 10px;
             transition: 0.3s;
-            min-height: 26px;
+            min-height: 30px;
         }
         .deposit-modal .copy-btn:hover { background: #c9a84c; color: #0a0a1a; }
-        .deposit-confirm-modal .icon { font-size: 30px; margin-bottom: 6px; }
-        .deposit-confirm-modal p { color: #aaa; font-size: 12px; margin-bottom: 4px; }
+        .deposit-confirm-modal .icon { font-size: 34px; margin-bottom: 6px; }
+        .deposit-confirm-modal p { color: #aaa; font-size: 13px; margin-bottom: 4px; }
 
         /* ============================================================
            WITHDRAWAL SPECIFIC
@@ -859,13 +859,13 @@
         .withdraw-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            margin-bottom: 10px;
+            gap: 8px;
+            margin-bottom: 12px;
         }
         .withdraw-option {
             background: rgba(26,26,62,0.8);
-            padding: 10px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 10px;
             text-align: center;
             border: 2px solid rgba(201,168,76,0.15);
             cursor: pointer;
@@ -873,16 +873,16 @@
         }
         .withdraw-option:hover { border-color: #c9a84c; transform: scale(1.02); }
         .withdraw-option.selected { border-color: #c9a84c; background: rgba(201,168,76,0.15); }
-        .withdraw-option .amount { font-size: 16px; font-weight: 800; color: #c9a84c; }
-        .withdraw-option .label { color: #888; font-size: 9px; margin-top: 2px; }
-        .withdraw-form .form-group { margin-bottom: 8px; }
-        .withdraw-form label { display: block; color: #ccc; font-size: 10px; font-weight: 500; margin-bottom: 2px; }
+        .withdraw-option .amount { font-size: 18px; font-weight: 800; color: #c9a84c; }
+        .withdraw-option .label { color: #888; font-size: 10px; margin-top: 2px; }
+        .withdraw-form .form-group { margin-bottom: 10px; }
+        .withdraw-form label { display: block; color: #ccc; font-size: 12px; font-weight: 500; margin-bottom: 2px; }
         .withdraw-form input {
             width: 100%;
-            padding: 8px 10px;
+            padding: 10px 12px;
             background: rgba(26,26,62,0.8);
             border: 1px solid rgba(201,168,76,0.2);
-            border-radius: 8px;
+            border-radius: 10px;
             color: #fff;
             font-size: 16px;
             outline: none;
@@ -890,14 +890,14 @@
             -webkit-appearance: none;
         }
         .withdraw-form input:focus { border-color: #c9a84c; box-shadow: 0 0 20px rgba(201,168,76,0.1); }
-        .withdraw-actions { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+        .withdraw-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
         .withdraw-actions .btn-gold, .withdraw-actions .btn-outline { width: 100%; }
-        .withdraw-blocked, .withdraw-no-balance { display: none; text-align: center; padding: 10px 0; }
-        .withdraw-blocked .icon, .withdraw-no-balance .icon { font-size: 28px; margin-bottom: 6px; }
-        .withdraw-blocked h3, .withdraw-no-balance h3 { color: #c9a84c; font-size: 14px; margin-bottom: 3px; }
-        .withdraw-blocked p, .withdraw-no-balance p { color: #888; font-size: 11px; margin-bottom: 6px; }
-        .withdraw-blocked .days-remaining { background: rgba(26,26,62,0.6); padding: 6px; border-radius: 6px; margin-bottom: 6px; }
-        .withdraw-blocked .days-remaining span { color: #c9a84c; font-size: 16px; font-weight: 700; }
+        .withdraw-blocked, .withdraw-no-balance { display: none; text-align: center; padding: 12px 0; }
+        .withdraw-blocked .icon, .withdraw-no-balance .icon { font-size: 32px; margin-bottom: 6px; }
+        .withdraw-blocked h3, .withdraw-no-balance h3 { color: #c9a84c; font-size: 16px; margin-bottom: 4px; }
+        .withdraw-blocked p, .withdraw-no-balance p { color: #888; font-size: 12px; margin-bottom: 6px; }
+        .withdraw-blocked .days-remaining { background: rgba(26,26,62,0.6); padding: 8px; border-radius: 8px; margin-bottom: 6px; }
+        .withdraw-blocked .days-remaining span { color: #c9a84c; font-size: 18px; font-weight: 700; }
 
         /* ============================================================
            DASHBOARD - FULL SCREEN PHONE VIEW
@@ -912,111 +912,121 @@
             background: #0a0a1a;
             z-index: 9998;
             overflow-y: auto;
-            padding: 50px 8px 12px;
+            padding: 58px 8px 14px;
         }
         .dashboard-overlay.active { display: block; }
-        .dashboard-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 8px; }
+        .dashboard-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 10px; }
         .dash-sidebar {
             background: rgba(17,17,40,0.8);
-            border-radius: 10px;
-            padding: 6px;
+            border-radius: 12px;
+            padding: 8px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            gap: 3px;
+            gap: 4px;
         }
         .dash-sidebar .dash-logo { display: none; }
         .dash-sidebar .menu-item {
             color: #aaa;
-            padding: 4px 2px;
-            border-radius: 6px;
-            font-size: 8px;
+            padding: 6px 4px;
+            border-radius: 8px;
+            font-size: 9px;
             transition: 0.3s;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1px;
+            gap: 2px;
             text-align: center;
         }
         .dash-sidebar .menu-item:hover { background: rgba(201,168,76,0.08); color: #c9a84c; }
         .dash-sidebar .menu-item.active { background: rgba(201,168,76,0.12); color: #c9a84c; }
-        .dash-sidebar .menu-item i { font-size: 14px; }
+        .dash-sidebar .menu-item i { font-size: 16px; }
         .dash-sidebar .menu-item.logout-item { color: #ff6b6b; }
         .dash-sidebar .menu-item.logout-item:hover { background: rgba(255,107,107,0.1); }
+        .dash-sidebar .menu-item.admin-item { color: #c9a84c; border: 1px solid rgba(201,168,76,0.2); }
 
         .dash-main {
             background: rgba(17,17,40,0.8);
-            border-radius: 10px;
-            padding: 10px;
+            border-radius: 12px;
+            padding: 12px;
             border: 1px solid rgba(201,168,76,0.08);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
-        .dash-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 8px; gap: 3px; }
-        .dash-header h2 { color: #c9a84c; font-size: 14px; }
-        .dash-header .user-info { color: #aaa; font-size: 10px; }
+        .dash-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 10px; gap: 4px; }
+        .dash-header h2 { color: #c9a84c; font-size: 16px; }
+        .dash-header .user-info { color: #aaa; font-size: 12px; }
         .dash-header .user-info span { color: #c9a84c; font-weight: 600; }
+        .dash-header .admin-badge {
+            background: rgba(201,168,76,0.15);
+            color: #c9a84c;
+            padding: 2px 10px;
+            border-radius: 30px;
+            font-size: 10px;
+            border: 1px solid rgba(201,168,76,0.2);
+            display: inline-block;
+        }
 
         .dash-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            margin-bottom: 8px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
         .dash-stat {
             background: rgba(26,26,62,0.6);
-            padding: 8px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 10px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.06);
         }
-        .dash-stat .number { font-size: 15px; font-weight: 800; color: #c9a84c; }
-        .dash-stat .label { font-size: 8px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+        .dash-stat .number { font-size: 18px; font-weight: 800; color: #c9a84c; }
+        .dash-stat .label { font-size: 9px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
 
         .investment-overview {
             background: rgba(26,26,62,0.6);
-            border-radius: 8px;
-            padding: 8px;
-            margin-bottom: 8px;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.06);
         }
-        .investment-overview img { max-width: 100%; border-radius: 6px; max-height: 80px; object-fit: cover; width: 100%; }
-        .investment-overview .title { color: #c9a84c; font-size: 12px; font-weight: 600; margin: 4px 0 2px; }
-        .investment-overview .desc { color: #888; font-size: 10px; }
+        .investment-overview img { max-width: 100%; border-radius: 8px; max-height: 90px; object-fit: cover; width: 100%; }
+        .investment-overview .title { color: #c9a84c; font-size: 14px; font-weight: 600; margin: 6px 0 2px; }
+        .investment-overview .desc { color: #888; font-size: 11px; }
 
-        .dash-actions { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
-        .dash-actions .btn-gold, .dash-actions .btn-outline { width: 100%; padding: 8px; font-size: 12px; min-height: 40px; }
+        .dash-actions { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+        .dash-actions .btn-gold, .dash-actions .btn-outline { width: 100%; padding: 10px; font-size: 14px; min-height: 44px; }
 
         .dash-section {
             background: rgba(26,26,62,0.6);
-            border-radius: 8px;
-            padding: 8px;
-            margin-bottom: 8px;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
             border: 1px solid rgba(201,168,76,0.06);
         }
-        .dash-section h3 { color: #c9a84c; font-size: 12px; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
-        .dash-section .empty-state { color: #666; text-align: center; padding: 8px 0; font-size: 10px; }
-        .dash-section .empty-state .icon { font-size: 20px; margin-bottom: 3px; opacity: 0.3; }
+        .dash-section h3 { color: #c9a84c; font-size: 14px; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
+        .dash-section .empty-state { color: #666; text-align: center; padding: 10px 0; font-size: 12px; }
+        .dash-section .empty-state .icon { font-size: 24px; margin-bottom: 4px; opacity: 0.3; }
 
-        .performance-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 4px; }
-        .perf-item { background: rgba(10,10,26,0.6); padding: 6px; border-radius: 6px; text-align: center; }
-        .perf-item .num { font-size: 13px; font-weight: 700; color: #c9a84c; }
-        .perf-item .lbl { font-size: 8px; color: #888; margin-top: 2px; }
+        .performance-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 4px; }
+        .perf-item { background: rgba(10,10,26,0.6); padding: 8px; border-radius: 8px; text-align: center; }
+        .perf-item .num { font-size: 15px; font-weight: 700; color: #c9a84c; }
+        .perf-item .lbl { font-size: 9px; color: #888; margin-top: 2px; }
 
-        .cycle-progress { margin: 6px 0; }
-        .cycle-progress .bar-bg { background: rgba(10,10,26,0.6); border-radius: 8px; height: 5px; overflow: hidden; margin-top: 3px; }
-        .cycle-progress .bar-fill { background: #c9a84c; height: 100%; border-radius: 8px; transition: width 0.5s ease; }
-        .cycle-progress .info { display: flex; justify-content: space-between; font-size: 9px; color: #888; }
+        .cycle-progress { margin: 8px 0; }
+        .cycle-progress .bar-bg { background: rgba(10,10,26,0.6); border-radius: 10px; height: 6px; overflow: hidden; margin-top: 4px; }
+        .cycle-progress .bar-fill { background: #c9a84c; height: 100%; border-radius: 10px; transition: width 0.5s ease; }
+        .cycle-progress .info { display: flex; justify-content: space-between; font-size: 11px; color: #888; }
 
         /* Investment Card */
         .investment-card {
             background: rgba(26,26,62,0.6);
-            border-radius: 10px;
-            padding: 12px;
+            border-radius: 12px;
+            padding: 14px;
             border: 1px solid rgba(201,168,76,0.1);
             margin-bottom: 10px;
         }
@@ -1028,27 +1038,27 @@
             gap: 4px;
             margin-bottom: 6px;
         }
-        .investment-card .header h4 { color: #c9a84c; font-size: 13px; }
+        .investment-card .header h4 { color: #c9a84c; font-size: 15px; }
         .investment-card .header .status {
-            padding: 2px 10px;
+            padding: 2px 12px;
             border-radius: 20px;
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 600;
         }
         .investment-card .details {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 6px;
+            gap: 8px;
             margin-bottom: 8px;
         }
         .investment-card .details .item {
             text-align: center;
             background: rgba(10,10,26,0.4);
-            padding: 6px;
-            border-radius: 6px;
+            padding: 8px;
+            border-radius: 8px;
         }
-        .investment-card .details .item .label { color: #888; font-size: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .investment-card .details .item .value { font-size: 14px; font-weight: 700; }
+        .investment-card .details .item .label { color: #888; font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .investment-card .details .item .value { font-size: 16px; font-weight: 700; }
         .investment-card .details .item .value.gold { color: #c9a84c; }
         .investment-card .details .item .value.green { color: #00cc66; }
         .investment-card .details .item .value.white { color: #fff; }
@@ -1057,14 +1067,14 @@
         .investment-card .progress-section .info-text {
             display: flex;
             justify-content: space-between;
-            font-size: 9px;
+            font-size: 10px;
             color: #888;
             margin-bottom: 2px;
         }
         .investment-card .progress-section .bar {
             background: rgba(10,10,26,0.6);
             border-radius: 8px;
-            height: 5px;
+            height: 6px;
             overflow: hidden;
         }
         .investment-card .progress-section .bar .fill {
@@ -1075,7 +1085,7 @@
         .investment-card .bottom-info {
             margin-top: 6px;
             text-align: center;
-            font-size: 9px;
+            font-size: 10px;
             color: #888;
         }
         .investment-card .bottom-info .rate {
@@ -1086,29 +1096,29 @@
         /* Earnings Card */
         .earnings-summary {
             background: rgba(201,168,76,0.05);
-            border-radius: 10px;
-            padding: 12px;
+            border-radius: 12px;
+            padding: 14px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.1);
             margin-bottom: 12px;
         }
-        .earnings-summary .total-label { color: #888; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .earnings-summary .total-amount { color: #00cc66; font-size: 24px; font-weight: 800; }
-        .earnings-summary .sub-info { color: #888; font-size: 9px; margin-top: 3px; }
+        .earnings-summary .total-label { color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .earnings-summary .total-amount { color: #00cc66; font-size: 28px; font-weight: 800; }
+        .earnings-summary .sub-info { color: #888; font-size: 10px; margin-top: 4px; }
 
         .earning-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 10px;
+            padding: 10px 12px;
             background: rgba(26,26,62,0.4);
-            border-radius: 6px;
-            margin-bottom: 4px;
+            border-radius: 8px;
+            margin-bottom: 6px;
             border-left: 3px solid #00cc66;
         }
-        .earning-item .left .title { color: #fff; font-size: 12px; font-weight: 600; }
-        .earning-item .left .date { color: #888; font-size: 9px; }
-        .earning-item .right { color: #00cc66; font-size: 15px; font-weight: 700; }
+        .earning-item .left .title { color: #fff; font-size: 13px; font-weight: 600; }
+        .earning-item .left .date { color: #888; font-size: 10px; }
+        .earning-item .right { color: #00cc66; font-size: 16px; font-weight: 700; }
 
         /* ============================================================
            ADMIN PANEL
@@ -1123,7 +1133,7 @@
             background: #0a0a1a;
             z-index: 9997;
             overflow-y: auto;
-            padding: 50px 8px 12px;
+            padding: 58px 8px 14px;
         }
         .admin-overlay.active { display: block; }
         .admin-container { max-width: 1200px; margin: 0 auto; }
@@ -1131,89 +1141,89 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             gap: 4px;
         }
-        .admin-header h2 { color: #c9a84c; font-size: 16px; }
+        .admin-header h2 { color: #c9a84c; font-size: 18px; }
         .admin-header .admin-badge {
             background: rgba(201,168,76,0.15);
             color: #c9a84c;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 30px;
-            font-size: 9px;
+            font-size: 10px;
             border: 1px solid rgba(201,168,76,0.2);
         }
         .admin-header .logout-btn {
             background: transparent;
             border: 1px solid #ff6b6b;
             color: #ff6b6b;
-            padding: 3px 10px;
+            padding: 4px 12px;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 9px;
-            min-height: 28px;
+            font-size: 10px;
+            min-height: 32px;
         }
         .admin-stats {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 4px;
-            margin-bottom: 8px;
+            gap: 6px;
+            margin-bottom: 10px;
         }
         .admin-stat {
             background: rgba(17,17,40,0.8);
-            padding: 6px;
-            border-radius: 6px;
+            padding: 8px;
+            border-radius: 8px;
             text-align: center;
             border: 1px solid rgba(201,168,76,0.08);
         }
-        .admin-stat .num { font-size: 14px; font-weight: 800; color: #c9a84c; }
-        .admin-stat .lbl { font-size: 7px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px; }
-        .admin-tabs { display: flex; gap: 3px; margin-bottom: 8px; flex-wrap: wrap; }
+        .admin-stat .num { font-size: 16px; font-weight: 800; color: #c9a84c; }
+        .admin-stat .lbl { font-size: 8px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+        .admin-tabs { display: flex; gap: 4px; margin-bottom: 10px; flex-wrap: wrap; }
         .admin-tab {
             background: rgba(17,17,40,0.8);
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 30px;
             border: 1px solid rgba(201,168,76,0.1);
             cursor: pointer;
             transition: 0.3s;
-            font-size: 9px;
+            font-size: 10px;
             color: #aaa;
         }
         .admin-tab:hover { border-color: #c9a84c; color: #c9a84c; }
         .admin-tab.active { background: rgba(201,168,76,0.15); border-color: #c9a84c; color: #c9a84c; }
         .admin-table-wrap {
             background: rgba(17,17,40,0.8);
-            border-radius: 8px;
-            padding: 6px;
+            border-radius: 10px;
+            padding: 8px;
             border: 1px solid rgba(201,168,76,0.08);
             overflow-x: auto;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
-        .admin-table { width: 100%; border-collapse: collapse; font-size: 9px; min-width: 350px; }
+        .admin-table { width: 100%; border-collapse: collapse; font-size: 10px; min-width: 400px; }
         .admin-table th {
             color: #c9a84c;
             text-align: left;
-            padding: 4px 3px;
+            padding: 6px 4px;
             border-bottom: 1px solid rgba(201,168,76,0.1);
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 7px;
+            font-size: 8px;
             letter-spacing: 0.5px;
         }
-        .admin-table td { padding: 4px 3px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; vertical-align: middle; font-size: 9px; }
+        .admin-table td { padding: 6px 4px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; vertical-align: middle; font-size: 10px; }
         .admin-table .status-pending { color: #ffaa00; font-weight: 600; }
         .admin-table .status-approved { color: #00cc66; font-weight: 600; }
         .admin-table .status-rejected { color: #ff4444; font-weight: 600; }
         .admin-table .btn-approve, .admin-table .btn-reject, .admin-table .btn-delete,
         .admin-table .btn-view, .admin-table .btn-show-pwd {
-            padding: 2px 5px;
+            padding: 2px 6px;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 7px;
+            font-size: 8px;
             font-weight: 600;
             transition: 0.3s;
-            min-height: 20px;
+            min-height: 24px;
             border: none;
         }
         .admin-table .btn-approve { background: #00cc66; color: #0a0a1a; }
@@ -1231,10 +1241,10 @@
         .country-search { position: relative; }
         .country-search input {
             width: 100%;
-            padding: 8px 10px;
+            padding: 10px 12px;
             background: rgba(26,26,62,0.8);
             border: 1px solid rgba(201,168,76,0.2);
-            border-radius: 8px;
+            border-radius: 10px;
             color: #fff;
             font-size: 16px;
             transition: 0.3s;
@@ -1248,29 +1258,29 @@
             top: 100%;
             left: 0;
             width: 100%;
-            max-height: 120px;
+            max-height: 140px;
             overflow-y: auto;
             background: #1a1a3e;
             border: 1px solid rgba(201,168,76,0.2);
-            border-radius: 8px;
+            border-radius: 10px;
             z-index: 100;
-            margin-top: 3px;
+            margin-top: 4px;
         }
         .country-search .dropdown.show { display: block; }
-        .country-search .dropdown .item { padding: 5px 8px; color: #ccc; cursor: pointer; transition: 0.3s; font-size: 11px; }
+        .country-search .dropdown .item { padding: 6px 10px; color: #ccc; cursor: pointer; transition: 0.3s; font-size: 12px; }
         .country-search .dropdown .item:hover { background: rgba(201,168,76,0.1); color: #c9a84c; }
 
         /* ===== TOAST ===== */
         .toast-notification {
             position: fixed;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
             background: rgba(0,204,102,0.95);
             color: #fff;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 11px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 13px;
             font-weight: 500;
             z-index: 99999;
             box-shadow: 0 8px 30px rgba(0,0,0,0.4);
@@ -1393,9 +1403,9 @@
         }
 
         @media (max-width: 480px) {
-            .hero h1 { font-size: 18px; }
-            .hero .description { font-size: 10px; }
-            .image-grid .img-card img { height: 60px; }
+            .hero h1 { font-size: 22px; }
+            .hero .description { font-size: 12px; }
+            .image-grid .img-card img { height: 80px; }
             .deposit-amounts { grid-template-columns: 1fr 1fr; }
             .packages-grid { grid-template-columns: 1fr 1fr; }
             .dash-stats { grid-template-columns: 1fr 1fr; }
@@ -1408,12 +1418,12 @@
         button, .btn-gold, .btn-outline, .register-btn, .login-btn,
         .deposit-amount, .withdraw-option, .admin-tab,
         .copy-btn, .file-upload, .menu-item {
-            min-height: 40px;
-            min-width: 40px;
+            min-height: 44px;
+            min-width: 44px;
         }
         input, select, textarea {
             font-size: 16px !important;
-            padding: 8px 10px !important;
+            padding: 10px 12px !important;
         }
         .table-scroll {
             overflow-x: auto;
@@ -1564,9 +1574,9 @@
     ============================================================ -->
     <section id="why-exists">
         <div class="why-invest" style="margin-top:0;">
-            <div style="text-align:center; max-width:800px; margin:0 auto; padding:8px 0;">
-                <h3 style="color:#c9a84c; font-size:16px; margin-bottom:6px;">Why We Exist</h3>
-                <p style="color:#aaa; font-size:11px; line-height:1.5;">
+            <div style="text-align:center; max-width:800px; margin:0 auto; padding:10px 0;">
+                <h3 style="color:#c9a84c; font-size:18px; margin-bottom:6px;">Why We Exist</h3>
+                <p style="color:#aaa; font-size:13px; line-height:1.5;">
                     Many people have capital, ideas, and want growth. But not everyone has the time, knowledge, or structure to manage business successfully.
                     <br><br>
                     <strong style="color:#c9a84c;">World Investment Global exists to bridge that gap</strong> — by creating a professional structure where capital and business opportunities work together.
@@ -1581,7 +1591,7 @@
     <section id="values">
         <h2 class="section-title">Our <span>Core Values</span></h2>
         <p class="section-subtitle">The principles that guide everything we do.</p>
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px; max-width:900px; margin:0 auto;">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; max-width:900px; margin:0 auto;">
             <div class="value-tag"><h4>Integrity</h4></div>
             <div class="value-tag"><h4>Discipline</h4></div>
             <div class="value-tag"><h4>Transparency</h4></div>
@@ -1605,11 +1615,11 @@
                     <p>The cycle allows for careful planning, purchasing, operations, sales, supervision, and proper reporting for sustainable operations.</p>
                     <div style="margin-top:8px;">
                         <span class="days">20</span>
-                        <span style="color:#888; font-size:12px; margin-left:4px;">Day Operating Cycle</span>
+                        <span style="color:#888; font-size:13px; margin-left:4px;">Day Operating Cycle</span>
                     </div>
                 </div>
                 <div>
-                    <h3 style="color:#c9a84c; text-align:center; margin-bottom:6px; font-size:14px;">Our Core Values</h3>
+                    <h3 style="color:#c9a84c; text-align:center; margin-bottom:6px; font-size:15px;">Our Core Values</h3>
                     <div class="values-list">
                         <div class="value-tag"><h4>Integrity</h4></div>
                         <div class="value-tag"><h4>Discipline</h4></div>
@@ -1670,8 +1680,8 @@
 
         <div class="investment-share-section">
 
-            <h3 style="color:#c9a84c; font-size:16px; text-align:center; margin-bottom:2px;">Profit Sharing</h3>
-            <p style="text-align:center; color:#999; font-size:10px; margin-bottom:8px;">Profits distributed based on real business performance.</p>
+            <h3 style="color:#c9a84c; font-size:18px; text-align:center; margin-bottom:2px;">Profit Sharing</h3>
+            <p style="text-align:center; color:#999; font-size:12px; margin-bottom:8px;">Profits distributed based on real business performance.</p>
 
             <div class="share-grid">
                 <div class="share-item">
@@ -1700,7 +1710,7 @@
                 </p>
             </div>
 
-            <h4 style="color:#c9a84c; font-size:13px; margin-top:12px; text-align:center;">We Invest in Real Businesses</h4>
+            <h4 style="color:#c9a84c; font-size:15px; margin-top:12px; text-align:center;">We Invest in Real Businesses</h4>
             <div class="investment-image-grid">
                 <img src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Warehouse" />
                 <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team Working" />
@@ -1839,7 +1849,7 @@
         <h2 class="section-title">Contact <span>Us</span></h2>
         <p class="section-subtitle">We are always ready to connect with serious investors and partners.</p>
         <div class="contact-box">
-            <button class="btn-gold" onclick="toggleContact()" style="margin-bottom:8px; font-size:12px; padding:6px 14px; min-height:40px;">
+            <button class="btn-gold" onclick="toggleContact()" style="margin-bottom:8px; font-size:13px; padding:8px 16px; min-height:40px;">
                 <i class="fas fa-phone"></i> Show Contact Details
             </button>
             <div class="contact-info" id="contactInfo" style="display:none; margin-top:12px;">
@@ -1877,7 +1887,7 @@
             <div class="footer-col">
                 <div class="brand">WORLD INVESTMENT GLOBAL</div>
                 <div class="brand-tag">Business Development &amp; Investment Company</div>
-                <p style="margin-top:4px; color:#666; font-size:9px;">Building Opportunities Through Vision, Discipline &amp; Growth</p>
+                <p style="margin-top:4px; color:#666; font-size:10px;">Building Opportunities Through Vision, Discipline &amp; Growth</p>
             </div>
             <div class="footer-col">
                 <h4>Company</h4>
@@ -2054,7 +2064,7 @@
                     <div id="kycPhotoPreview"></div>
                 </div>
 
-                <div id="kycStatusMessage" style="display:none; text-align:center; padding:6px; margin:4px 0; border-radius:6px; font-size:11px;"></div>
+                <div id="kycStatusMessage" style="display:none; text-align:center; padding:8px; margin:6px 0; border-radius:8px; font-size:12px;"></div>
 
                 <button type="submit" class="btn-gold" id="kycSubmitBtn">
                     <i class="fas fa-check"></i> Verify KYC
@@ -2084,42 +2094,42 @@
 
                 <!-- Investment Type Selection -->
                 <div style="margin:10px 0;">
-                    <label style="color:#ccc; font-size:11px; font-weight:500; display:block; margin-bottom:4px;">Investment Type <span style="color:#ff6b6b;">*</span></label>
-                    <select id="investmentTypeSelect" style="width:100%; padding:8px 10px; background:rgba(26,26,62,0.8); border:1px solid rgba(201,168,76,0.2); border-radius:8px; color:#fff; font-size:14px; outline:none; -webkit-appearance:none;">
+                    <label style="color:#ccc; font-size:12px; font-weight:500; display:block; margin-bottom:4px;">Investment Type <span style="color:#ff6b6b;">*</span></label>
+                    <select id="investmentTypeSelect" style="width:100%; padding:10px 12px; background:rgba(26,26,62,0.8); border:1px solid rgba(201,168,76,0.2); border-radius:10px; color:#fff; font-size:14px; outline:none; -webkit-appearance:none;">
                         <option value="short">Short Term (1 Month - 2 Cycles)</option>
                         <option value="middle">Middle Term (3 Months - 6 Cycles)</option>
                         <option value="long">Long Term (6 Months - 12 Cycles)</option>
                     </select>
-                    <small style="color:#666; font-size:8px;">Choose your investment duration</small>
+                    <small style="color:#666; font-size:9px;">Choose your investment duration</small>
                 </div>
             </div>
 
-            <div id="selectedAmountDisplay" style="display:none; text-align:center; padding:6px; background:rgba(201,168,76,0.05); border-radius:6px; margin:4px 0; border:1px solid rgba(201,168,76,0.1);">
-                <p style="color:#888; font-size:10px;">You selected:</p>
-                <p style="color:#c9a84c; font-size:16px; font-weight:700;" id="selectedAmountText">₦0</p>
+            <div id="selectedAmountDisplay" style="display:none; text-align:center; padding:8px; background:rgba(201,168,76,0.05); border-radius:8px; margin:6px 0; border:1px solid rgba(201,168,76,0.1);">
+                <p style="color:#888; font-size:11px;">You selected:</p>
+                <p style="color:#c9a84c; font-size:18px; font-weight:700;" id="selectedAmountText">₦0</p>
             </div>
 
             <div id="stepBankDetails" style="display:none;">
-                <div style="background:rgba(26,26,62,0.6); border-radius:8px; padding:8px; margin:4px 0; border:1px solid rgba(201,168,76,0.1);">
-                    <div style="text-align:center; margin-bottom:4px;">
-                        <span style="color:#c9a84c; font-size:11px; font-weight:600;">💳 Transfer to this account</span>
+                <div style="background:rgba(26,26,62,0.6); border-radius:10px; padding:10px; margin:6px 0; border:1px solid rgba(201,168,76,0.1);">
+                    <div style="text-align:center; margin-bottom:6px;">
+                        <span style="color:#c9a84c; font-size:12px; font-weight:600;">💳 Transfer to this account</span>
                     </div>
                     <div style="text-align:center;">
-                        <div style="color:#888; font-size:8px; text-transform:uppercase; letter-spacing:0.5px;">Account Name</div>
-                        <div style="color:#c9a84c; font-size:13px; font-weight:700;">Al-amin Usman</div>
-                        <div style="color:#888; font-size:8px; text-transform:uppercase; letter-spacing:0.5px; margin-top:3px;">Account Number</div>
-                        <div style="color:#fff; font-size:20px; font-weight:700;">6611156108</div>
+                        <div style="color:#888; font-size:9px; text-transform:uppercase; letter-spacing:0.5px;">Account Name</div>
+                        <div style="color:#c9a84c; font-size:14px; font-weight:700;">Al-amin Usman</div>
+                        <div style="color:#888; font-size:9px; text-transform:uppercase; letter-spacing:0.5px; margin-top:4px;">Account Number</div>
+                        <div style="color:#fff; font-size:22px; font-weight:700;">6611156108</div>
                         <button class="copy-btn" onclick="copyAccountNumber()">
                             <i class="fas fa-copy"></i> Copy Number
                         </button>
-                        <div style="color:#888; font-size:8px; text-transform:uppercase; letter-spacing:0.5px; margin-top:3px;">Bank</div>
-                        <div style="color:#fff; font-size:13px; font-weight:600;">Moniepoint MFB</div>
-                        <div style="color:#888; font-size:8px; margin-top:3px;">Amount to Pay: <span style="color:#c9a84c; font-weight:700;" id="bankAmountDisplay">₦0</span></div>
+                        <div style="color:#888; font-size:9px; text-transform:uppercase; letter-spacing:0.5px; margin-top:4px;">Bank</div>
+                        <div style="color:#fff; font-size:14px; font-weight:600;">Moniepoint MFB</div>
+                        <div style="color:#888; font-size:9px; margin-top:4px;">Amount to Pay: <span style="color:#c9a84c; font-weight:700;" id="bankAmountDisplay">₦0</span></div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label style="color:#ccc; font-size:10px; font-weight:500; display:block; margin-bottom:1px;">Upload Payment Screenshot</label>
+                    <label style="color:#ccc; font-size:11px; font-weight:500; display:block; margin-bottom:2px;">Upload Payment Screenshot</label>
                     <div class="file-upload" onclick="document.getElementById('depositPhoto').click()">
                         <input type="file" id="depositPhoto" accept="image/*" onchange="previewDepositPhoto(this)" />
                         <div class="label">
@@ -2128,17 +2138,17 @@
                             <br><small style="color:#666;">PNG, JPG, JPEG (Max 5MB)</small>
                         </div>
                     </div>
-                    <div id="depositPhotoPreview" style="margin-top:3px;"></div>
+                    <div id="depositPhotoPreview" style="margin-top:4px;"></div>
                 </div>
 
-                <div id="ocrStatusDeposit" style="display:none; text-align:center; padding:4px; margin:3px 0; border-radius:6px; font-size:10px;"></div>
+                <div id="ocrStatusDeposit" style="display:none; text-align:center; padding:6px; margin:4px 0; border-radius:8px; font-size:11px;"></div>
 
-                <button class="btn-gold" id="verifyDepositBtn" style="display:none; width:100%; padding:8px; font-size:13px; margin-top:3px;" onclick="verifyDepositOCR()">
+                <button class="btn-gold" id="verifyDepositBtn" style="display:none; width:100%; padding:10px; font-size:14px; margin-top:4px;" onclick="verifyDepositOCR()">
                     <i class="fas fa-check-circle"></i> Verify & Continue
                 </button>
             </div>
 
-            <button class="btn-outline" onclick="closeDeposit()" style="width:100%; margin-top:4px; padding:8px; font-size:12px;">Cancel</button>
+            <button class="btn-outline" onclick="closeDeposit()" style="width:100%; margin-top:6px; padding:10px; font-size:13px;">Cancel</button>
         </div>
     </div>
 
@@ -2149,18 +2159,18 @@
         <div class="deposit-confirm-modal">
             <div class="icon">✅</div>
             <h2>Form Submitted!</h2>
-            <p style="color:#00cc66; font-size:12px; font-weight:600;">Your Google Form has been submitted.</p>
-            <p style="color:#aaa; font-size:11px; margin-bottom:6px;">Click below to update your balance and start investing.</p>
-            <div style="background:rgba(201,168,76,0.05); border:1px solid rgba(201,168,76,0.1); border-radius:6px; padding:6px; margin-bottom:8px;">
-                <p style="color:#888; font-size:10px;">
+            <p style="color:#00cc66; font-size:13px; font-weight:600;">Your Google Form has been submitted.</p>
+            <p style="color:#aaa; font-size:12px; margin-bottom:6px;">Click below to update your balance and start investing.</p>
+            <div style="background:rgba(201,168,76,0.05); border:1px solid rgba(201,168,76,0.1); border-radius:8px; padding:8px; margin-bottom:8px;">
+                <p style="color:#888; font-size:11px;">
                     <i class="fas fa-info-circle" style="color:#c9a84c;"></i>
                     Balance updates instantly after confirmation.
                 </p>
             </div>
-            <button class="btn-gold" onclick="updateBalanceAfterDeposit()" style="width:100%; padding:10px; font-size:14px;">
+            <button class="btn-gold" onclick="updateBalanceAfterDeposit()" style="width:100%; padding:12px; font-size:15px;">
                 <i class="fas fa-check-circle"></i> I've Submitted
             </button>
-            <button class="btn-outline" onclick="closeDepositConfirm()" style="width:100%; margin-top:4px; padding:8px; font-size:12px;">Cancel</button>
+            <button class="btn-outline" onclick="closeDepositConfirm()" style="width:100%; margin-top:6px; padding:10px; font-size:13px;">Cancel</button>
         </div>
     </div>
 
@@ -2177,42 +2187,42 @@
                 <div class="withdraw-options">
                     <div class="withdraw-option" onclick="selectWithdrawOption(this, 'profit')">
                         <div class="amount">💰 Profit Only</div>
-                        <div class="label">Withdraw only your profit<br><span style="font-size:7px;color:#666;">Capital stays invested</span></div>
+                        <div class="label">Withdraw only your profit<br><span style="font-size:8px;color:#666;">Capital stays invested</span></div>
                     </div>
                     <div class="withdraw-option" onclick="selectWithdrawOption(this, 'all')">
                         <div class="amount">💵 All Funds</div>
-                        <div class="label">Withdraw everything<br><span style="font-size:7px;color:#666;">Capital + Profit</span></div>
+                        <div class="label">Withdraw everything<br><span style="font-size:8px;color:#666;">Capital + Profit</span></div>
                     </div>
                 </div>
             </div>
 
             <div id="withdrawFormSection" style="display:none;">
-                <div style="background:rgba(26,26,62,0.4); border-radius:8px; padding:10px; margin-bottom:10px; border:1px solid rgba(201,168,76,0.1);">
-                    <div style="display:flex; justify-content:space-between; font-size:11px; color:#888; margin-bottom:4px;">
+                <div style="background:rgba(26,26,62,0.4); border-radius:10px; padding:12px; margin-bottom:10px; border:1px solid rgba(201,168,76,0.1);">
+                    <div style="display:flex; justify-content:space-between; font-size:12px; color:#888; margin-bottom:4px;">
                         <span>💰 Available Profit:</span>
                         <span style="color:#00cc66; font-weight:700;" id="withdrawAvailableProfit">₦0.00</span>
                     </div>
-                    <div style="display:flex; justify-content:space-between; font-size:11px; color:#888; margin-bottom:4px;">
+                    <div style="display:flex; justify-content:space-between; font-size:12px; color:#888; margin-bottom:4px;">
                         <span>🏦 Total Balance:</span>
                         <span style="color:#c9a84c; font-weight:700;" id="withdrawTotalBalance">₦0.00</span>
                     </div>
-                    <div style="display:flex; justify-content:space-between; font-size:10px; color:#666; padding-top:4px; border-top:1px solid rgba(255,255,255,0.05);">
+                    <div style="display:flex; justify-content:space-between; font-size:11px; color:#666; padding-top:4px; border-top:1px solid rgba(255,255,255,0.05);">
                         <span>📊 Investment Type:</span>
                         <span style="color:#c9a84c; font-weight:600;" id="withdrawInvestmentType">Short Term</span>
                     </div>
-                    <div style="display:flex; justify-content:space-between; font-size:10px; color:#666;">
+                    <div style="display:flex; justify-content:space-between; font-size:11px; color:#666;">
                         <span>🔄 Cycles Completed:</span>
                         <span style="color:#fff; font-weight:600;" id="withdrawCyclesDone">0 / 2</span>
                     </div>
-                    <div style="display:flex; justify-content:space-between; font-size:10px; color:#666;">
+                    <div style="display:flex; justify-content:space-between; font-size:11px; color:#666;">
                         <span>🔒 Capital Locked:</span>
                         <span style="font-weight:600;" id="withdrawLockStatus">🔓 Unlocked</span>
                     </div>
                 </div>
 
                 <div class="withdraw-form">
-                    <div style="text-align:center; padding:6px; background:rgba(201,168,76,0.05); border-radius:6px; margin-bottom:8px;">
-                        <span style="color:#c9a84c; font-weight:600; font-size:13px;" id="withdrawTypeDisplay">Withdraw: Profit Only</span>
+                    <div style="text-align:center; padding:8px; background:rgba(201,168,76,0.05); border-radius:8px; margin-bottom:8px;">
+                        <span style="color:#c9a84c; font-weight:600; font-size:14px;" id="withdrawTypeDisplay">Withdraw: Profit Only</span>
                     </div>
 
                     <div class="form-group">
@@ -2280,19 +2290,19 @@
             <h2>Withdrawal Request Submitted!</h2>
             <p style="color:#00cc66; font-size:13px; font-weight:600;">Your request has been received.</p>
             <p style="color:#aaa; font-size:12px; margin-bottom:6px;">Please complete the Google Form to finalize your withdrawal.</p>
-            <div style="background:rgba(201,168,76,0.05); border:1px solid rgba(201,168,76,0.1); border-radius:6px; padding:8px; margin-bottom:8px;">
-                <p style="color:#888; font-size:10px;">
+            <div style="background:rgba(201,168,76,0.05); border:1px solid rgba(201,168,76,0.1); border-radius:8px; padding:8px; margin-bottom:8px;">
+                <p style="color:#888; font-size:11px;">
                     <i class="fas fa-clock" style="color:#ffaa00;"></i>
                     Your withdrawal will be processed in <strong>3-4 hours</strong>.
                 </p>
-                <p style="color:#888; font-size:9px; margin-top:4px;">
+                <p style="color:#888; font-size:10px; margin-top:4px;">
                     Status: <span style="color:#ffaa00; font-weight:600;">PENDING</span>
                 </p>
             </div>
-            <button class="btn-gold" onclick="redirectToWithdrawalForm()" style="width:100%; padding:10px; font-size:14px;">
+            <button class="btn-gold" onclick="redirectToWithdrawalForm()" style="width:100%; padding:12px; font-size:15px;">
                 <i class="fas fa-arrow-right"></i> Complete Withdrawal Form
             </button>
-            <button class="btn-outline" onclick="closeWithdrawConfirm()" style="width:100%; margin-top:4px; padding:8px; font-size:12px;">Close</button>
+            <button class="btn-outline" onclick="closeWithdrawConfirm()" style="width:100%; margin-top:6px; padding:10px; font-size:13px;">Close</button>
         </div>
     </div>
 
@@ -2347,6 +2357,10 @@
                 <div class="menu-item logout-item" onclick="logout()">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </div>
+                <!-- Admin Dashboard Link (only shows if user is admin) -->
+                <div class="menu-item admin-item" onclick="openAdmin()" id="adminDashLink" style="display:none;">
+                    <i class="fas fa-crown"></i> Admin
+                </div>
             </div>
             <div class="dash-main">
                 <div class="dash-header">
@@ -2354,7 +2368,7 @@
                     <div class="user-info">Welcome, <span id="dashUsername">User</span></div>
                 </div>
 
-                <div id="kycAlert" style="margin-bottom:6px; display:none;"></div>
+                <div id="kycAlert" style="margin-bottom:8px; display:none;"></div>
 
                 <div class="dash-stats">
                     <div class="dash-stat">
@@ -2375,7 +2389,7 @@
                     </div>
                 </div>
 
-                <div id="pendingBalanceNotice" style="display:none; background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:6px; padding:4px 8px; margin-bottom:6px; color:#ffaa00; text-align:center; font-size:10px;">
+                <div id="pendingBalanceNotice" style="display:none; background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:8px; padding:6px 10px; margin-bottom:8px; color:#ffaa00; text-align:center; font-size:11px;">
                     <i class="fas fa-clock"></i> <strong>Pending:</strong> <span id="pendingBalanceAmount">₦0.00</span> awaiting approval.
                 </div>
 
@@ -2383,6 +2397,32 @@
                     <img src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Physical Business Operations" />
                     <div class="title">🏭 Physical Business Operations</div>
                     <div class="desc">We invest in real, physical businesses — warehouses, products, logistics, and tangible assets.</div>
+                </div>
+
+                <!-- Admin Instant Actions (only visible to admin) -->
+                <div id="adminInstantActions" style="display:none; background:rgba(201,168,76,0.05); border:1px solid rgba(201,168,76,0.1); border-radius:10px; padding:12px; margin-bottom:10px;">
+                    <h4 style="color:#c9a84c; font-size:14px; margin-bottom:6px;">⚡ Admin Instant Actions (No Cycle)</h4>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                        <div style="background:rgba(26,26,62,0.6); border-radius:8px; padding:10px;">
+                            <h5 style="color:#00cc66; font-size:12px; margin-bottom:4px;">💰 Instant Deposit</h5>
+                            <div class="form-group" style="margin-bottom:4px;">
+                                <input type="number" id="adminInstantAmount" placeholder="Enter amount" style="font-size:14px; padding:6px 8px; width:100%; background:rgba(26,26,62,0.8); border:1px solid rgba(201,168,76,0.2); border-radius:8px; color:#fff;" />
+                            </div>
+                            <button class="btn-gold btn-sm" onclick="adminInstantDeposit()" style="padding:4px 12px; font-size:11px; min-height:32px; width:100%;">
+                                <i class="fas fa-plus"></i> Deposit
+                            </button>
+                        </div>
+                        <div style="background:rgba(26,26,62,0.6); border-radius:8px; padding:10px;">
+                            <h5 style="color:#ff6b6b; font-size:12px; margin-bottom:4px;">💸 Instant Withdraw</h5>
+                            <div class="form-group" style="margin-bottom:4px;">
+                                <input type="number" id="adminInstantWithdrawAmount" placeholder="Enter amount" style="font-size:14px; padding:6px 8px; width:100%; background:rgba(26,26,62,0.8); border:1px solid rgba(201,168,76,0.2); border-radius:8px; color:#fff;" />
+                            </div>
+                            <button class="btn-gold btn-sm" onclick="adminInstantWithdraw()" style="padding:4px 12px; font-size:11px; min-height:32px; width:100%; background:#ff6b6b; color:#fff; border:none;">
+                                <i class="fas fa-minus"></i> Withdraw
+                            </button>
+                        </div>
+                    </div>
+                    <div id="adminActionResult" style="margin-top:8px; padding:6px; border-radius:6px; display:none; text-align:center; font-size:12px;"></div>
                 </div>
 
                 <div class="dash-actions">
@@ -2414,7 +2454,7 @@
                                 <div class="lbl">Company Share (40%)</div>
                             </div>
                         </div>
-                        <div style="text-align:center; color:#888; font-size:9px; margin-top:3px;">
+                        <div style="text-align:center; color:#888; font-size:10px; margin-top:4px;">
                             <span id="perfRate">Profit Rate: 0%</span>
                         </div>
                     </div>
@@ -2429,7 +2469,7 @@
                                 <div class="bar-fill" id="cycleBar" style="width:0%;"></div>
                             </div>
                         </div>
-                        <div style="text-align:center; color:#888; font-size:9px; margin-top:3px;">
+                        <div style="text-align:center; color:#888; font-size:10px; margin-top:4px;">
                             <span id="cycleDateText">Started: — | Complete: —</span>
                         </div>
                     </div>
@@ -2438,7 +2478,7 @@
                         <div class="empty-state" id="investmentStatus">
                             <div class="icon">📭</div>
                             <p>No active investments yet.</p>
-                            <p style="font-size:9px; color:#555;">Start your investment journey today!</p>
+                            <p style="font-size:10px; color:#555;">Start your investment journey today!</p>
                         </div>
                     </div>
                     <div class="dash-section">
@@ -2446,7 +2486,7 @@
                         <div class="empty-state" id="transactionHistory">
                             <div class="icon">📋</div>
                             <p>No transactions yet.</p>
-                            <p style="font-size:9px; color:#555;">Your history will appear here.</p>
+                            <p style="font-size:10px; color:#555;">Your history will appear here.</p>
                         </div>
                     </div>
                 </div>
@@ -2461,7 +2501,7 @@
                             <div class="empty-state">
                                 <div class="icon">📊</div>
                                 <p>You have no active investments.</p>
-                                <p style="font-size:9px; color:#555;">Start your investment journey today!</p>
+                                <p style="font-size:10px; color:#555;">Start your investment journey today!</p>
                             </div>
                         </div>
                     </div>
@@ -2477,7 +2517,7 @@
                             <div class="empty-state">
                                 <div class="icon">💰</div>
                                 <p>No earnings yet.</p>
-                                <p style="font-size:9px; color:#555;">Earnings will appear here after your investments mature.</p>
+                                <p style="font-size:10px; color:#555;">Earnings will appear here after your investments mature.</p>
                             </div>
                         </div>
                     </div>
@@ -2490,10 +2530,10 @@
                     <div class="dash-section">
                         <h3><i class="fas fa-id-card"></i> KYC Verification</h3>
                         <div id="kycStatusDisplay">
-                            <div style="text-align:center; padding:10px 0;">
-                                <div style="font-size:30px; margin-bottom:4px;">🆔</div>
-                                <p style="color:#aaa; margin-bottom:4px; font-size:11px;">Complete your KYC to unlock full features.</p>
-                                <button class="btn-gold" onclick="openKyc()" style="padding:4px 14px; font-size:11px; min-height:36px;">Complete KYC</button>
+                            <div style="text-align:center; padding:12px 0;">
+                                <div style="font-size:34px; margin-bottom:4px;">🆔</div>
+                                <p style="color:#aaa; margin-bottom:4px; font-size:12px;">Complete your KYC to unlock full features.</p>
+                                <button class="btn-gold" onclick="openKyc()" style="padding:6px 16px; font-size:12px; min-height:36px;">Complete KYC</button>
                             </div>
                         </div>
                     </div>
@@ -2505,23 +2545,23 @@
                 <div id="section-support" style="display:none;">
                     <div class="dash-section">
                         <h3><i class="fas fa-headset"></i> Support</h3>
-                        <div style="text-align:center; padding:8px 0;">
-                            <p style="color:#aaa; margin-bottom:6px; font-size:11px;">Need help? Contact us.</p>
-                            <div style="display:flex; justify-content:center; gap:8px; flex-wrap:wrap;">
+                        <div style="text-align:center; padding:10px 0;">
+                            <p style="color:#aaa; margin-bottom:6px; font-size:12px;">Need help? Contact us.</p>
+                            <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
                                 <div>
-                                    <div style="font-size:16px;">📞</div>
-                                    <div style="color:#888; font-size:9px;">Call</div>
-                                    <div style="color:#c9a84c; font-weight:600; font-size:10px;">07073717229</div>
+                                    <div style="font-size:18px;">📞</div>
+                                    <div style="color:#888; font-size:10px;">Call</div>
+                                    <div style="color:#c9a84c; font-weight:600; font-size:11px;">07073717229</div>
                                 </div>
                                 <div>
-                                    <div style="font-size:16px;">💬</div>
-                                    <div style="color:#888; font-size:9px;">WhatsApp</div>
-                                    <div style="color:#c9a84c; font-weight:600; font-size:10px;">08122294546</div>
+                                    <div style="font-size:18px;">💬</div>
+                                    <div style="color:#888; font-size:10px;">WhatsApp</div>
+                                    <div style="color:#c9a84c; font-weight:600; font-size:11px;">08122294546</div>
                                 </div>
                                 <div>
-                                    <div style="font-size:16px;">✉️</div>
-                                    <div style="color:#888; font-size:9px;">Email</div>
-                                    <div style="color:#c9a84c; font-weight:600; font-size:10px;">worldinvestmentglobalhub@gmail.com</div>
+                                    <div style="font-size:18px;">✉️</div>
+                                    <div style="color:#888; font-size:10px;">Email</div>
+                                    <div style="color:#c9a84c; font-weight:600; font-size:11px;">worldinvestmentglobalhub@gmail.com</div>
                                 </div>
                             </div>
                         </div>
@@ -2532,7 +2572,7 @@
     </div>
 
     <!-- ============================================================
-    ADMIN PANEL - WITH INSTANT DEPOSIT & WITHDRAW
+    ADMIN PANEL
     ============================================================ -->
     <div class="admin-overlay" id="adminPanel">
         <div class="admin-container">
@@ -2571,7 +2611,6 @@
                 <div class="admin-tab" onclick="switchAdminTab('kyc')">🆔 KYC</div>
                 <div class="admin-tab" onclick="switchAdminTab('allData')">📊 All Data</div>
                 <div class="admin-tab" onclick="switchAdminTab('users')">👥 Users</div>
-                <div class="admin-tab" onclick="switchAdminTab('adminActions')">⚡ Admin Actions</div>
             </div>
 
             <div id="adminTabDeposits" class="admin-table-wrap">
@@ -2581,7 +2620,7 @@
                             <tr><th>User</th><th>Amount</th><th>Date</th><th>Status</th><th>Action</th></tr>
                         </thead>
                         <tbody id="adminDepositsList">
-                            <tr><td colspan="5" style="text-align:center; color:#666; padding:8px 0;">No pending deposits</td></tr>
+                            <tr><td colspan="5" style="text-align:center; color:#666; padding:10px 0;">No pending deposits</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -2594,7 +2633,7 @@
                             <tr><th>User</th><th>Amount</th><th>Bank</th><th>Status</th><th>Action</th></tr>
                         </thead>
                         <tbody id="adminWithdrawalsList">
-                            <tr><td colspan="5" style="text-align:center; color:#666; padding:8px 0;">No pending withdrawals</td></tr>
+                            <tr><td colspan="5" style="text-align:center; color:#666; padding:10px 0;">No pending withdrawals</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -2607,20 +2646,20 @@
                             <tr><th>User</th><th>Full Name</th><th>Country</th><th>NIN</th><th>Phone</th><th>Status</th><th>Action</th></tr>
                         </thead>
                         <tbody id="adminKycList">
-                            <tr><td colspan="7" style="text-align:center; color:#666; padding:8px 0;">No KYC submissions</td></tr>
+                            <tr><td colspan="7" style="text-align:center; color:#666; padding:10px 0;">No KYC submissions</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
             <div id="adminTabAllData" class="admin-table-wrap" style="display:none;">
-                <div style="display:flex; gap:3px; margin-bottom:6px; flex-wrap:wrap;">
-                    <button class="btn-gold" onclick="filterAllData('all')" style="padding:3px 8px; font-size:8px; min-height:26px; width:auto;">All</button>
-                    <button class="btn-outline" onclick="filterAllData('kyc')" style="padding:3px 8px; font-size:8px; min-height:26px; width:auto;">KYC</button>
-                    <button class="btn-outline" onclick="filterAllData('deposit')" style="padding:3px 8px; font-size:8px; min-height:26px; width:auto;">Deposits</button>
-                    <button class="btn-outline" onclick="filterAllData('withdrawal')" style="padding:3px 8px; font-size:8px; min-height:26px; width:auto;">Withdrawals</button>
-                    <button class="btn-outline" onclick="filterAllData('transaction')" style="padding:3px 8px; font-size:8px; min-height:26px; width:auto;">Transactions</button>
-                    <button class="btn-outline" onclick="filterAllData('profit')" style="padding:3px 8px; font-size:8px; min-height:26px; width:auto;">Profit</button>
+                <div style="display:flex; gap:4px; margin-bottom:8px; flex-wrap:wrap;">
+                    <button class="btn-gold" onclick="filterAllData('all')" style="padding:4px 10px; font-size:9px; min-height:28px; width:auto;">All</button>
+                    <button class="btn-outline" onclick="filterAllData('kyc')" style="padding:4px 10px; font-size:9px; min-height:28px; width:auto;">KYC</button>
+                    <button class="btn-outline" onclick="filterAllData('deposit')" style="padding:4px 10px; font-size:9px; min-height:28px; width:auto;">Deposits</button>
+                    <button class="btn-outline" onclick="filterAllData('withdrawal')" style="padding:4px 10px; font-size:9px; min-height:28px; width:auto;">Withdrawals</button>
+                    <button class="btn-outline" onclick="filterAllData('transaction')" style="padding:4px 10px; font-size:9px; min-height:28px; width:auto;">Transactions</button>
+                    <button class="btn-outline" onclick="filterAllData('profit')" style="padding:4px 10px; font-size:9px; min-height:28px; width:auto;">Profit</button>
                 </div>
                 <div class="table-scroll">
                     <table class="admin-table" id="allDataTable">
@@ -2628,7 +2667,7 @@
                             <tr><th>User</th><th>Type</th><th>Amount</th><th>Details</th><th>Status</th><th>Date</th></tr>
                         </thead>
                         <tbody id="adminAllDataList">
-                            <tr><td colspan="6" style="text-align:center; color:#666; padding:8px 0;">No data available</td></tr>
+                            <tr><td colspan="6" style="text-align:center; color:#666; padding:10px 0;">No data available</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -2641,54 +2680,10 @@
                             <tr><th>Username</th><th>Name</th><th>Email</th><th>Balance</th><th>Invested</th><th>KYC</th><th>Actions</th></tr>
                         </thead>
                         <tbody id="adminUsersList">
-                            <tr><td colspan="7" style="text-align:center; color:#666; padding:8px 0;">No users registered</td></tr>
+                            <tr><td colspan="7" style="text-align:center; color:#666; padding:10px 0;">No users registered</td></tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
-
-            <!-- ============================================================
-            ADMIN ACTIONS - INSTANT DEPOSIT & WITHDRAW
-            ============================================================ -->
-            <div id="adminTabAdminActions" class="admin-table-wrap" style="display:none;">
-                <h4 style="color:#c9a84c; margin-bottom:8px; font-size:13px;">⚡ Instant Admin Actions (No Cycle)</h4>
-                <p style="color:#888; font-size:10px; margin-bottom:10px;">Use these to test the system instantly without waiting for cycles.</p>
-                
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                    <!-- Instant Deposit -->
-                    <div style="background:rgba(26,26,62,0.6); border-radius:8px; padding:12px; border:1px solid rgba(201,168,76,0.1);">
-                        <h5 style="color:#00cc66; font-size:12px; margin-bottom:6px;">💰 Instant Deposit</h5>
-                        <div class="form-group" style="margin-bottom:6px;">
-                            <label style="font-size:9px;">Username</label>
-                            <input type="text" id="adminInstantUsername" placeholder="Enter username" style="font-size:13px; padding:6px 8px;" />
-                        </div>
-                        <div class="form-group" style="margin-bottom:6px;">
-                            <label style="font-size:9px;">Amount</label>
-                            <input type="number" id="adminInstantAmount" placeholder="Enter amount" style="font-size:13px; padding:6px 8px;" />
-                        </div>
-                        <button class="btn-gold btn-sm" onclick="adminInstantDeposit()" style="padding:6px 12px; font-size:11px; min-height:32px;">
-                            <i class="fas fa-plus"></i> Deposit Instantly
-                        </button>
-                    </div>
-
-                    <!-- Instant Withdraw -->
-                    <div style="background:rgba(26,26,62,0.6); border-radius:8px; padding:12px; border:1px solid rgba(201,168,76,0.1);">
-                        <h5 style="color:#ff6b6b; font-size:12px; margin-bottom:6px;">💸 Instant Withdraw</h5>
-                        <div class="form-group" style="margin-bottom:6px;">
-                            <label style="font-size:9px;">Username</label>
-                            <input type="text" id="adminInstantWithdrawUsername" placeholder="Enter username" style="font-size:13px; padding:6px 8px;" />
-                        </div>
-                        <div class="form-group" style="margin-bottom:6px;">
-                            <label style="font-size:9px;">Amount</label>
-                            <input type="number" id="adminInstantWithdrawAmount" placeholder="Enter amount" style="font-size:13px; padding:6px 8px;" />
-                        </div>
-                        <button class="btn-gold btn-sm" onclick="adminInstantWithdraw()" style="padding:6px 12px; font-size:11px; min-height:32px; background:#ff6b6b; color:#fff;">
-                            <i class="fas fa-minus"></i> Withdraw Instantly
-                        </button>
-                    </div>
-                </div>
-
-                <div id="adminActionResult" style="margin-top:10px; padding:8px; border-radius:6px; display:none; text-align:center; font-size:12px;"></div>
             </div>
         </div>
     </div>
@@ -2764,9 +2759,55 @@
         });
 
         // ============================================================
+        // CREATE ADMIN ACCOUNT AUTOMATICALLY
+        // ============================================================
+        function createAdminAccount() {
+            const adminExists = localStorage.getItem('wig_user_admin');
+            
+            if (!adminExists) {
+                const adminData = {
+                    name: 'Administrator',
+                    username: 'admin',
+                    email: 'admin@worldinvestmentglobal.com',
+                    password: 'Wig@123',
+                    balance: 1000000,
+                    pendingBalance: 0,
+                    invested: 0,
+                    profit: 0,
+                    activeInvestments: 0,
+                    cycleStart: null,
+                    cycleDays: 0,
+                    cycleComplete: false,
+                    investmentType: 'short',
+                    totalCycles: 0,
+                    deposits: [],
+                    withdrawals: [],
+                    transactions: [],
+                    kyc: {
+                        fullName: 'Administrator',
+                        nin: '00000000000',
+                        phone: '08000000000',
+                        country: 'Nigeria',
+                        state: 'Lagos',
+                        status: 'approved',
+                        verifiedAt: new Date().toISOString()
+                    },
+                    createdAt: new Date().toISOString(),
+                    withdrawalPending: false,
+                    withdrawalTimer: null,
+                    isAdmin: true
+                };
+                
+                localStorage.setItem('wig_user_admin', JSON.stringify(adminData));
+                console.log('✅ Admin account created! Username: admin, Password: Wig@123');
+            }
+        }
+
+        // ============================================================
         // LOADER
         // ============================================================
         window.addEventListener('load', function() {
+            createAdminAccount(); // Create admin account first
             setTimeout(function() {
                 document.getElementById('loader').classList.add('hidden');
             }, 1000);
@@ -2882,7 +2923,15 @@
                 errorEl.classList.remove('show');
                 closeAdminLogin();
                 localStorage.setItem('wig_admin_logged_in', 'true');
-                openAdmin();
+                // Check if the admin user exists and isAdmin
+                const adminData = localStorage.getItem('wig_user_admin');
+                if (adminData) {
+                    const admin = JSON.parse(adminData);
+                    localStorage.setItem('wig_current_user', 'admin');
+                    openDashboard('admin');
+                } else {
+                    showToast('Admin account not found. Please refresh the page.', 'error');
+                }
             } else {
                 errorEl.textContent = 'Invalid username or password. Try again.';
                 errorEl.classList.add('show');
@@ -2935,6 +2984,12 @@
                 return;
             }
 
+            if (username.toLowerCase() === 'admin') {
+                errorEl.textContent = 'Username "admin" is reserved. Please choose another.';
+                errorEl.classList.add('show');
+                return;
+            }
+
             const userData = {
                 name,
                 username,
@@ -2948,15 +3003,16 @@
                 cycleStart: null,
                 cycleDays: 0,
                 cycleComplete: false,
-                investmentType: null, // 'short', 'middle', 'long'
-                totalCycles: 0, // Total cycles completed
+                investmentType: null,
+                totalCycles: 0,
                 deposits: [],
                 withdrawals: [],
                 transactions: [],
                 kyc: null,
                 createdAt: new Date().toISOString(),
                 withdrawalPending: false,
-                withdrawalTimer: null
+                withdrawalTimer: null,
+                isAdmin: false
             };
 
             const existing = localStorage.getItem('wig_user_' + username);
@@ -3013,6 +3069,16 @@
             const user = JSON.parse(userData);
             document.getElementById('dashUsername').textContent = user.name || username;
 
+            const isAdmin = user.isAdmin || false;
+            if (isAdmin) {
+                document.getElementById('adminDashLink').style.display = 'flex';
+                document.getElementById('adminInstantActions').style.display = 'block';
+                const header = document.querySelector('.dash-header .user-info');
+                if (header) {
+                    header.innerHTML += ' <span class="admin-badge">👑 Admin</span>';
+                }
+            }
+
             updateKycStatus(user);
             updateDashboardStats(user);
             updateDepositWithdrawButtons(user);
@@ -3027,6 +3093,20 @@
             const depositBtn = document.getElementById('depositBtn');
             const withdrawBtn = document.getElementById('withdrawBtn');
             const kyc = user.kyc || null;
+            const isAdmin = user.isAdmin || false;
+
+            if (isAdmin) {
+                depositBtn.style.opacity = '1';
+                depositBtn.style.cursor = 'pointer';
+                depositBtn.title = '';
+                depositBtn.onclick = openDeposit;
+
+                withdrawBtn.style.opacity = '1';
+                withdrawBtn.style.cursor = 'pointer';
+                withdrawBtn.title = '';
+                withdrawBtn.onclick = openWithdraw;
+                return;
+            }
 
             const isWithdrawalPending = user.withdrawalPending || false;
 
@@ -3113,18 +3193,18 @@
             const statusEl = document.getElementById('investmentStatus');
             if (user.activeInvestments > 0) {
                 statusEl.innerHTML = `
-                            <div style="text-align:center; padding:4px 0;">
-                                <div style="font-size:22px; margin-bottom:3px;">📈</div>
-                                <p style="color:#c9a84c; font-weight:600; font-size:11px;">${user.activeInvestments} active investment(s)</p>
-                                <p style="color:#888; font-size:9px;">Invested: ₦${(user.invested || 0).toFixed(2)}</p>
-                                <p style="color:#888; font-size:9px;">Profit: ₦${(user.profit || 0).toFixed(2)}</p>
+                            <div style="text-align:center; padding:6px 0;">
+                                <div style="font-size:28px; margin-bottom:4px;">📈</div>
+                                <p style="color:#c9a84c; font-weight:600; font-size:12px;">${user.activeInvestments} active investment(s)</p>
+                                <p style="color:#888; font-size:10px;">Invested: ₦${(user.invested || 0).toFixed(2)}</p>
+                                <p style="color:#888; font-size:10px;">Profit: ₦${(user.profit || 0).toFixed(2)}</p>
                             </div>
                         `;
             } else {
                 statusEl.innerHTML = `
                             <div class="icon">📭</div>
                             <p>No active investments yet.</p>
-                            <p style="font-size:9px; color:#555;">Start your investment journey today!</p>
+                            <p style="font-size:10px; color:#555;">Start your investment journey today!</p>
                         `;
             }
 
@@ -3136,10 +3216,10 @@
                     const statusColor = tx.status === 'approved' ? '#00cc66' : tx.status === 'pending' ? '#ffaa00' :
                         '#ff4444';
                     html += `
-                                <div style="display:flex; justify-content:space-between; padding:3px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:9px;">
+                                <div style="display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:10px;">
                                     <span>${tx.type} - ${tx.description || ''}</span>
                                     <span style="color:${statusColor}; font-weight:600;">${tx.amount}</span>
-                                    <span style="color:#666; font-size:7px;">${tx.status || 'pending'}</span>
+                                    <span style="color:#666; font-size:8px;">${tx.status || 'pending'}</span>
                                 </div>
                             `;
                 });
@@ -3148,7 +3228,7 @@
                 txEl.innerHTML = `
                             <div class="icon">📋</div>
                             <p>No transactions yet.</p>
-                            <p style="font-size:9px; color:#555;">Your transaction history will appear here.</p>
+                            <p style="font-size:10px; color:#555;">Your transaction history will appear here.</p>
                         `;
             }
 
@@ -3169,7 +3249,7 @@
                     <div class="empty-state">
                         <div class="icon">📊</div>
                         <p>You have no active investments.</p>
-                        <p style="font-size:9px; color:#555;">Start your investment journey today!</p>
+                        <p style="font-size:10px; color:#555;">Start your investment journey today!</p>
                     </div>
                 `;
                 return;
@@ -3209,7 +3289,7 @@
                         <h4>💰 Investment</h4>
                         <span class="status" style="background:${statusColor}20; color:${statusColor};">${status}</span>
                     </div>
-                    <div style="color:#888; font-size:9px; margin-bottom:6px;">Started: ${startDate}</div>
+                    <div style="color:#888; font-size:10px; margin-bottom:6px;">Started: ${startDate}</div>
                     <div class="details">
                         <div class="item">
                             <div class="label">Invested</div>
@@ -3232,7 +3312,7 @@
                         <div class="bar">
                             <div class="fill" style="width:${progress}%; background:${cycleComplete ? '#00cc66' : '#c9a84c'};"></div>
                         </div>
-                        <div class="info-text" style="margin-top:3px;">
+                        <div class="info-text" style="margin-top:4px;">
                             <span>Day ${Math.min(cycleDays, 20)} of 20</span>
                             <span>${cycleComplete ? 'Complete' : `${20 - cycleDays} days left`}</span>
                         </div>
@@ -3269,7 +3349,7 @@
                     <div class="empty-state">
                         <div class="icon">💰</div>
                         <p>No earnings yet.</p>
-                        <p style="font-size:9px; color:#555;">Earnings will appear here after your investments mature.</p>
+                        <p style="font-size:10px; color:#555;">Earnings will appear here after your investments mature.</p>
                     </div>
                 `;
                 return;
@@ -3284,7 +3364,7 @@
             `;
             
             if (earnings.length > 0) {
-                html += `<div style="margin-top:8px;"><h4 style="color:#c9a84c; font-size:12px; margin-bottom:6px;">📋 Earnings History</h4><div style="max-height:250px; overflow-y:auto;">`;
+                html += `<div style="margin-top:10px;"><h4 style="color:#c9a84c; font-size:13px; margin-bottom:6px;">📋 Earnings History</h4><div style="max-height:280px; overflow-y:auto;">`;
                 
                 earnings.slice().reverse().forEach(earning => {
                     const date = earning.date ? new Date(earning.date) : new Date();
@@ -3386,7 +3466,9 @@
             if (!userData) return;
             const user = JSON.parse(userData);
 
-            if (!user.kyc || user.kyc.status !== 'approved') {
+            const isAdmin = user.isAdmin || false;
+
+            if (!isAdmin && (!user.kyc || user.kyc.status !== 'approved')) {
                 showToast('⚠️ KYC verification required before you can deposit.', 'error');
                 return;
             }
@@ -3455,8 +3537,8 @@
             reader.onload = function(e) {
                 const preview = document.getElementById('depositPhotoPreview');
                 preview.innerHTML = `
-                    <img src="${e.target.result}" style="max-width:100%; max-height:80px; border-radius:6px; border:2px solid #c9a84c; padding:2px;" />
-                    <p style="color:#00cc66; font-size:8px; margin-top:2px;">✅ Screenshot uploaded</p>
+                    <img src="${e.target.result}" style="max-width:100%; max-height:90px; border-radius:8px; border:2px solid #c9a84c; padding:3px;" />
+                    <p style="color:#00cc66; font-size:9px; margin-top:2px;">✅ Screenshot uploaded</p>
                 `;
                 document.getElementById('verifyDepositBtn').style.display = 'block';
                 document.getElementById('ocrStatusDeposit').style.display = 'none';
@@ -3739,10 +3821,8 @@
                 
                 const user = JSON.parse(userData);
                 
-                // Get investment type from dropdown
                 const investmentType = document.getElementById('investmentTypeSelect')?.value || 'short';
                 
-                // Update user's investment type if not set
                 if (!user.investmentType) {
                     user.investmentType = investmentType;
                 }
@@ -3821,14 +3901,18 @@
             if (!userData) return;
             const user = JSON.parse(userData);
 
-            if (!user.kyc || user.kyc.status !== 'approved') {
-                showToast('⚠️ KYC verification required before you can withdraw.', 'error');
-                return;
-            }
+            const isAdmin = user.isAdmin || false;
 
-            if (user.withdrawalPending) {
-                showToast('⏳ You have a pending withdrawal. Please wait for approval.', 'error');
-                return;
+            if (!isAdmin) {
+                if (!user.kyc || user.kyc.status !== 'approved') {
+                    showToast('⚠️ KYC verification required before you can withdraw.', 'error');
+                    return;
+                }
+
+                if (user.withdrawalPending) {
+                    showToast('⏳ You have a pending withdrawal. Please wait for approval.', 'error');
+                    return;
+                }
             }
 
             if ((user.balance || 0) <= 0 && (user.profit || 0) <= 0) {
@@ -3845,38 +3929,36 @@
             const investmentType = user.investmentType || 'short';
             const totalCycles = user.totalCycles || 0;
             let isLocked = false;
-            let lockMessage = '';
             let cyclesNeeded = 0;
 
             if (investmentType === 'short') {
                 cyclesNeeded = 2;
                 isLocked = totalCycles < 2;
-                lockMessage = `Short Term: Need 2 cycles to unlock capital (${totalCycles}/2)`;
             } else if (investmentType === 'middle') {
                 cyclesNeeded = 6;
                 isLocked = totalCycles < 6;
-                lockMessage = `Middle Term: Need 6 cycles to unlock capital (${totalCycles}/6)`;
             } else if (investmentType === 'long') {
                 cyclesNeeded = 12;
                 isLocked = totalCycles < 12;
-                lockMessage = `Long Term: Need 12 cycles to unlock capital (${totalCycles}/12)`;
             }
 
-            const hasActiveInvestment = (user.activeInvestments || 0) > 0;
-            const cycleComplete = user.cycleComplete || false;
+            if (!isAdmin) {
+                const hasActiveInvestment = (user.activeInvestments || 0) > 0;
+                const cycleComplete = user.cycleComplete || false;
 
-            if (hasActiveInvestment && !cycleComplete) {
-                document.getElementById('withdrawBlocked').style.display = 'block';
-                document.getElementById('withdrawNoBalance').style.display = 'none';
-                document.getElementById('withdrawOptionsSection').style.display = 'none';
-                document.getElementById('withdrawFormSection').style.display = 'none';
-                document.getElementById('withdrawStatus').textContent = '🔒 Active Investment';
-                const remaining = Math.max(20 - (user.cycleDays || 0), 0);
-                document.getElementById('withdrawBlockedReason').textContent = 
-                    `You have an active investment. Please wait for your cycle to complete. ${remaining} days remaining.`;
-                document.getElementById('withdrawModal').classList.add('active');
-                document.body.style.overflow = 'hidden';
-                return;
+                if (hasActiveInvestment && !cycleComplete) {
+                    document.getElementById('withdrawBlocked').style.display = 'block';
+                    document.getElementById('withdrawNoBalance').style.display = 'none';
+                    document.getElementById('withdrawOptionsSection').style.display = 'none';
+                    document.getElementById('withdrawFormSection').style.display = 'none';
+                    document.getElementById('withdrawStatus').textContent = '🔒 Active Investment';
+                    const remaining = Math.max(20 - (user.cycleDays || 0), 0);
+                    document.getElementById('withdrawBlockedReason').textContent = 
+                        `You have an active investment. Please wait for your cycle to complete. ${remaining} days remaining.`;
+                    document.getElementById('withdrawModal').classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    return;
+                }
             }
 
             document.getElementById('withdrawNoBalance').style.display = 'none';
@@ -3911,6 +3993,10 @@
             const lockColor = isLocked ? '#ff6b6b' : '#00cc66';
             document.getElementById('withdrawLockStatus').textContent = lockStatus;
             document.getElementById('withdrawLockStatus').style.color = lockColor;
+
+            if (isAdmin) {
+                document.getElementById('withdrawStatus').textContent = '⚡ Admin Withdrawal (No Cycle)';
+            }
 
             document.getElementById('withdrawModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -3950,6 +4036,10 @@
                         document.getElementById('withdrawAmount').value = (user.balance || 0).toFixed(2);
                         document.getElementById('withdrawAmount').readOnly = true;
                     }
+
+                    if (user.isAdmin) {
+                        document.getElementById('withdrawTypeDisplay').textContent = '⚡ Admin: ' + document.getElementById('withdrawTypeDisplay').textContent;
+                    }
                 }
             }
             
@@ -3970,6 +4060,7 @@
             if (!userData) return;
             const user = JSON.parse(userData);
 
+            const isAdmin = user.isAdmin || false;
             const errorEl = document.getElementById('withdrawError');
             errorEl.classList.remove('show');
             errorEl.textContent = '';
@@ -4005,18 +4096,20 @@
                     errorEl.classList.add('show');
                     return;
                 }
-                const investmentType = user.investmentType || 'short';
-                const totalCycles = user.totalCycles || 0;
-                let isLocked = false;
-                let cyclesNeeded = 0;
-                if (investmentType === 'short') cyclesNeeded = 2;
-                else if (investmentType === 'middle') cyclesNeeded = 6;
-                else if (investmentType === 'long') cyclesNeeded = 12;
-                isLocked = totalCycles < cyclesNeeded;
-                if (isLocked) {
-                    errorEl.textContent = `🔒 Capital is locked! You have completed ${totalCycles} of ${cyclesNeeded} cycles. You can only withdraw profit.`;
-                    errorEl.classList.add('show');
-                    return;
+                if (!isAdmin) {
+                    const investmentType = user.investmentType || 'short';
+                    const totalCycles = user.totalCycles || 0;
+                    let isLocked = false;
+                    let cyclesNeeded = 0;
+                    if (investmentType === 'short') cyclesNeeded = 2;
+                    else if (investmentType === 'middle') cyclesNeeded = 6;
+                    else if (investmentType === 'long') cyclesNeeded = 12;
+                    isLocked = totalCycles < cyclesNeeded;
+                    if (isLocked) {
+                        errorEl.textContent = `🔒 Capital is locked! You have completed ${totalCycles} of ${cyclesNeeded} cycles. You can only withdraw profit.`;
+                        errorEl.classList.add('show');
+                        return;
+                    }
                 }
             }
 
@@ -4026,16 +4119,18 @@
                 return;
             }
 
-            if (!password) {
-                errorEl.textContent = 'Please enter your password to confirm.';
-                errorEl.classList.add('show');
-                return;
-            }
+            if (!isAdmin) {
+                if (!password) {
+                    errorEl.textContent = 'Please enter your password to confirm.';
+                    errorEl.classList.add('show');
+                    return;
+                }
 
-            if (password !== user.password) {
-                errorEl.textContent = '❌ Incorrect password. Please try again.';
-                errorEl.classList.add('show');
-                return;
+                if (password !== user.password) {
+                    errorEl.textContent = '❌ Incorrect password. Please try again.';
+                    errorEl.classList.add('show');
+                    return;
+                }
             }
 
             const withdrawAmount = amount;
@@ -4061,24 +4156,29 @@
                 accountName: accountName,
                 accountNumber: accountNumber,
                 date: new Date().toISOString(),
-                status: 'pending',
+                status: isAdmin ? 'approved' : 'pending',
                 type: selectedWithdrawOption,
-                investmentType: user.investmentType || 'short'
+                investmentType: user.investmentType || 'short',
+                isAdmin: isAdmin
             });
 
             if (!user.transactions) user.transactions = [];
             user.transactions.push({
-                type: 'Withdrawal',
+                type: isAdmin ? 'Admin Withdrawal' : 'Withdrawal',
                 amount: '₦' + withdrawAmount.toFixed(2),
-                status: 'pending',
-                description: `Withdrawal request (${selectedWithdrawOption === 'profit' ? 'Profit Only' : 'All Funds'})`,
+                status: isAdmin ? 'approved' : 'pending',
+                description: isAdmin ? 
+                    `⚡ Admin Instant Withdrawal (${selectedWithdrawOption === 'profit' ? 'Profit Only' : 'All Funds'})` :
+                    `Withdrawal request (${selectedWithdrawOption === 'profit' ? 'Profit Only' : 'All Funds'})`,
                 date: new Date().toISOString()
             });
 
-            user.withdrawalPending = true;
-            user.withdrawalTimer = Date.now() + (4 * 60 * 60 * 1000);
+            if (!isAdmin) {
+                user.withdrawalPending = true;
+                user.withdrawalTimer = Date.now() + (4 * 60 * 60 * 1000);
+            }
 
-            if (remainingBalance > 0 && selectedWithdrawOption === 'profit') {
+            if (remainingBalance > 0 && selectedWithdrawOption === 'profit' && !isAdmin) {
                 user.invested = remainingBalance;
                 user.activeInvestments = 1;
                 user.cycleStart = new Date().toISOString();
@@ -4091,17 +4191,22 @@
 
             closeWithdraw();
 
-            document.getElementById('withdrawConfirmModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
+            if (isAdmin) {
+                showToast('✅ Admin withdrawal completed instantly!', 'success');
+                updateDashboardStats(user);
+                updateAdminPanel();
+            } else {
+                document.getElementById('withdrawConfirmModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                showToast('✅ Withdrawal request submitted! Please complete the Google Form.', 'success');
+
+                setTimeout(function() {
+                    autoApproveWithdrawal(currentUser);
+                }, 4 * 60 * 60 * 1000);
+            }
 
             updateDashboardStats(user);
             updateAdminPanel();
-
-            showToast('✅ Withdrawal request submitted! Please complete the Google Form.', 'success');
-
-            setTimeout(function() {
-                autoApproveWithdrawal(currentUser);
-            }, 4 * 60 * 60 * 1000);
         }
 
         // ============================================================
@@ -4217,31 +4322,29 @@
         // ============================================================
         function generateProfitRate() {
             const rand = Math.random();
-            // 80% chance of 10-11%, 20% chance of 12%
             if (rand < 0.40) return 10;
             if (rand < 0.80) return 11;
             return 12;
         }
 
         // ============================================================
-        // CYCLE MANAGEMENT - UPDATED WITH CORRECT PROFIT CALCULATION
+        // CYCLE MANAGEMENT - CORRECT PROFIT CALCULATION
         // ============================================================
         function updateAllCycles() {
             const users = getAllUsers();
             const now = new Date();
             users.forEach(user => {
+                if (user.isAdmin) return;
+
                 if (user.activeInvestments > 0 && user.cycleStart) {
                     const startDate = new Date(user.cycleStart);
                     const daysPassed = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
 
                     if (daysPassed >= 20 && !user.cycleComplete) {
-                        // Investor gets 10-12% of their capital (FULL)
                         const profitRate = generateProfitRate();
                         const investorProfit = user.invested * (profitRate / 100);
-                        // Company gets 40% of what the investor gets (EXTRA)
                         const companyProfit = investorProfit * 0.4;
 
-                        // Add to investor's balance (profit is ADDED on top)
                         user.balance = (user.balance || 0) + investorProfit;
                         user.profit = (user.profit || 0) + investorProfit;
                         user.cycleComplete = true;
@@ -4249,7 +4352,6 @@
                         user.profitRate = profitRate;
                         user.totalCycles = (user.totalCycles || 0) + 1;
 
-                        // Record investor profit transaction
                         if (!user.transactions) user.transactions = [];
                         user.transactions.push({
                             type: 'Profit',
@@ -4259,7 +4361,6 @@
                             date: new Date().toISOString()
                         });
 
-                        // Record company profit transaction
                         user.transactions.push({
                             type: 'Company Profit',
                             amount: '₦' + companyProfit.toFixed(2),
@@ -4313,18 +4414,25 @@
         // ADMIN INSTANT DEPOSIT & WITHDRAW
         // ============================================================
         function adminInstantDeposit() {
-            const username = document.getElementById('adminInstantUsername').value.trim();
+            const currentUser = localStorage.getItem('wig_current_user');
+            if (!currentUser) {
+                showToast('Please login first.', 'error');
+                return;
+            }
+
+            const userData = localStorage.getItem('wig_user_' + currentUser);
+            if (!userData) return;
+            const user = JSON.parse(userData);
+
+            const isAdmin = user.isAdmin || false;
+            if (!isAdmin) {
+                showToast('⛔ Admin access required.', 'error');
+                return;
+            }
+
             const amount = parseFloat(document.getElementById('adminInstantAmount').value);
             const resultEl = document.getElementById('adminActionResult');
 
-            if (!username) {
-                resultEl.innerHTML = '❌ Please enter a username.';
-                resultEl.style.color = '#ff6b6b';
-                resultEl.style.display = 'block';
-                resultEl.style.background = 'rgba(255,68,68,0.1)';
-                return;
-            }
-
             if (isNaN(amount) || amount <= 0) {
                 resultEl.innerHTML = '❌ Please enter a valid amount.';
                 resultEl.style.color = '#ff6b6b';
@@ -4333,61 +4441,52 @@
                 return;
             }
 
-            const userData = localStorage.getItem('wig_user_' + username);
-            if (!userData) {
-                resultEl.innerHTML = '❌ User not found.';
-                resultEl.style.color = '#ff6b6b';
-                resultEl.style.display = 'block';
-                resultEl.style.background = 'rgba(255,68,68,0.1)';
-                return;
-            }
-
-            const user = JSON.parse(userData);
-
-            // Add balance instantly (no cycle)
             user.balance = (user.balance || 0) + amount;
+            user.invested = (user.invested || 0) + amount;
+            user.activeInvestments = (user.activeInvestments || 0) + 1;
 
             if (!user.transactions) user.transactions = [];
             user.transactions.push({
-                type: 'Admin Deposit',
+                type: 'Admin Instant Deposit',
                 amount: '₦' + amount.toLocaleString(),
                 status: 'approved',
-                description: '💰 Instant Admin Deposit (No Cycle)',
+                description: '⚡ Instant Admin Deposit (No Cycle)',
                 date: new Date().toISOString()
             });
 
-            localStorage.setItem('wig_user_' + username, JSON.stringify(user));
+            localStorage.setItem('wig_user_' + currentUser, JSON.stringify(user));
 
-            resultEl.innerHTML = `✅ Success! Added ₦${amount.toLocaleString()} to @${username}. New balance: ₦${user.balance.toFixed(2)}`;
+            resultEl.innerHTML = `✅ Success! Added ₦${amount.toLocaleString()} to your admin account. New balance: ₦${user.balance.toFixed(2)}`;
             resultEl.style.color = '#00cc66';
             resultEl.style.display = 'block';
             resultEl.style.background = 'rgba(0,204,102,0.1)';
 
-            document.getElementById('adminInstantUsername').value = '';
             document.getElementById('adminInstantAmount').value = '';
 
-            // Update dashboard if this is the current user
-            const currentUser = localStorage.getItem('wig_current_user');
-            if (currentUser === username) {
-                updateDashboardStats(user);
-            }
-
+            updateDashboardStats(user);
             updateAdminPanel();
-            showToast(`✅ Admin added ₦${amount.toLocaleString()} to @${username}`, 'success');
+            showToast(`✅ Admin deposited ₦${amount.toLocaleString()} instantly!`, 'success');
         }
 
         function adminInstantWithdraw() {
-            const username = document.getElementById('adminInstantWithdrawUsername').value.trim();
-            const amount = parseFloat(document.getElementById('adminInstantWithdrawAmount').value);
-            const resultEl = document.getElementById('adminActionResult');
-
-            if (!username) {
-                resultEl.innerHTML = '❌ Please enter a username.';
-                resultEl.style.color = '#ff6b6b';
-                resultEl.style.display = 'block';
-                resultEl.style.background = 'rgba(255,68,68,0.1)';
+            const currentUser = localStorage.getItem('wig_current_user');
+            if (!currentUser) {
+                showToast('Please login first.', 'error');
                 return;
             }
+
+            const userData = localStorage.getItem('wig_user_' + currentUser);
+            if (!userData) return;
+            const user = JSON.parse(userData);
+
+            const isAdmin = user.isAdmin || false;
+            if (!isAdmin) {
+                showToast('⛔ Admin access required.', 'error');
+                return;
+            }
+
+            const amount = parseFloat(document.getElementById('adminInstantWithdrawAmount').value);
+            const resultEl = document.getElementById('adminActionResult');
 
             if (isNaN(amount) || amount <= 0) {
                 resultEl.innerHTML = '❌ Please enter a valid amount.';
@@ -4397,60 +4496,67 @@
                 return;
             }
 
-            const userData = localStorage.getItem('wig_user_' + username);
-            if (!userData) {
-                resultEl.innerHTML = '❌ User not found.';
-                resultEl.style.color = '#ff6b6b';
-                resultEl.style.display = 'block';
-                resultEl.style.background = 'rgba(255,68,68,0.1)';
-                return;
-            }
-
-            const user = JSON.parse(userData);
-
             if ((user.balance || 0) < amount) {
-                resultEl.innerHTML = `❌ Insufficient balance. User has ₦${user.balance.toFixed(2)}`;
+                resultEl.innerHTML = `❌ Insufficient balance. You have ₦${user.balance.toFixed(2)}`;
                 resultEl.style.color = '#ff6b6b';
                 resultEl.style.display = 'block';
                 resultEl.style.background = 'rgba(255,68,68,0.1)';
                 return;
             }
 
-            // Remove balance instantly (no cycle)
             user.balance = (user.balance || 0) - amount;
+            user.invested = Math.max(0, (user.invested || 0) - amount);
+            if (user.balance <= 0) {
+                user.activeInvestments = 0;
+                user.invested = 0;
+                user.profit = 0;
+                user.cycleStart = null;
+                user.cycleDays = 0;
+                user.cycleComplete = false;
+            }
 
             if (!user.transactions) user.transactions = [];
             user.transactions.push({
-                type: 'Admin Withdrawal',
+                type: 'Admin Instant Withdrawal',
                 amount: '₦' + amount.toLocaleString(),
                 status: 'approved',
-                description: '💸 Instant Admin Withdrawal (No Cycle)',
+                description: '⚡ Instant Admin Withdrawal (No Cycle)',
                 date: new Date().toISOString()
             });
 
-            localStorage.setItem('wig_user_' + username, JSON.stringify(user));
+            localStorage.setItem('wig_user_' + currentUser, JSON.stringify(user));
 
-            resultEl.innerHTML = `✅ Success! Withdrew ₦${amount.toLocaleString()} from @${username}. New balance: ₦${user.balance.toFixed(2)}`;
+            resultEl.innerHTML = `✅ Success! Withdrew ₦${amount.toLocaleString()} from your admin account. New balance: ₦${user.balance.toFixed(2)}`;
             resultEl.style.color = '#00cc66';
             resultEl.style.display = 'block';
             resultEl.style.background = 'rgba(0,204,102,0.1)';
 
-            document.getElementById('adminInstantWithdrawUsername').value = '';
             document.getElementById('adminInstantWithdrawAmount').value = '';
 
-            const currentUser = localStorage.getItem('wig_current_user');
-            if (currentUser === username) {
-                updateDashboardStats(user);
-            }
-
+            updateDashboardStats(user);
             updateAdminPanel();
-            showToast(`✅ Admin withdrew ₦${amount.toLocaleString()} from @${username}`, 'success');
+            showToast(`✅ Admin withdrew ₦${amount.toLocaleString()} instantly!`, 'success');
         }
 
         // ============================================================
         // ADMIN PANEL
         // ============================================================
         function openAdmin() {
+            const currentUser = localStorage.getItem('wig_current_user');
+            if (!currentUser) {
+                showToast('Please login first.', 'error');
+                return;
+            }
+
+            const userData = localStorage.getItem('wig_user_' + currentUser);
+            if (!userData) return;
+            const user = JSON.parse(userData);
+
+            if (!user.isAdmin) {
+                showToast('⛔ Admin access required.', 'error');
+                return;
+            }
+
             localStorage.setItem('wig_admin_logged_in', 'true');
             document.getElementById('adminPanel').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -4466,24 +4572,11 @@
             document.querySelectorAll('.admin-tab').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.admin-table-wrap').forEach(el => el.style.display = 'none');
 
-            if (tab === 'deposits') {
-                document.querySelectorAll('.admin-tab')[0].classList.add('active');
-                document.getElementById('adminTabDeposits').style.display = 'block';
-            } else if (tab === 'withdrawals') {
-                document.querySelectorAll('.admin-tab')[1].classList.add('active');
-                document.getElementById('adminTabWithdrawals').style.display = 'block';
-            } else if (tab === 'kyc') {
-                document.querySelectorAll('.admin-tab')[2].classList.add('active');
-                document.getElementById('adminTabKyc').style.display = 'block';
-            } else if (tab === 'allData') {
-                document.querySelectorAll('.admin-tab')[3].classList.add('active');
-                document.getElementById('adminTabAllData').style.display = 'block';
-            } else if (tab === 'users') {
-                document.querySelectorAll('.admin-tab')[4].classList.add('active');
-                document.getElementById('adminTabUsers').style.display = 'block';
-            } else if (tab === 'adminActions') {
-                document.querySelectorAll('.admin-tab')[5].classList.add('active');
-                document.getElementById('adminTabAdminActions').style.display = 'block';
+            const tabs = ['deposits', 'withdrawals', 'kyc', 'allData', 'users'];
+            const index = tabs.indexOf(tab);
+            if (index !== -1) {
+                document.querySelectorAll('.admin-tab')[index].classList.add('active');
+                document.getElementById('adminTab' + tab.charAt(0).toUpperCase() + tab.slice(1)).style.display = 'block';
             }
         }
 
@@ -4605,7 +4698,7 @@
             const depositsBody = document.getElementById('adminDepositsList');
             if (depositsList.length === 0) {
                 depositsBody.innerHTML =
-                    `<tr><td colspan="5" style="text-align:center; color:#666; padding:8px 0;">No pending deposits</td></tr>`;
+                    `<tr><td colspan="5" style="text-align:center; color:#666; padding:10px 0;">No pending deposits</td></tr>`;
             } else {
                 depositsBody.innerHTML = depositsList.map(d => `
                             <tr>
@@ -4624,7 +4717,7 @@
             const withdrawalsBody = document.getElementById('adminWithdrawalsList');
             if (withdrawalsList.length === 0) {
                 withdrawalsBody.innerHTML =
-                    `<tr><td colspan="5" style="text-align:center; color:#666; padding:8px 0;">No pending withdrawals</td></tr>`;
+                    `<tr><td colspan="5" style="text-align:center; color:#666; padding:10px 0;">No pending withdrawals</td></tr>`;
             } else {
                 withdrawalsBody.innerHTML = withdrawalsList.map(w => `
                             <tr>
@@ -4643,7 +4736,7 @@
             const kycBody = document.getElementById('adminKycList');
             if (kycList.length === 0) {
                 kycBody.innerHTML =
-                    `<tr><td colspan="7" style="text-align:center; color:#666; padding:8px 0;">No KYC submissions</td></tr>`;
+                    `<tr><td colspan="7" style="text-align:center; color:#666; padding:10px 0;">No KYC submissions</td></tr>`;
             } else {
                 kycBody.innerHTML = kycList.map(k => {
                     const statusBadge = k.status === 'approved' ?
@@ -4684,13 +4777,14 @@
             const usersBody = document.getElementById('adminUsersList');
             if (users.length === 0) {
                 usersBody.innerHTML =
-                    `<tr><td colspan="7" style="text-align:center; color:#666; padding:8px 0;">No users registered</td></tr>`;
+                    `<tr><td colspan="7" style="text-align:center; color:#666; padding:10px 0;">No users registered</td></tr>`;
             } else {
                 usersBody.innerHTML = users.map(u => {
                     const kycStatus = u.kyc ? (u.kyc.status === 'approved' ? '<span style="color:#00cc66;">✅ Verified</span>' : u.kyc.status === 'pending' ? '<span style="color:#ffaa00;">⏳ Pending</span>' : '<span style="color:#ff4444;">❌ Failed</span>') : '<span style="color:#666;">Not Submitted</span>';
+                    const adminBadge = u.isAdmin ? ' 👑' : '';
                     return `
                                 <tr>
-                                    <td>@${u.username}</td>
+                                    <td>@${u.username}${adminBadge}</td>
                                     <td>${u.name || '—'}</td>
                                     <td>${u.email || '—'}</td>
                                     <td>₦${(u.balance || 0).toFixed(2)}</td>
@@ -4716,7 +4810,7 @@
             allDataCache = data;
             const body = document.getElementById('adminAllDataList');
             if (data.length === 0) {
-                body.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#666; padding:8px 0;">No data available</td></tr>`;
+                body.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#666; padding:10px 0;">No data available</td></tr>`;
                 return;
             }
 
@@ -4733,9 +4827,9 @@
                                 <td>@${item.username}</td>
                                 <td><strong>${item.type}</strong></td>
                                 <td>${item.amount}</td>
-                                <td style="font-size:8px; color:#888;">${item.details}</td>
+                                <td style="font-size:9px; color:#888;">${item.details}</td>
                                 <td>${statusBadge}</td>
-                                <td style="font-size:8px; color:#666;">${new Date(item.date).toLocaleDateString()}</td>
+                                <td style="font-size:9px; color:#666;">${new Date(item.date).toLocaleDateString()}</td>
                             </tr>
                         `;
             }).join('');
@@ -5083,8 +5177,8 @@
                         reader.onload = function(e) {
                             const preview = document.getElementById('kycPhotoPreview');
                             preview.innerHTML = `
-                                <img src="${e.target.result}" style="max-width:100%; max-height:80px; border-radius:6px; border:2px solid #c9a84c; padding:2px; margin-top:3px;" />
-                                <p style="color:#00cc66; font-size:8px; margin-top:2px;">✅ NIN slip uploaded</p>
+                                <img src="${e.target.result}" style="max-width:100%; max-height:90px; border-radius:8px; border:2px solid #c9a84c; padding:3px; margin-top:4px;" />
+                                <p style="color:#00cc66; font-size:9px; margin-top:2px;">✅ NIN slip uploaded</p>
                             `;
                         };
                         reader.readAsDataURL(file);
@@ -5487,20 +5581,20 @@
             if (!kyc) {
                 alertEl.style.display = 'block';
                 alertEl.innerHTML = `
-                    <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:6px; padding:6px 8px; color:#ffaa00; text-align:center; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:4px;">
+                    <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:8px; padding:8px 10px; color:#ffaa00; text-align:center; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
                         <div>
-                            <span style="font-size:14px;">⚠️</span>
+                            <span style="font-size:16px;">⚠️</span>
                             <strong> KYC Required</strong>
                         </div>
-                        <button class="btn-gold" onclick="openKyc()" style="padding:3px 10px; font-size:10px; min-height:30px; width:auto;">Verify Now</button>
+                        <button class="btn-gold" onclick="openKyc()" style="padding:4px 12px; font-size:11px; min-height:32px; width:auto;">Verify Now</button>
                     </div>
                 `;
                 statusDisplay.innerHTML = `
-                    <div style="text-align:center; padding:12px 8px; background:rgba(26,26,62,0.4); border-radius:8px;">
-                        <div style="font-size:30px; margin-bottom:4px;">🆔</div>
-                        <h4 style="color:#c9a84c; font-size:13px; margin-bottom:3px;">NIN Verification Required</h4>
-                        <p style="color:#aaa; margin-bottom:6px; font-size:11px;">Upload your NIN slip to get verified</p>
-                        <button class="btn-gold" onclick="openKyc()" style="padding:4px 14px; font-size:11px; min-height:34px;">Verify Now</button>
+                    <div style="text-align:center; padding:14px 10px; background:rgba(26,26,62,0.4); border-radius:10px;">
+                        <div style="font-size:34px; margin-bottom:4px;">🆔</div>
+                        <h4 style="color:#c9a84c; font-size:15px; margin-bottom:4px;">NIN Verification Required</h4>
+                        <p style="color:#aaa; margin-bottom:6px; font-size:12px;">Upload your NIN slip to get verified</p>
+                        <button class="btn-gold" onclick="openKyc()" style="padding:6px 16px; font-size:12px; min-height:36px;">Verify Now</button>
                     </div>
                 `;
                 return;
@@ -5509,44 +5603,44 @@
             if (kyc.status === 'pending') {
                 alertEl.style.display = 'block';
                 alertEl.innerHTML = `
-                    <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:6px; padding:6px 8px; color:#ffaa00; text-align:center;">
+                    <div style="background:rgba(255,170,0,0.1); border:1px solid rgba(255,170,0,0.3); border-radius:8px; padding:8px 10px; color:#ffaa00; text-align:center;">
                         ⏳ <strong>KYC Processing:</strong> Your verification is in progress...
                     </div>
                 `;
                 statusDisplay.innerHTML = `
-                    <div style="text-align:center; padding:10px; background:rgba(255,170,0,0.05); border-radius:6px; border:1px solid rgba(255,170,0,0.2);">
-                        <div style="font-size:24px; margin-bottom:3px;">⏳</div>
+                    <div style="text-align:center; padding:12px; background:rgba(255,170,0,0.05); border-radius:8px; border:1px solid rgba(255,170,0,0.2);">
+                        <div style="font-size:28px; margin-bottom:4px;">⏳</div>
                         <p><strong style="color:#ffaa00;">KYC Status: Pending</strong></p>
-                        <p style="font-size:10px; color:#888;">Please wait while we verify your NIN...</p>
+                        <p style="font-size:11px; color:#888;">Please wait while we verify your NIN...</p>
                     </div>
                 `;
             } else if (kyc.status === 'approved') {
                 alertEl.style.display = 'none';
                 statusDisplay.innerHTML = `
-                    <div style="text-align:center; padding:10px; background:rgba(0,204,102,0.05); border-radius:6px; border:1px solid rgba(0,204,102,0.2);">
-                        <div style="font-size:24px; margin-bottom:3px;">✅</div>
+                    <div style="text-align:center; padding:12px; background:rgba(0,204,102,0.05); border-radius:8px; border:1px solid rgba(0,204,102,0.2);">
+                        <div style="font-size:28px; margin-bottom:4px;">✅</div>
                         <p><strong style="color:#00cc66;">KYC Status: Verified</strong></p>
-                        <p style="font-size:10px; color:#888;">Your account is fully verified</p>
-                        ${kyc.verifiedAt ? `<p style="font-size:8px; color:#666;">Verified: ${new Date(kyc.verifiedAt).toLocaleDateString()}</p>` : ''}
+                        <p style="font-size:11px; color:#888;">Your account is fully verified</p>
+                        ${kyc.verifiedAt ? `<p style="font-size:9px; color:#666;">Verified: ${new Date(kyc.verifiedAt).toLocaleDateString()}</p>` : ''}
                     </div>
                 `;
             } else if (kyc.status === 'rejected') {
                 alertEl.style.display = 'block';
                 alertEl.innerHTML = `
-                    <div style="background:rgba(255,68,68,0.1); border:1px solid rgba(255,68,68,0.3); border-radius:6px; padding:6px 8px; color:#ff4444; text-align:center; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:4px;">
+                    <div style="background:rgba(255,68,68,0.1); border:1px solid rgba(255,68,68,0.3); border-radius:8px; padding:8px 10px; color:#ff4444; text-align:center; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">
                         <div>
-                            <span style="font-size:14px;">❌</span>
+                            <span style="font-size:16px;">❌</span>
                             <strong> KYC Failed</strong>
                         </div>
-                        <button class="btn-gold" onclick="openKyc()" style="padding:3px 10px; font-size:10px; min-height:30px; width:auto;">Retry</button>
+                        <button class="btn-gold" onclick="openKyc()" style="padding:4px 12px; font-size:11px; min-height:32px; width:auto;">Retry</button>
                     </div>
                 `;
                 statusDisplay.innerHTML = `
-                    <div style="text-align:center; padding:10px; background:rgba(255,68,68,0.05); border-radius:6px; border:1px solid rgba(255,68,68,0.2);">
-                        <div style="font-size:24px; margin-bottom:3px;">❌</div>
+                    <div style="text-align:center; padding:12px; background:rgba(255,68,68,0.05); border-radius:8px; border:1px solid rgba(255,68,68,0.2);">
+                        <div style="font-size:28px; margin-bottom:4px;">❌</div>
                         <p><strong style="color:#ff4444;">KYC Status: Failed</strong></p>
-                        <p style="font-size:10px; color:#888;">Please re-upload your NIN slip</p>
-                        <button class="btn-gold" onclick="openKyc()" style="margin-top:4px; padding:4px 12px; font-size:10px;">Retry</button>
+                        <p style="font-size:11px; color:#888;">Please re-upload your NIN slip</p>
+                        <button class="btn-gold" onclick="openKyc()" style="margin-top:6px; padding:4px 12px; font-size:11px;">Retry</button>
                     </div>
                 `;
             }
