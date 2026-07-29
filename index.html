@@ -1973,7 +1973,7 @@
     </div>
 
     <!-- ============================================================
-    LOGIN MODAL
+    LOGIN MODAL (UPDATED WITH FORGOT PASSWORD LINK)
     ============================================================ -->
     <div class="auth-overlay" id="loginModal">
         <div class="auth-modal">
@@ -1999,6 +1999,73 @@
             </form>
             <div class="auth-switch">
                 Don't have an account? <a onclick="switchAuth('register')">Register</a>
+            </div>
+            <!-- FORGOT PASSWORD LINK - ADDED -->
+            <div style="text-align:center; margin-top:8px;">
+                <a onclick="openForgotPassword()" style="color:#c9a84c; font-size:11px; cursor:pointer; text-decoration:underline;">
+                    Forgot Password?
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    FORGOT PASSWORD MODAL (NEW)
+    ============================================================ -->
+    <div class="auth-overlay" id="forgotPasswordModal">
+        <div class="auth-modal">
+            <button class="close-btn" onclick="closeForgotPassword()">&times;</button>
+            <h2>🔑 Forgot Password</h2>
+            <p class="sub">Enter your username to reset your password</p>
+            <form id="forgotPasswordForm" onsubmit="handleForgotPassword(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="forgotUsername" placeholder="Enter your username" required />
+                    <small style="color:#666;">We'll find your account and let you reset your password</small>
+                </div>
+                <div class="error-msg" id="forgotError"></div>
+                <div class="success-msg" id="forgotSuccess"></div>
+                <button type="submit" class="btn-gold" id="forgotSubmitBtn">Find Account</button>
+            </form>
+            <div class="auth-switch">
+                <a onclick="switchToLogin()" style="color:#c9a84c; cursor:pointer;">Back to Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    RESET PASSWORD MODAL (NEW)
+    ============================================================ -->
+    <div class="auth-overlay" id="resetPasswordModal">
+        <div class="auth-modal">
+            <button class="close-btn" onclick="closeResetPassword()">&times;</button>
+            <h2>🔄 Reset Password</h2>
+            <p class="sub" id="resetUserDisplay">Resetting password for: <span style="color:#c9a84c; font-weight:600;">user</span></p>
+            <form id="resetPasswordForm" onsubmit="handleResetPassword(event)">
+                <div class="form-group">
+                    <label>New Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="resetNewPassword" placeholder="Enter new password (min 6 characters)" required minlength="6" />
+                        <button type="button" class="toggle-pwd" onclick="togglePassword('resetNewPassword', this)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Confirm New Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="resetConfirmPassword" placeholder="Confirm new password" required />
+                        <button type="button" class="toggle-pwd" onclick="togglePassword('resetConfirmPassword', this)">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="error-msg" id="resetError"></div>
+                <div class="success-msg" id="resetSuccess"></div>
+                <button type="submit" class="btn-gold" id="resetSubmitBtn">Reset Password</button>
+            </form>
+            <div class="auth-switch">
+                <a onclick="switchToLogin()" style="color:#c9a84c; cursor:pointer;">Back to Login</a>
             </div>
         </div>
     </div>
@@ -4030,7 +4097,6 @@
                         document.getElementById('withdrawAmount').readOnly = false;
                     } else {
                         document.getElementById('withdrawTypeDisplay').textContent = '💵 Withdraw: All Funds';
-                        document.getElementById('withdrawAmount').placeholder = 'Auto-filled with total balance';
                         document.getElementById('withdrawAmountHint').textContent = 
                             `Total balance: ₦${(user.balance || 0).toFixed(2)} (Capital + Profit)`;
                         document.getElementById('withdrawAmount').value = (user.balance || 0).toFixed(2);
@@ -5645,6 +5711,187 @@
                 `;
             }
         }
+
+        // ============================================================
+        // FORGOT PASSWORD FUNCTIONS (NEW)
+        // ============================================================
+
+        let forgotPasswordUsername = null;
+
+        function openForgotPassword() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('forgotPasswordModal').classList.add('active');
+            document.getElementById('forgotError').classList.remove('show');
+            document.getElementById('forgotSuccess').classList.remove('show');
+            document.getElementById('forgotUsername').value = '';
+            document.getElementById('forgotSubmitBtn').disabled = false;
+            document.getElementById('forgotSubmitBtn').innerHTML = 'Find Account';
+        }
+
+        function closeForgotPassword() {
+            document.getElementById('forgotPasswordModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeResetPassword() {
+            document.getElementById('resetPasswordModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function switchToLogin() {
+            closeForgotPassword();
+            closeResetPassword();
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function handleForgotPassword(e) {
+            e.preventDefault();
+            const username = document.getElementById('forgotUsername').value.trim();
+            const errorEl = document.getElementById('forgotError');
+            const successEl = document.getElementById('forgotSuccess');
+            const submitBtn = document.getElementById('forgotSubmitBtn');
+            
+            errorEl.classList.remove('show');
+            successEl.classList.remove('show');
+            errorEl.textContent = '';
+            successEl.textContent = '';
+            
+            if (!username) {
+                errorEl.textContent = 'Please enter your username.';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
+            
+            // Check if user exists
+            const userData = localStorage.getItem('wig_user_' + username);
+            if (!userData) {
+                errorEl.textContent = '❌ User not found. Please check your username.';
+                errorEl.classList.add('show');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Find Account';
+                return;
+            }
+            
+            const user = JSON.parse(userData);
+            forgotPasswordUsername = username;
+            
+            // Show success and proceed to reset
+            successEl.textContent = '✅ Account found! Proceed to reset your password.';
+            successEl.classList.add('show');
+            
+            setTimeout(() => {
+                closeForgotPassword();
+                openResetPassword(username);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Find Account';
+            }, 800);
+        }
+
+        function openResetPassword(username) {
+            document.getElementById('resetPasswordModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('resetUserDisplay').innerHTML = 'Resetting password for: <span style="color:#c9a84c; font-weight:600;">' + username + '</span>';
+            document.getElementById('resetNewPassword').value = '';
+            document.getElementById('resetConfirmPassword').value = '';
+            document.getElementById('resetError').classList.remove('show');
+            document.getElementById('resetSuccess').classList.remove('show');
+            document.getElementById('resetSubmitBtn').disabled = false;
+            document.getElementById('resetSubmitBtn').innerHTML = 'Reset Password';
+        }
+
+        function handleResetPassword(e) {
+            e.preventDefault();
+            const newPassword = document.getElementById('resetNewPassword').value;
+            const confirmPassword = document.getElementById('resetConfirmPassword').value;
+            const errorEl = document.getElementById('resetError');
+            const successEl = document.getElementById('resetSuccess');
+            const submitBtn = document.getElementById('resetSubmitBtn');
+            
+            errorEl.classList.remove('show');
+            successEl.classList.remove('show');
+            errorEl.textContent = '';
+            successEl.textContent = '';
+            
+            if (newPassword.length < 6) {
+                errorEl.textContent = 'Password must be at least 6 characters.';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            if (newPassword !== confirmPassword) {
+                errorEl.textContent = 'Passwords do not match.';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            if (!forgotPasswordUsername) {
+                errorEl.textContent = 'Session expired. Please try again.';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+            
+            // Update the user's password
+            const userData = localStorage.getItem('wig_user_' + forgotPasswordUsername);
+            if (!userData) {
+                errorEl.textContent = 'User not found. Please try again.';
+                errorEl.classList.add('show');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Reset Password';
+                return;
+            }
+            
+            const user = JSON.parse(userData);
+            user.password = newPassword;
+            
+            // Add transaction record
+            if (!user.transactions) user.transactions = [];
+            user.transactions.push({
+                type: 'Security',
+                amount: '—',
+                status: 'approved',
+                description: '🔑 Password Reset via Forgot Password',
+                date: new Date().toISOString()
+            });
+            
+            localStorage.setItem('wig_user_' + forgotPasswordUsername, JSON.stringify(user));
+            
+            successEl.textContent = '✅ Password reset successfully! You can now login with your new password.';
+            successEl.classList.add('show');
+            submitBtn.innerHTML = '✅ Done';
+            
+            setTimeout(() => {
+                closeResetPassword();
+                // Open login modal
+                document.getElementById('loginModal').classList.add('active');
+                document.getElementById('loginUsername').value = forgotPasswordUsername;
+                document.getElementById('loginPassword').value = '';
+                forgotPasswordUsername = null;
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Reset Password';
+                showToast('✅ Password reset successfully! Please login with your new password.', 'success');
+            }, 1500);
+        }
+
+        // Close modals on outside click
+        document.getElementById('forgotPasswordModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeForgotPassword();
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        document.getElementById('resetPasswordModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeResetPassword();
+                document.body.style.overflow = 'auto';
+            }
+        });
 
         // ============================================================
         // LOGOUT
